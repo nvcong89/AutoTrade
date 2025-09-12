@@ -13,7 +13,7 @@ A modular system to **automatically connect to DNSE/Entrade, receive price data 
 ### 1. Clone the repo
 ```bash
 git clone https://github.com/ChungkhoanPhaisinh/AutoTrade.git
-cd AutoTraderX
+cd AutoTrade
 ```
 
 ### 2. Install dependencies
