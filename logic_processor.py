@@ -1,3 +1,4 @@
+from agents.RSI import rsi_agent
 from global_var import ENTRADE_CLIENT
 from datetime import datetime
 from agents.ma_cross_agent import ma_cross_agent
@@ -7,7 +8,7 @@ from agent import Agent
 
 ACTIVE_BOT: list[Agent] = [
     ma_cross_agent,
-    bb_agent
+    bb_agent, rsi_agent
 ]
 
 def CalculateStrategy(processed_data):
