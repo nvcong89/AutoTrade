@@ -1,4 +1,4 @@
-from requests import get, post, delete
+from requests import HTTPError, get, post, delete
 from time import localtime
 
 class EntradeClient:
@@ -37,10 +37,13 @@ class EntradeClient:
 
         url = f"{self.base_url}{"papertrade-" if is_demo else ""}entrade-api/derivative/orders"
 
-        response = post(url, headers=_headers, json=_json)
-        response.raise_for_status()
-        print("Gửi yêu cầu đặt lệnh thành công! (Entrade)")
-        return response.json()
+        try:
+            response = post(url, headers=_headers, json=_json)
+            response.raise_for_status()
+            print("Gửi yêu cầu đặt lệnh thành công! (Entrade)")
+            return response.json()
+        except HTTPError as e:
+            print("Order() failed! (Entrade):", e)
 
     def CancelOrder(self, order_id, is_demo: bool):
         _headers = {
@@ -49,10 +52,13 @@ class EntradeClient:
 
         url = f"{self.base_url}{"papertrade-" if is_demo else ""}entrade-api/derivative/orders/{order_id}"
 
-        response = delete(url, headers=_headers)
-        response.raise_for_status()
-        print("Hủy lệnh thành công! (Entrade)")
-        return response.json()
+        try:
+            response = delete(url, headers=_headers)
+            response.raise_for_status()
+            print("Hủy lệnh thành công! (Entrade)")
+            return response.json()
+        except HTTPError as e:
+            print("CancelOrder() failed! (Entrade):", e)
 
     def CancelAllOrders(self, investor_id, investor_account_id, is_demo: bool):
         _headers = {
@@ -65,10 +71,13 @@ class EntradeClient:
 
         url = f"{self.base_url}{"papertrade-" if is_demo else ""}entrade-api/derivative/orders"
 
-        response = delete(url, headers=_headers, params=_params)
-        response.raise_for_status()
-        print("Hủy tất cả lệnh thành công! (Entrade)")
-        return response.json()
+        try:
+            response = delete(url, headers=_headers, params=_params)
+            response.raise_for_status()
+            print("Hủy tất cả lệnh thành công! (Entrade)")
+            return response.json()
+        except HTTPError as e:
+            print("CancelAllOrders() failed! (Entrade):", e)
 
     def ConditionalOrder(self, symbol, investor_id, investor_account_id, side, price, loan, volume, condition, is_demo: bool):
         _headers = {
@@ -91,10 +100,13 @@ class EntradeClient:
 
         url = f"{self.base_url}{"papertrade-" if is_demo else ""}smart-order/orders"
 
-        response = post(url, headers=_headers, json=_json)
-        response.raise_for_status()
-        print("Gửi yêu cầu đặt lệnh điều kiện thành công! (Entrade)")
-        return response.json()
+        try:
+            response = post(url, headers=_headers, json=_json)
+            response.raise_for_status()
+            print("Gửi yêu cầu đặt lệnh điều kiện thành công! (Entrade)")
+            return response.json()
+        except HTTPError as e:
+            print("ConditionalOrder() failed! (Entrade):", e)
 
     def CancelConditionalOrder(self, order_id, is_demo: bool):
         _headers = {
@@ -103,10 +115,13 @@ class EntradeClient:
 
         url = f"{self.base_url}{"papertrade-" if is_demo else ""}smart-order/orders/{order_id}"
 
-        response = delete(url, headers=_headers)
-        response.raise_for_status()
-        print("Hủy lệnh thành công! (Entrade)")
-        return response.json()
+        try:
+            response = delete(url, headers=_headers)
+            response.raise_for_status()
+            print("Hủy lệnh thành công! (Entrade)")
+            return response.json()
+        except HTTPError as e:
+            print("CancelConditionalOrder() failed! (Entrade):", e)
 
     def CancelAllConditionalOrder(self, investor_id, investor_account_id, is_demo: bool):
         _headers = {
@@ -119,21 +134,32 @@ class EntradeClient:
 
         url = f"{self.base_url}{"papertrade-" if is_demo else ""}smart-order/orders"
 
-        response = delete(url, headers=_headers, params=_params)
-        response.raise_for_status()
-        print("Hủy tất cả lệnh thành công! (Entrade)")
-        return response.json()
+        try:
+            response = delete(url, headers=_headers, params=_params)
+            response.raise_for_status()
+            print("Hủy tất cả lệnh thành công! (Entrade)")
+            return response.json()
+        except HTTPError as e:
+            print("CancelAllConditionalOrder() failed! (Entrade):", e)
 
     def CloseDeal(self, deal_id, is_demo: bool):
         _headers = {
             "Authorization": f"Bearer {self.token}"
         }
+        _json = {
+            "orderType":"LO",
+            "triggeredBy":"close-deal"
+        }
 
         url = f"{self.base_url}{"papertrade-" if is_demo else ""}entrade-api/derivative/deals/{deal_id}/_close_deal"
-        response = post(url, headers=_headers)
-        response.raise_for_status()
-        print("Hủy lệnh thành công! (Entrade)")
-        return response.json()
+
+        try:
+            response = post(url, headers=_headers, json=_json)
+            response.raise_for_status()
+            print("Hủy lệnh thành công! (Entrade)")
+            return response.json()
+        except HTTPError as e:
+            print("CloseDeal() failed! (Entrade):", e)
 
     def GetAccountInfo(self):
         _headers = {
@@ -158,3 +184,30 @@ class EntradeClient:
         json_data = response.json()
         self.investor_account_id = json_data.get("investorAccountId")
         return json_data
+
+    def GetDeals(self, start: int = 0, end: int = 100, is_demo: bool = False):
+        _headers = {
+            "Authorization": f"Bearer {self.token}"
+        }
+        _params = {
+            "investorId": self.investor_id,
+            "_start": start,
+            "_end": end
+        }
+
+        url = f"{self.base_url}{"papertrade-" if is_demo else ""}entrade-api/derivative/deals"
+
+        response = get(url, headers=_headers, params=_params)
+        response.raise_for_status()
+        return response.json()
+
+    def CloseAllDeals(self, is_demo: bool = False):
+        try:
+            deals = self.GetDeals(0, 255, is_demo)["data"]
+            for deal in deals:
+                if deal["status"] == "ACTIVE":
+                    self.CloseDeal(deal["id"], is_demo)
+
+            print("Đóng tất cả lệnh thành công! (Entrade)")
+        except HTTPError as e:
+            print("CloseAllDeals() failed! (Entrade):", e)
