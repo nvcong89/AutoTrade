@@ -1,5 +1,5 @@
 from agents.rsi_agent import rsi_agent
-from global_var import ENTRADE_CLIENT #, LAST_BID_DEPTH, LAST_OFFER_DEPTH
+from global_var import ENTRADE_CLIENT , LAST_BID_DEPTH, LAST_OFFER_DEPTH
 from datetime import datetime
 from agents.ma_cross_agent import ma_cross_agent
 from agents.BB_agent import bb_agent
@@ -17,6 +17,19 @@ def CalculateStrategy(processed_data):
     # print(LAST_BID_DEPTH) // Market depth data
     # print(LAST_OFFER_DEPTH)
     print("Close Price: ", close_price)
+
+    if LAST_BID_DEPTH:
+        last_bid_price = LAST_BID_DEPTH[-1][0]  # Get the price from the last tuple
+        print(f"Last bid price: {last_bid_price}")
+    else:
+        print("No bid data available.")
+
+    if LAST_BID_DEPTH:
+        last_ask_price = LAST_OFFER_DEPTH[-1][0]  # Get the price from the last tuple
+        print(f"Last ask price: {last_ask_price}")
+    else:
+        print("No ask data available.")
+
 
 
     for agent in ACTIVE_BOT:
@@ -54,7 +67,8 @@ def CalculateStrategy(processed_data):
             deals = ENTRADE_CLIENT.GetDeals(start=0,end=255,is_demo=True)["data"]
             for deal in deals:
                 #giá khớp lệnh
-                print("dea ID: " + deal["id"] + "[" + deal["side"] + "]" + " Giá hòa vốn: " + deal["breakEvenPrice"])
+                if deal["status"] == "ACTIVE":
+                    print(f"Deal ID: {deal["id"]} - Side: {deal["side"]} - BreakEvenPrice: {round(deal["breakEvenPrice"],1)}")
         except:
             print("Failed to get deal data")
 
