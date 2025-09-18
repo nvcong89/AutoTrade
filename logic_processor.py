@@ -19,16 +19,20 @@ def CalculateStrategy(processed_data):
     print("Close Price: ", close_price)
 
     if LAST_BID_DEPTH:
-        last_bid_price = LAST_BID_DEPTH[-1][0]  # Get the price from the last tuple
+        last_bid_price = LAST_BID_DEPTH[0][0]  # Get the price from the last tuple
         print(f"Last bid price: {last_bid_price}")
     else:
         print("No bid data available.")
 
-    if LAST_BID_DEPTH:
-        last_ask_price = LAST_OFFER_DEPTH[-1][0]  # Get the price from the last tuple
+    if LAST_OFFER_DEPTH:
+        last_ask_price = LAST_OFFER_DEPTH[0][0]  # Get the price from the last tuple
         print(f"Last ask price: {last_ask_price}")
     else:
         print("No ask data available.")
+
+    if last_bid_price > 0 and last_ask_price > 0:
+        spread =  round(last_ask_price -last_bid_price,2)
+        print(f"Spread: {spread}")
 
 
 

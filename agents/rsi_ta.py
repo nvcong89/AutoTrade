@@ -22,10 +22,10 @@ class rsi_ta(Agent):
 
         print(f"{self.name} rsi =  {rsi_lastvalue:.1f} ({datetime.now().strftime('%H:%M %d/%m')})")
 
-        if (rsi_lastvalue <= 100 and rsi_lastvalue > 70) and self.deal_pos < 1:
+        if (rsi_lastvalue <= 100 and rsi_lastvalue > 70): #and self.deal_pos < 1:
             self.deal_pos = 1
             return True
-        elif (rsi_lastvalue >= 0 and rsi_lastvalue < 30) and self.deal_pos > -1:
+        elif (rsi_lastvalue >= 0 and rsi_lastvalue < 30): # and self.deal_pos > -1:
             self.deal_pos = -1
             return False
         else:
