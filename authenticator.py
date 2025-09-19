@@ -11,7 +11,11 @@ gmailDNSE = getenv("gmailDNSE") # Email đăng kí DNSE
 passwordDNSE = getenv("passwordDNSE") # Mật khẩu tài khoản DNSE
 appPasswordDNSE = getenv("appPasswordDNSE") # App Password cho email đăng kí DNSE
 
+
+
+
 if __name__ == "__main__":
+
     # Connect to Entrade (Only needed if used to auto trade)
     GLOBAL.ENTRADE_CLIENT.Authenticate(gmailEntrade, passwordEntrade)
     GLOBAL.ENTRADE_CLIENT.GetAccountInfo() # Get investor_id

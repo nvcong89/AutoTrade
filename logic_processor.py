@@ -11,10 +11,10 @@ ACTIVE_BOT: list[Agent] = [
 ]
 
 def OnTick(data: tuple):
-    # print("Dư mua:", GLOBAL.TOTAL_BID)
-    # print("Dư bán:", GLOBAL.TOTAL_OFFER)
-    # print("Tổng KLGD mua nước ngoài:", GLOBAL.TOTAL_FOREIGN_BUY)
-    # print("Tổng KLGD bán nước ngoài:", GLOBAL.TOTAL_FOREIGN_SELL)
+    print("Dư mua:", GLOBAL.TOTAL_BID)
+    print("Dư bán:", GLOBAL.TOTAL_OFFER)
+    print("Tổng KLGD mua nước ngoài:", GLOBAL.TOTAL_FOREIGN_BUY)
+    print("Tổng KLGD bán nước ngoài:", GLOBAL.TOTAL_FOREIGN_SELL)
 
     try:
         if GLOBAL.BID_DEPTH:
@@ -41,7 +41,7 @@ def OnTick(data: tuple):
 
         # Đặt lệnh Long
         if len(activeDeals) == 0:
-            GLOBAL.ENTRADE_CLIENT.Order(GLOBAL.PhaiSinh_Name, "NB", None, None, 1, "MTL", True)
+            GLOBAL.ENTRADE_CLIENT.Order(GLOBAL.get_vn30f1m_krx(), "NB", None, None, 1, "MTL", True)
 
         #close lệnh khi có lời 1 point
         for deal in activeDeals:
@@ -59,6 +59,8 @@ def OnTick(data: tuple):
     # print(GLOBAL.BID_DEPTH)
     # print(data)
     # print(np.array(data).shape)
+
+    print(GLOBAL.get_vn30f1m_krx())
 
 
 
@@ -80,6 +82,7 @@ def OnBarClosed(data: list[tuple]):
     print(f" RSI = {(rsi[-1]):.1f}")
     print(20 * "=")
 
+
     for agent in ACTIVE_BOT:
         result = agent.Calculate(data)
 
@@ -93,7 +96,7 @@ def OnBarClosed(data: list[tuple]):
 
 
             #Đặt lệnh Long
-            GLOBAL.ENTRADE_CLIENT.Order(GLOBAL.PhaiSinh_Name, "NB", None, None, 1, "MTL", True)
+            GLOBAL.ENTRADE_CLIENT.Order(GLOBAL.get_vn30f1m_krx(), "NB", None, None, 1, "MTL", True)
             print(f"{agent.name} đã đặt lệnh LONG tại giá {close_price:.1f} ({datetime.now().strftime("%H:%M %d/%m")})")
 
         elif result == False:
@@ -105,7 +108,7 @@ def OnBarClosed(data: list[tuple]):
                     GLOBAL.ENTRADE_CLIENT.CloseDeal(deal["id"], is_demo=True)
 
             #đặt lệnh Short
-            GLOBAL.ENTRADE_CLIENT.Order(GLOBAL.PhaiSinh_Name, "NS", None, None, 1, "MTL", True)
+            GLOBAL.ENTRADE_CLIENT.Order(GLOBAL.get_vn30f1m_krx(), "NS", None, None, 1, "MTL", True)
             print(f"{agent.name} đã đặt lệnh SHORT tại giá {(close_price):.1f} ({datetime.now().strftime("%H:%M %d/%m")})")
 
 
