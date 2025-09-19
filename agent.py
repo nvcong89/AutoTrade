@@ -5,3 +5,4 @@ class Agent:
 
     def Calculate(self, data) -> bool | None:
         return None
+
