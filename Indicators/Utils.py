@@ -6,8 +6,7 @@ class Indicator:
         return None
 
 
-
-def cross(data1: list, data2: list) -> bool | None:
+def cross(data1: list | float | int, data2: list | float | int) -> bool | None:
     """
     Kiểm tra xem data1 có cắt lên đường data2 hay không.
     Điều kiện: data1 trước < data2 trước và data1 hiện tại > data2 hiện tại
@@ -17,6 +16,12 @@ def cross(data1: list, data2: list) -> bool | None:
         - False nếu không cắt
         - None nếu không đủ dữ liệu
     """
+    # Nếu là số, chuyển thành list với 2 phần tử giống nhau
+    if isinstance(data1, (int, float)):
+        data1 = [data1, data1]
+    if isinstance(data2, (int, float)):
+        data2 = [data2, data2]
+
     if data1 is None or data2 is None:
         return None
 
