@@ -26,6 +26,9 @@ TOTAL_OFFER: int = 0
 TOTAL_FOREIGN_BUY: int = 0
 TOTAL_FOREIGN_SELL: int = 0
 
+#SYMBOL
+
+
 
 #tên mã phái sinh KRX tháng hiện tại
 def get_vn30f1m_krx() -> str:
@@ -87,3 +90,6 @@ def get_vn30f1m_krx() -> str:
     krx_code = f"41I1{year_code}{month_code}000"
 
     return krx_code
+
+
+VN30F1M = get_vn30f1m_krx()

@@ -201,12 +201,17 @@ class EntradeClient:
         response.raise_for_status()
         return response.json()
 
-    def GetActiveDeals(self):
+    def GetActiveDeals(self,investorAccountId: str = None):
         deals = self.GetDeals()["data"]
         activeDeals = []
         for deal in deals:
             if deal["status"] == "ACTIVE":
-                activeDeals.append(deal)
+                if investorAccountId is None:
+                    activeDeals.append(deal)
+                else:
+                    if deal.get("accountNo") == investorAccountId:
+                        activeDeals.append(deal)
+
         return activeDeals
 
     def CloseAllDeals(self, is_demo: bool):
