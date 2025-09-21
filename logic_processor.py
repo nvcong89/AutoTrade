@@ -17,6 +17,7 @@ LastAskPrice = 0
 Spread = None
 activedeals = []
 trend = 0  #1=up, 0=sideway, -1=down
+pendingDeals=[]
 
 
 def OnTick(data: tuple):
