@@ -26,7 +26,8 @@ TOTAL_OFFER: int = 0
 TOTAL_FOREIGN_BUY: int = 0
 TOTAL_FOREIGN_SELL: int = 0
 
-#SYMBOL
+#WORKING TIMEFRAME : là timeframe để sau mỗi khi đóng nến sẽ thực thi function OnBarClosed()
+WORKING_TIMEFRAME = "m1"
 
 
 

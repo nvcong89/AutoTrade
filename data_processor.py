@@ -3,6 +3,8 @@ import GLOBAL
 from requests import get
 from time import time
 
+
+
 def GetOHLCVData(type: str, symbol: str, from_time: int, to_time: int, resolution: str = '15') -> dict[str, list[float]]:
     '''
     **type**: "derivative", "stock" hoặc "index"\n
@@ -21,44 +23,129 @@ HISTORY = []
 last_T: int = 0
 last_tick = ()
 
+
+# ========== CẤU TRÚC DỮ LIỆU NÂNG CẤP ==========
+TIME_FRAMES = {
+    'm1': 60,
+    'm3': 180,
+    'm5': 300,
+    'm15': 900,
+    'm30': 1800,
+    'H1': 3600,
+    'D1': 86400,
+    'W1': 604800
+}
+HISTORY = {tf: [] for tf in TIME_FRAMES} # Dictionary lưu data cho từng TF
+current_bars = {tf: None for tf in TIME_FRAMES} # Bar đang hình thành của các TF
+
+# ======== CẢI TIẾN HÀM INITIALIZE ========
 def InitializeData():
     global HISTORY, last_T
+    
+    base_tf = 'm1'
+    start_time = int(time()) - 2592000  # 30 ngày dữ liệu
+    
+    # Lấy dữ liệu gốc 1 phút
+    raw_data = GetOHLCVData("derivative", "VN30F1M", start_time, int(time()), '1')
 
-    last_T = int(time())
-    past = last_T - 72_000 # 20 hours prior to now, ensure that we definitely get at least 89 candles (1 minute resolution!) :3
+    # HISTORY = list(zip(
+    #     json_data['o'],
+    #     json_data['h'],
+    #     json_data['l'],
+    #     json_data['c'],
+    #     json_data['v']
+    # ))
 
-    json_data = GetOHLCVData("derivative", "VN30F1M", past, last_T, '1')
-    HISTORY = list(zip(
-        json_data['o'],
-        json_data['h'],
-        json_data['l'],
-        json_data['c'],
-        json_data['v']
+    # Tạo dữ liệu base với timestamp
+    base_data = list(zip(
+        raw_data['t'],
+        raw_data['o'],
+        raw_data['h'],
+        raw_data['l'],
+        raw_data['c'],
+        raw_data['v']
     ))
-
-    print("Successfully initialized data:\n...")
-    print(HISTORY[-5:])
+    
+    # Lưu dữ liệu và resample
+    HISTORY[base_tf] = base_data
+    for tf in [k for k in TIME_FRAMES if k != base_tf]:
+        HISTORY[tf] = resample_data(base_data, tf)
+    
+    # Khởi tạo current bars
+    for tf in TIME_FRAMES:
+        if HISTORY[tf]:
+            last_candle = HISTORY[tf][-1]
+            current_bars[tf] = {
+                'ts': last_candle[0] + TIME_FRAMES[tf],
+                'O': last_candle[4],  # Close của candle trước
+                'H': last_candle[4],
+                'L': last_candle[4],
+                'C': last_candle[4],
+                'V': 0
+            }
+    
+    print("Successfully initialized multi-timeframe data:")
+    for tf in TIME_FRAMES:
+        print(f"{tf}: {len(HISTORY[tf])} candles")
     print("===================================")
+    lp.OnStart(HISTORY) # DO NOT REMOVE
 
+
+
+# ========== HÀM UPDATE THEO THỜI GIAN THỰC ==========
 def UpdateOHLCVData(new_data):
-    global HISTORY, last_T, last_tick
+    global HISTORY, last_T, last_tick, current_bars
 
-    O = new_data.get("open")
-    H = new_data.get("high")
-    L = new_data.get("low")
-    C = new_data.get("close")
-    V = int(new_data.get("volume"))
-    current_tick = (O, H, L, C, V)
+   
+    new_ts = int(new_data['time'])
+    price = float(new_data['close'])
+    volume = int(new_data['volume'])
 
-    lp.OnTick(current_tick)
-
-    T = int(new_data.get("time"))
-    if last_T < T: # The candle have just finished, use last data of it as the final result
-        last_T = T
-        HISTORY.append(last_tick)
+    for tf in TIME_FRAMES:
+        tf_interval = TIME_FRAMES[tf]
+        current_bar = current_bars[tf]
+        
+        # Kiểm tra sang candle mới
+        if new_ts >= current_bar['ts']:
+            # Lưu candle cũ
+            HISTORY[tf].append((
+                current_bar['ts'] - tf_interval,
+                current_bar['O'],
+                current_bar['H'],
+                current_bar['L'],
+                current_bar['C'],
+                current_bar['V']
+            ))
+            
+            # Tạo candle mới
+            current_bars[tf] = {
+                'ts': current_bar['ts'] + tf_interval,
+                'O': price,
+                'H': price,
+                'L': price,
+                'C': price,
+                'V': volume
+            }
+        else:
+            # Update candle hiện tại
+            current_bars[tf]['H'] = max(current_bars[tf]['H'], price)
+            current_bars[tf]['L'] = min(current_bars[tf]['L'], price)
+            current_bars[tf]['C'] = price
+            current_bars[tf]['V'] += volume
+    
+    # Gọi logic xử lý
+    lp.OnTick({
+        'timestamp': new_ts,
+        'price': price,
+        'volume': volume,
+        'timeframes': current_bars
+    })
+    
+    if new_ts >= current_bars[GLOBAL.WORKING_TIMEFRAME]['ts']:
         lp.OnBarClosed(HISTORY)
 
-    last_tick = current_tick
+
+
 
 def UpdateMarketData(new_market_data):
     GLOBAL.TOTAL_BID = int(new_market_data["totalBidQtty"])
@@ -75,3 +162,45 @@ def UpdateMarketData(new_market_data):
 def UpdateForeignData(new_foreign_data):
     GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
     GLOBAL.TOTAL_FOREIGN_SELL = int(new_foreign_data["sellForeignQuantity"])
+
+
+# ========== HÀM RESAMPLE THÔNG MINH ==========
+def resample_data(data, target_tf):
+    interval = TIME_FRAMES[target_tf]
+    resampled = []
+    current_group = []
+    
+    for candle in data:
+        ts = candle[0]
+        if not current_group:
+            current_group.append(candle)
+            continue
+            
+        if ts < (current_group[0][0] // interval) * interval + interval:
+            current_group.append(candle)
+        else:
+            new_candle = (
+                (current_group[0][0] // interval) * interval,
+                current_group[0][1],
+                max(c[2] for c in current_group),
+                min(c[3] for c in current_group),
+                current_group[-1][4],
+                sum(c[5] for c in current_group)
+            )
+            resampled.append(new_candle)
+            current_group = [candle]
+    
+    return resampled
+
+
+def get_interval_seconds(tf):
+    return {
+        'm1': 60,
+        'm3': 180,
+        'm5': 300,
+        'm15': 900,
+        'm30': 1800,
+        'H1': 3600,
+        'D1': 86400,
+        'W1': 604800
+    }[tf]

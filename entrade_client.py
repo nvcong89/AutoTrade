@@ -1,5 +1,7 @@
 from requests import HTTPError, get, post, delete
 from time import localtime
+from data_processor import GetOHLCVData
+import time
 
 class EntradeClient:
     def __init__(self):
@@ -8,6 +10,7 @@ class EntradeClient:
         self.investor_account_id = None
         # https://services-staging.entrade.com.vn/papertrade-entrade-api/derivative/orders
         self.base_url = f"https://services.entrade.com.vn/"
+
 
     def Authenticate(self, username, password):
         _json = {
@@ -22,13 +25,18 @@ class EntradeClient:
         print("Đăng nhập thành công! (Entrade)")
 
     def Order(self, symbol, side, price, loan, volume, order_type, is_demo: bool):
+        
+        """Đặt lệnh với kiểm tra đầu vào và xử lý lỗi nâng cao"""
+        
+        self._validate_order_params(symbol, side, price, volume)
+        
         _headers = {
             "Authorization": f"Bearer {self.token}"
         }
         _json = {
-            "symbol": symbol,
-            "side": side,
-            "orderType": order_type,
+            "symbol": symbol.upper(),
+            "side": side.upper(),
+            "orderType": order_type.upper(),
             "price": price,
             "quantity": volume,
             "bankMarginPortfolioId": loan or (32 if is_demo else 37),
@@ -40,11 +48,23 @@ class EntradeClient:
         try:
             response = post(url, headers=_headers, json=_json)
             response.raise_for_status()
-            print("Gửi yêu cầu đặt lệnh thành công! (Entrade)")
-            return response.json()
+            order_data = response.json()
+            print(f"Đặt lệnh {order_type} thành công: {order_data['id']}")
+            return order_data
         except HTTPError as e:
             print("Order() failed! (Entrade):", e)
-
+    
+    def _validate_order_params(self, symbol: str, side: str, price: float, volume: int):
+       """Kiểm tra tính hợp lệ của tham số lệnh"""
+       if price <= 0:
+           raise ValueError("Giá phải lớn hơn 0")
+       if volume % 1 != 0:
+           raise ValueError("Khối lượng phải là bội số của 1")
+       if side.upper() not in ["NB", "NS"]:
+           raise ValueError("Loại lệnh không hợp lệ")
+       if not self._is_valid_symbol(symbol):
+           raise ValueError(f"Mã chứng khoán {symbol} không hợp lệ")
+    
     def CancelOrder(self, order_id, is_demo: bool):
         _headers = {
             "Authorization": f"Bearer {self.token}"
@@ -224,3 +244,34 @@ class EntradeClient:
             print("Đóng tất cả lệnh thành công! (Entrade)")
         except HTTPError as e:
             print("CloseAllDeals() failed! (Entrade):", e)
+            
+            
+    def GetBars(self, 
+                             symbol: str, 
+                             timeframe: str = "", 
+                             days_lookback: int = 30):
+        
+        """Lấy marketdata theo timeframe"""
+
+        start_time = int(time.time()) - 86400*days_lookback # 30 ngày dữ liệu
+        
+        try:
+            raw_data = GetOHLCVData("derivative", "VN30F1M", start_time, int(time()), timeframe)
+            
+            # Tạo dữ liệu base với timestamp
+            base_data = list(zip(
+                raw_data['t'],
+                raw_data['o'],
+                raw_data['h'],
+                raw_data['l'],
+                raw_data['c'],
+                raw_data['v']
+            ))
+            
+            return base_data
+        
+        except HTTPError as e:
+            print("Lỗi khi get marketdata", e)
+            
+
+    
