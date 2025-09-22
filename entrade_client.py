@@ -226,12 +226,7 @@ class EntradeClient:
         activeDeals = []
         for deal in deals:
             if deal["status"] == "ACTIVE":
-                if investorAccountId is None:
-                    activeDeals.append(deal)
-                else:
-                    if deal.get("accountNo") == investorAccountId:
-                        activeDeals.append(deal)
-
+                activeDeals.append(deal)
         return activeDeals
 
     def CloseAllDeals(self, is_demo: bool):
