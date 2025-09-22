@@ -131,7 +131,7 @@ def OnBarClosed(HISTORY: {}):
     n = n + 1
     print(f"gọi lần {n} : [{datetime.now().strftime("%H:%M:%S %d/%m")}]")
     
-    data = GLOBAL.ENTRADE_CLIENT.GetBars(GLOBAL.VN30F1M,"m5",3)
+    data = GLOBAL.ENTRADE_CLIENT.GetBars(GLOBAL.VN30F1M,"m5",1)
     print(data)
     
     # print("Độ sâu mua:", GLOBAL.BID_DEPTH[0]) // Market depth data

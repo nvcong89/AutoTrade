@@ -101,38 +101,6 @@ def UpdateOHLCVData(new_data):
     price = float(new_data['close'])
     volume = int(new_data['volume'])
 
-    for tf in TIME_FRAMES:
-        tf_interval = TIME_FRAMES[tf]
-        current_bar = current_bars[tf]
-        
-        # Kiểm tra sang candle mới
-        if new_ts >= current_bar['ts']:
-            # Lưu candle cũ
-            HISTORY[tf].append((
-                current_bar['ts'] - tf_interval,
-                current_bar['O'],
-                current_bar['H'],
-                current_bar['L'],
-                current_bar['C'],
-                current_bar['V']
-            ))
-            
-            # Tạo candle mới
-            current_bars[tf] = {
-                'ts': current_bar['ts'] + tf_interval,
-                'O': price,
-                'H': price,
-                'L': price,
-                'C': price,
-                'V': volume
-            }
-        else:
-            # Update candle hiện tại
-            current_bars[tf]['H'] = max(current_bars[tf]['H'], price)
-            current_bars[tf]['L'] = min(current_bars[tf]['L'], price)
-            current_bars[tf]['C'] = price
-            current_bars[tf]['V'] += volume
-    
     # Gọi logic xử lý
     lp.OnTick({
         'timestamp': new_ts,
@@ -140,7 +108,42 @@ def UpdateOHLCVData(new_data):
         'volume': volume,
         'timeframes': current_bars
     })
+
+    if new_ts >= current_bars["m1"]['ts']:
+        for tf in TIME_FRAMES:
+            tf_interval = TIME_FRAMES[tf]
+            current_bar = current_bars[tf]
+
+            # Kiểm tra sang candle mới
+            if new_ts >= current_bar['ts']:
+                # Lưu candle cũ
+                HISTORY[tf].append((
+                    current_bar['ts'] - tf_interval,
+                    current_bar['O'],
+                    current_bar['H'],
+                    current_bar['L'],
+                    current_bar['C'],
+                    current_bar['V']
+                ))
+
+                # Tạo candle mới
+                current_bars[tf] = {
+                    'ts': current_bar['ts'] + tf_interval,
+                    'O': price,
+                    'H': price,
+                    'L': price,
+                    'C': price,
+                    'V': volume
+                }
+            else:
+                # Update candle hiện tại
+                current_bars[tf]['H'] = max(current_bars[tf]['H'], price)
+                current_bars[tf]['L'] = min(current_bars[tf]['L'], price)
+                current_bars[tf]['C'] = price
+                current_bars[tf]['V'] += volume
     
+
+    #thực thi code nằm trong OnBarClosed()
     if new_ts >= current_bars[GLOBAL.WORKING_TIMEFRAME]['ts']:
         lp.OnBarClosed(HISTORY)
 
