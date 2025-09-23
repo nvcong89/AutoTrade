@@ -28,7 +28,7 @@ class EntradeClient:
         
         """Đặt lệnh với kiểm tra đầu vào và xử lý lỗi nâng cao"""
         
-        self._validate_order_params(symbol, side, price, volume)
+        # self._validate_order_params(symbol, side, price, volume)
         
         _headers = {
             "Authorization": f"Bearer {self.token}"
@@ -251,7 +251,7 @@ class EntradeClient:
         start_time = int(time.time()) - 86400*days_lookback # 30 ngày dữ liệu
         
         try:
-            raw_data = GetOHLCVData("derivative", "VN30F1M", start_time, int(time()), timeframe)
+            raw_data = GetOHLCVData("derivative", "VN30F1M", start_time, int(time.time()), timeframe)
             
             # Tạo dữ liệu base với timestamp
             base_data = list(zip(

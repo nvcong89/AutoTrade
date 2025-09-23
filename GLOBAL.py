@@ -1,5 +1,4 @@
 from datetime import datetime, timedelta
-
 from dnse_client import DNSEClient
 from entrade_client import EntradeClient
 from json import load
@@ -27,7 +26,7 @@ TOTAL_FOREIGN_BUY: int = 0
 TOTAL_FOREIGN_SELL: int = 0
 
 #WORKING TIMEFRAME : là timeframe để sau mỗi khi đóng nến sẽ thực thi function OnBarClosed()
-WORKING_TIMEFRAME = "m1"
+WORKING_TIMEFRAME = 'm1' # m1, m3, m5, m15, m30, H1, H4, D1, W1
 
 
 

@@ -19,10 +19,10 @@ def GetOHLCVData(type: str, symbol: str, from_time: int, to_time: int, resolutio
     response.raise_for_status()
     return response.json()
 
-HISTORY = []
-last_T: int = 0
-last_tick = ()
+# HISTORY = []
 
+# last_tick = ()
+last_ts: int = 0
 
 # ========== CẤU TRÚC DỮ LIỆU NÂNG CẤP ==========
 TIME_FRAMES = {
@@ -40,13 +40,16 @@ current_bars = {tf: None for tf in TIME_FRAMES} # Bar đang hình thành của c
 
 # ======== CẢI TIẾN HÀM INITIALIZE ========
 def InitializeData():
-    global HISTORY, last_T
-    
+    global HISTORY, current_bars, last_ts
+
+    print(f"working timeframe: {GLOBAL.WORKING_TIMEFRAME}")
+
     base_tf = 'm1'
+    last_ts = int(time())
     start_time = int(time()) - 2592000  # 30 ngày dữ liệu
     
     # Lấy dữ liệu gốc 1 phút
-    raw_data = GetOHLCVData("derivative", "VN30F1M", start_time, int(time()), '1')
+    raw_data = GetOHLCVData("derivative", "VN30F1M", start_time, int(last_ts), '1')
 
     # HISTORY = list(zip(
     #     json_data['o'],
@@ -59,7 +62,7 @@ def InitializeData():
     # Tạo dữ liệu base với timestamp
     base_data = list(zip(
         raw_data['t'],
-        raw_data['o'],
+        raw_data['o'], 
         raw_data['h'],
         raw_data['l'],
         raw_data['c'],
@@ -94,22 +97,25 @@ def InitializeData():
 
 # ========== HÀM UPDATE THEO THỜI GIAN THỰC ==========
 def UpdateOHLCVData(new_data):
-    global HISTORY, last_T, last_tick, current_bars
+    global HISTORY, current_bars, last_ts
 
-   
+    # print(f"Current_bars: {current_bars}")
+    # print(f"New tick data: {new_data}")
     new_ts = int(new_data['time'])
     price = float(new_data['close'])
     volume = int(new_data['volume'])
+    last_ts = int(new_data['lastUpdated'])  # Cập nhật last_ts mới nhất
 
-    # Gọi logic xử lý
+    # Gọi logic xử lý cho OnTick()
     lp.OnTick({
-        'timestamp': new_ts,
+        'timestamp': last_ts,
         'price': price,
         'volume': volume,
-        'timeframes': current_bars
     })
 
-    if new_ts >= current_bars["m1"]['ts']:
+    # Cập nhật dữ liệu cho các timeframe
+    print(f"New tick ts: {new_ts}, current m1 bar ts: {current_bars['m1']['ts']}")
+    if new_ts >= current_bars['m1']['ts']:
         for tf in TIME_FRAMES:
             tf_interval = TIME_FRAMES[tf]
             current_bar = current_bars[tf]
@@ -143,10 +149,16 @@ def UpdateOHLCVData(new_data):
                 current_bars[tf]['V'] += volume
     
 
-    #thực thi code nằm trong OnBarClosed()
-    if new_ts >= current_bars[GLOBAL.WORKING_TIMEFRAME]['ts']:
-        lp.OnBarClosed(HISTORY)
+        #thực thi code nằm trong OnBarClosed()
+        #print(f"working timeframe: {GLOBAL.WORKING_TIMEFRAME}")
+        #print(f"current bar ts: {current_bars[GLOBAL.WORKING_TIMEFRAME]['ts']}, new tick ts: {new_ts}")
 
+        if GLOBAL.WORKING_TIMEFRAME =='m1':
+            lp.OnBarClosed(HISTORY)
+        else:
+            if new_ts >= current_bars[GLOBAL.WORKING_TIMEFRAME]['ts']:
+                print(f"new_ts >= current_bars[GLOBAL.WORKING_TIMEFRAME]['ts'], Running OnBarClosed()")
+                lp.OnBarClosed(HISTORY)
 
 
 
