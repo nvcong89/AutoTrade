@@ -23,6 +23,11 @@ n: int = 0
 
 #Khai báo các biến toàn cục cho Indicators
 
+global resitancePrice
+global supportPrice
+
+resitancePrice = 1825
+supportPrice = 1820
 
 def OnStart(HISTORY: {}):
     # Truy cập dữ liệu các TF
@@ -74,17 +79,12 @@ def OnTick(data):
             Spread =  round(LastAskPrice -LastBidPrice,2)
             # print(f"Spread: {Spread}")
 
-
-
-
         # Mở và đóng lệnh scalp 1 point
-        if trend > 0 and Spread == 0.1:
+        if Spread == 0.1 and LastBidPrice < supportPrice and len(GLOBAL.ENTRADE_CLIENT.GetActiveDeals())==0:
             # mở lệnh Long
             resultNB = GLOBAL.ENTRADE_CLIENT.Order(GLOBAL.VN30F1M, "NB", None, None, 1, "MTL", True)
 
-
-
-        elif trend < 0 and Spread == 0.1:
+        elif Spread == 0.1 and LastAskPrice > resitancePrice and len(GLOBAL.ENTRADE_CLIENT.GetActiveDeals())==0:
             resultNS = GLOBAL.ENTRADE_CLIENT.Order(GLOBAL.VN30F1M, "NS", None, None, 1, "MTL", True)
 
 
@@ -97,8 +97,10 @@ def OnTick(data):
     activedeals = GLOBAL.ENTRADE_CLIENT.GetActiveDeals()
     print(f"ACTIVE DEALS : {len(activedeals)}")
     for deal in activedeals:
-        print(deal)
-
+        print(f"Deal ID: {deal['id']}, Side: {deal['side']}, Open Price: {deal['breakEvenPrice']}, Quantity: {deal['openQuantity']}, Net Profit: {deal['netProfit']}")
+        if deal['netProfit'] >= 100000.0:
+            GLOBAL.ENTRADE_CLIENT.CloseDeal(deal["id"], is_demo=True)
+            print(f"Đóng lệnh {deal['id']} chốt lời 1 point")
 
 
     # print(GLOBAL.BID_DEPTH)
@@ -111,7 +113,9 @@ def OnTick(data):
     print(f"TIME: {datetime.now().strftime("%H:%M:%S %d/%m")}")
     print(f"Mã phái sinh: {GLOBAL.VN30F1M}")
     print(f"Last Bid Price: {LastBidPrice if GLOBAL.BID_DEPTH else 0}")
+    print(f"Last Bid Vol: {GLOBAL.BID_DEPTH[0][1] if GLOBAL.BID_DEPTH else 0}")
     print(f"Last Ask Price: {LastAskPrice if GLOBAL.OFFER_DEPTH else 0}")
+    print(f"Last Ask Vol: {GLOBAL.OFFER_DEPTH[0][1] if GLOBAL.OFFER_DEPTH else 0}")
     print(f"Spread: {Spread if GLOBAL.BID_DEPTH and GLOBAL.OFFER_DEPTH else 0}")
     print(f"Tổng KLGD nước ngoài-MUA: {GLOBAL.TOTAL_FOREIGN_BUY}")
     print(f"Tổng KLGD nước ngoài-BÁN: {GLOBAL.TOTAL_FOREIGN_SELL}")
@@ -132,7 +136,7 @@ def OnBarClosed(HISTORY: {}):
     n = n + 1
     print(f"gọi lần {n} : [{datetime.now().strftime("%H:%M:%S %d/%m")}]")
     
-    data = GLOBAL.ENTRADE_CLIENT.GetBars(GLOBAL.VN30F1M,"5",1)
+    # data = GLOBAL.ENTRADE_CLIENT.GetBars(GLOBAL.VN30F1M,"5",1)
 
     # print(f"data : {len(data)} candles")
     # print(f" getBars: {data}")
