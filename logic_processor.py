@@ -97,11 +97,18 @@ def OnTick(data):
     activedeals = GLOBAL.ENTRADE_CLIENT.GetActiveDeals()
     print(f"ACTIVE DEALS : {len(activedeals)}")
     for deal in activedeals:
-        print(f"Deal ID: {deal['id']}, Side: {deal['side']}, Open Price: {deal['breakEvenPrice']}, Quantity: {deal['openQuantity']}, Net Profit: {deal['netProfit']}")
-        if deal['netProfit'] >= 100000.0:
-            GLOBAL.ENTRADE_CLIENT.CloseDeal(deal["id"], is_demo=True)
-            print(f"Đóng lệnh {deal['id']} chốt lời 1 point")
+        print(f"Deal ID: {deal['id']}, Side: {deal['side']}, Open Price: {deal['breakEvenPrice']}, Quantity: {deal['openQuantity']}")
+        
+        try:
+            if deal['breakEvenPrice'] + 1.0 <= LastBidPrice and deal["side"]=="NB" and Spread <= 0.2:
+                GLOBAL.ENTRADE_CLIENT.CloseDeal(deal["id"], is_demo=True)
+                print(f"Đóng lệnh {deal['id']} chốt lời 1 point")
 
+            if deal['breakEvenPrice'] - 1.0 >= LastAskPrice and deal["side"]=="NS" and Spread <= 0.2:
+                GLOBAL.ENTRADE_CLIENT.CloseDeal(deal["id"], is_demo=True)
+                print(f"Đóng lệnh {deal['id']} chốt lời 1 point")
+        except:
+            pass
 
     # print(GLOBAL.BID_DEPTH)
     # print(data)
