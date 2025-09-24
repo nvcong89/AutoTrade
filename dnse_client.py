@@ -1,3 +1,4 @@
+import time
 from requests import get, post
 from time import localtime
 
@@ -116,7 +117,8 @@ class DNSEClient:
         print("Gửi yêu cầu đặt lệnh điều kiện thành công! (DNSE)")
         return response.json()
 
-   
+    
+
     def GetBars(self, 
                              symbol: str, 
                              timeframe: str = "", 
@@ -143,3 +145,208 @@ class DNSEClient:
         
         except HTTPError as e:
             print("Lỗi khi get marketdata", e)
+
+    def GetCashAccount(self, account_no=None):
+        """Lấy thông tin tài sản tiền mặt"""
+        account = account_no or self.account_no or "0001910385"
+        if not account:
+            raise ValueError("Account number is required")
+            
+        _headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {self.token}"
+        }
+        
+        params = {"accountNo": account}
+
+        url = f"{self.base_url}derivative-core/cash-accounts"
+        response = get(url, headers=_headers, params=params)
+        response.raise_for_status()
+        return response.json()
+    
+    def SetAccountPnLConfig(self, config, account_no=None):
+        """Cài đặt chốt lời cắt lỗ theo account"""
+        if not self.trading_token:
+            raise ValueError("Trading token not available. Please ensure tokens are loaded from MongoDB.")
+            
+        account = account_no or self.account_no or "0001910385"
+        if not account:
+            raise ValueError("Account number is required")
+
+        _headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {self.token}",
+            "Trading-Token": self.trading_token
+        }
+
+        url = f"{self.base_url}derivative-deal-risk/account-pnl-configs/{account}"
+        response = post(url, headers=_headers, json=config)
+        response.raise_for_status()
+        print("Cài đặt chốt lời cắt lỗ theo account thành công! (DNSE)")
+        return response.json()
+    
+    def SetDealPnLConfig(self, deal_id, config):
+        """Cài đặt chốt lời cắt lỗ theo deal"""
+        if not self.trading_token:
+            raise ValueError("Trading token not available. Please ensure tokens are loaded from MongoDB.")
+
+        _headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {self.token}",
+            "Trading-Token": self.trading_token
+        }
+
+        url = f"{self.base_url}derivative-deal-risk/pnl-configs/{deal_id}"
+        response = post(url, headers=_headers, json=config)
+        response.raise_for_status()
+        print("Cài đặt chốt lời cắt lỗ theo deal thành công! (DNSE)")
+        return response.json()
+    
+    def CloseDeal(self, deal_id):
+        """Đóng deal"""
+        if not self.trading_token:
+            raise ValueError("Trading token not available. Please ensure tokens are loaded from MongoDB.")
+
+        _headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {self.token}",
+            "Trading-Token": self.trading_token
+        }
+
+        url = f"{self.base_url}derivative-core/deals/{deal_id}/close"
+        response = post(url, headers=_headers)
+        response.raise_for_status()
+        print("Đóng deal thành công! (DNSE)")
+        return response.json()
+    
+    def GetDeals(self, account_no=None):
+        """Lấy danh sách deal nắm giữ"""
+        account = account_no or self.account_no or "0001910385"
+        if not account:
+            raise ValueError("Account number is required")
+            
+        _headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {self.token}"
+        }
+        
+        params = {"accountNo": account}
+
+        url = f"{self.base_url}derivative-core/deals"
+        response = get(url, headers=_headers, params=params)
+        response.raise_for_status()
+        return response.json()
+    
+    def CancelOrder(self, order_id, account_no=None):
+        """Hủy lệnh"""
+        if not self.trading_token:
+            raise ValueError("Trading token not available. Please ensure tokens are loaded from MongoDB.")
+            
+        account = account_no or self.account_no or "0001910385"
+        if not account:
+            raise ValueError("Account number is required")
+
+        _headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {self.token}",
+            "Trading-Token": self.trading_token
+        }
+        
+        params = {"accountNo": account}
+
+        try:
+            url = f"{self.base_url}order-service/derivative/orders/{order_id}"
+            self.logger.info(f"Cancelling order: {order_id}")
+            
+            response = delete(url, headers=_headers, params=params)
+            response.raise_for_status()
+            result = response.json()
+            
+            # Log trading action
+            log_trade_action(
+                action="ORDER_CANCELLED",
+                order_id=order_id,
+                account=account
+            )
+            
+            self.logger.info(f"Order cancelled successfully - ID: {order_id}")
+            return result
+            
+        except Exception as e:
+            log_error_with_context(self.logger, e, "Failed to cancel order",
+                                 order_id=order_id, account=account)
+            raise
+
+    def GetOrderDetail(self, order_id, account_no=None):
+        """Lấy chi tiết lệnh"""
+        account = account_no or self.account_no or "0001910385"
+        if not account:
+            raise ValueError("Account number is required")
+            
+        _headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {self.token}"
+        }
+        
+        params = {"accountNo": account}
+
+        url = f"{self.base_url}order-service/derivative/orders/{order_id}"
+        response = get(url, headers=_headers, params=params)
+        response.raise_for_status()
+        return response.json()
+    
+    def GetOrders(self, account_no=None):
+        """Lấy danh sách lệnh"""
+        account = account_no or self.account_no or "0001910385"
+        if not account:
+            raise ValueError("Account number is required")
+            
+        _headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {self.token}"
+        }
+        
+        params = {"accountNo": account}
+
+        url = f"{self.base_url}order-service/derivative/orders"
+        response = get(url, headers=_headers, params=params)
+        response.raise_for_status()
+        return response.json()
+    
+    def GetPPSE(self, symbol, price, loan_package_id, account_no=None):
+        """Lấy thông tin sức mua sức bán"""
+        account = account_no or self.account_no or "0001910385"
+        if not account:
+            raise ValueError("Account number is required")
+            
+        _headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {self.token}"
+        }
+        
+        params = {
+            "symbol": symbol,
+            "price": price,
+            "loanPackageId": loan_package_id
+        }
+
+        url = f"{self.base_url}order-service/accounts/{account}/derivative-ppse"
+        response = get(url, headers=_headers, params=params)
+        response.raise_for_status()
+        return response.json()
+    
+    def GetDerivativeLoanPackages(self, account_no=None):
+        """Lấy danh sách gói vay phái sinh"""
+        account = account_no or self.account_no or "0001910385"
+        if not account:
+            raise ValueError("Account number is required")
+            
+        _headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {self.token}"
+        }
+
+        url = f"{self.base_url}order-service/accounts/{account}/derivative-loan-packages"
+        response = get(url, headers=_headers)
+        response.raise_for_status()
+        return response.json()
