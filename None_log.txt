@@ -1,0 +1,4 @@
+Log for None
+==================================================
+16:50:29 24/09 - Bot None initialized.
+16:50:29 24/09 - Bot None started.

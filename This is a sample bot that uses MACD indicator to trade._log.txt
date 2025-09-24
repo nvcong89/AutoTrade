@@ -1,0 +1,4 @@
+Log for This is a sample bot that uses MACD indicator to trade.
+==================================================
+16:50:29 24/09 - Bot This is a sample bot that uses MACD indicator to trade. initialized.
+16:50:29 24/09 - Bot This is a sample bot that uses MACD indicator to trade. started.

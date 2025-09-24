@@ -1,4 +1,7 @@
 from datetime import datetime
+import json
+
+import pandas as pd
 from agents.macd_agent import macd_agent
 from agents.rsi_ta import rsi_agent_ta
 from agent import Agent
@@ -6,6 +9,9 @@ from Indicators import MomentumIndicators, TrendIndicators
 import GLOBAL
 from tabulate import tabulate
 import numpy as np
+from Utils import*
+
+from pBot001 import pBotMACD
 
 ACTIVE_BOT: list[Agent] = [
     macd_agent, rsi_agent_ta,
@@ -29,38 +35,66 @@ global supportPrice
 resitancePrice = 1825
 supportPrice = 1820
 
+marketData={}
+
+bot = pBotMACD("MACD_Bot",None,1.0,"Nguyen van Cong","m5","VN30F1M")
+
 def OnStart(HISTORY: {}):
+    global marketData
+    
+    
     # Truy cập dữ liệu các TF
-    print("1 phút gần nhất:", HISTORY['m1'][-5:])
-    print("5 phút gần nhất:", HISTORY['m5'][-5:])
-    print("15 phút gần nhất:", HISTORY['m15'][-5:])
+    # print("1 phút gần nhất:", HISTORY['m1'][-5:])
+    # print("5 phút gần nhất:", HISTORY['m5'][-5:])
+    # print("15 phút gần nhất:", HISTORY['m15'][-5:])
 
     # Visualize data
-    print(tabulate(
-        HISTORY['m1'][-5:],
-        headers=['Timestamp', 'Open', 'High', 'Low', 'Close', 'Volume'],
-        tablefmt='fancy_grid'
-    ))
+    # print(tabulate(
+    #     HISTORY['m1'][-5:],
+    #     headers=['Timestamp', 'Open', 'High', 'Low', 'Close', 'Volume'],
+    #     tablefmt='fancy_grid'
+    # ))
     
-    print(tabulate(
-        HISTORY['m3'][-5:],
-        headers=['Timestamp', 'Open', 'High', 'Low', 'Close', 'Volume'],
-        tablefmt='fancy_grid'
-    ))
+    # print(tabulate(
+    #     HISTORY['m3'][-5:],
+    #     headers=['Timestamp', 'Open', 'High', 'Low', 'Close', 'Volume'],
+    #     tablefmt='fancy_grid'
+    # ))
     
-    print(tabulate(
-        HISTORY['m5'][-5:],
-        headers=['Timestamp', 'Open', 'High', 'Low', 'Close', 'Volume'],
-        tablefmt='fancy_grid'
-    ))
+    # print(tabulate(
+    #     HISTORY['m5'][-5:],
+    #     headers=['Timestamp', 'Open', 'High', 'Low', 'Close', 'Volume'],
+    #     tablefmt='fancy_grid'
+    # ))
 
+    #khai báo thông số ban đầu cho bot : trade_size, stop loss, take profit, dataframe, active bot
+    bot.is_active = True
+    bot.timeframe = "m1"
+    bot.trade_size =1
+    bot.stop_loss = 1000
+    bot.take_profit = 1000
+
+    #lấy data theo timeframe của bot
+    bot.marketData=GLOBAL.MARKETDATA   #đẩy mảketdata vào bot
+    bot.run(bot.marketData)
+    print("xxxx")
     pass
 
 def OnTick(data):
+    global bot
+
+    # print(GLOBAL.MARKETDATA)
+    bot.print_dealBot()
+    bot.run(GLOBAL.MARKETDATA)
+
     # print("Dư mua:", TOTAL_BID)
     # print("Dư bán:", TOTAL_OFFER)
     # print("Tổng KLGD mua nước ngoài:", TOTAL_FOREIGN_BUY)
     # print("Tổng KLGD bán nước ngoài:", TOTAL_FOREIGN_SELL)
+
+    
+
+    return
 
     try:
         if GLOBAL.BID_DEPTH:
@@ -110,11 +144,9 @@ def OnTick(data):
         except:
             pass
 
-    # print(GLOBAL.BID_DEPTH)
-    # print(data)
-    # print(np.array(data).shape)
 
-    #print out thông tin sau mỗi tick
+
+    # #print out thông tin sau mỗi tick
 
     print(50*"-")
     print(f"TIME: {datetime.now().strftime("%H:%M:%S %d/%m")}")
@@ -131,17 +163,27 @@ def OnTick(data):
     print(f"Dư bán: {GLOBAL.TOTAL_FOREIGN_SELL}")
     print(f"Chênh Dư MUA-BÁN: {GLOBAL.TOTAL_FOREIGN_BUY-GLOBAL.TOTAL_FOREIGN_SELL}")
     print(50 * "-")
+
+
     pass
 
 
 def OnBarClosed(HISTORY: {}):
-    global n
-    data = HISTORY['m1']
-    close_price = HISTORY['m1'][4]
+    global n, marketData, bot
+    marketData = GLOBAL.MARKETDATA
+    close_price = GLOBAL.MARKETDATA['m1'][4]
     
+    bot.trade_size =1
+    bot.run(GLOBAL.MARKETDATA)
+    bot.print_dealBot()
+
+    return
+
+
+
     #test khoảng thời gian thực thi sau đóng nến workingTimeFrame (xem trong GLOBAL.py)
-    n = n + 1
-    print(f"gọi lần {n} : [{datetime.now().strftime("%H:%M:%S %d/%m")}]")
+    # n = n + 1
+    # print(f"gọi lần {n} : [{datetime.now().strftime("%H:%M:%S %d/%m")}]")
     
     # data = GLOBAL.ENTRADE_CLIENT.GetBars(GLOBAL.VN30F1M,"5",1)
 
@@ -177,49 +219,27 @@ def OnBarClosed(HISTORY: {}):
 
 
 
-    if CloseBuyCondition():
-    # kiểm tra deal đang mở là Long thì ko cần đóng lệnh, nếu là deal đang mở là Short thì sẽ đóng lệnh trước.
-        Deals = GLOBAL.ENTRADE_CLIENT.GetActiveDeals()
-        for deal in Deals:
-            if deal["side"]=="NB":
-                GLOBAL.ENTRADE_CLIENT.CloseDeal(deal["id"], is_demo=True)
+    # if CloseBuyCondition():
+    # # kiểm tra deal đang mở là Long thì ko cần đóng lệnh, nếu là deal đang mở là Short thì sẽ đóng lệnh trước.
+    #     Deals = GLOBAL.ENTRADE_CLIENT.GetActiveDeals()
+    #     for deal in Deals:
+    #         if deal["side"]=="NB":
+    #             GLOBAL.ENTRADE_CLIENT.CloseDeal(deal["id"], is_demo=True)
 
 
-    if CloseShortCondition():
-    # kiểm tra deal đang mở là Short thì ko cần đóng lệnh, nếu là deal đang mở là Short thì sẽ đóng lệnh trước.
-        Deals = GLOBAL.ENTRADE_CLIENT.GetActiveDeals()
-        for deal in Deals:
-            if deal["side"]=="NS":
-                GLOBAL.ENTRADE_CLIENT.CloseDeal(deal["id"], is_demo=True)
+    # if CloseShortCondition():
+    # # kiểm tra deal đang mở là Short thì ko cần đóng lệnh, nếu là deal đang mở là Short thì sẽ đóng lệnh trước.
+    #     Deals = GLOBAL.ENTRADE_CLIENT.GetActiveDeals()
+    #     for deal in Deals:
+    #         if deal["side"]=="NS":
+    #             GLOBAL.ENTRADE_CLIENT.CloseDeal(deal["id"], is_demo=True)
 
-    if BuyCondition():
-        GLOBAL.ENTRADE_CLIENT.Order("41I1FA000", "NB", None, None, 1, "MTL", True)
-        # print(f"{agent.name} đã đặt lệnh LONG tại giá {close_price:.1f} ({datetime.now().strftime("%H:%M %d/%m")})")
+    # if BuyCondition():
+    #     GLOBAL.ENTRADE_CLIENT.Order("41I1FA000", "NB", None, None, 1, "MTL", True)
+    #     # print(f"{agent.name} đã đặt lệnh LONG tại giá {close_price:.1f} ({datetime.now().strftime("%H:%M %d/%m")})")
 
-    if ShortCondition():
-        GLOBAL.ENTRADE_CLIENT.Order("41I1FA000", "NS", None, None, 1, "MTL", True)
-
-
-
-def BuyCondition():
-    # Ví dụ tính ema cross
-    result = False  # return a bool, True or False
-    return result
+    # if ShortCondition():
+    #     GLOBAL.ENTRADE_CLIENT.Order("41I1FA000", "NS", None, None, 1, "MTL", True)
 
 
-def CloseBuyCondition():
-    # Ví dụ tính ema cross
-    result = False  # return a bool, True or False
-    return result
 
-
-def ShortCondition():
-    # Ví dụ tính ema cross
-    result = False  # return a bool, True or False
-    return result
-
-
-def CloseShortCondition():
-    # Ví dụ tính ema cross
-    result = False  # return a bool, True or False
-    return result

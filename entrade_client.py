@@ -53,6 +53,7 @@ class EntradeClient:
             return order_data
         except HTTPError as e:
             print("Order() failed! (Entrade):", e)
+            return None
     
     def _validate_order_params(self, symbol: str, side: str, price: float, volume: int):
        """Kiểm tra tính hợp lệ của tham số lệnh"""

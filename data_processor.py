@@ -35,7 +35,9 @@ TIME_FRAMES = {
     'D1': 86400,
     'W1': 604800
 }
+
 HISTORY = {tf: [] for tf in TIME_FRAMES} # Dictionary lưu data cho từng TF
+
 current_bars = {tf: None for tf in TIME_FRAMES} # Bar đang hình thành của các TF
 
 # ======== CẢI TIẾN HÀM INITIALIZE ========
@@ -87,6 +89,7 @@ def InitializeData():
                 'V': 0
             }
     
+    GLOBAL.MARKETDATA = HISTORY
     print("Successfully initialized multi-timeframe data:")
     for tf in TIME_FRAMES:
         print(f"{tf}: {len(HISTORY[tf])} candles")
@@ -106,6 +109,9 @@ def UpdateOHLCVData(new_data):
     volume = int(new_data['volume'])
     last_ts = int(new_data['lastUpdated'])  # Cập nhật last_ts mới nhất
 
+    GLOBAL.TICK_PRICE = price
+    GLOBAL.TICK_VOLUME = volume
+
     # Gọi logic xử lý cho OnTick()
     lp.OnTick({
         'timestamp': last_ts,
@@ -114,7 +120,7 @@ def UpdateOHLCVData(new_data):
     })
 
     # Cập nhật dữ liệu cho các timeframe
-    print(f"New tick ts: {new_ts}, current m1 bar ts: {current_bars['m1']['ts']}")
+    # print(f"New tick ts: {new_ts}, current m1 bar ts: {current_bars['m1']['ts']}")
     if new_ts >= current_bars['m1']['ts']:
         for tf in TIME_FRAMES:
             tf_interval = TIME_FRAMES[tf]
@@ -152,6 +158,9 @@ def UpdateOHLCVData(new_data):
         #thực thi code nằm trong OnBarClosed()
         #print(f"working timeframe: {GLOBAL.WORKING_TIMEFRAME}")
         #print(f"current bar ts: {current_bars[GLOBAL.WORKING_TIMEFRAME]['ts']}, new tick ts: {new_ts}")
+        
+        # Lấy dữ liệu mới nhất cho GLOBAL.MARKETDATA
+        GLOBAL.MARKETDATA = HISTORY
 
         if GLOBAL.WORKING_TIMEFRAME =='m1':
             lp.OnBarClosed(HISTORY)
@@ -159,7 +168,8 @@ def UpdateOHLCVData(new_data):
             if new_ts >= current_bars[GLOBAL.WORKING_TIMEFRAME]['ts']:
                 print(f"new_ts >= current_bars[GLOBAL.WORKING_TIMEFRAME]['ts'], Running OnBarClosed()")
                 lp.OnBarClosed(HISTORY)
-
+    
+    
 
 
 def UpdateMarketData(new_market_data):

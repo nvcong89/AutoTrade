@@ -1,2 +1,8 @@
 plaintext/quotes/krx/mdds/v2/ohlc/derivative/1/VN30F1M:
 {'time': '1757042700', 'open': 1893.2, 'high': 1893.9, 'low': 1893.1, 'close': 1893.9, 'volume': '535', 'symbol': 'VN30F1M', 'lastUpdated': '1757042745', 'type': 'DERIVATIVE'}
+
+
+
+deal information:
+
+{'id': 6276243, 'side': 'NB', 'investorId': 1000048842, 'investorAccountId': 1000053980, 'bankId': 10000, 'bankAccountId': 1000000, 'symbol': '41I1FA000', 'price': 0.0, 'quantity': 1, 'orderType': 'MTL', 'orderStatus': 'New', 'fillQuantity': 0, 'lastQuantity': 0, 'lastPrice': 0.0, 'averagePrice': 0.0, 'createdDate': '2025-09-24T07:09:41.156Z', 'modifiedDate': '2025-09-24T07:09:41.156Z', 'bankMarginPortfolioId': 32, 'reports': [{'id': 0, 'side': 'NB', 'investorId': 1000048842, 'investorAccountId': 1000053980, 'bankId': 10000, 'bankAccountId': 1000000, 'symbol': '41I1FA000', 'price': 0.0, 'quantity': 1, 'orderType': 'MTL', 'orderStatus': 'New', 'fillQuantity': 0, 'lastQuantity': 0, 'lastPrice': 0.0, 'averagePrice': 0.0, 'createdDate': '2025-09-24T07:09:41.156Z', 'modifiedDate': '2025-09-24T07:09:41.156Z', 'bankMarginPortfolioId': 32, 'dealId': 0, 'tradingFee': 0.0, 'tradingTax': 0.0, 'orderSecure': 0.0, 'priceSecure': 0.0, 'marginRate': 0.0, 'quantitySecure': 0, 'leavesQuantity': 0, 'maker': '0979404641', 'type': 'DERIVATIVE', 'fillValue': 0.0}], 'dealId': 0, 'tradingFee': 0.0, 'tradingTax': 0.0, 'orderSecure': 9694500.0, 'priceSecure': 1938.9, 'marginRate': 0.05, 'quantitySecure': 1, 'leavesQuantity': 0, 'maker': '0979404641', 'type': 'DERIVATIVE', 'fillValue': 0.0}

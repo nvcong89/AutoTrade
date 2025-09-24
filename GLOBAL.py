@@ -28,6 +28,22 @@ TOTAL_FOREIGN_SELL: int = 0
 #WORKING TIMEFRAME : là timeframe để sau mỗi khi đóng nến sẽ thực thi function OnBarClosed()
 WORKING_TIMEFRAME = 'm1' # m1, m3, m5, m15, m30, H1, H4, D1, W1
 
+#Giá khớp lệnh tức thời - Tick price
+TICK_PRICE: float = 0.0
+TICK_VOLUME: int = 0
+
+#Collection of historical candles for each timeframe
+TIME_FRAMES = {
+    'm1': 60,
+    'm3': 180,
+    'm5': 300,
+    'm15': 900,
+    'm30': 1800,
+    'H1': 3600,
+    'D1': 86400,
+    'W1': 604800
+}
+MARKETDATA = {tf: [] for tf in TIME_FRAMES} # Dictionary lưu data cho từng TF
 
 
 #tên mã phái sinh KRX tháng hiện tại

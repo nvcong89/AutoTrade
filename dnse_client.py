@@ -5,6 +5,7 @@ class DNSEClient:
     def __init__(self):
         self.token = None
         self.trading_token = None
+        self.investor_id = None
         self.base_url = "https://api.dnse.com.vn/"
 
     def Authenticate(self, username, password):
@@ -31,6 +32,7 @@ class DNSEClient:
         url = f"{self.base_url}user-service/api/me"
         response = get(url, headers=_headers)
         response.raise_for_status()
+        self.investor_id = response.json().get("investorId")
         return response.json()
 
     def GetOTP(self):
@@ -113,3 +115,31 @@ class DNSEClient:
         response.raise_for_status()
         print("Gửi yêu cầu đặt lệnh điều kiện thành công! (DNSE)")
         return response.json()
+
+   
+    def GetBars(self, 
+                             symbol: str, 
+                             timeframe: str = "", 
+                             days_lookback: int = 30):
+        
+        """Lấy marketdata theo timeframe"""
+
+        start_time = int(time.time()) - 86400*days_lookback # 30 ngày dữ liệu
+        
+        try:
+            raw_data = GetOHLCVData("derivative", "VN30F1M", start_time, int(time.time()), timeframe)
+            
+            # Tạo dữ liệu base với timestamp
+            base_data = list(zip(
+                raw_data['t'],
+                raw_data['o'],
+                raw_data['h'],
+                raw_data['l'],
+                raw_data['c'],
+                raw_data['v']
+            ))
+            
+            return base_data
+        
+        except HTTPError as e:
+            print("Lỗi khi get marketdata", e)
