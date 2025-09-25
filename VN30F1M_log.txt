@@ -1,6 +1,0 @@
-Log for VN30F1M
-==================================================
-16:08:18 25/09 - Bot VN30F1M initialized.
-16:08:18 25/09 - Bot VN30F1M started.
-16:08:24 25/09 - Outside trading hours. Bot is inactive.
-16:08:24 25/09 - Outside trading hours. Bot is inactive.

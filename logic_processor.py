@@ -10,12 +10,7 @@ import GLOBAL
 from tabulate import tabulate
 import numpy as np
 from Utils import*
-
 from pBot001 import pBotMACD
-
-ACTIVE_BOT: list[Agent] = [
-    macd_agent, rsi_agent_ta,
-]
 
 
 LastBidPrice = 0
@@ -37,12 +32,14 @@ supportPrice = 1820
 
 marketData={}
 
-bot = pBotMACD("MACD_Bot",None,1.0,"Nguyen van Cong","m5","VN30F1M")
 
-def OnStart(HISTORY: {}):
-    global marketData
+
+def OnStart():
+
+    global marketData, bot  #khai báo biến global khởi tạo bot.
+
     
-    
+
     # Truy cập dữ liệu các TF
     # print("1 phút gần nhất:", HISTORY['m1'][-5:])
     # print("5 phút gần nhất:", HISTORY['m5'][-5:])
@@ -67,27 +64,42 @@ def OnStart(HISTORY: {}):
     #     tablefmt='fancy_grid'
     # ))
 
-    #khai báo thông số ban đầu cho bot : trade_size, stop loss, take profit, dataframe, active bot
-    bot.is_active = True
-    bot.timeframe = "m1"
-    bot.trade_size =1
-    bot.stop_loss = 1000
-    bot.take_profit = 1000
+    # print(f"Thông tin tài khoản [Endtrade]: \n {GLOBAL.ENTRADE_CLIENT.GetAccountInfo()}")
+    # print(f"Thông tin tài khoản [DNSE]: \n {GLOBAL.DNSE_CLIENT.GetAccountInfo()}")
+
+    #===========================================================
+    #===========================================================
+    #khởi tạo bot
+    bot = pBotMACD(name="MACD_Bot",description="",
+               version="1.0",
+               author="Nguyen van Cong",
+               timeframe="m5",
+               symbol="VN30F1M")
     
-    print(f"Thông tin tài khoản [Endtrade]: \n {GLOBAL.ENTRADE_CLIENT.GetAccountInfo()}")
-    print(f"Thông tin tài khoản [DNSE]: \n {GLOBAL.DNSE_CLIENT.GetAccountInfo()}")
+    # set thông số ban đầu cho bot trước khi chạy
+    bot.symbol = GLOBAL.VN30F1M
+    bot.traingPlatform = "DNSE"     # chọn "DNSE" hoặc "ENTRADE" để đẩy lệnh lên sau này.
+    bot.is_active =True     #cho bot chạy kiểm tra logic
+    bot.trade_size = 1      #số lượng hợp đồng mỗi lệnh
+    bot.maxOpenTrades = 5   # số lượng hợp đồng tối đa có thể mở.
+    bot.stop_loss = 1000    # stop loss point
+    bot.take_profit = 1000  #take profit point
+
+    print(80*"=")
+    print(f"Bot {bot.name} đã được khởi tạo.")
 
     #lấy data theo timeframe của bot
-    bot.marketData=GLOBAL.MARKETDATA   #đẩy mảketdata vào bot
+    bot.marketData=GLOBAL.MARKETDATA   #đẩy marketdata vào bot
+
+    print(f"Bot đang chạy...")
     bot.run()
-    print("xxxx")
     pass
 
-def OnTick(data):
+def OnTick():
     global bot
 
     # print(GLOBAL.MARKETDATA)
-    bot.marketData=GLOBAL.MARKETDATA   #đẩy mảketdata vào bot
+    bot.marketData=GLOBAL.MARKETDATA   #đẩy marketdata mới vào bot
     bot.print_dealBot()
     bot.run()
 
@@ -172,12 +184,10 @@ def OnTick(data):
     pass
 
 
-def OnBarClosed(HISTORY: {}):
-    global n, marketData, bot
-    marketData = GLOBAL.MARKETDATA
-    close_price = GLOBAL.MARKETDATA['m1'][4]
+def OnBarClosed():
+    global bot
+
     
-    bot.trade_size =1
     bot.marketData=GLOBAL.MARKETDATA   #đẩy mảketdata vào bot
     bot.run()
     bot.print_dealBot()
@@ -221,30 +231,6 @@ def OnBarClosed(HISTORY: {}):
     #     tablefmt='fancy_grid'
     # ))
 
-
-
-
-    # if CloseBuyCondition():
-    # # kiểm tra deal đang mở là Long thì ko cần đóng lệnh, nếu là deal đang mở là Short thì sẽ đóng lệnh trước.
-    #     Deals = GLOBAL.ENTRADE_CLIENT.GetActiveDeals()
-    #     for deal in Deals:
-    #         if deal["side"]=="NB":
-    #             GLOBAL.ENTRADE_CLIENT.CloseDeal(deal["id"], is_demo=True)
-
-
-    # if CloseShortCondition():
-    # # kiểm tra deal đang mở là Short thì ko cần đóng lệnh, nếu là deal đang mở là Short thì sẽ đóng lệnh trước.
-    #     Deals = GLOBAL.ENTRADE_CLIENT.GetActiveDeals()
-    #     for deal in Deals:
-    #         if deal["side"]=="NS":
-    #             GLOBAL.ENTRADE_CLIENT.CloseDeal(deal["id"], is_demo=True)
-
-    # if BuyCondition():
-    #     GLOBAL.ENTRADE_CLIENT.Order("41I1FA000", "NB", None, None, 1, "MTL", True)
-    #     # print(f"{agent.name} đã đặt lệnh LONG tại giá {close_price:.1f} ({datetime.now().strftime("%H:%M %d/%m")})")
-
-    # if ShortCondition():
-    #     GLOBAL.ENTRADE_CLIENT.Order("41I1FA000", "NS", None, None, 1, "MTL", True)
 
 
 

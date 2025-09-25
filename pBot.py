@@ -10,27 +10,19 @@ from timezone_utils import is_trading_time_vietnam
 
 
 class pBot:
-    def __init__(self, name: str = "BotName", 
-                 description: str = "This is a sample bot that uses MACD indicator to trade.", 
-                 version: str = "1.0", 
-                 author: str = "Your Name",
-                 timeframe: str = "m5",
-                 symbol: str = "VN30F1M"):
+    def __init__(self, name: str):
         self.name = name
-        self.description = description
-        self.version = version
-        self.author = author
         self.is_active = True
-        self.timeframe = timeframe  # Timeframe to use for this bot
-        self.symbol = "VN30F1M"  # Symbol to trade
         self.position = None  # Current position: "BUY", "SELL", or None
         self.last_action_time = 0  # Last time an action was taken
         self.action_interval = 0  # Minimum interval between actions in seconds
+        self.symbol = None  #tên mã chứng khoán giao dịch
 
         # Trading hours in Vietnam timezone
         self.starttradingtime = time(9,1)  # Start trading time, time object (tương đương 9:01 AM) defaut
         self.endtradingtime = time(14,29)    # End trading time, time object (tương đương 2:29 PM) defaut
         self.maxOpenTrades = 1  # Maximum number of open trades allowed
+        self.isTradingTime = False
 
         self.marketData = None # Market data passed from pBot
         self.order_id = None  # Current order ID

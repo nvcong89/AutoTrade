@@ -11,6 +11,8 @@ def ReadConfig():
 DNSE_CLIENT = DNSEClient()
 ENTRADE_CLIENT = EntradeClient()
 
+tradingtoken_dnse = "2ff8ac6c-5294-4696-8c13-32b4fafe57cf" # format string, gán cứng trading token cho DNSE, nếu ko có để giá trị None
+
 # Global data collected during runtime:
 
 # List of 10 highest bid/lowest offer and their quantity

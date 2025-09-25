@@ -5,8 +5,11 @@ from time import localtime
 class DNSEClient:
     def __init__(self):
         self.token = None
-        self.trading_token = None
-        self.investor_id = None
+        self.trading_token = None   #Trading token sẽ được sử dụng trong các API chỉnh sửa dữ liệu: đặt lệnh, huỷ lệnh
+        self.investor_id = None #mã tài khoản
+        self.investor_account_id = None #mã tiểu khoản
+        self.OTP = None
+        self.loanpackages = None
         self.base_url = "https://api.dnse.com.vn/"
 
     def Authenticate(self, username, password):
@@ -23,6 +26,23 @@ class DNSEClient:
         response.raise_for_status()
         self.token = response.json().get("token")
         print("Đăng nhập thành công! (DNSE)")
+        
+        # self.GetOTP()
+        # self.GetSmartOTP()
+        # self.GetTradingToken(self.OTP)
+
+    
+    def GetSubAccounts(self):
+        """Lấy danh sách tiểu khoản"""
+        _headers = {
+            "Authorization": f"Bearer {self.token}"
+        }
+
+        url = f"{self.base_url}order-service/accounts"
+        response = get(url, headers=_headers)
+        response.raise_for_status()
+        self.investor_account_id = response.json()['default']['id']
+        return response.json()  #trả về danh sách các tiểu khoản []
 
     def GetAccountInfo(self):
         _headers = {
@@ -45,6 +65,11 @@ class DNSEClient:
         response = get(url, headers=_headers)
         response.raise_for_status()
         print("Gửi OTP thành công! (DNSE)")
+    
+    def readSmartOTP(self):
+        smartOTP = input(f"Nhập mã SmartOTP:")
+        self.OTP = smartOTP
+
 
     def GetTradingToken(self, otp):
         url = f"{self.base_url}/order-service/trading-token"
@@ -57,6 +82,16 @@ class DNSEClient:
         response.raise_for_status()
         self.trading_token = response.json().get("tradingToken")
         print("Lấy Trading Token thành công! (DNSE)")
+    
+    def getLoanPackages(self):
+        url = f"{self.base_url}order-service/accounts/{self.investor_id}/derivative-loan-packages"
+        _headers = {
+            "Authorization": f"Bearer {self.token}"
+        }
+        response = post(url, headers=_headers)
+        response.raise_for_status()
+        self.loanpackages = response.json()
+
 
     def Order(self, symbol, account, side, price, loan, volume, order_type):
         url = f"{self.base_url}order-service/v2/orders" # Default to normal stock :3
@@ -73,7 +108,7 @@ class DNSEClient:
         }
         _json = {
             "accountNo": account,
-            "loanPackageId": loan or loan_package_id,
+            "loanPackageId": loan_package_id or loan,
             "orderType": order_type,
             "price": price,
             "quantity": volume,
@@ -82,7 +117,7 @@ class DNSEClient:
         }
         response = post(url, headers=_headers, json=_json)
         response.raise_for_status()
-        print("Gửi yêu cầu đặt lệnh thành công! (DNSE)")
+        print("Gửi yêu cầu đặt lệnh thành công! [DNSE]")
         return response.json()
 
     def ConditionalOrder(self, symbol, account : int, side, price : float, loan, volume, order_type, condition):
@@ -120,9 +155,9 @@ class DNSEClient:
     
 
     def GetBars(self, 
-                             symbol: str, 
-                             timeframe: str = "", 
-                             days_lookback: int = 30):
+                symbol: str, 
+                timeframe: str = "", 
+                days_lookback: int = 30):
         
         """Lấy marketdata theo timeframe"""
 
@@ -148,7 +183,7 @@ class DNSEClient:
 
     def GetCashAccount(self, account_no=None):
         """Lấy thông tin tài sản tiền mặt"""
-        account = account_no or self.account_no or "0001910385"
+        account = account_no or self.investor_account_id
         if not account:
             raise ValueError("Account number is required")
             
@@ -169,9 +204,9 @@ class DNSEClient:
         if not self.trading_token:
             raise ValueError("Trading token not available. Please ensure tokens are loaded from MongoDB.")
             
-        account = account_no or self.account_no or "0001910385"
+        account = account_no or self.investor_account_id
         if not account:
-            raise ValueError("Account number is required")
+            raise ValueError("[SetAccountPnLConfig] : Account number is required")
 
         _headers = {
             "Content-Type": "application/json",
