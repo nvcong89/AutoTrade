@@ -73,10 +73,13 @@ def OnStart(HISTORY: {}):
     bot.trade_size =1
     bot.stop_loss = 1000
     bot.take_profit = 1000
+    
+    print(f"Thông tin tài khoản [Endtrade]: \n {GLOBAL.ENTRADE_CLIENT.GetAccountInfo()}")
+    print(f"Thông tin tài khoản [DNSE]: \n {GLOBAL.DNSE_CLIENT.GetAccountInfo()}")
 
     #lấy data theo timeframe của bot
     bot.marketData=GLOBAL.MARKETDATA   #đẩy mảketdata vào bot
-    bot.run(bot.marketData)
+    bot.run()
     print("xxxx")
     pass
 
@@ -84,8 +87,9 @@ def OnTick(data):
     global bot
 
     # print(GLOBAL.MARKETDATA)
+    bot.marketData=GLOBAL.MARKETDATA   #đẩy mảketdata vào bot
     bot.print_dealBot()
-    bot.run(GLOBAL.MARKETDATA)
+    bot.run()
 
     # print("Dư mua:", TOTAL_BID)
     # print("Dư bán:", TOTAL_OFFER)
@@ -174,7 +178,8 @@ def OnBarClosed(HISTORY: {}):
     close_price = GLOBAL.MARKETDATA['m1'][4]
     
     bot.trade_size =1
-    bot.run(GLOBAL.MARKETDATA)
+    bot.marketData=GLOBAL.MARKETDATA   #đẩy mảketdata vào bot
+    bot.run()
     bot.print_dealBot()
 
     return

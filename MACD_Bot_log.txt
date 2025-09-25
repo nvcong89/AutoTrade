@@ -1,4 +1,4 @@
 Log for MACD_Bot
 ==================================================
-16:50:29 24/09 - Bot MACD_Bot initialized.
-16:50:29 24/09 - Bot MACD_Bot started.
+16:08:18 25/09 - Bot MACD_Bot initialized.
+16:08:18 25/09 - Bot MACD_Bot started.

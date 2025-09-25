@@ -8,6 +8,7 @@ import ta
 from Utils import *
 
 
+
 '''
 This is a sample bot file.
 You can create your own bot by copying this file and modifying it.
@@ -33,10 +34,14 @@ class pBotMACD(pBot):
         super().__init__(timeframe)
         super().__init__(symbol)
 
+        self.accountNo = None   # Mã tiểu khoản dùng để trade bằng bot
+        self.maxOpenTrades = 1  # set max open trades allowed
+
+
         #khai báo các biến riêng cho bot MACD
-        self.macd_short_window = 12
+        self.macd_short_window = 23
         self.macd_long_window = 26
-        self.macd_signal_window = 9
+        self.macd_signal_window = 24
         self.last_macd = None
         self.last_signal = None
         self.last_hist = None
@@ -44,17 +49,27 @@ class pBotMACD(pBot):
         #khai báo biến cho RSI
         self.periodRSI = 8
         self.last_RSI = None
-        self.RSI = None
-        self.upperBound = 10
-        self.lowerBound = 45
+        self.upperBound = 45
+        self.lowerBound = 40
+
+        #khai báo biến cho ADX
+        self.periodADX = 8
+        self.last_ADX = None
+        self.levelADXBuy = 22
+        self.levelADXSell = 25
+
 
         
     def run(self):
 
         #thực hiện các hành động của bot
-
         if self.is_active:
-            # self.get_latest_data()
+            # kiểm tra bot có đang trong giờ giao dịch không
+            if not self.is_trading_time():
+                self.log("Outside trading hours. Bot is inactive.")
+                return
+            
+            #kiểm tra tín hiệu mua/bán
             action = self.check_for_signals()
             if action is not None:
                 self.log(f"Signal detected: {action}")
@@ -75,46 +90,85 @@ class pBotMACD(pBot):
             return None
         
         # Tính toán Indicators
-        #indicator MACD
-        closePrices = pd.Series(data=self.marketData[self.timeframe][4],index=False, name = "close")  # Lấy giá đóng cửa từ marketData
 
-        print(closePrices)  
+        #indicator MACD
+        highPrices = self.getBarSeries("m5","H")
+        closePrices = self.getBarSeries("m5","C")
+        openPrices = self.getBarSeries("m5","O")
+        lowPrices = self.getBarSeries("m5","L")
+        
         macd = ta.trend.MACD(close=closePrices,
                       window_slow=self.macd_long_window,
                       window_fast=self.macd_short_window,
                       window_sign=self.macd_signal_window,
                       fillna=True).macd().to_list()
-        signal = ta.trend.MACD(close=self.marketData[4],
+        signal = ta.trend.MACD(close=closePrices,
                       window_slow=self.macd_long_window,
                       window_fast=self.macd_short_window,
                       window_sign=self.macd_signal_window,
                       fillna=True).macd_signal().to_list()
         
-        print(f"MACD: {macd[-5:]}")
-        print(f"Signal: {signal[-5:]}")
+        self.last_macd = macd[-1]
+        self.last_signal = signal[-1]
 
+        #indicator RSI
+        rsi = ta.momentum.RSIIndicator(close=closePrices,   
+                                       window=self.periodRSI, 
+                                       fillna=True).rsi().to_list()
+        self.last_RSI = rsi[-1]
         
-        # latest_row = self.marketData.iloc[-1]
-        # macd = latest_row['macd']
-        # signal = latest_row['signal']
-        # hist = latest_row['hist']
-        # action = None
-        # if self.last_macd is not None and self.last_signal is not None:
-        #     if macd > signal and self.last_macd <= self.last_signal:
-        #         action = "BUY"
-        #     elif macd < signal and self.last_macd >= self.last_signal:
-        #         action = "SELL"
-        # self.last_macd = macd
-        # self.last_signal = signal
-        # self.last_hist = hist
+        # Indicator ADX
+        adx = ta.trend.ADXIndicator(high=highPrices,
+                                    low=lowPrices,
+                                    close=closePrices,
+                                    window=self.periodADX,
+                                    fillna=True).adx().to_list()
 
-        action = "BUY"
-        return action
+        self.last_ADX = adx[-1]
+
+        #=======================================================================
+        # Kiểm tra các điều kiện để đưa ra tín hiệu mua/bán/đóng mua/đóng bán
+        action = None        
+        try:
+            # Điều kiện mua
+            if (self.last_macd > self.last_signal and 
+                self.last_RSI >= self.lowerBound and 
+                self.last_ADX > self.levelADXBuy):
+                action = "BUY"
+                
+            # Điều kiện bán
+            elif ((self.cross(signal,macd) and self.last_RSI <= self.upperBound)
+                    or (
+                        self.last_signal > self.last_macd and
+                        self.cross(45, rsi)
+                    )):
+                action = "SELL"
+
+            # Điều kiện đóng mua
+            elif (self.position == "BUY" and 
+                    (self.last_macd < self.last_signal or 
+                    self.last_RSI > self.upperBound)):
+                action = "CLOSEBUY"
+
+            # Điều kiện đóng bán
+            elif (self.position == "SELL" and 
+                    (self.last_macd > self.last_signal or 
+                    self.last_RSI < self.lowerBound)):
+                action = "CLOSESELL"
+            else:
+                action = None  # Không có tín hiệu
+            return action
+        except Exception as e:
+            self.log(f"Error in signal calculation: {e}")
+            return None
+        
     
     def execute_trade(self, action):
         '''
         Thực hiện lệnh mua/bán dựa trên tín hiệu từ check_for_signals
+        action = "BUY" hoặc "SELL", CLOSEBUY, CLOSESELL
         '''
+        # kiểm tra số deal đang mở đã vượt quá max open trades allowed chưa?
 
         # lấy giá hiện tại khi có tín hiệu
         if self.orderPriceType == "MTL":
@@ -190,6 +244,23 @@ class pBotMACD(pBot):
         else:
             self.log("No valid action to execute.")
     
+    # def getActiveDeals_Entrade(self, EntradeClient=None):
+    #     if EntradeClient is not None:
+    #         activeDeals = EntradeClient.GetActiveDeals()
+    #         return activeDeals
+    #     else:
+    #         return None
+    
+    # def getActiveDeals_DNSE(self, DNSEClient=None):
+
+    #     if DNSEClient is not None and self.accountNo is not None:
+    #         activeDeals = DNSEClient.GetActiveDeals(self.accountNo)
+    #         return activeDeals
+    #     else:
+    #         return None
+
+
+
 
 if __name__ == "__main__":
     df = generate_market_data()

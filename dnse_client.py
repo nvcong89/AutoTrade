@@ -221,7 +221,7 @@ class DNSEClient:
     
     def GetDeals(self, account_no=None):
         """Lấy danh sách deal nắm giữ"""
-        account = account_no or self.account_no or "0001910385"
+        account = account_no or self.account_no
         if not account:
             raise ValueError("Account number is required")
             
@@ -236,6 +236,15 @@ class DNSEClient:
         response = get(url, headers=_headers, params=params)
         response.raise_for_status()
         return response.json()
+    
+    def getActiveDeals(self, account_no = None):
+        deals = self.GetDeals(account_no)["data"]
+        activeDeals = []
+        for deal in deals:
+            if deal["status"] == "ACTIVE":
+                activeDeals.append(deal)
+        return activeDeals
+
     
     def CancelOrder(self, order_id, account_no=None):
         """Hủy lệnh"""
