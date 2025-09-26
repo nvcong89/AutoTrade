@@ -34,10 +34,9 @@ class pBotMACD(pBot):
         self.author = author
         self.timeframe = timeframe
 
-        self.traingPlatform ="DNSE"     # "DNSE" hoặc "ENTRADE"
+        self.tradingPlatform ="DNSE"     # "DNSE" hoặc "ENTRADE"
         self.accountNo = None   # Mã tiểu khoản dùng để trade bằng bot
         self.maxOpenTrades = 1  # set max open trades allowed
-
 
         #khai báo các biến riêng cho bot MACD
         self.macd_short_window = 23
@@ -71,18 +70,36 @@ class pBotMACD(pBot):
             #     print("Outside trading hours. Bot is inactive.")
             #     return
             
+            #kiểm tra xem số hđ đang mở đang active (mở) đã vượt quá số lượng cho phép chưa ?
+            if self.getTotalOpenQuanity_DNSE() >= self.maxOpenTrades:
+                print(f"Số lượng hợp đồng đang mở đã đạt số lượng tối đa [{self.maxOpenTrades} HĐ] cho phép.")
+                return
+
+            #cập nhật các biến động như tổng số hđ hiện tại vào trong bot, trước khi tính netprofit
+            self.orderQuantity = self.getTotalOpenQuanity_DNSE()
+            
+            #cập nhật unrealised net profit
+            self.Calculate_UnrealisedNetProfit()
+
+
+
             #kiểm tra tín hiệu mua/bán
             action = self.check_for_signals()
-            action = "BUY"
+            
+            action = "BUY"  #for testing only
+
             if action is not None:
-                self.log(f"Signal detected: {action}")
-                print(f"Signal detected: {action}")
-                
-                if self.traingPlatform.upper() == "DNSE":
-                    self.execute_trade_DNSE(action)
-                else:
-                    self.execute_trade_entrade(action)
-            # time.sleep(30)  # Wait for 30 seconds before checking again
+                try:
+                    self.log(f"Signal detected: {action}")
+                    print(f"Signal detected: {action}")
+                    
+                    if self.tradingPlatform.upper() == "DNSE":
+                        self.execute_trade_DNSE(action)
+                    else:
+                        self.execute_trade_entrade(action)
+                except Exception as e:
+                    print(f"Lỗi khi đặt lệnh: {e}")
+                    pass
     
     def check_for_signals(self):
         '''
@@ -274,14 +291,14 @@ class pBotMACD(pBot):
                                                    account = self.accountNo,
                                                    side = "NB",
                                                    price = self.orderPrice,
-                                                   loan = None,
+                                                   loan = self.loanpackageid,
                                                    volume = self.trade_size,
                                                     order_type = self.orderPriceType)
                 
                 try:
                     self.position = "BUY"
                     deals = GLOBAL.ENTRADE_CLIENT.GetActiveDeals()
-                    print(f"Active deals after BUY: {deals}")
+                    # print(f"Active deals after BUY: {deals}")
                     for deal in deals:
                         self.order_id = deal.get("id")
                         self.order_entryprice = deal.get("breakEvenPrice")
@@ -299,7 +316,7 @@ class pBotMACD(pBot):
                                                    account = self.accountNo,
                                                    side = "NS",
                                                    price = self.orderPrice,
-                                                   loan = None,
+                                                   loan = self.loanpackageid,
                                                    volume = self.trade_size,
                                                     order_type = self.orderPriceType)
 
@@ -318,48 +335,33 @@ class pBotMACD(pBot):
                 self.log("Already in SHORT position, no action taken.")
                 
         elif action == "CLOSEBUY":
-            if self.position == "BUY":
-                self.log("Closing BUY position")
-                # Thực hiện lệnh đóng mua ở đây
-                result = GLOBAL.ENTRADE_CLIENT.CloseAllDeals(is_demo=True)
+            # Thực hiện lệnh đóng mua ở đây
+                result = GLOBAL.DNSE_CLIENT.CloseAllDeals()
                 self.position = None
                 self.order_entryprice = None
                 self.order_id = None
                 self.order_side = None
                 self.orderQuantity = None
-            else:
-                self.log("No BUY position to close.")
 
         elif action == "CLOSESELL":
-            if self.position == "SELL":
-                self.log("Closing SELL position")
-                # Thực hiện lệnh đóng mua ở đây
-                result = GLOBAL.ENTRADE_CLIENT.CloseAllDeals(is_demo=True)
+            # Thực hiện lệnh đóng mua ở đây
+                result = GLOBAL.DNSE_CLIENT.CloseAllDeals()
                 self.position = None
                 self.order_entryprice = None
                 self.order_id = None
                 self.order_side = None
                 self.orderQuantity = None
-            else:
-                self.log("No SELL position to close.")
         else:
             self.log("No valid action to execute.")
     
-    # def getActiveDeals_Entrade(self, EntradeClient=None):
-    #     if EntradeClient is not None:
-    #         activeDeals = EntradeClient.GetActiveDeals()
-    #         return activeDeals
-    #     else:
-    #         return None
-    
-    # def getActiveDeals_DNSE(self, DNSEClient=None):
-
-    #     if DNSEClient is not None and self.accountNo is not None:
-    #         activeDeals = DNSEClient.GetActiveDeals(self.accountNo)
-    #         return activeDeals
-    #     else:
-    #         return None
-
+    def getTotalOpenQuanity_DNSE(self) -> int:
+        '''
+        Mục đích lấy tổng số hợp động đang mở.
+        '''
+        if self.dnseClient is not None:
+            return self.dnseClient.GetTotalOpenQuantity()
+        else:
+            return 0
 
 
 

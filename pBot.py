@@ -18,11 +18,16 @@ class pBot:
         self.action_interval = 0  # Minimum interval between actions in seconds
         self.symbol = None  #tên mã chứng khoán giao dịch
 
+        #truyền 2 objects Entrade_Client và DNSe_Client vào trong bot
+        self.entradeClient = None   # ENTRADEClient instance
+        self.dnseClient = None        # DNSEClient instance
+
         # Trading hours in Vietnam timezone
         self.starttradingtime = time(9,1)  # Start trading time, time object (tương đương 9:01 AM) defaut
         self.endtradingtime = time(14,29)    # End trading time, time object (tương đương 2:29 PM) defaut
         self.maxOpenTrades = 1  # Maximum number of open trades allowed
         self.isTradingTime = False
+        self.loanpackageid = None   # load package id
 
         self.marketData = None # Market data passed from pBot
         self.order_id = None  # Current order ID
@@ -31,6 +36,13 @@ class pBot:
         self.orderPriceType = "MTL"  # Order price type: MTL, LO
         self.orderPrice = None  # Order price, None for market orders
         self.orderQuantity = None  # Order quantity
+
+        self.unrealisedNetProfit = None #lưu giá trị net profit tạm thời
+
+        self.spread = None      #get spread hiện tại theo tick
+        self.lastTickPrice = None   #Last tick price
+        self.lastTickVolume = None  #Last tick volume
+
         self.trade_size = 1  # Number of contracts to trade
         self.stop_loss = 1000  # Stop loss in points
         self.take_profit = 1000  # Take profit in points
@@ -53,6 +65,28 @@ class pBot:
         with open(self.log_file, 'a') as f:
             f.write(f"{datetime.now().strftime("%H:%M:%S %d/%m")} - {message}\n")
     
+    def Update(self):
+        '''
+        Mục đích : Update liên tục vào trong bot các giá tick hiện thời, tick volume hiện thời và spread hiện thời
+        phục vụ cho logic của bot và tính profit tức thời
+        '''
+        
+        pass
+
+    def Calculate_UnrealisedNetProfit(self):
+        '''
+        Mục đích: tính toán net profit tạm thời, và trả vào trong bot
+        '''
+        contractFactor = 100000.0  # Hệ số hợp đồng 100,000 VNĐ/hđ
+        tickprice = GLOBAL.TICK_PRICE
+        try:
+            netprofit = self.UnrealisedNetProfit = round((tickprice-self.order_entryprice)*self.orderQuantity*contractFactor if self.position=='BUY' else (self.order_entryprice - tickprice)*self.orderQuantity*contractFactor if self.position=='SELL' else 0,0)
+            self.unrealisedNetProfit = netprofit
+            return netprofit
+        except:
+            self.unrealisedNetProfit = 0
+            return 0
+
     def print_dealBot(self):
         try:
             if not self.order_id:
@@ -64,7 +98,7 @@ class pBot:
             print(80*"=")
             print(f"Deal info from bot {self.name}:")
             print(f"Order id: {self.order_id}")
-            print(f"Entry price: {round(self.order_entryprice,1)} ")
+            print(f"Entry price: {round(self.order_entryprice,1)}")
             print(f"Position: {self.position} ")
             print(f"Open Quantity: {self.orderQuantity}")
             print(f"Order Side: {self.order_side}")

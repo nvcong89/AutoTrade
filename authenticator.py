@@ -2,6 +2,7 @@ import GLOBAL
 from mqtt_client import MQTTClient
 from dotenv import load_dotenv
 from os import getenv
+from mail_reader import getOTP
 
 
 load_dotenv()
@@ -12,7 +13,8 @@ gmailDNSE = getenv("gmailDNSE") # Email đăng kí DNSE
 passwordDNSE = getenv("passwordDNSE") # Mật khẩu tài khoản DNSE
 appPasswordDNSE = getenv("appPasswordDNSE") # App Password cho email đăng kí DNSE
 
-
+tradingtoken_dnse = getenv("tradingtoken_dnse") # trading token DNSE phục vụ cho việc đặt, hủy lệnh
+# loadnpackageID = getenv("loanpackageID")
 
 
 if __name__ == "__main__":
@@ -32,30 +34,47 @@ if __name__ == "__main__":
         raise SystemError("Login to DNSE failed!")
 
     #đẩy traking token vào luôn để test code trong 8 tiếng
-
-
-    if GLOBAL.tradingtoken_dnse is None:
+    if tradingtoken_dnse =="":
         GLOBAL.DNSE_CLIENT.GetOTP() #gửi mã OTP về email
-        GLOBAL.DNSE_CLIENT.readSmartOTP()
+        otp = getOTP()
+        GLOBAL.DNSE_CLIENT.readSmartOTP(otp)
+
         GLOBAL.DNSE_CLIENT.GetTradingToken(GLOBAL.DNSE_CLIENT.OTP)
 
     else:
-        GLOBAL.DNSE_CLIENT.trading_token = GLOBAL.tradingtoken_dnse
+        GLOBAL.DNSE_CLIENT.trading_token = tradingtoken_dnse
 
     print(f"Trading-Token [DNSE]: {GLOBAL.DNSE_CLIENT.trading_token}")
 
     investor_id = GLOBAL.DNSE_CLIENT.GetAccountInfo().get("investorId")
+
+    print(GLOBAL.DNSE_CLIENT.GetAccountInfo())
+
     token = GLOBAL.DNSE_CLIENT.token
     GLOBAL.DNSE_CLIENT.GetSubAccounts()
-    # GLOBAL.DNSE_CLIENT.getLoanPackages()
-    # print(GLOBAL.DNSE_CLIENT.loanpackages)
+    investor_account_id = GLOBAL.DNSE_CLIENT.investor_account_id
+    # đẩy loadpackageID vào trong DNSE_Client
+    GLOBAL.DNSE_CLIENT.loanpackageID = GLOBAL.DNSE_CLIENT.GetDerivativeLoanPackages(GLOBAL.DNSE_CLIENT.investor_account_id).get('loanPackages')[0]['id']
+
 
     print(f"\ninvestor_id [Etrade] : {GLOBAL.ENTRADE_CLIENT.investor_id}")
     print(f"investor_account_id [Etrade] : {GLOBAL.ENTRADE_CLIENT.investor_account_id} \n")
     
     print(f"investor_id [DNSE] : {investor_id}")
     print(f"investor_account_id [DNSE] : {GLOBAL.DNSE_CLIENT.investor_account_id}\n")
-    # print(f"token : {token}")
+    print(f"token [DNSE] : {token}")
+
+    print(f"loan package id: {GLOBAL.DNSE_CLIENT.loanpackageID}")
+
+    print(f"Tổng số lượng lệnh trong sổ: {len(GLOBAL.DNSE_CLIENT.GetOrders(investor_account_id).get('orders'))}")
+
+    print(f"sổ lệnh: {GLOBAL.DNSE_CLIENT.GetOrders(investor_account_id)}")
+
+    totaVol = GLOBAL.DNSE_CLIENT.GetTotalOpenQuantity()
+    print(f"Tổng số hđ đang mở: {totaVol} HĐ")
+
+    print(f"active deals: {GLOBAL.DNSE_CLIENT.getActiveDeals(GLOBAL.DNSE_CLIENT.investor_account_id)}")
+
 
     # Connect to MQTT server
     MQTT_CLIENT = MQTTClient(investor_id, token)

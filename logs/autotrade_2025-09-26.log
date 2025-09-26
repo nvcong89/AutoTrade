@@ -1,0 +1,151 @@
+[2025-09-26 11:13:31] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 11:14:11] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 11:14:11] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 11:14:16] DNSE_Client - INFO - Cancelling order: 8956
+[2025-09-26 11:14:16] DNSE_Client - ERROR - CONTEXT=Failed to cancel order | ERROR=TypeError: log_trade_action() missing 1 required positional argument: 'symbol' | ORDER_ID=8956 | ACCOUNT=0001521007
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\dnse_client.py", line 338, in CancelOrder
+    log_trade_action(
+    ~~~~~~~~~~~~~~~~^
+        action="ORDER_CANCELLED",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+        order_id=order_id,
+        ^^^^^^^^^^^^^^^^^^
+        account=account
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: log_trade_action() missing 1 required positional argument: 'symbol'
+[2025-09-26 11:15:20] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 11:15:21] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 11:15:25] DNSE_Client - INFO - Cancelling order: 8956
+[2025-09-26 11:15:34] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 11:15:34] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 11:15:38] DNSE_Client - INFO - Cancelling order: 12126
+[2025-09-26 11:15:38] DNSE_Client - INFO - Cancelling order: 8956
+[2025-09-26 11:16:44] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 11:16:44] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 11:16:47] DNSE_Client - INFO - Cancelling order: 12126
+[2025-09-26 11:16:48] DNSE_Client - INFO - Cancelling order: 8956
+[2025-09-26 11:16:48] DNSE_Client - INFO - Cancelling order: 8496
+[2025-09-26 11:16:48] DNSE_Client - INFO - Cancelling order: 5336
+[2025-09-26 11:16:49] DNSE_Client - INFO - Cancelling order: 5106
+[2025-09-26 11:16:49] DNSE_Client - INFO - Cancelling order: 3166
+[2025-09-26 11:16:49] DNSE_Client - INFO - Cancelling order: 2716
+[2025-09-26 11:18:47] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 11:18:47] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 11:18:51] DNSE_Client - INFO - Cancelling order: 12786
+[2025-09-26 11:18:51] DNSE_Client - INFO - Cancelling order: 12126
+[2025-09-26 11:18:52] DNSE_Client - INFO - Cancelling order: 8956
+[2025-09-26 11:18:52] DNSE_Client - INFO - Cancelling order: 8496
+[2025-09-26 11:18:52] DNSE_Client - INFO - Cancelling order: 5336
+[2025-09-26 11:18:53] DNSE_Client - INFO - Cancelling order: 5106
+[2025-09-26 11:18:53] DNSE_Client - INFO - Cancelling order: 3166
+[2025-09-26 11:18:53] DNSE_Client - INFO - Cancelling order: 2716
+[2025-09-26 11:21:09] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 11:21:09] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 11:21:27] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 11:21:28] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 11:24:34] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 11:24:34] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 11:26:09] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 11:26:10] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 11:28:54] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 11:28:55] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 11:30:02] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 11:30:03] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 11:30:48] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 11:30:49] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 11:32:16] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 11:32:17] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 11:32:21] DNSE_Client - INFO - Cancelling order: 13166
+[2025-09-26 11:33:14] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 11:33:14] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 11:34:27] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 11:34:27] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 11:34:31] DNSE_Client - INFO - Cancelling order: 13166
+[2025-09-26 11:36:16] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 11:36:17] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 11:36:20] DNSE_Client - INFO - Cancelling order: 13166
+[2025-09-26 11:36:21] DNSE_Client - INFO - Cancelling order: 12786
+[2025-09-26 11:36:21] DNSE_Client - INFO - Cancelling order: 12126
+[2025-09-26 11:36:21] DNSE_Client - INFO - Cancelling order: 8956
+[2025-09-26 11:36:21] DNSE_Client - INFO - Cancelling order: 8496
+[2025-09-26 11:36:22] DNSE_Client - INFO - Cancelling order: 5336
+[2025-09-26 11:36:22] DNSE_Client - INFO - Cancelling order: 5106
+[2025-09-26 11:36:22] DNSE_Client - INFO - Cancelling order: 3166
+[2025-09-26 11:36:23] DNSE_Client - INFO - Cancelling order: 2716
+[2025-09-26 12:36:41] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 12:36:41] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 12:56:33] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 12:56:33] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 12:59:18] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 12:59:19] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 13:04:09] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 13:04:10] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 13:12:50] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 13:12:50] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 13:14:15] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 13:14:15] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 13:15:05] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 13:15:05] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 13:26:08] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 13:26:08] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 13:32:23] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 13:32:23] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 13:32:43] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 13:32:43] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 13:33:41] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 13:33:41] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 13:38:27] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 13:38:27] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 13:42:53] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 13:42:53] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 13:56:13] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 13:56:13] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 14:06:20] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 14:06:21] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 14:09:02] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 14:09:02] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 14:35:02] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 14:35:03] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 14:49:37] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 14:49:37] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 14:51:52] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 14:51:53] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 14:54:58] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 14:54:59] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 14:55:33] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 14:55:33] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 14:56:51] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 14:56:51] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 15:57:15] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 15:57:16] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 15:59:36] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 15:59:36] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 16:12:17] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 16:12:17] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 16:14:28] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 16:14:28] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 16:17:47] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 16:17:47] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 16:23:25] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 16:23:25] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 16:23:56] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 16:23:56] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 16:24:18] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 16:24:19] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 16:27:55] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 16:27:55] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 16:32:07] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 16:32:07] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 16:33:26] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 16:33:26] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 16:34:45] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 16:34:46] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 16:38:06] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 16:38:07] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 16:43:33] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 16:43:33] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 16:45:51] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 16:45:52] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation

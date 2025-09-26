@@ -1,6 +1,7 @@
 import time
-from requests import get, post
+from requests import get, post, delete
 from time import localtime
+from logger_config import setup_logger, get_trading_logger, log_trade_action, log_error_with_context
 
 class DNSEClient:
     def __init__(self):
@@ -9,8 +10,12 @@ class DNSEClient:
         self.investor_id = None #mã tài khoản
         self.investor_account_id = None #mã tiểu khoản
         self.OTP = None
-        self.loanpackages = None
+        self.loanpackageID = None
         self.base_url = "https://api.dnse.com.vn/"
+
+        # Setup logger
+        self.logger = setup_logger("DNSE_Client")
+        self.trading_logger = get_trading_logger()
 
     def Authenticate(self, username, password):
         _headers = {
@@ -64,11 +69,14 @@ class DNSEClient:
         url = f"{self.base_url}auth-service/api/email-otp"
         response = get(url, headers=_headers)
         response.raise_for_status()
-        print("Gửi OTP thành công! (DNSE)")
+        print("Gửi email OTP thành công! (DNSE)")
     
-    def readSmartOTP(self):
-        smartOTP = input(f"Nhập mã SmartOTP:")
-        self.OTP = smartOTP
+    def readSmartOTP(self, otp: str = None):
+        if otp is None:
+            smartOTP = input(f"Nhập mã SmartOTP:")
+            self.OTP = smartOTP
+        else:
+            self.OTP = otp
 
 
     def GetTradingToken(self, otp):
@@ -83,23 +91,30 @@ class DNSEClient:
         self.trading_token = response.json().get("tradingToken")
         print("Lấy Trading Token thành công! (DNSE)")
     
-    def getLoanPackages(self):
-        url = f"{self.base_url}order-service/accounts/{self.investor_id}/derivative-loan-packages"
+    def GetDerivativeLoanPackages(self, account_no=None):
+        """Lấy danh sách gói vay phái sinh"""
+        account = account_no or self.account_no or "0001521007"
+        if not account:
+            raise ValueError("Account number is required")
+            
         _headers = {
+            "Content-Type": "application/json",
             "Authorization": f"Bearer {self.token}"
         }
-        response = post(url, headers=_headers)
+
+        url = f"{self.base_url}order-service/accounts/{account}/derivative-loan-packages"
+        response = get(url, headers=_headers)
         response.raise_for_status()
-        self.loanpackages = response.json()
+        return response.json()
 
 
     def Order(self, symbol, account, side, price, loan, volume, order_type):
         url = f"{self.base_url}order-service/v2/orders" # Default to normal stock :3
-        loan_package_id = 1372
+        loan_package_id = 1306
 
         if len(symbol) > 3:
             url = f"{self.base_url}order-service/derivative/orders"
-            loan_package_id = 2278
+            loan_package_id = 1306
 
         _headers = {
             "content-type": "application/json",
@@ -254,6 +269,27 @@ class DNSEClient:
         print("Đóng deal thành công! (DNSE)")
         return response.json()
     
+    def CloseAllDeals(self):
+        """Đóng tất cả deal đang mở"""
+
+        #lấy danh dách active deal ids
+        activedeacl_IDs = self.getActiveDeals_ID(self.investor_account_id)
+        for id in activedeacl_IDs:
+            self.CloseDeal(id)
+            print(f"Đã đóng deal id: {id}")
+
+    def GetTotalOpenQuantity(self) -> int:
+        #get active deals
+        activeDeals = self.getActiveDeals(self.investor_account_id)
+        totalVol = 0
+        for deal in activeDeals:
+            totalVol = totalVol + deal['fillQuantity']
+        #print(f"Tổng số hợp đồng đang mở : {totalVol} HĐ")
+        return totalVol
+        
+        
+
+    
     def GetDeals(self, account_no=None):
         """Lấy danh sách deal nắm giữ"""
         account = account_no or self.account_no
@@ -276,9 +312,15 @@ class DNSEClient:
         deals = self.GetDeals(account_no)["data"]
         activeDeals = []
         for deal in deals:
-            if deal["status"] == "ACTIVE":
+            if deal["status"] == "OPEN" or deal["status"] =="ACTIVE" or deal['status']==['Filled']:
                 activeDeals.append(deal)
-        return activeDeals
+        return activeDeals  #return a list of active object deals
+    
+    def getActiveDeals_ID(self, investor_account_id = None):
+        activedealIDs=[]
+        for deal in self.getActiveDeals(investor_account_id):
+            activedealIDs.append(deal['id'])
+        return activedealIDs        # a list of active deal id
 
     
     def CancelOrder(self, order_id, account_no=None):
@@ -286,7 +328,7 @@ class DNSEClient:
         if not self.trading_token:
             raise ValueError("Trading token not available. Please ensure tokens are loaded from MongoDB.")
             
-        account = account_no or self.account_no or "0001910385"
+        account = account_no or self.investor_account_id
         if not account:
             raise ValueError("Account number is required")
 
@@ -307,23 +349,38 @@ class DNSEClient:
             result = response.json()
             
             # Log trading action
-            log_trade_action(
-                action="ORDER_CANCELLED",
-                order_id=order_id,
-                account=account
-            )
+            # log_trade_action(
+            #     action="ORDER_CANCELLED",
+            #     order_id=order_id,
+            #     account=account
+            # )
             
-            self.logger.info(f"Order cancelled successfully - ID: {order_id}")
+            # self.logger.info(f"Order cancelled successfully - ID: {order_id}")
             return result
             
         except Exception as e:
-            log_error_with_context(self.logger, e, "Failed to cancel order",
-                                 order_id=order_id, account=account)
+            # log_error_with_context(self.logger, e, "Failed to cancel order",
+            #                      order_id=order_id, account=account)
             raise
+    
+    def CancleAllPendingOrders(self):
+        '''
+        Verified : Yes
+        Purpose: Dùng đóng toàn độ các lệnh đang chờ trong sổ lệnh.
+        '''
+        #lấy toàn bộ pending order id vào list
+        pendingOrders = self.GetOrders(self.investor_account_id).get('orders')    #list of pending deal objects
+        for pendingOrder in pendingOrders:
+            try:
+                self.CancelOrder(pendingOrder['id'], self.investor_account_id)
+                print(f"Đã hủy lệnh chờ, id: {pendingOrder['id']}")
+            except:
+                pass
+    
 
     def GetOrderDetail(self, order_id, account_no=None):
         """Lấy chi tiết lệnh"""
-        account = account_no or self.account_no or "0001910385"
+        account = account_no or self.investor_account_id
         if not account:
             raise ValueError("Account number is required")
             

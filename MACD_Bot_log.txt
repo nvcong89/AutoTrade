@@ -1,6 +1,6 @@
 Log for MACD_Bot
 ==================================================
-00:38:32 26/09 - Bot MACD_Bot initialized.
-00:38:32 26/09 - Bot MACD_Bot started.
-00:38:33 26/09 - Signal detected: BUY
-00:38:33 26/09 - Executing BUY order
+16:46:17 26/09 - Bot MACD_Bot initialized.
+16:46:17 26/09 - Bot MACD_Bot started.
+16:46:20 26/09 - Signal detected: BUY
+16:46:20 26/09 - Executing BUY order

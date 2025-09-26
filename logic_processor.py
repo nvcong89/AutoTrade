@@ -78,10 +78,17 @@ def OnStart():
     
     # set thông số ban đầu cho bot trước khi chạy
     bot.symbol = GLOBAL.VN30F1M
-    bot.traingPlatform = "DNSE"     # chọn "DNSE" hoặc "ENTRADE" để đẩy lệnh lên sau này.
-    bot.is_active =True     #cho bot chạy kiểm tra logic
+    bot.tradingPlatform = "DNSE"     # chọn "DNSE" hoặc "ENTRADE" để đẩy lệnh lên sau này.
+    
+    bot.dnseClient = GLOBAL.DNSE_CLIENT
+    bot.entradeClient = GLOBAL.ENTRADE_CLIENT
+
+    loadpackageidDNSE = 1306
+    bot.loanpackageid = loadpackageidDNSE   #gói vay để giao dịch ở DNSE
+    bot.accountNo = GLOBAL.DNSE_CLIENT.investor_account_id
+    bot.is_active = True     #cho bot chạy kiểm tra logic
     bot.trade_size = 1      #số lượng hợp đồng mỗi lệnh
-    bot.maxOpenTrades = 5   # số lượng hợp đồng tối đa có thể mở.
+    bot.maxOpenTrades = 1   # số lượng hợp đồng tối đa có thể mở.
     bot.stop_loss = 1000    # stop loss point
     bot.take_profit = 1000  #take profit point
 
@@ -89,10 +96,12 @@ def OnStart():
     print(f"Bot {bot.name} đã được khởi tạo.")
 
     #lấy data theo timeframe của bot
+    print(f"Đẩy MarketData vào trong bot...")
     bot.marketData=GLOBAL.MARKETDATA   #đẩy marketdata vào bot
-
     print(f"Bot đang chạy...")
     bot.run()
+
+
     pass
 
 def OnTick():
@@ -101,12 +110,12 @@ def OnTick():
     # print(GLOBAL.MARKETDATA)
     bot.marketData=GLOBAL.MARKETDATA   #đẩy marketdata mới vào bot
     bot.print_dealBot()
-    bot.run()
 
-    # print("Dư mua:", TOTAL_BID)
-    # print("Dư bán:", TOTAL_OFFER)
-    # print("Tổng KLGD mua nước ngoài:", TOTAL_FOREIGN_BUY)
-    # print("Tổng KLGD bán nước ngoài:", TOTAL_FOREIGN_SELL)
+
+    print("Dư mua:", GLOBAL.TOTAL_BID)
+    print("Dư bán:", GLOBAL.TOTAL_OFFER)
+    print("Tổng KLGD mua nước ngoài:", GLOBAL.TOTAL_FOREIGN_BUY)
+    print("Tổng KLGD bán nước ngoài:", GLOBAL.TOTAL_FOREIGN_SELL)
 
     
 
@@ -187,10 +196,8 @@ def OnTick():
 def OnBarClosed():
     global bot
 
-    
     bot.marketData=GLOBAL.MARKETDATA   #đẩy mảketdata vào bot
     bot.run()
-    bot.print_dealBot()
 
     return
 
