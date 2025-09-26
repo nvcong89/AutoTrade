@@ -3,6 +3,15 @@ from datetime import datetime, timedelta
 import numpy as np
 import pandas as pd
 
+
+def cprint(message):
+    '''
+    Hàm hỗ trợ in ra console có bao gồm ngày tháng và giờ.
+    '''
+    ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    print(f"[{ts}] - {message}")
+
+
 #tên mã phái sinh KRX tháng hiện tại
 def get_vn30f1m_krx() -> str:
     """
@@ -307,11 +316,12 @@ def generate_market_data(base_price: float = 1200.0,
 
 
 if __name__ == "__main__":
-    print("Mã hợp đồng VN30F1M KRX tháng hiện tại:", get_vn30f1m_krx())
+
+    cprint(f"Mã hợp đồng VN30F1M KRX tháng hiện tại: {get_vn30f1m_krx()}")
     # demoMarketData()
 
     MARKETDATA = generate_market_data()
-    print(MARKETDATA['m1'][:10])
+    cprint(MARKETDATA['m1'][:10])
     data = MARKETDATA['m1'][:10]
     # Trích xuất close prices và timestamps
     close_prices = [candle['close'] for candle in data]
@@ -324,7 +334,7 @@ if __name__ == "__main__":
         name='Close Price',
         dtype='float64'
     )
-    print(close_series)
+    cprint(close_series)
     # print(f"\nDữ liệu mẫu VN30F1M (m1) - 5 nến đầu:")
     # for row in MARKETDATA['m1'][:10]:
     #     print(row)

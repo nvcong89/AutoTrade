@@ -17,7 +17,7 @@ class VietnamTimeFormatter(logging.Formatter):
             s = ct.strftime('%Y-%m-%d %H:%M:%S')
         return s
 
-def setup_logger(name="AutoTrade", log_level=logging.INFO):
+def setup_logger(name="AutoTrade-CONG NGUYEN", log_level=logging.INFO):
     """
     Setup logger với daily rotation và multiple handlers
     

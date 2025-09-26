@@ -85,11 +85,11 @@ def getOTP():
     mail = authenticate_yandex()
     if mail:
         otp = get_otp_from_yandex(mail)
-        if otp:
-            print(f"OTP là: {otp}")
+        # if otp:
+        #     print(f"OTP là: {otp}")
         mail.logout()
     return otp
 
 
-if __name__ == "__main__":
-    getOTP()
+# if __name__ == "__main__":
+#     getOTP()

@@ -10,7 +10,7 @@ import GLOBAL
 from tabulate import tabulate
 import numpy as np
 from Utils import*
-from pBot001 import pBotMACD
+from pyBot001 import pyBotMACD
 
 
 LastBidPrice = 0
@@ -30,47 +30,48 @@ global supportPrice
 resitancePrice = 1825
 supportPrice = 1820
 
-marketData={}
-
 
 
 def OnStart():
 
-    global marketData, bot  #khai báo biến global khởi tạo bot.
+    global bot  #khai báo biến global khởi tạo bot.
 
     
 
     # Truy cập dữ liệu các TF
-    # print("1 phút gần nhất:", HISTORY['m1'][-5:])
-    # print("5 phút gần nhất:", HISTORY['m5'][-5:])
-    # print("15 phút gần nhất:", HISTORY['m15'][-5:])
+    # cprint(f"1 phút gần nhất: {GLOBAL.MARKETDATA['m1'][-5:]}")
+    # cprint(f"5 phút gần nhất: {GLOBAL.MARKETDATA['m5'][-5:]}")
+    # cprint(f"15 phút gần nhất: {GLOBAL.MARKETDATA['m15'][-5:]}")
 
     # Visualize data
-    # print(tabulate(
-    #     HISTORY['m1'][-5:],
-    #     headers=['Timestamp', 'Open', 'High', 'Low', 'Close', 'Volume'],
-    #     tablefmt='fancy_grid'
-    # ))
+    cprint(f"Bảng data nến M1")
+    print(tabulate(
+        GLOBAL.MARKETDATA['m1'][-5:],
+        headers=['Timestamp', 'Open', 'High', 'Low', 'Close', 'Volume'],
+        tablefmt='fancy_grid'
+    ))
     
-    # print(tabulate(
-    #     HISTORY['m3'][-5:],
-    #     headers=['Timestamp', 'Open', 'High', 'Low', 'Close', 'Volume'],
-    #     tablefmt='fancy_grid'
-    # ))
+    cprint(f"Bảng data nến M3")
+    print(tabulate(
+        GLOBAL.MARKETDATA['m3'][-5:],
+        headers=['Timestamp', 'Open', 'High', 'Low', 'Close', 'Volume'],
+        tablefmt='fancy_grid'
+    ))
     
-    # print(tabulate(
-    #     HISTORY['m5'][-5:],
-    #     headers=['Timestamp', 'Open', 'High', 'Low', 'Close', 'Volume'],
-    #     tablefmt='fancy_grid'
-    # ))
+    cprint(f"Bảng data nến M5")
+    print(tabulate(
+        GLOBAL.MARKETDATA['m5'][-5:],
+        headers=['Timestamp', 'Open', 'High', 'Low', 'Close', 'Volume'],
+        tablefmt='fancy_grid'
+    ))
 
-    # print(f"Thông tin tài khoản [Endtrade]: \n {GLOBAL.ENTRADE_CLIENT.GetAccountInfo()}")
-    # print(f"Thông tin tài khoản [DNSE]: \n {GLOBAL.DNSE_CLIENT.GetAccountInfo()}")
+    # cprint(f"Thông tin tài khoản [Endtrade]: \n {GLOBAL.ENTRADE_CLIENT.GetAccountInfo()}")
+    # cprint(f"Thông tin tài khoản [DNSE]: \n {GLOBAL.DNSE_CLIENT.GetAccountInfo()}")
 
     #===========================================================
     #===========================================================
     #khởi tạo bot
-    bot = pBotMACD(name="MACD_Bot",description="",
+    bot = pyBotMACD(name="MACD_Bot",description="",
                version="1.0",
                author="Nguyen van Cong",
                timeframe="m5",
@@ -92,13 +93,13 @@ def OnStart():
     bot.stop_loss = 1000    # stop loss point
     bot.take_profit = 1000  #take profit point
 
-    print(80*"=")
-    print(f"Bot {bot.name} đã được khởi tạo.")
+    cprint(80*"=")
+    cprint(f"Bot {bot.name} đã được khởi tạo.")
 
     #lấy data theo timeframe của bot
-    print(f"Đẩy MarketData vào trong bot...")
+    cprint(f"Đẩy MarketData vào trong bot...")
     bot.marketData=GLOBAL.MARKETDATA   #đẩy marketdata vào bot
-    print(f"Bot đang chạy...")
+    cprint(f"Bot đang chạy...")
     bot.run()
 
 
@@ -107,15 +108,16 @@ def OnStart():
 def OnTick():
     global bot
 
-    # print(GLOBAL.MARKETDATA)
+    # cprint(GLOBAL.MARKETDATA)
     bot.marketData=GLOBAL.MARKETDATA   #đẩy marketdata mới vào bot
     bot.print_dealBot()
+    bot.run()
 
 
-    print("Dư mua:", GLOBAL.TOTAL_BID)
-    print("Dư bán:", GLOBAL.TOTAL_OFFER)
-    print("Tổng KLGD mua nước ngoài:", GLOBAL.TOTAL_FOREIGN_BUY)
-    print("Tổng KLGD bán nước ngoài:", GLOBAL.TOTAL_FOREIGN_SELL)
+    # cprint("Dư mua:", GLOBAL.TOTAL_BID)
+    # cprint("Dư bán:", GLOBAL.TOTAL_OFFER)
+    # cprint("Tổng KLGD mua nước ngoài:", GLOBAL.TOTAL_FOREIGN_BUY)
+    # cprint("Tổng KLGD bán nước ngoài:", GLOBAL.TOTAL_FOREIGN_SELL)
 
     
 
@@ -124,19 +126,19 @@ def OnTick():
     try:
         if GLOBAL.BID_DEPTH:
             LastBidPrice = GLOBAL.BID_DEPTH[0][0]  # Get the price from the last tuple
-            # print(f"Last bid price: {LastBidPrice}")
+            # cprint(f"Last bid price: {LastBidPrice}")
         else:
-            print("No bid data available.")
+            cprint("No bid data available.")
 
         if GLOBAL.OFFER_DEPTH:
             LastAskPrice = GLOBAL.OFFER_DEPTH[0][0]  # Get the price from the last tuple
-            # print(f"Last ask price: {LastAskPrice}")
+            # cprint(f"Last ask price: {LastAskPrice}")
         else:
-            print("No ask data available.")
+            cprint("No ask data available.")
 
         if LastBidPrice > 0 and LastAskPrice > 0:
             Spread =  round(LastAskPrice -LastBidPrice,2)
-            # print(f"Spread: {Spread}")
+            # cprint(f"Spread: {Spread}")
 
         # Mở và đóng lệnh scalp 1 point
         if Spread == 0.1 and LastBidPrice < supportPrice and len(GLOBAL.ENTRADE_CLIENT.GetActiveDeals())==0:
@@ -154,44 +156,43 @@ def OnTick():
 
     # lấy thông tin deal đang active:
     activedeals = GLOBAL.ENTRADE_CLIENT.GetActiveDeals()
-    print(f"ACTIVE DEALS : {len(activedeals)}")
+    cprint(f"ACTIVE DEALS : {len(activedeals)}")
     for deal in activedeals:
-        print(f"Deal ID: {deal['id']}, Side: {deal['side']}, Open Price: {deal['breakEvenPrice']}, Quantity: {deal['openQuantity']}")
+        cprint(f"Deal ID: {deal['id']}, Side: {deal['side']}, Open Price: {deal['breakEvenPrice']}, Quantity: {deal['openQuantity']}")
         
         try:
             if deal['breakEvenPrice'] + 1.0 <= LastBidPrice and deal["side"]=="NB" and Spread <= 0.2:
                 GLOBAL.ENTRADE_CLIENT.CloseDeal(deal["id"], is_demo=True)
-                print(f"Đóng lệnh {deal['id']} chốt lời 1 point")
+                cprint(f"Đóng lệnh {deal['id']} chốt lời 1 point")
 
             if deal['breakEvenPrice'] - 1.0 >= LastAskPrice and deal["side"]=="NS" and Spread <= 0.2:
                 GLOBAL.ENTRADE_CLIENT.CloseDeal(deal["id"], is_demo=True)
-                print(f"Đóng lệnh {deal['id']} chốt lời 1 point")
+                cprint(f"Đóng lệnh {deal['id']} chốt lời 1 point")
         except:
             pass
 
 
 
-    # #print out thông tin sau mỗi tick
+    # #cprint out thông tin sau mỗi tick
 
-    print(50*"-")
-    print(f"TIME: {datetime.now().strftime("%H:%M:%S %d/%m")}")
-    print(f"Mã phái sinh: {GLOBAL.VN30F1M}")
-    print(f"Last Bid Price: {LastBidPrice if GLOBAL.BID_DEPTH else 0}")
-    print(f"Last Bid Vol: {GLOBAL.BID_DEPTH[0][1] if GLOBAL.BID_DEPTH else 0}")
-    print(f"Last Ask Price: {LastAskPrice if GLOBAL.OFFER_DEPTH else 0}")
-    print(f"Last Ask Vol: {GLOBAL.OFFER_DEPTH[0][1] if GLOBAL.OFFER_DEPTH else 0}")
-    print(f"Spread: {Spread if GLOBAL.BID_DEPTH and GLOBAL.OFFER_DEPTH else 0}")
-    print(f"Tổng KLGD nước ngoài-MUA: {GLOBAL.TOTAL_FOREIGN_BUY}")
-    print(f"Tổng KLGD nước ngoài-BÁN: {GLOBAL.TOTAL_FOREIGN_SELL}")
-    print(f"Chênh NN MUA-BÁN : {GLOBAL.TOTAL_FOREIGN_BUY-GLOBAL.TOTAL_FOREIGN_SELL}")
-    print(f"Dư mua: {GLOBAL.TOTAL_FOREIGN_BUY}")
-    print(f"Dư bán: {GLOBAL.TOTAL_FOREIGN_SELL}")
-    print(f"Chênh Dư MUA-BÁN: {GLOBAL.TOTAL_FOREIGN_BUY-GLOBAL.TOTAL_FOREIGN_SELL}")
-    print(50 * "-")
+    cprint(50*"-")
+    cprint(f"TIME: {datetime.now().strftime("%H:%M:%S %d/%m")}")
+    cprint(f"Mã phái sinh: {GLOBAL.VN30F1M}")
+    cprint(f"Last Bid Price: {LastBidPrice if GLOBAL.BID_DEPTH else 0}")
+    cprint(f"Last Bid Vol: {GLOBAL.BID_DEPTH[0][1] if GLOBAL.BID_DEPTH else 0}")
+    cprint(f"Last Ask Price: {LastAskPrice if GLOBAL.OFFER_DEPTH else 0}")
+    cprint(f"Last Ask Vol: {GLOBAL.OFFER_DEPTH[0][1] if GLOBAL.OFFER_DEPTH else 0}")
+    cprint(f"Spread: {Spread if GLOBAL.BID_DEPTH and GLOBAL.OFFER_DEPTH else 0}")
+    cprint(f"Tổng KLGD nước ngoài-MUA: {GLOBAL.TOTAL_FOREIGN_BUY}")
+    cprint(f"Tổng KLGD nước ngoài-BÁN: {GLOBAL.TOTAL_FOREIGN_SELL}")
+    cprint(f"Chênh NN MUA-BÁN : {GLOBAL.TOTAL_FOREIGN_BUY-GLOBAL.TOTAL_FOREIGN_SELL}")
+    cprint(f"Dư mua: {GLOBAL.TOTAL_FOREIGN_BUY}")
+    cprint(f"Dư bán: {GLOBAL.TOTAL_FOREIGN_SELL}")
+    cprint(f"Chênh Dư MUA-BÁN: {GLOBAL.TOTAL_FOREIGN_BUY-GLOBAL.TOTAL_FOREIGN_SELL}")
+    cprint(50 * "-")
 
 
     pass
-
 
 def OnBarClosed():
     global bot
@@ -205,14 +206,14 @@ def OnBarClosed():
 
     #test khoảng thời gian thực thi sau đóng nến workingTimeFrame (xem trong GLOBAL.py)
     # n = n + 1
-    # print(f"gọi lần {n} : [{datetime.now().strftime("%H:%M:%S %d/%m")}]")
+    # cprint(f"gọi lần {n} : [{datetime.now().strftime("%H:%M:%S %d/%m")}]")
     
     # data = GLOBAL.ENTRADE_CLIENT.GetBars(GLOBAL.VN30F1M,"5",1)
 
-    # print(f"data : {len(data)} candles")
-    # print(f" getBars: {data}")
-    # print("5 phút gần nhất:", data[-5:])
-    # print(tabulate(
+    # cprint(f"data : {len(data)} candles")
+    # cprint(f" getBars: {data}")
+    # cprint("5 phút gần nhất:", data[-5:])
+    # cprint(tabulate(
     #     data[-5:],
     #     headers=['Open', 'High', 'Low', 'Close', 'Volume'],
     #     tablefmt='fancy_grid'
@@ -220,19 +221,19 @@ def OnBarClosed():
 
 
     # Visualize data - for testing data processing
-    # print(tabulate(
+    # cprint(tabulate(
     #     HISTORY['m1'][-5:],
     #     headers=['Timestamp', 'Open', 'High', 'Low', 'Close', 'Volume'],
     #     tablefmt='fancy_grid'
     # ))
 
-    # print(tabulate(
+    # cprint(tabulate(
     #     HISTORY['m3'][-5:],
     #     headers=['Timestamp', 'Open', 'High', 'Low', 'Close', 'Volume'],
     #     tablefmt='fancy_grid'
     # ))
 
-    # print(tabulate(
+    # cprint(tabulate(
     #     HISTORY['m5'][-5:],
     #     headers=['Timestamp', 'Open', 'High', 'Low', 'Close', 'Volume'],
     #     tablefmt='fancy_grid'

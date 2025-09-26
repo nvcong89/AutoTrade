@@ -9,7 +9,7 @@ from timezone_utils import is_trading_time_vietnam
 
 
 
-class pBot:
+class pyBot:
     def __init__(self, name: str):
         self.name = name
         self.is_active = True
@@ -58,12 +58,14 @@ class pBot:
         with open(self.log_file, 'w') as f:
             f.write(f"Log for {self.name}\n")
             f.write("="*50 + "\n")
+
     def log(self, message):
         if self.debug:
             # print(message)
             pass
         with open(self.log_file, 'a') as f:
-            f.write(f"{datetime.now().strftime("%H:%M:%S %d/%m")} - {message}\n")
+            ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            f.write(f"[{ts}] - {message}\n")
     
     def Update(self):
         '''
@@ -98,12 +100,12 @@ class pBot:
             print(80*"=")
             print(f"Deal info from bot {self.name}:")
             print(f"Order id: {self.order_id}")
-            print(f"Entry price: {round(self.order_entryprice,1)}")
-            print(f"Position: {self.position} ")
-            print(f"Open Quantity: {self.orderQuantity}")
-            print(f"Order Side: {self.order_side}")
-            print(f"Current Price: {round(tickprice,1)}")
-            print(f"Latest matched volume: {tickVol}")
+            print(f"Entry price: {round(self.order_entryprice,1) if self.order_entryprice is not None else "N/A"}")
+            print(f"Position: {self.position if self.position is not None else "N/A"}")
+            print(f"Open Quantity: {self.orderQuantity if self.orderQuantity is not None else "N/A"}")
+            print(f"Order Side: {self.order_side if self.order_side is not None else "N/A"}")
+            print(f"Current Price: {round(tickprice,1) if tickprice is not None else "N/A"}")
+            print(f"Latest matched volume: {tickVol if tickVol is not None else "N/A"}")
             print(f"Estimated P/L: {round((tickprice-self.order_entryprice)*self.orderQuantity*contractFactor if self.position=='BUY' else (self.order_entryprice - tickprice)*self.orderQuantity*contractFactor if self.position=='SELL' else 0,0):,.0f} VND")
             print(80*"=")
         except:

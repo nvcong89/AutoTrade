@@ -1,10 +1,18 @@
+from datetime import datetime, timedelta
 import time
+import os
 from requests import get, post, delete
 from time import localtime
+from Utils import cprint
 from logger_config import setup_logger, get_trading_logger, log_trade_action, log_error_with_context
+import json
+from typing import Optional, Dict
+from mail_reader import getOTP
 
 class DNSEClient:
     def __init__(self):
+        self.gmailDNSE = None
+        self.passwordDNSE=None
         self.token = None
         self.trading_token = None   #Trading token sẽ được sử dụng trong các API chỉnh sửa dữ liệu: đặt lệnh, huỷ lệnh
         self.investor_id = None #mã tài khoản
@@ -451,3 +459,118 @@ class DNSEClient:
         response = get(url, headers=_headers)
         response.raise_for_status()
         return response.json()
+
+    def GetPP0(self, loan_package_id, account_no=None):
+        """Lấy thông tin PP0 (cọc còn lại)"""
+        account = account_no or self.account_no or "0001910385"
+        if not account:
+            raise ValueError("Account number is required")
+            
+        _headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {self.token}"
+        }
+        
+        params = {
+            "loanPackageId": loan_package_id,
+            "accountNo": account
+        }
+
+        url = f"{self.base_url}derivative-core/ppse"
+        response = get(url, headers=_headers, params=params)
+        response.raise_for_status()
+        return response.json()
+    
+    def save_token_json(self):
+        """
+        Hàm dùng để lưu token và thời gian lấy token ra file json.
+        """
+        fileName ='token_dnse.json'
+        # Lấy đường dẫn tuyệt đối của thư mục hiện tại
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        file_path = os.path.join(current_dir, fileName)
+        
+        data = {
+            "token" : {"createdTime" : datetime.now().isoformat(),
+                       "token" : self.token},      # thời gian, token
+            "trading_token" : {"createdTime" : datetime.now().isoformat(),
+                       "trading_token" : self.trading_token}   # thời gian, token
+        }
+
+        try:
+            
+            with open(file_path, 'w', encoding='utf-8') as f:
+                json.dump(data, f, indent=2)
+            cprint(f"Đã lưu token vào {file_path}")
+        except Exception as e:
+            cprint(f"Lỗi khi lưu token: {e}", "ERROR")
+            pass
+
+        
+
+    def read_token_json(self):
+        """
+        Hàm dùng để đọc token và thời gian tạo token từ file json.
+        """
+        fileName ='token_dnse.json'
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        file_path = os.path.join(current_dir, fileName)
+
+        try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                
+            if not all(key in data for key in ("token", "trading_token")):
+                raise ValueError("Thiếu trường bắt buộc trong file JSON")
+                
+            cprint(f"Đã đọc token từ {file_path}")
+            
+            return data
+            
+        except FileNotFoundError:
+            cprint(f"Không tìm thấy file {file_path}", "ERROR")
+        except json.JSONDecodeError:
+            cprint(f"File {file_path} không đúng định dạng JSON", "ERROR")
+        except Exception as e:
+            cprint(f"Lỗi khi đọc token: {str(e)}", "ERROR")
+            
+        return None
+
+    def validate_token(self):
+        try:
+            tokens = self.read_token_json()
+            token =tokens.get('token')['token']
+            trading_token = tokens.get('trading_token')['trading_token']
+
+            #kiểm tra thời gian hiệu lực của token
+            # Chuyển đổi thời gian
+            created_time = datetime.fromisoformat(tokens.get('token')["createdTime"])
+            current_time = datetime.now()
+            time_diff = current_time - created_time
+
+            if token and trading_token and time_diff < timedelta(hours = 7):
+                cprint(f"Đọc tokens từ file token_dnse.json.")
+                self.token = tokens.get('token')['token']
+                self.trading_token = tokens.get('trading_token')['trading_token']
+                cprint(f"Đọc xong tokens từ file token_dnse.json.")
+                cprint(f"Đăng nhập thành công! [DNSE]")
+            else:
+                self.Authenticate(self.gmailDNSE, self.passwordDNSE)
+                self.GetOTP() #gửi mã OTP về email
+                self.readSmartOTP(getOTP())
+                self.GetTradingToken(self.OTP)
+                cprint(f"Đang lưu token ra file token_dnse.json...")
+                self.save_token_json()
+                cprint(f"Đã lưu token ra file token_dnse.json.")
+
+        except Exception as e:
+            cprint(f"[DNSE] Đang đăng nhập...")
+            self.Authenticate(self.gmailDNSE, self.passwordDNSE)
+            self.GetOTP() #gửi mã OTP về email
+            self.readSmartOTP(getOTP())
+            self.GetTradingToken(self.OTP)
+            cprint(f"Đang lưu token ra file token_dnse.json...")
+            self.save_token_json()
+            cprint(f"Đã lưu token ra file token_dnse.json.")
+            pass
+            

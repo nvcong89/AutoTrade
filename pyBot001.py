@@ -1,11 +1,11 @@
 from time import time
 import GLOBAL
 # from GLOBAL import ENTRADE_CLIENT, DNSE_CLIENT
-from pBot import pBot
+from pyBot import pyBot
 import pandas as pd
 import numpy as np
 import ta
-from Utils import *
+from Utils import*
 
 
 
@@ -20,7 +20,7 @@ Each bot should have its own entry point and be able to run independently.
 '''
 
 
-class pBotMACD(pBot):
+class pyBotMACD(pyBot):
     def __init__(self, name = "MACD_Bot", 
                  description: str = "This is a sample bot that uses MACD indicator to trade.",
                  version: str = "1.0",
@@ -67,12 +67,13 @@ class pBotMACD(pBot):
             # kiểm tra bot có đang trong giờ giao dịch không
             # if not self.is_trading_time():
             #     self.log("Outside trading hours. Bot is inactive.")
-            #     print("Outside trading hours. Bot is inactive.")
+            #     cprint("Outside trading hours. Bot is inactive.")
             #     return
             
             #kiểm tra xem số hđ đang mở đang active (mở) đã vượt quá số lượng cho phép chưa ?
             if self.getTotalOpenQuanity_DNSE() >= self.maxOpenTrades:
-                print(f"Số lượng hợp đồng đang mở đã đạt số lượng tối đa [{self.maxOpenTrades} HĐ] cho phép.")
+                self.log(f"Số lượng hợp đồng đang mở đã đạt số lượng tối đa [{self.maxOpenTrades} HĐ] cho phép.")
+                cprint(f"Số lượng hợp đồng đang mở đã đạt số lượng tối đa [{self.maxOpenTrades} HĐ] cho phép.")
                 return
 
             #cập nhật các biến động như tổng số hđ hiện tại vào trong bot, trước khi tính netprofit
@@ -91,14 +92,16 @@ class pBotMACD(pBot):
             if action is not None:
                 try:
                     self.log(f"Signal detected: {action}")
-                    print(f"Signal detected: {action}")
+                    cprint(f"Signal detected: {action}")
                     
                     if self.tradingPlatform.upper() == "DNSE":
+                        self.log(f"Trading platform used : DNSE")
                         self.execute_trade_DNSE(action)
                     else:
+                        self.log(f"Trading platform used : ENDTRADE")
                         self.execute_trade_entrade(action)
                 except Exception as e:
-                    print(f"Lỗi khi đặt lệnh: {e}")
+                    cprint(f"Lỗi khi đặt lệnh: {e}")
                     pass
     
     def check_for_signals(self):
@@ -108,7 +111,7 @@ class pBotMACD(pBot):
         Nếu không có tín hiệu thì trả về None
         '''
         #kiểm tra chuỗi data có đủ dài để tính toán indicator không
-        print(f"Data length for {self.timeframe}: {len(self.marketData[self.timeframe])}")
+        cprint(f"Data length for {self.timeframe}: {len(self.marketData[self.timeframe])}")
 
         if self.marketData is None or len(self.marketData[self.timeframe]) < self.macd_long_window:
             self.log("Not enough data to check for signals.")
@@ -160,6 +163,7 @@ class pBotMACD(pBot):
                 self.last_RSI >= self.lowerBound and 
                 self.last_ADX > self.levelADXBuy):
                 action = "BUY"
+                self.log(f"Tín hiệu {action} |last_macd ={self.last_macd}|last_signal={self.last_signal}|last_RSI={self.last_RSI}|last_ADX={self.last_ADX}")
                 
             # Điều kiện bán
             elif ((self.cross(signal,macd) and self.last_RSI <= self.upperBound)
@@ -168,18 +172,21 @@ class pBotMACD(pBot):
                         self.cross(45, rsi)
                     )):
                 action = "SELL"
+                self.log(f"Tín hiệu {action} |last_macd ={self.last_macd}|last_signal={self.last_signal}|last_RSI={self.last_RSI}|last_ADX={self.last_ADX}")
 
             # Điều kiện đóng mua
             elif (self.position == "BUY" and 
                     (self.last_macd < self.last_signal or 
                     self.last_RSI > self.upperBound)):
                 action = "CLOSEBUY"
+                self.log(f"Tín hiệu {action} |last_macd ={self.last_macd}|last_signal={self.last_signal}|last_RSI={self.last_RSI}|last_ADX={self.last_ADX}")
 
             # Điều kiện đóng bán
             elif (self.position == "SELL" and 
                     (self.last_macd > self.last_signal or 
                     self.last_RSI < self.lowerBound)):
                 action = "CLOSESELL"
+                self.log(f"Tín hiệu {action} |last_macd ={self.last_macd}|last_signal={self.last_signal}|last_RSI={self.last_RSI}|last_ADX={self.last_ADX}")
             else:
                 action = None  # Không có tín hiệu
             return action
@@ -203,47 +210,45 @@ class pBotMACD(pBot):
 
 
         if action == "BUY":
-            if self.position != "BUY":
-                self.log("Executing BUY order")
-                # Thực hiện lệnh mua ở đây
-                result = GLOBAL.ENTRADE_CLIENT.Order(GLOBAL.VN30F1M, "NB", self.orderPrice, None, self.trade_size, self.orderPriceType, is_demo)
-                
-                try:
-                    self.position = "BUY"
-                    deals = GLOBAL.ENTRADE_CLIENT.GetActiveDeals()
-                    print(f"Active deals after BUY: {deals}")
-                    for deal in deals:
-                        self.order_id = deal.get("id")
-                        self.order_entryprice = deal.get("breakEvenPrice")
-                        self.order_side = deal.get("side")
-                        self.orderQuantity = deal.get("openQuantity")
-                except:
-                    pass
-            else:
-                self.log("Already in LONG position, no action taken.")
-        elif action == "SELL":
-            if self.position != "SELL":
-                self.log("Executing SELL order")
-                # Thực hiện lệnh bán ở đây
-                result = GLOBAL.ENTRADE_CLIENT.Order(GLOBAL.VN30F1M, "NS", self.orderPrice, None, self.trade_size, self.orderPriceType, is_demo)
 
-                try:
-                    self.position = "SELL"
-                    deals = GLOBAL.ENTRADE_CLIENT.GetActiveDeals()
-                    print(f"Active deals after BUY: {deals}")
-                    for deal in deals:
-                        self.order_id = deal.get("id")
-                        self.order_entryprice = deal.get("breakEvenPrice")
-                        self.order_side = deal.get("side")
-                        self.orderQuantity = deal.get("openQuantity")
-                except:
-                    pass
-            else:
-                self.log("Already in SHORT position, no action taken.")
+            self.log(f"[ENDTRADE] Thực hiện đặt {self.trade_size} hợp đồng LONG tại giá {self.orderPrice}")
+            # Thực hiện lệnh mua ở đây
+            result = GLOBAL.ENTRADE_CLIENT.Order(GLOBAL.VN30F1M, "NB", self.orderPrice, None, self.trade_size, self.orderPriceType, is_demo)
+            
+            try:
+                self.position = "BUY"
+                deals = GLOBAL.ENTRADE_CLIENT.GetActiveDeals()
+                cprint(f"Active deals after BUY: {deals}")
+                for deal in deals:
+                    self.order_id = deal.get("id")
+                    self.order_entryprice = deal.get("breakEvenPrice")
+                    self.order_side = deal.get("side")
+                    self.orderQuantity = deal.get("openQuantity")
+            except:
+                pass
+
+        elif action == "SELL":
+            
+            self.log(f"[ENDTRADE] Thực hiện đặt {self.trade_size} hợp đồng SHORT tại giá {self.orderPrice}")
+            # Thực hiện lệnh bán ở đây
+            result = GLOBAL.ENTRADE_CLIENT.Order(GLOBAL.VN30F1M, "NS", self.orderPrice, None, self.trade_size, self.orderPriceType, is_demo)
+
+            try:
+                self.position = "SELL"
+                deals = GLOBAL.ENTRADE_CLIENT.GetActiveDeals()
+                cprint(f"Active deals after BUY: {deals}")
+                for deal in deals:
+                    self.order_id = deal.get("id")
+                    self.order_entryprice = deal.get("breakEvenPrice")
+                    self.order_side = deal.get("side")
+                    self.orderQuantity = deal.get("openQuantity")
+            except:
+                pass
+
                 
         elif action == "CLOSEBUY":
             if self.position == "BUY":
-                self.log("Closing BUY position")
+                self.log(f"[ENDTRADE] Đóng tất cả các lệnh, lý do = {action}")
                 # Thực hiện lệnh đóng mua ở đây
                 result = GLOBAL.ENTRADE_CLIENT.CloseAllDeals(is_demo)
                 self.position = None
@@ -256,7 +261,7 @@ class pBotMACD(pBot):
 
         elif action == "CLOSESELL":
             if self.position == "SELL":
-                self.log("Closing SELL position")
+                self.log(f"[ENDTRADE] Đóng tất cả các lệnh, lý do = {action}")
                 # Thực hiện lệnh đóng mua ở đây
                 result = GLOBAL.ENTRADE_CLIENT.CloseAllDeals(is_demo)
                 self.position = None
@@ -284,58 +289,59 @@ class pBotMACD(pBot):
 
 
         if action == "BUY":
-            if self.position != "BUY":
-                self.log("Executing BUY order")
-                # Thực hiện lệnh mua ở đây
-                result = GLOBAL.DNSE_CLIENT.Order( symbol=self.symbol,
-                                                   account = self.accountNo,
-                                                   side = "NB",
-                                                   price = self.orderPrice,
-                                                   loan = self.loanpackageid,
-                                                   volume = self.trade_size,
-                                                    order_type = self.orderPriceType)
                 
-                try:
-                    self.position = "BUY"
-                    deals = GLOBAL.ENTRADE_CLIENT.GetActiveDeals()
-                    # print(f"Active deals after BUY: {deals}")
-                    for deal in deals:
-                        self.order_id = deal.get("id")
-                        self.order_entryprice = deal.get("breakEvenPrice")
-                        self.order_side = deal.get("side")
-                        self.orderQuantity = deal.get("openQuantity")
-                except:
-                    pass
-            else:
-                self.log("Already in LONG position, no action taken.")
-        elif action == "SELL":
-            if self.position != "SELL":
-                self.log("Executing SELL order")
-                # Thực hiện lệnh bán ở đây
-                result = GLOBAL.DNSE_CLIENT.Order( symbol=self.symbol,
-                                                   account = self.accountNo,
-                                                   side = "NS",
-                                                   price = self.orderPrice,
-                                                   loan = self.loanpackageid,
-                                                   volume = self.trade_size,
-                                                    order_type = self.orderPriceType)
+            self.log(f"[DNSE] Thực hiện đặt {self.trade_size} hợp đồng LONG tại giá {self.orderPrice}")
+            # Thực hiện lệnh mua ở đây
+            result = GLOBAL.DNSE_CLIENT.Order( symbol=self.symbol,
+                                                account = self.accountNo,
+                                                side = "NB",
+                                                price = self.orderPrice,
+                                                loan = self.loanpackageid,
+                                                volume = self.trade_size,
+                                                order_type = self.orderPriceType)
+            
+            try:
+                self.position = "BUY"
+                deals = GLOBAL.ENTRADE_CLIENT.GetActiveDeals()
+                # cprint(f"Active deals after BUY: {deals}")
+                for deal in deals:
+                    self.order_id = deal.get("id")
+                    self.order_entryprice = deal.get("breakEvenPrice")
+                    self.order_side = deal.get("side")
+                    self.orderQuantity = deal.get("openQuantity")
+            except:
+                pass
 
-                try:
-                    self.position = "SELL"
-                    deals = GLOBAL.ENTRADE_CLIENT.GetActiveDeals()
-                    print(f"Active deals after BUY: {deals}")
-                    for deal in deals:
-                        self.order_id = deal.get("id")
-                        self.order_entryprice = deal.get("breakEvenPrice")
-                        self.order_side = deal.get("side")
-                        self.orderQuantity = deal.get("openQuantity")
-                except:
-                    pass
-            else:
-                self.log("Already in SHORT position, no action taken.")
+        elif action == "SELL":
+
+            self.log(f"[DNSE] Thực hiện đặt {self.trade_size} hợp đồng SHORT tại giá {self.orderPrice}")
+            cprint(f"[DNSE] Thực hiện đặt {self.trade_size} hợp đồng SHORT tại giá {self.orderPrice}")
+            # Thực hiện lệnh bán ở đây
+            result = GLOBAL.DNSE_CLIENT.Order( symbol=self.symbol,
+                                                account = self.accountNo,
+                                                side = "NS",
+                                                price = self.orderPrice,
+                                                loan = self.loanpackageid,
+                                                volume = self.trade_size,
+                                                order_type = self.orderPriceType)
+
+            try:
+                self.position = "SELL"
+                deals = GLOBAL.ENTRADE_CLIENT.GetActiveDeals()
+                # cprint(f"Active deals after BUY: {deals}")
+                for deal in deals:
+                    self.order_id = deal.get("id")
+                    self.order_entryprice = deal.get("breakEvenPrice")
+                    self.order_side = deal.get("side")
+                    self.orderQuantity = deal.get("openQuantity")
+            except:
+                pass
+
                 
         elif action == "CLOSEBUY":
             # Thực hiện lệnh đóng mua ở đây
+                self.log(f"[DNSE] Đóng tất cả các lệnh, lý do = {action}")
+                cprint(f"[DNSE] Đóng tất cả các lệnh, lý do = {action}")
                 result = GLOBAL.DNSE_CLIENT.CloseAllDeals()
                 self.position = None
                 self.order_entryprice = None
@@ -345,6 +351,8 @@ class pBotMACD(pBot):
 
         elif action == "CLOSESELL":
             # Thực hiện lệnh đóng mua ở đây
+                self.log(f"[DNSE] Đóng tất cả các lệnh, lý do = {action}")
+                cprint(f"[DNSE] Đóng tất cả các lệnh, lý do = {action}")
                 result = GLOBAL.DNSE_CLIENT.CloseAllDeals()
                 self.position = None
                 self.order_entryprice = None
@@ -367,9 +375,9 @@ class pBotMACD(pBot):
 
 # if __name__ == "__main__":
     # df = generate_market_data()
-    # bot = pBotMACD()
+    # bot = pyBotMACD()
     # bot.timeframe = "m1"
     # bot.marketData = df
     # bot.trade_size =1
     # bot.run()
-    # bot.print_dealBot()
+    # bot.cprint_dealBot()

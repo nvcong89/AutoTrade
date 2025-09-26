@@ -2,6 +2,7 @@ import logic_processor as lp
 import GLOBAL
 from requests import get
 from time import time
+from Utils import*
 
 
 
@@ -42,7 +43,7 @@ current_bars = {tf: None for tf in TIME_FRAMES} # Bar đang hình thành của c
 def InitializeData():
     global HISTORY, current_bars, last_ts
 
-    print(f"working timeframe: {GLOBAL.WORKING_TIMEFRAME}")
+    cprint(f"Working TimeFrame: {GLOBAL.WORKING_TIMEFRAME}")
 
     base_tf = 'm1'
     last_ts = int(time())
@@ -152,7 +153,7 @@ def UpdateOHLCVData(new_data):
             lp.OnBarClosed()
         else:
             if new_ts >= current_bars[GLOBAL.WORKING_TIMEFRAME]['ts']:
-                print(f"new_ts >= current_bars[GLOBAL.WORKING_TIMEFRAME]['ts'], Running OnBarClosed()")
+                # cprint(f"new_ts >= current_bars[GLOBAL.WORKING_TIMEFRAME]['ts'], Running OnBarClosed()")
                 lp.OnBarClosed()
     
     

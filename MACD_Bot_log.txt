@@ -1,6 +1,7 @@
 Log for MACD_Bot
 ==================================================
-16:46:17 26/09 - Bot MACD_Bot initialized.
-16:46:17 26/09 - Bot MACD_Bot started.
-16:46:20 26/09 - Signal detected: BUY
-16:46:20 26/09 - Executing BUY order
+[2025-09-27 00:43:37] - Bot MACD_Bot initialized.
+[2025-09-27 00:43:37] - Bot MACD_Bot started.
+[2025-09-27 00:44:19] - Error in signal calculation: 'charmap' codec can't encode character '\u1ec7' in position 30: character maps to <undefined>
+[2025-09-27 00:44:19] - Signal detected: BUY
+[2025-09-27 00:44:19] - Trading platform used : DNSE

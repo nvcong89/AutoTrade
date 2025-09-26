@@ -149,3 +149,30 @@ TypeError: log_trade_action() missing 1 required positional argument: 'symbol'
 [2025-09-26 16:43:33] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
 [2025-09-26 16:45:51] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
 [2025-09-26 16:45:52] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 20:46:25] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 20:47:00] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 20:47:00] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 20:48:30] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 20:48:31] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 20:58:16] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 20:58:17] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 21:19:13] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 21:19:13] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 21:25:05] AutoTrade - INFO - Logger 'AutoTrade' initialized with daily rotation
+[2025-09-26 21:25:06] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 21:34:53] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-26 21:34:53] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 21:45:58] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-26 21:45:59] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 22:14:47] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-26 22:14:47] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 22:27:44] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-26 22:27:45] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 22:45:51] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-26 22:45:51] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 23:25:21] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-26 23:25:22] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 23:36:02] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-26 23:36:03] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-26 23:57:08] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-26 23:57:08] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
