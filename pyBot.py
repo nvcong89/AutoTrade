@@ -6,6 +6,8 @@ import os
 # from time import time
 import pandas as pd
 from timezone_utils import is_trading_time_vietnam
+from logger_config import setup_logger
+import logging
 
 
 
@@ -47,26 +49,14 @@ class pyBot:
         self.stop_loss = 1000  # Stop loss in points
         self.take_profit = 1000  # Take profit in points
         self.order_id = None  # Current order ID
+
         self.debug = True  # Enable debug mode for detailed logging
-        self.log_file = f"{self.name}_log.txt"
-        self.init_log()
-        self.log(f"Bot {self.name} initialized.")
-        self.log(f"Bot {self.name} started.")
-    
-    def init_log(self):
 
-        with open(self.log_file, 'w') as f:
-            f.write(f"Log for {self.name}\n")
-            f.write("="*50 + "\n")
+        # Setup logger
+        self.logger = setup_logger("SMARTBOT", logging.DEBUG)
+        self.logger.info(f"Khởi tạo bot: {self.name}")
 
-    def log(self, message):
-        if self.debug:
-            # print(message)
-            pass
-        with open(self.log_file, 'a') as f:
-            ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            f.write(f"[{ts}] - {message}\n")
-    
+
     def Update(self):
         '''
         Mục đích : Update liên tục vào trong bot các giá tick hiện thời, tick volume hiện thời và spread hiện thời

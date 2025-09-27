@@ -4,6 +4,12 @@ import ssl
 import json
 import paho.mqtt.client as mqtt
 from random import randint
+import logging
+from logger_config import setup_logger
+
+
+# Khởi tạo logger
+logger = setup_logger('[MQTT Connector]', logging.INFO)
 
 # Configuration
 config = ReadConfig()
@@ -18,7 +24,7 @@ client_id = f"{CLIENT_ID_PREFIX}{randint(1000, 2000)}"
 def on_connect(client, userdata, flags, rc, properties):
     '''MQTTv5 connection callback'''
     if rc == 0 and client.is_connected():
-        print("Connected to MQTT Broker!")
+        logger.info("Connected to MQTT Broker!")
         # Modify topics as needed
         client.subscribe(config["ohlc_data_topic"], qos=1)
 

@@ -4,6 +4,8 @@ import os
 from datetime import datetime
 from pathlib import Path
 from timezone_utils import get_vietnam_now
+from colorlog import ColoredFormatter
+
 
 class VietnamTimeFormatter(logging.Formatter):
     """Custom formatter that uses Vietnam timezone for timestamps"""
@@ -47,11 +49,31 @@ def setup_logger(name="AutoTrade-CONG NGUYEN", log_level=logging.INFO):
         datefmt='%Y-%m-%d %H:%M:%S'
     )
     
-    # Console Handler
+    # 🎨 Formatter có màu cho console
+    color_formatter = ColoredFormatter(
+        fmt='%(log_color)s[%(asctime)s] %(name)s - %(levelname)s - %(message)s',
+        datefmt='%Y-%m-%d %H:%M:%S',
+        log_colors={
+            'DEBUG': 'cyan',
+            'INFO': 'green',
+            'WARNING': 'yellow',
+            'ERROR': 'red',
+            'CRITICAL': 'bold_red',
+        }
+    )
+
+    # Console Handler với màu sắc
     console_handler = logging.StreamHandler()
     console_handler.setLevel(logging.INFO)
-    console_handler.setFormatter(formatter)
+    console_handler.setFormatter(color_formatter)
     logger.addHandler(console_handler)
+
+
+    # Console Handler
+    # console_handler = logging.StreamHandler()
+    # console_handler.setLevel(logging.INFO)
+    # console_handler.setFormatter(formatter)
+    # logger.addHandler(console_handler)
     
     # File Handler với daily rotation (sử dụng Vietnam timezone)
     today = get_vietnam_now().strftime("%Y-%m-%d")

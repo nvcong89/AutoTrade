@@ -1,3 +1,5 @@
+import logging
+from logger_config import setup_logger
 import logic_processor as lp
 import GLOBAL
 from requests import get
@@ -41,9 +43,10 @@ current_bars = {tf: None for tf in TIME_FRAMES} # Bar đang hình thành của c
 
 # ======== CẢI TIẾN HÀM INITIALIZE ========
 def InitializeData():
-    global HISTORY, current_bars, last_ts
+    global HISTORY, current_bars, last_ts, logger
+    logger = setup_logger("[Data Processor]", logging.INFO)
 
-    cprint(f"Working TimeFrame: {GLOBAL.WORKING_TIMEFRAME}")
+    logger.info(f"Working TimeFrame: {GLOBAL.WORKING_TIMEFRAME}")
 
     base_tf = 'm1'
     last_ts = int(time())
@@ -81,10 +84,10 @@ def InitializeData():
             }
     
     GLOBAL.MARKETDATA = HISTORY
-    print("Successfully initialized multi-timeframe data:")
+    logger.info("Successfully initialized multi-timeframe data:")
     for tf in TIME_FRAMES:
-        print(f"{tf}: {len(HISTORY[tf])} candles")
-    print("===================================")
+        logger.info(f"{tf}: {len(HISTORY[tf])} candles")
+    print("-"*80)
     lp.OnStart() # DO NOT REMOVE
 
 

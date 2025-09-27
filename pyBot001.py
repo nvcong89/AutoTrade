@@ -66,14 +66,14 @@ class pyBotMACD(pyBot):
         if self.is_active:
             # kiểm tra bot có đang trong giờ giao dịch không
             # if not self.is_trading_time():
-            #     self.log("Outside trading hours. Bot is inactive.")
+            #     self.logger.info("Outside trading hours. Bot is inactive.")
             #     cprint("Outside trading hours. Bot is inactive.")
             #     return
             
             #kiểm tra xem số hđ đang mở đang active (mở) đã vượt quá số lượng cho phép chưa ?
             if self.getTotalOpenQuanity_DNSE() >= self.maxOpenTrades:
-                self.log(f"Số lượng hợp đồng đang mở đã đạt số lượng tối đa [{self.maxOpenTrades} HĐ] cho phép.")
-                cprint(f"Số lượng hợp đồng đang mở đã đạt số lượng tối đa [{self.maxOpenTrades} HĐ] cho phép.")
+                self.logger.info(f"Số lượng hợp đồng đang mở đã đạt số lượng tối đa [{self.maxOpenTrades} HĐ] cho phép.")
+                # cprint(f"Số lượng hợp đồng đang mở đã đạt số lượng tối đa [{self.maxOpenTrades} HĐ] cho phép.")
                 return
 
             #cập nhật các biến động như tổng số hđ hiện tại vào trong bot, trước khi tính netprofit
@@ -91,17 +91,16 @@ class pyBotMACD(pyBot):
 
             if action is not None:
                 try:
-                    self.log(f"Signal detected: {action}")
-                    cprint(f"Signal detected: {action}")
+                    self.logger.info(f"Signal detected: {action}")
                     
                     if self.tradingPlatform.upper() == "DNSE":
-                        self.log(f"Trading platform used : DNSE")
+                        self.logger.info(f"Trading platform used : DNSE")
                         self.execute_trade_DNSE(action)
                     else:
-                        self.log(f"Trading platform used : ENDTRADE")
+                        self.logger(f"Trading platform used : ENDTRADE")
                         self.execute_trade_entrade(action)
                 except Exception as e:
-                    cprint(f"Lỗi khi đặt lệnh: {e}")
+                    self.logger.error(f"Lỗi khi đặt lệnh: {e}")
                     pass
     
     def check_for_signals(self):
@@ -111,10 +110,10 @@ class pyBotMACD(pyBot):
         Nếu không có tín hiệu thì trả về None
         '''
         #kiểm tra chuỗi data có đủ dài để tính toán indicator không
-        cprint(f"Data length for {self.timeframe}: {len(self.marketData[self.timeframe])}")
+        self.logger.info(f"Độ dài chuỗi dữ liệu nến '{self.timeframe}': {len(self.marketData[self.timeframe])}")
 
         if self.marketData is None or len(self.marketData[self.timeframe]) < self.macd_long_window:
-            self.log("Not enough data to check for signals.")
+            self.logger.warning("Không đủ dữ liệu nến để kiểm tra tín hiệu cho bot.")
             return None
         
         # Tính toán Indicators
@@ -163,7 +162,7 @@ class pyBotMACD(pyBot):
                 self.last_RSI >= self.lowerBound and 
                 self.last_ADX > self.levelADXBuy):
                 action = "BUY"
-                self.log(f"Tín hiệu {action} |last_macd ={self.last_macd}|last_signal={self.last_signal}|last_RSI={self.last_RSI}|last_ADX={self.last_ADX}")
+                self.logger.info(f"Tín hiệu {action} |last_macd ={self.last_macd}|last_signal={self.last_signal}|last_RSI={self.last_RSI}|last_ADX={self.last_ADX}")
                 
             # Điều kiện bán
             elif ((self.cross(signal,macd) and self.last_RSI <= self.upperBound)
@@ -172,26 +171,26 @@ class pyBotMACD(pyBot):
                         self.cross(45, rsi)
                     )):
                 action = "SELL"
-                self.log(f"Tín hiệu {action} |last_macd ={self.last_macd}|last_signal={self.last_signal}|last_RSI={self.last_RSI}|last_ADX={self.last_ADX}")
+                self.logger.info(f"Tín hiệu {action} |last_macd ={self.last_macd}|last_signal={self.last_signal}|last_RSI={self.last_RSI}|last_ADX={self.last_ADX}")
 
             # Điều kiện đóng mua
             elif (self.position == "BUY" and 
                     (self.last_macd < self.last_signal or 
                     self.last_RSI > self.upperBound)):
                 action = "CLOSEBUY"
-                self.log(f"Tín hiệu {action} |last_macd ={self.last_macd}|last_signal={self.last_signal}|last_RSI={self.last_RSI}|last_ADX={self.last_ADX}")
+                self.logger.info(f"Tín hiệu {action} |last_macd ={self.last_macd}|last_signal={self.last_signal}|last_RSI={self.last_RSI}|last_ADX={self.last_ADX}")
 
             # Điều kiện đóng bán
             elif (self.position == "SELL" and 
                     (self.last_macd > self.last_signal or 
                     self.last_RSI < self.lowerBound)):
                 action = "CLOSESELL"
-                self.log(f"Tín hiệu {action} |last_macd ={self.last_macd}|last_signal={self.last_signal}|last_RSI={self.last_RSI}|last_ADX={self.last_ADX}")
+                self.logger.info(f"Tín hiệu {action} |last_macd ={self.last_macd}|last_signal={self.last_signal}|last_RSI={self.last_RSI}|last_ADX={self.last_ADX}")
             else:
                 action = None  # Không có tín hiệu
             return action
         except Exception as e:
-            self.log(f"Error in signal calculation: {e}")
+            self.logger.error(f"Error in signal calculation: {e}")
             return None
         
     
@@ -208,17 +207,16 @@ class pyBotMACD(pyBot):
         else:
             self.orderPrice = self.marketData[self.timeframe][4]  # Lấy giá đóng cửa mới nhất
 
-
         if action == "BUY":
 
-            self.log(f"[ENDTRADE] Thực hiện đặt {self.trade_size} hợp đồng LONG tại giá {self.orderPrice}")
+            self.logger.info(f"[ENDTRADE] Thực hiện đặt {self.trade_size} hợp đồng LONG tại giá {self.orderPrice if self.orderPrice is not None else 'MTL'}")
             # Thực hiện lệnh mua ở đây
             result = GLOBAL.ENTRADE_CLIENT.Order(GLOBAL.VN30F1M, "NB", self.orderPrice, None, self.trade_size, self.orderPriceType, is_demo)
             
             try:
                 self.position = "BUY"
                 deals = GLOBAL.ENTRADE_CLIENT.GetActiveDeals()
-                cprint(f"Active deals after BUY: {deals}")
+                # self.logger.info(f"Active deals after BUY: {deals}")
                 for deal in deals:
                     self.order_id = deal.get("id")
                     self.order_entryprice = deal.get("breakEvenPrice")
@@ -229,14 +227,14 @@ class pyBotMACD(pyBot):
 
         elif action == "SELL":
             
-            self.log(f"[ENDTRADE] Thực hiện đặt {self.trade_size} hợp đồng SHORT tại giá {self.orderPrice}")
+            self.logger(f"[ENDTRADE] Thực hiện đặt {self.trade_size} hợp đồng SHORT tại giá {self.orderPrice if self.orderPrice is not None else 'MTL'}")
             # Thực hiện lệnh bán ở đây
             result = GLOBAL.ENTRADE_CLIENT.Order(GLOBAL.VN30F1M, "NS", self.orderPrice, None, self.trade_size, self.orderPriceType, is_demo)
 
             try:
                 self.position = "SELL"
                 deals = GLOBAL.ENTRADE_CLIENT.GetActiveDeals()
-                cprint(f"Active deals after BUY: {deals}")
+                # cprint(f"Active deals after BUY: {deals}")
                 for deal in deals:
                     self.order_id = deal.get("id")
                     self.order_entryprice = deal.get("breakEvenPrice")
@@ -248,7 +246,7 @@ class pyBotMACD(pyBot):
                 
         elif action == "CLOSEBUY":
             if self.position == "BUY":
-                self.log(f"[ENDTRADE] Đóng tất cả các lệnh, lý do = {action}")
+                self.logger.info(f"[ENDTRADE] Đóng tất cả các lệnh, lý do = {action}")
                 # Thực hiện lệnh đóng mua ở đây
                 result = GLOBAL.ENTRADE_CLIENT.CloseAllDeals(is_demo)
                 self.position = None
@@ -257,11 +255,11 @@ class pyBotMACD(pyBot):
                 self.order_side = None
                 self.orderQuantity = None
             else:
-                self.log("No BUY position to close.")
+                self.logger.error("No BUY position to close.")
 
         elif action == "CLOSESELL":
             if self.position == "SELL":
-                self.log(f"[ENDTRADE] Đóng tất cả các lệnh, lý do = {action}")
+                self.logger.info(f"[ENDTRADE] Đóng tất cả các lệnh, lý do = {action}")
                 # Thực hiện lệnh đóng mua ở đây
                 result = GLOBAL.ENTRADE_CLIENT.CloseAllDeals(is_demo)
                 self.position = None
@@ -270,9 +268,9 @@ class pyBotMACD(pyBot):
                 self.order_side = None
                 self.orderQuantity = None
             else:
-                self.log("No SELL position to close.")
+                self.logger.info("No SELL position to close.")
         else:
-            self.log("No valid action to execute.")
+            self.logger.info("No valid action to execute.")
     
     def execute_trade_DNSE(self, action):
         '''
@@ -290,7 +288,7 @@ class pyBotMACD(pyBot):
 
         if action == "BUY":
                 
-            self.log(f"[DNSE] Thực hiện đặt {self.trade_size} hợp đồng LONG tại giá {self.orderPrice}")
+            self.logger.info(f"[DNSE] Thực hiện đặt {self.trade_size} hợp đồng LONG tại giá {self.orderPrice if self.orderPrice is not None else 'MTL'}")
             # Thực hiện lệnh mua ở đây
             result = GLOBAL.DNSE_CLIENT.Order( symbol=self.symbol,
                                                 account = self.accountNo,
@@ -314,7 +312,7 @@ class pyBotMACD(pyBot):
 
         elif action == "SELL":
 
-            self.log(f"[DNSE] Thực hiện đặt {self.trade_size} hợp đồng SHORT tại giá {self.orderPrice}")
+            self.logger.info(f"[DNSE] Thực hiện đặt {self.trade_size} hợp đồng SHORT tại giá {self.orderPrice if self.orderPrice is not None else 'MTL'}")
             cprint(f"[DNSE] Thực hiện đặt {self.trade_size} hợp đồng SHORT tại giá {self.orderPrice}")
             # Thực hiện lệnh bán ở đây
             result = GLOBAL.DNSE_CLIENT.Order( symbol=self.symbol,
@@ -340,7 +338,7 @@ class pyBotMACD(pyBot):
                 
         elif action == "CLOSEBUY":
             # Thực hiện lệnh đóng mua ở đây
-                self.log(f"[DNSE] Đóng tất cả các lệnh, lý do = {action}")
+                self.logger.info(f"[DNSE] Đóng tất cả các lệnh, lý do = {action}")
                 cprint(f"[DNSE] Đóng tất cả các lệnh, lý do = {action}")
                 result = GLOBAL.DNSE_CLIENT.CloseAllDeals()
                 self.position = None
@@ -351,7 +349,7 @@ class pyBotMACD(pyBot):
 
         elif action == "CLOSESELL":
             # Thực hiện lệnh đóng mua ở đây
-                self.log(f"[DNSE] Đóng tất cả các lệnh, lý do = {action}")
+                self.logger.info(f"[DNSE] Đóng tất cả các lệnh, lý do = {action}")
                 cprint(f"[DNSE] Đóng tất cả các lệnh, lý do = {action}")
                 result = GLOBAL.DNSE_CLIENT.CloseAllDeals()
                 self.position = None
@@ -360,7 +358,7 @@ class pyBotMACD(pyBot):
                 self.order_side = None
                 self.orderQuantity = None
         else:
-            self.log("No valid action to execute.")
+            self.logger.info("No valid action to execute.")
     
     def getTotalOpenQuanity_DNSE(self) -> int:
         '''

@@ -1,6 +1,5 @@
 from datetime import datetime
 import json
-
 import pandas as pd
 from agents.macd_agent import macd_agent
 from agents.rsi_ta import rsi_agent_ta
@@ -10,7 +9,10 @@ import GLOBAL
 from tabulate import tabulate
 import numpy as np
 from Utils import*
+from logger_config import setup_logger
+import logging
 from pyBot001 import pyBotMACD
+
 
 
 LastBidPrice = 0
@@ -35,8 +37,10 @@ supportPrice = 1820
 def OnStart():
 
     global bot  #khai báo biến global khởi tạo bot.
+    global logger #khai báo logger
 
-    
+    logger = setup_logger("[Logic_Processor]", logging.INFO)
+
 
     # Truy cập dữ liệu các TF
     # cprint(f"1 phút gần nhất: {GLOBAL.MARKETDATA['m1'][-5:]}")
@@ -44,26 +48,27 @@ def OnStart():
     # cprint(f"15 phút gần nhất: {GLOBAL.MARKETDATA['m15'][-5:]}")
 
     # Visualize data
-    cprint(f"Bảng data nến M1")
-    print(tabulate(
-        GLOBAL.MARKETDATA['m1'][-5:],
-        headers=['Timestamp', 'Open', 'High', 'Low', 'Close', 'Volume'],
-        tablefmt='fancy_grid'
-    ))
+    # cprint(f"Bảng data nến M1")
+    # logger.info(f"Bảng data nến M1")
+    # print(tabulate(
+    #     GLOBAL.MARKETDATA['m1'][-5:],
+    #     headers=['Timestamp', 'Open', 'High', 'Low', 'Close', 'Volume'],
+    #     tablefmt='fancy_grid'
+    # ))
     
-    cprint(f"Bảng data nến M3")
-    print(tabulate(
-        GLOBAL.MARKETDATA['m3'][-5:],
-        headers=['Timestamp', 'Open', 'High', 'Low', 'Close', 'Volume'],
-        tablefmt='fancy_grid'
-    ))
+    # logger.info(f"Bảng data nến M3")
+    # print(tabulate(
+    #     GLOBAL.MARKETDATA['m3'][-5:],
+    #     headers=['Timestamp', 'Open', 'High', 'Low', 'Close', 'Volume'],
+    #     tablefmt='fancy_grid'
+    # ))
     
-    cprint(f"Bảng data nến M5")
-    print(tabulate(
-        GLOBAL.MARKETDATA['m5'][-5:],
-        headers=['Timestamp', 'Open', 'High', 'Low', 'Close', 'Volume'],
-        tablefmt='fancy_grid'
-    ))
+    # logger.info(f"Bảng data nến M5")
+    # print(tabulate(
+    #     GLOBAL.MARKETDATA['m5'][-5:],
+    #     headers=['Timestamp', 'Open', 'High', 'Low', 'Close', 'Volume'],
+    #     tablefmt='fancy_grid'
+    # ))
 
     # cprint(f"Thông tin tài khoản [Endtrade]: \n {GLOBAL.ENTRADE_CLIENT.GetAccountInfo()}")
     # cprint(f"Thông tin tài khoản [DNSE]: \n {GLOBAL.DNSE_CLIENT.GetAccountInfo()}")
