@@ -33,10 +33,13 @@ class pyBot:
         self.starttradingtime = time(9,1)  # Start trading time, time object (tương đương 9:01 AM) defaut
         self.endtradingtime = time(14,29)    # End trading time, time object (tương đương 2:29 PM) defaut
         self.maxOpenTrades = 1  # Maximum number of open trades allowed
-        self.isTradingTime = False
+
+        self.isTradingTime = False  #có bật chế độ khống chế khoảng thời gian trade ko ?
+
         self.loanpackageid = None   # load package id
 
         self.marketData = None # Market data passed from pBot
+
         self.order_id = None  # Current order ID
         self.order_entryprice = None  # Entry price of the current order, giá mở lệnh, hoặc khớp lệnh
         self.order_side = None  # Side of the current order: "NB" or "NS"
@@ -51,6 +54,7 @@ class pyBot:
         self.isLong_currentdeal = None      # nếu deal đang mở trong sổ là Long, thì True
         self.isShort_currentdeal = None     # nếu đang mở trong sổ lệnh là SHORT, thì True
 
+        #Lưu các lệnh đang chờ
         self.pendingOrders = []     #danh sách các lệnh đang chờ
 
         self.unrealisedNetProfit = None #lưu giá trị net profit tạm thời
@@ -63,19 +67,39 @@ class pyBot:
 
         self.marketDepth = None # {'bid':[[giá],[khối lượng]], 'ask':[[giá],[khối lượng]]} 10 giá chờ bán + vol, 10 giá chờ mua + vol
 
+        #khối lượng dư mua, bán real time
         self.totalBidQuantity = None #tổng khối lượng dư mua
         self.totalAskQuantity = None #tổng khối lượng dư bán
 
+        #khối lượng mua, bán của nước ngoài
         self.totalBuy_foreign = 0 #tổng khối lượng mua của nước ngoài trong ngày
         self.totalSell_foreign = 0 # tổng khối lượng bán của nước ngoài trong ngày
 
+        #stop loss and take profit
         self.stop_loss = 1000  # Stop loss in points
         self.take_profit = 1000  # Take profit in points
         self.stoplossPrice = None   # Giá đóng lệnh cắt lỗ
         self.takeprofitPrice = None # giá đóng lệnh chốt lời
+
+        #trailing stop
+        self.isTrailingStop = False #bật trailing stop hay không
+        self.triggerDistance_trailingstop = None    #khoảng cách giá bắt dầu kích hoạt trailing stop
+        self.trailingDistance_trailingstop = None   # khoảng cách bắt đầu chạy trailing stop
+
+        #giá trần, sàn
         self.ceilingPrice = None #Giá trần trong ngày giao dịch
         self.floorPrice = None  #Giá sàn trong ngày giao dịch
 
+        #Chế độ DCA
+        self.isDCA = False #Bật hoặc tắt chế độ DCA, true, false
+        self.dca_distance = None    #float, khoảng cách mở lệnh DCA
+        self.dca_volumeType = 1     #int, 1 = khối lượng đi bằng lệnh đầu, 2 = khối lượng tăng thêm 1hđ ở lệnh sau, 3 = gấp thếp hợp đồng ở lệnh sau
+
+        self.firstDeal = None   # format: deal, thông tin của lệnh mở đầu tiên sẽ được lưu lại.
+        self.lastDeal = None    # format: deal, thông tin của lệnh mở cuối cùng sẽ được lưu lại
+
+
+        #Sưu tập các deal đang mở
         self.positions = [] # a list to collect active/opening deals
     
         self.debug = True  # Enable debug mode for detailed logging
@@ -200,8 +224,8 @@ class pyBot:
 
     def print_dealBot(self):
         try:
-            if not self.order_id:
-                self.logger.warning(f"Bot {self.name} has no active deals.")
+            if len(self.positions)==0:
+                self.logger.warning(f"Bot [{self.name}] has no active deals.")
                 
             contractFactor = 100000.0  # Hệ số hợp đồng 100,000 VNĐ/hđ
             tickprice = GLOBAL.LAST_TICK_PRICE
@@ -390,6 +414,7 @@ class pyBot:
                                                     loan = self.loanpackageid,
                                                     volume = self.trade_size,
                                                     order_type = self.orderPriceType)
+                
 
                 self.position = "BUY"
                 
@@ -399,6 +424,11 @@ class pyBot:
                 self.order_entryprice = deal.get("breakEvenPrice")
                 self.order_side = deal.get("side")
                 self.orderQuantity = deal.get("openQuantity")
+
+                #lưu lệnh mở đầu tiên
+                if self.firstDeal is None:
+                    self.firstDeal=deal
+                self.lastDeal = deal
 
             except Exception as e:
                 self.logger.error(f'Xảy ra lỗi: {e}')
@@ -423,6 +453,11 @@ class pyBot:
                 self.order_entryprice = deal.get("breakEvenPrice")
                 self.order_side = deal.get("side")
                 self.orderQuantity = deal.get("openQuantity")
+
+                #lưu lệnh mở đầu tiên
+                if self.firstDeal is None:
+                    self.firstDeal=deal
+                self.lastDeal = deal
 
             except:
                 self.logger.error(f'Xảy ra lỗi: {e}')

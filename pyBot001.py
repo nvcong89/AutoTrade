@@ -88,7 +88,7 @@ class pyBotMACD(pyBot):
             #kiểm tra tín hiệu mua/bán
             action = self.check_for_signals()
             
-            action = "BUY"  #for testing only
+            # action = "BUY"  #for testing only
 
             if action is not None:
                 try:

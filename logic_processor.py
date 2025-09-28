@@ -14,7 +14,7 @@ import logging
 from pyBot001 import pyBotMACD
 
 
-
+_createdtimeToken = None #DO NOT REMOVE
 _onstart = False    #DO NOT REMOVE
 
 
@@ -24,15 +24,25 @@ def OnStart(_onstart: bool = False):
     """
     Hàm xử lý, khai báo các biến đầu tiên khi bắt đầu bật bot. Chỉ chạy lần đầu tiên, sau tickdata đầu tiên.
     """
-
+    #=====================================================================
+    #DO NOT REMOVE
+    #=====================================================================
     if _onstart == True:    #kiểm tra đã chạy chưa, True là đã chạy.
         return
 
 
     global bot  #khai báo biến global khởi tạo bot.
     global logger #khai báo logger
+    global _createdtimeToken
+
+    if GLOBAL.DNSE_CLIENT:
+        _createdtimeToken = GLOBAL.DNSE_CLIENT.createdtimeToken         # datetime isoformat
 
     logger = setup_logger("[Logic_Processor]", logging.INFO)
+
+    #=====================================================================
+    #DO NOT REMOVE
+    #=====================================================================
 
 
     # Truy cập dữ liệu các TF
@@ -63,10 +73,9 @@ def OnStart(_onstart: bool = False):
     #     tablefmt='fancy_grid'
     # ))
 
-    # cprint(f"Thông tin tài khoản [Endtrade]: \n {GLOBAL.ENTRADE_CLIENT.GetAccountInfo()}")
-    # cprint(f"Thông tin tài khoản [DNSE]: \n {GLOBAL.DNSE_CLIENT.GetAccountInfo()}")
 
     #===========================================================
+    #BẮT ĐẦU KHAI BÁO THÔNG SỐ VÀ KHỞI TẠO BOT
     #===========================================================
     #khởi tạo bot
     bot = pyBotMACD(name="MACD_Bot",description="",
@@ -77,8 +86,8 @@ def OnStart(_onstart: bool = False):
     
     # set thông số ban đầu cho bot trước khi chạy
     bot.symbol = GLOBAL.VN30F1M      # mã phái sinh
-    bot.tradingPlatform = "DNSE"     # chọn "DNSE" hoặc "ENTRADE" để đẩy lệnh lên sau này.
-    
+    # bot.tradingPlatform = "DNSE"     # chọn "DNSE" hoặc "ENTRADE" để đẩy lệnh lên sau này.
+    bot.tradingPlatform = "ENTRADE"
     loadpackageidDNSE = 1306
     bot.loanpackageid = loadpackageidDNSE   #gói vay để giao dịch ở DNSE
     bot.investor_account_id = GLOBAL.DNSE_CLIENT.investor_account_id
@@ -106,7 +115,7 @@ def OnStart(_onstart: bool = False):
     logger.warning(f"Giá trần hôm nay : {bot.ceilingPrice}")
     logger.warning(f"Giá sàn hôm nay : {bot.floorPrice}")
 
-
+    bot.dnseClient.CancleAllPendingOrders()
     pass
 
 def OnTick():
@@ -146,132 +155,21 @@ def OnTick():
     #===================================================================
 
     bot.print_dealBot()
-    logger.info(f"spread : {bot.spread}")
-
-    # cprint("Dư mua:", GLOBAL.TOTAL_BID)
-    # cprint("Dư bán:", GLOBAL.TOTAL_OFFER)
-    # cprint("Tổng KLGD mua nước ngoài:", GLOBAL.TOTAL_FOREIGN_BUY)
-    # cprint("Tổng KLGD bán nước ngoài:", GLOBAL.TOTAL_FOREIGN_SELL)
-
-    
-
-    return
-
-    try:
-        if GLOBAL.BID_DEPTH:
-            LastBidPrice = GLOBAL.BID_DEPTH[0][0]  # Get the price from the last tuple
-            # cprint(f"Last bid price: {LastBidPrice}")
-        else:
-            cprint("No bid data available.")
-
-        if GLOBAL.ASK_DEPTH:
-            LastAskPrice = GLOBAL.ASK_DEPTH[0][0]  # Get the price from the last tuple
-            # cprint(f"Last ask price: {LastAskPrice}")
-        else:
-            cprint("No ask data available.")
-
-        if LastBidPrice > 0 and LastAskPrice > 0:
-            Spread =  round(LastAskPrice -LastBidPrice,2)
-            # cprint(f"Spread: {Spread}")
-
-        # Mở và đóng lệnh scalp 1 point
-        if Spread == 0.1 and LastBidPrice < supportPrice and len(GLOBAL.ENTRADE_CLIENT.GetActiveDeals())==0:
-            # mở lệnh Long
-            resultNB = GLOBAL.ENTRADE_CLIENT.Order(GLOBAL.VN30F1M, "NB", None, None, 1, "MTL", True)
-
-        elif Spread == 0.1 and LastAskPrice > resitancePrice and len(GLOBAL.ENTRADE_CLIENT.GetActiveDeals())==0:
-            resultNS = GLOBAL.ENTRADE_CLIENT.Order(GLOBAL.VN30F1M, "NS", None, None, 1, "MTL", True)
-
-
-
-
-    except:
-        pass
-
-    # lấy thông tin deal đang active:
-    activedeals = GLOBAL.ENTRADE_CLIENT.GetActiveDeals()
-    cprint(f"ACTIVE DEALS : {len(activedeals)}")
-    for deal in activedeals:
-        cprint(f"Deal ID: {deal['id']}, Side: {deal['side']}, Open Price: {deal['breakEvenPrice']}, Quantity: {deal['openQuantity']}")
-        
-        try:
-            if deal['breakEvenPrice'] + 1.0 <= LastBidPrice and deal["side"]=="NB" and Spread <= 0.2:
-                GLOBAL.ENTRADE_CLIENT.CloseDeal(deal["id"], is_demo=True)
-                cprint(f"Đóng lệnh {deal['id']} chốt lời 1 point")
-
-            if deal['breakEvenPrice'] - 1.0 >= LastAskPrice and deal["side"]=="NS" and Spread <= 0.2:
-                GLOBAL.ENTRADE_CLIENT.CloseDeal(deal["id"], is_demo=True)
-                cprint(f"Đóng lệnh {deal['id']} chốt lời 1 point")
-        except:
-            pass
-
-
-
-    # #cprint out thông tin sau mỗi tick
-
-    cprint(50*"-")
-    cprint(f"TIME: {datetime.now().strftime("%H:%M:%S %d/%m")}")
-    cprint(f"Mã phái sinh: {GLOBAL.VN30F1M}")
-    cprint(f"Last Bid Price: {LastBidPrice if GLOBAL.BID_DEPTH else 0}")
-    cprint(f"Last Bid Vol: {GLOBAL.BID_DEPTH[0][1] if GLOBAL.BID_DEPTH else 0}")
-    cprint(f"Last Ask Price: {LastAskPrice if GLOBAL.ASK_DEPTH else 0}")
-    cprint(f"Last Ask Vol: {GLOBAL.ASK_DEPTH[0][1] if GLOBAL.ASK_DEPTH else 0}")
-    cprint(f"Spread: {Spread if GLOBAL.BID_DEPTH and GLOBAL.ASK_DEPTH else 0}")
-    cprint(f"Tổng KLGD nước ngoài-MUA: {GLOBAL.TOTAL_FOREIGN_BUY}")
-    cprint(f"Tổng KLGD nước ngoài-BÁN: {GLOBAL.TOTAL_FOREIGN_SELL}")
-    cprint(f"Chênh NN MUA-BÁN : {GLOBAL.TOTAL_FOREIGN_BUY-GLOBAL.TOTAL_FOREIGN_SELL}")
-    cprint(f"Dư mua: {GLOBAL.TOTAL_FOREIGN_BUY}")
-    cprint(f"Dư bán: {GLOBAL.TOTAL_FOREIGN_SELL}")
-    cprint(f"Chênh Dư MUA-BÁN: {GLOBAL.TOTAL_FOREIGN_BUY-GLOBAL.TOTAL_FOREIGN_SELL}")
-    cprint(50 * "-")
-
+    logger.info(f"Spread : {round(bot.spread,1) if bot.spread is not None else "N/A"}")
 
     pass
 
 def OnBarClosed():
     global bot
 
+    #kiểm tra thời hạn của token, nếu gần hết thì loggin lại để lấy token và trading token
+    bot.dnseClient.is_validated_token() #kiểm tra token hiện tại đã hết hạn chưa để get lại.    #DO NOT REMOVE
+
     bot.marketData=GLOBAL.MARKETDATA   #đẩy mảketdata vào bot
     bot.run()
 
     return
 
-
-
-    #test khoảng thời gian thực thi sau đóng nến workingTimeFrame (xem trong GLOBAL.py)
-    # n = n + 1
-    # cprint(f"gọi lần {n} : [{datetime.now().strftime("%H:%M:%S %d/%m")}]")
-    
-    # data = GLOBAL.ENTRADE_CLIENT.GetBars(GLOBAL.VN30F1M,"5",1)
-
-    # cprint(f"data : {len(data)} candles")
-    # cprint(f" getBars: {data}")
-    # cprint("5 phút gần nhất:", data[-5:])
-    # cprint(tabulate(
-    #     data[-5:],
-    #     headers=['Open', 'High', 'Low', 'Close', 'Volume'],
-    #     tablefmt='fancy_grid'
-    # ))
-
-
-    # Visualize data - for testing data processing
-    # cprint(tabulate(
-    #     HISTORY['m1'][-5:],
-    #     headers=['Timestamp', 'Open', 'High', 'Low', 'Close', 'Volume'],
-    #     tablefmt='fancy_grid'
-    # ))
-
-    # cprint(tabulate(
-    #     HISTORY['m3'][-5:],
-    #     headers=['Timestamp', 'Open', 'High', 'Low', 'Close', 'Volume'],
-    #     tablefmt='fancy_grid'
-    # ))
-
-    # cprint(tabulate(
-    #     HISTORY['m5'][-5:],
-    #     headers=['Timestamp', 'Open', 'High', 'Low', 'Close', 'Volume'],
-    #     tablefmt='fancy_grid'
-    # ))
 
 
 

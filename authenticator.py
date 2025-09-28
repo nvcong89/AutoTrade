@@ -12,7 +12,7 @@ load_dotenv()
 usernameEntrade = getenv("usernameEntrade") # Email/SĐT tài khoản Entrade
 passwordEntrade = getenv("passwordEntrade") # Mật khẩu tài khoản Entrade
 
-gmailDNSE = getenv("gmailDNSE") # Email đăng kí DNSE
+emailDNSE = getenv("emailDNSE") # Email đăng kí DNSE
 passwordDNSE = getenv("passwordDNSE") # Mật khẩu tài khoản DNSE
 appPasswordDNSE = getenv("appPasswordDNSE") # App Password cho email đăng kí DNSE
 
@@ -30,7 +30,7 @@ if __name__ == "__main__":
 
 
     # Connect to DNSE
-    GLOBAL.DNSE_CLIENT.gmailDNSE = gmailDNSE
+    GLOBAL.DNSE_CLIENT.emailDNSE = emailDNSE
     GLOBAL.DNSE_CLIENT.passwordDNSE = passwordDNSE
     GLOBAL.DNSE_CLIENT.validate_token()
 
@@ -43,7 +43,22 @@ if __name__ == "__main__":
     logger.warning(f"token [DNSE] : {token}")
     logger.warning(f"Trading-Token [DNSE]: {GLOBAL.DNSE_CLIENT.trading_token}")
 
-    investor_id = GLOBAL.DNSE_CLIENT.GetAccountInfo().get("investorId")
+    investor_id = GLOBAL.DNSE_CLIENT.GetAccountInfo()["investorId"]
+    # try:
+    #     investor_id = GLOBAL.DNSE_CLIENT.GetAccountInfo()["investorId"]
+    #     pass
+    # except Exception as e:
+    #     logger.critical(f"jwt-token hết hạn. Sẽ loggin lại để lấy token. {e}")
+    #     logger.info(f"[DNSE] Đang đăng nhập...")
+    #     GLOBAL.DNSE_CLIENT.Authenticate(emailDNSE, passwordDNSE)
+    #     GLOBAL.DNSE_CLIENT.GetOTP() #gửi mã OTP về email
+    #     GLOBAL.DNSE_CLIENT.GetTradingToken(GLOBAL.DNSE_CLIENT.readSmartOTP(getOTP()))
+    #     GLOBAL.DNSE_CLIENT.logger.info(f"Đang lưu token ra file token_dnse.json...")
+    #     GLOBAL.DNSE_CLIENT.save_token_json()
+    #     GLOBAL.DNSE_CLIENT.logger.info(f"Đã lưu token ra file token_dnse.json.")
+
+    #     investor_id = GLOBAL.DNSE_CLIENT.GetAccountInfo().get("investorId")
+    #     pass
 
     # print(GLOBAL.DNSE_CLIENT.GetAccountInfo())
 
@@ -62,14 +77,13 @@ if __name__ == "__main__":
 
     logger.info(f"loan package id: {GLOBAL.DNSE_CLIENT.loanpackageID}")
 
-    logger.warning(f"Tổng số lượng lệnh đang mở trong sổ: {len(GLOBAL.DNSE_CLIENT.getActiveDeals())}")
-    logger.warning(f"Tổng số lượng lệnh đang chờ trong sổ: {len(GLOBAL.DNSE_CLIENT.GetPendingOrders())}")
+    logger.warning(f"Tổng số lượng deal đang mở trong sổ [DNSE]: {len(GLOBAL.DNSE_CLIENT.getActiveDeals())}")
+    logger.warning(f"Tổng số lượng lệnh đang chờ trong sổ [DNSE]: {len(GLOBAL.DNSE_CLIENT.GetPendingOrders())}")
+    logger.warning(f"Tổng số hợp đồng đang mở [DNSE]: {GLOBAL.DNSE_CLIENT.GetTotalOpenQuantity()} HĐ \n")
 
-    # print(f"sổ lệnh: {GLOBAL.DNSE_CLIENT.GetOrders(investor_account_id)}")
-    # logger.info(f"sổ lệnh: {GLOBAL.DNSE_CLIENT.GetOrders(investor_account_id)}")
-
-    totaVol = GLOBAL.DNSE_CLIENT.GetTotalOpenQuantity()
-    logger.warning(f"Tổng số hợp đồng đang mở: {totaVol} HĐ")
+    logger.warning(f"Tổng số lượng deal đang mở trong sổ [ENTRADE]: {len(GLOBAL.ENTRADE_CLIENT.GetActiveDeals())}")
+    logger.warning(f"Tổng số lượng lệnh đang chờ trong sổ [ENTRADE]: {len(GLOBAL.ENTRADE_CLIENT.GetPendingOrders(is_demo=True))}")
+    logger.warning(f"Tổng số hợp đồng đang mở [ENTRADE]: {GLOBAL.ENTRADE_CLIENT.GetTotalOpenQuantity()} HĐ \n")
 
     # print(f"active deals: {GLOBAL.DNSE_CLIENT.getActiveDeals(GLOBAL.DNSE_CLIENT.investor_account_id)}")
 

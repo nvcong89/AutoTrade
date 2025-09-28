@@ -19,3 +19,20 @@
 [2025-09-28 14:23:42] [SMARTBOT] - ERROR - Xảy ra lỗi: 'pyBotMACD' object has no attribute 'accountNo'
 [2025-09-28 14:45:58] [SMARTBOT] - ERROR - Đã gặp lỗi Bot.Update : 'orderStatis'
 [2025-09-28 14:46:03] [SMARTBOT] - ERROR - Đã gặp lỗi Bot.Update : 'orderStatis'
+[2025-09-28 20:18:31] [Authenticaotor] - CRITICAL - jwt-token hết hạn. Sẽ loggin lại để lấy token
+[2025-09-28 20:20:42] [DNSE_Client] - CRITICAL - Đã xảy ra lỗi khi GetAccountInfor: 401 Client Error: Unauthorized for url: https://api.dnse.com.vn/user-service/api/me
+[2025-09-28 20:20:42] [Authenticaotor] - CRITICAL - jwt-token hết hạn. Sẽ loggin lại để lấy token. 'NoneType' object has no attribute 'get'
+[2025-09-28 20:22:06] [DNSE_Client] - CRITICAL - Đã xảy ra lỗi khi GetAccountInfor: 401 Client Error: Unauthorized for url: https://api.dnse.com.vn/user-service/api/me
+[2025-09-28 20:22:06] [Authenticaotor] - CRITICAL - jwt-token hết hạn. Sẽ loggin lại để lấy token. 'NoneType' object has no attribute 'get'
+[2025-09-28 20:23:02] [DNSE_Client] - CRITICAL - Đã xảy ra lỗi khi GetAccountInfor: 401 Client Error: Unauthorized for url: https://api.dnse.com.vn/user-service/api/me
+[2025-09-28 20:23:02] [Authenticaotor] - CRITICAL - jwt-token hết hạn. Sẽ loggin lại để lấy token. 'NoneType' object is not subscriptable
+[2025-09-28 20:25:06] [DNSE_Client] - CRITICAL - Đã xảy ra lỗi khi GetAccountInfor: 401 Client Error: Unauthorized for url: https://api.dnse.com.vn/user-service/api/me
+[2025-09-28 20:25:06] [Authenticaotor] - CRITICAL - jwt-token hết hạn. Sẽ loggin lại để lấy token. 'NoneType' object is not subscriptable
+[2025-09-28 21:03:32] [DNSE_Client] - ERROR - Đã xảy ra lỗi khi refresh token : fromisoformat: argument must be str
+[2025-09-28 21:05:30] [DNSE_Client] - ERROR - Đã xảy ra lỗi khi refresh token : fromisoformat: argument must be str
+[2025-09-28 21:06:46] [DNSE_Client] - ERROR - Đã xảy ra lỗi khi refresh token : fromisoformat: argument must be str
+[2025-09-28 21:43:06] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 'Logger' object is not callable
+[2025-09-28 21:55:08] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 'Logger' object is not callable
+[2025-09-28 21:58:27] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 'Logger' object is not callable
+[2025-09-28 22:05:20] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 'Logger' object is not callable
+[2025-09-28 22:07:44] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 'Logger' object is not callable

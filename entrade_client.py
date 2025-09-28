@@ -11,6 +11,7 @@ class EntradeClient:
         self.usernameEntrade = None 
         self.passwordEntrade=None
         self.token = None
+        self.createdtimeToken = None    #lưu thời gian bắt đầu lấy token, lưu dạng năm-tháng-ngày giờ-phút-giây
         self.investor_id = None
         self.investor_account_id = None
         # https://services-staging.entrade.com.vn/papertrade-entrade-api/derivative/orders
@@ -283,7 +284,7 @@ class EntradeClient:
         activeDeals = self.GetActiveDeals(investor_account_id or self.investor_account_id)
         totalVol = 0
         for deal in activeDeals:
-            totalVol = totalVol + deal['fillQuantity']
+            totalVol = totalVol + deal['openQuantity']
         #self.logger.info(f"Tổng số hợp đồng đang mở : {totalVol} HĐ")
         return totalVol
     
@@ -328,6 +329,18 @@ class EntradeClient:
                 ceilingandFloorPrice['ceilingprice'] = round(closePrice*1.069,0)    #+6.9%
                 ceilingandFloorPrice['floorprice'] = round(closePrice*0.931,0)      #-6.9%
                 return ceilingandFloorPrice
+            
 
+    def GetPendingOrders(self, is_demo = True):
+        """
+        Lấy các lệnh đang chờ khớp lệnh trong sổ lệnh.
+        """
+        deals = self.GetDeals(start=0, end=100, is_demo=is_demo)["data"]  #đọc tất cả lệnh trong sổ lệnh
+        pendingOrders =[]
+        for deal in deals:
+            if deal['status'].lower() == 'pending' or deal['status'].lower() == 'pendingnew' or deal['status'].lower() == 'new'  :     
+                pendingOrders.append(deal)
+
+        return pendingOrders 
 
     

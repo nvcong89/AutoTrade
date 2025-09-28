@@ -11,10 +11,11 @@ from data_processor import GetOHLCVData
 
 class DNSEClient:
     def __init__(self):
-        self.gmailDNSE = None
+        self.emailDNSE = None
         self.passwordDNSE=None
         self.token = None
         self.trading_token = None   #Trading token sẽ được sử dụng trong các API chỉnh sửa dữ liệu: đặt lệnh, huỷ lệnh
+        self.createdtimeToken = None    #lưu thời gian bắt đầu lấy token, lưu dạng năm-tháng-ngày giờ-phút-giây, isoformat
         self.investor_id = None #mã tài khoản
         self.investor_account_id = None #mã tiểu khoản
         self.OTP = None
@@ -25,25 +26,22 @@ class DNSEClient:
         self.logger = setup_logger("[DNSE_Client]")
         self.trading_logger = get_trading_logger()
 
-    def Authenticate(self, username, password):
+    def Authenticate(self, username=None, password=None):
         _headers = {
             "Content-Type": "application/json"
         }
         _json = {
-            "username": username,
-            "password": password
+            "username": username or self.emailDNSE,
+            "password": password or self.passwordDNSE
         }
 
         url = f"{self.base_url}auth-service/login"
         response = post(url, json=_json, headers=_headers)
         response.raise_for_status()
         self.token = response.json().get("token")
+        self.createdtimeToken = datetime.now().isoformat()  #example : 2025-09-28T20:48:15.123456
         print("Đăng nhập thành công! (DNSE)")
         
-        # self.GetOTP()
-        # self.GetSmartOTP()
-        # self.GetTradingToken(self.OTP)
-
     
     def GetSubAccounts(self):
         """Lấy danh sách tiểu khoản"""
@@ -58,16 +56,20 @@ class DNSEClient:
         return response.json()  #trả về danh sách các tiểu khoản []
 
     def GetAccountInfo(self):
-        _headers = {
-            "Content-Type": "application/json",
-            "Authorization": f"Bearer {self.token}"
-        }
+        try:
+            _headers = {
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {self.token}"
+            }
 
-        url = f"{self.base_url}user-service/api/me"
-        response = get(url, headers=_headers)
-        response.raise_for_status()
-        self.investor_id = response.json().get("investorId")
-        return response.json()
+            url = f"{self.base_url}user-service/api/me"
+            response = get(url, headers=_headers)
+            response.raise_for_status()
+            self.investor_id = response.json().get("investorId")
+            return response.json()
+        except Exception as e:
+            self.logger.critical(f"Đã xảy ra lỗi khi GetAccountInfor: {e}")
+            pass
 
     def GetOTP(self):
         _headers = {
@@ -85,6 +87,8 @@ class DNSEClient:
             self.OTP = smartOTP
         else:
             self.OTP = otp
+        
+        return self.OTP
 
 
     def GetTradingToken(self, otp):
@@ -508,6 +512,9 @@ class DNSEClient:
         current_dir = os.path.dirname(os.path.abspath(__file__))
         file_path = os.path.join(current_dir, fileName)
         
+        self.createdtimeToken = datetime.now().isoformat()  #example : 2025-09-28T20:48:15.123456
+
+
         data = {
             "token" : {"createdTime" : datetime.now().isoformat(),
                        "token" : self.token},      # thời gian, token
@@ -543,6 +550,8 @@ class DNSEClient:
                 
             self.logger.info(f"Đã đọc token từ {file_path}")
             
+            self.createdtimeToken = data['token']['createdTime']  #example : 2025-09-28T20:48:15.123456
+
             return data
             
         except FileNotFoundError:
@@ -563,6 +572,7 @@ class DNSEClient:
             #kiểm tra thời gian hiệu lực của token
             # Chuyển đổi thời gian
             created_time = datetime.fromisoformat(tokens.get('token')["createdTime"])
+            print(f"created time of token : {created_time}")
             current_time = datetime.now()
             time_diff = current_time - created_time
 
@@ -573,7 +583,7 @@ class DNSEClient:
                 self.logger.info(f"Đọc xong tokens từ file token_dnse.json.")
                 print(f"Đăng nhập thành công! [DNSE]")
             else:
-                self.Authenticate(self.gmailDNSE, self.passwordDNSE)
+                self.Authenticate(self.emailDNSE, self.passwordDNSE)
                 self.GetOTP() #gửi mã OTP về email
                 self.readSmartOTP(getOTP())
                 self.GetTradingToken(self.OTP)
@@ -583,7 +593,7 @@ class DNSEClient:
 
         except Exception as e:
             self.logger.info(f"[DNSE] Đang đăng nhập...")
-            self.Authenticate(self.gmailDNSE, self.passwordDNSE)
+            self.Authenticate(self.emailDNSE, self.passwordDNSE)
             self.GetOTP() #gửi mã OTP về email
             self.readSmartOTP(getOTP())
             self.GetTradingToken(self.OTP)
@@ -619,5 +629,39 @@ class DNSEClient:
                 ceilingandFloorPrice['ceilingprice'] = round(closePrice*1.069,0)    #+6.9%
                 ceilingandFloorPrice['floorprice'] = round(closePrice*0.931,0)      #-6.9%
                 return ceilingandFloorPrice
+    
+    def refresh_token(self):
+        '''
+        Dùng để đăng nhập lại, lấy lại token sau khi hết hạn
+        '''    
+        self.Authenticate(self.emailDNSE, self.passwordDNSE)
+        self.GetOTP() #gửi mã OTP về email
+        self.readSmartOTP(getOTP())
+        self.GetTradingToken(self.OTP)
+        self.logger.info(f"Đang lưu token ra file token_dnse.json...")
+        self.save_token_json()
+        self.logger.info(f"Đã lưu token ra file token_dnse.json.")
+    
+    def is_validated_token(self):
+        '''
+        Hàm để kiểm tra token còn giá trị hay ko, hết hạn hay chưa?
+        '''
+        try:
+            current_time = datetime.now()
+            print(self.createdtimeToken)
+            created_time = datetime.fromisoformat(self.createdtimeToken)
+            time_diff = current_time - created_time
+            
+            if time_diff > timedelta(hours= 7):
+                # Add your token refresh logic here
+                self.logger.warning("Token expired. Refreshing token...")
+                self.refresh_token()
+                self.logger.warning(f"Đã hoàn thành làm mới tokens.")
+        
+        except Exception as e:
+            self.logger.error(f"Đã xảy ra lỗi khi refresh token : {e}")
+
+
+        
 
 
