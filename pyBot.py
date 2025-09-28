@@ -15,7 +15,7 @@ class pyBot:
     def __init__(self, name: str):
         self.name = name
         self.is_active = True
-        self.position_side = None  # Current position: "BUY", "SELL", or None
+        self.position_side = None  # Current position: "LONG", "SHORT", or None 
         self.last_action_time = 0  # Last time an action was taken
         self.action_interval = 0  # Minimum interval between actions in seconds
         self.symbol = None         #tên mã chứng khoán giao dịch
@@ -46,16 +46,16 @@ class pyBot:
         self.trade_size = 1  # Number of contracts to trade
         self.orderPriceType = "LO"  # Order price type: MTL, LO
         self.orderPrice = None  # Order price, None for market orders
+        self.breakevenPrice = None  #giá hòa vốn của deal
         
         self.orderStatus = None     #string, trạng thái lệnh thuộc các giá trị sau: pending, pendingNew, new, partiallyFilled, filled, rejected, expired, doneForDay
         self.orderQuantity = None  # Order quantity, tổng số hợp đồng đang mở
 
-        #quản lý trạng thái lệnh đang LONG, SHORT, NONE
-        self.isLong_currentdeal = None      # nếu deal đang mở trong sổ là Long, thì True
-        self.isShort_currentdeal = None     # nếu đang mở trong sổ lệnh là SHORT, thì True
-
         #Lưu các lệnh đang chờ
         self.pendingOrders = []     #danh sách các lệnh đang chờ
+
+        #object deal đang mở:
+        self.dealOpening = None     #trả về deal đang mở.
 
         self.unrealisedNetProfit = None #lưu giá trị net profit tạm thời
 
@@ -98,9 +98,6 @@ class pyBot:
         self.firstDeal = None   # format: deal, thông tin của lệnh mở đầu tiên sẽ được lưu lại.
         self.lastDeal = None    # format: deal, thông tin của lệnh mở cuối cùng sẽ được lưu lại
 
-
-        #Sưu tập các deal đang mở
-        self.positions = [] # a list to collect active/opening deals
     
         self.debug = True  # Enable debug mode for detailed logging
 
@@ -168,38 +165,46 @@ class pyBot:
                 self.spread = self.last_ask_price - self.last_bid_price
             
         
-            #lấy thông tin sổ lệnh vào positions []
+            #lấy thông tin sổ lệnh vào self.dealOpening
             if self.tradingPlatform.upper() =="DNSE":
                 #lấy danh sách lệnh đang chờ
                 self.pendingOrders = self.dnseClient.GetPendingOrders(self.investor_account_id)
 
-                #lấy danh sách các lệnh đang mở
-                self.positions = self.dnseClient.getActiveDeals(self.investor_account_id)
+                #lấy thông tin deal đang mở
+                self.dealOpening = self.dnseClient.getActiveDeals(self.investor_account_id)
 
-                #kiểm tra hướng trade của deal trong sổ
-                if len(self.positions) ==0:
-                    self.isLong_currentdeal = None
-                    self.isShort_currentdeal = None
-                elif self.positions[-1]['side'] == "NB":
-                    self.isLong_currentdeal = True
-                    self.isShort_currentdeal = None
-                else:
-                    self.isLong_currentdeal = None
-                    self.isShort_currentdeal = True
+                if self.dealOpening is not None:
+                    self.order_id = self.dealOpening['id']
+                    self.order_entryprice = self.dealOpening['breakEvenPrice']
+                    self.order_side = self.dealOpening['side']
+                    self.orderQuantity = self.dealOpening['fillQuantity']
+                    self.orderStatus = self.dealOpening['orderStatus']
+                    self.breakevenPrice = self.dealOpening['breakEvenPrice']
+
+                    if self.dealOpening['side']=='NB':
+                        self.position_side = "LONG"
+                    elif self.dealOpening['side']=='NS':
+                        self.position_side = "SHORT"
+                    else:
+                        self.position_side = None
 
             else:
-                self.positions = self.entradeClient.GetActiveDeals(self.investor_account_id)
+                self.dealOpening = self.entradeClient.GetActiveDeals(self.investor_account_id)
 
-                #kiểm tra hướng trade của deal trong sổ
-                if len(self.positions) ==0:
-                    self.isLong_currentdeal = None
-                    self.isShort_currentdeal = None
-                elif self.positions[-1]['side'] == "NB":
-                    self.isLong_currentdeal = True
-                    self.isShort_currentdeal = None
-                else:
-                    self.isLong_currentdeal = None
-                    self.isShort_currentdeal = True
+                if self.dealOpening is not None:
+                    self.order_id = self.dealOpening['id']
+                    self.order_entryprice = self.dealOpening['breakEvenPrice']
+                    self.order_side = self.dealOpening['side']
+                    self.orderQuantity = self.dealOpening['openQuantity']
+                    self.orderStatus = self.dealOpening['status']
+                    self.breakevenPrice = self.dealOpening['breakEvenPrice']
+
+                    if self.dealOpening['side']=='NB':
+                        self.position_side = "LONG"
+                    elif self.dealOpening['side']=='NS':
+                        self.position_side = "SHORT"
+                    else:
+                        self.position_side = None
 
 
         except Exception as e:
@@ -215,7 +220,7 @@ class pyBot:
         contractFactor = 100000.0  # Hệ số hợp đồng 100,000 VNĐ/hđ
         tickprice = GLOBAL.LAST_TICK_PRICE
         try:
-            netprofit = round((tickprice-self.order_entryprice)*self.orderQuantity*contractFactor if self.position_side=='BUY' else (self.order_entryprice - tickprice)*self.orderQuantity*contractFactor if self.position_side=='SELL' else 0,0)
+            netprofit = round((tickprice-self.order_entryprice)*self.orderQuantity*contractFactor if self.position_side=='LONG' else (self.order_entryprice - tickprice)*self.orderQuantity*contractFactor if self.position_side=='SHORT' else 0,0)
             self.unrealisedNetProfit = netprofit
             return netprofit
         except:
@@ -224,23 +229,23 @@ class pyBot:
 
     def print_dealBot(self):
         try:
-            if len(self.positions)==0:
+            if self.dealOpening is None:
                 self.logger.warning(f"Bot [{self.name}] has no active deals.")
-                
+
             contractFactor = 100000.0  # Hệ số hợp đồng 100,000 VNĐ/hđ
             tickprice = GLOBAL.LAST_TICK_PRICE
             tickVol = GLOBAL.LAST_TICK_VOLUME
             print(150*"-")
-            self.logger.info(f"DEAL INFORMATION [{self.name}]")
-            self.logger.info(f"Order id: {self.order_id}")
-            self.logger.info(f"Order Status: {self.orderStatus}")
-            self.logger.info(f"Entry price: {round(self.order_entryprice,1) if self.order_entryprice is not None else "N/A"}")
-            self.logger.info(f"Position Side: {self.position_side if self.position_side is not None else "N/A"}")
-            self.logger.info(f"Open Quantity: {self.orderQuantity if self.orderQuantity is not None else "N/A"}")
-            self.logger.info(f"Order Side: {self.order_side if self.order_side is not None else "N/A"}")
-            self.logger.info(f"Current Price: {round(tickprice,1) if tickprice is not None else "N/A"}")
-            self.logger.info(f"Latest matched volume: {tickVol if tickVol is not None else "N/A"}")
-            self.logger.info(f"Estimated P/L: {self.unrealisedNetProfit:,.0f} VND")
+            (f"DEAL INFORMATION [{self.name}]")
+            self.cprint(f"Order id: {self.order_id}")
+            self.cprint(f"Order Status: {self.orderStatus}")
+            self.cprint(f"Break even price: {round(self.breakevenPrice,1) if self.breakevenPrice is not None else "N/A"}")
+            self.cprint(f"Position Side: {self.position_side if self.position_side is not None else "N/A"}")
+            self.cprint(f"Open Quantity: {self.orderQuantity if self.orderQuantity is not None else "N/A"}")
+            self.cprint(f"Order Side: {self.order_side if self.order_side is not None else "N/A"}")
+            self.cprint(f"Current Price: {round(tickprice,1) if tickprice is not None else "N/A"}")
+            self.cprint(f"Latest matched volume: {tickVol if tickVol is not None else "N/A"}")
+            self.cprint(f"Estimated P/L: {self.Calculate_UnrealisedNetProfit():,.0f} VND")
             print(150*"-")
         except Exception as e:
             self.logger.error(f"Đã xảy ra lỗi : {e}")
@@ -308,11 +313,20 @@ class pyBot:
         else:
             self.entradeClient.CloseAllDeals(self.is_demo)
             self.logger.warning(f"Đã đóng tất cả các lệnh! [ENTRADE]")
+        
+        #reset các biến
+        self.order_id = None
+        self.orderStatus = None
+        self.breakevenPrice=None
+        self.position_side = None
+        self.orderQuantity=0
+        self.order_side=None
+        self.unrealisedNetProfit = 0
 
     def execute_trade_entrade(self, action, is_demo = True):
         '''
         Thực hiện lệnh mua/bán dựa trên tín hiệu từ check_for_signals
-        action = "BUY" hoặc "SELL", CLOSEBUY, CLOSESELL
+        action = "LONG" hoặc "SHORT", CLOSELONG, CLOSESHORT
         '''
         # kiểm tra số deal đang mở đã vượt quá max open trades allowed chưa?
 
@@ -320,48 +334,54 @@ class pyBot:
         if self.orderPriceType == "MTL":
             self.orderPrice = None
         else:
-            self.orderPrice = self.marketData[self.timeframe][4]  # Lấy giá đóng cửa mới nhất
+            self.orderPrice = self.lastTickPrice + (self.spread if self.spread is not None else 0)  # Lấy giá đóng cửa mới nhất
 
-        if action == "BUY":
+        if action.upper() == "LONG":
 
-            self.logger.info(f"[ENDTRADE] Thực hiện đặt {self.trade_size} hợp đồng LONG tại giá {self.orderPrice if self.orderPrice is not None else 'MTL'}")
-            # Thực hiện lệnh mua ở đây
-            result = self.entradeClient.Order(self.symbol, "NB", self.orderPrice, None, self.trade_size, self.orderPriceType, is_demo)
-            
             try:
-                self.position_side = "BUY"
-                deals = self.entradeClient.GetActiveDeals()
-                # self.logger.info(f"Active deals after BUY: {deals}")
-                for deal in deals:
-                    self.order_id = deal.get("id")
-                    self.order_entryprice = deal.get("breakEvenPrice")
-                    self.order_side = deal.get("side")
-                    self.orderQuantity = deal.get("openQuantity")
+                self.logger.info(f"[ENTRADE] Thực hiện đặt {self.trade_size} hợp đồng LONG tại giá {self.orderPrice if self.orderPrice is not None else 'MTL'}")
+                # Thực hiện lệnh mua ở đây
+                result = self.entradeClient.Order(self.symbol, "NB", self.orderPrice, None, self.trade_size, self.orderPriceType, is_demo)
+
+                self.position_side = "LONG"
+                # deals = self.entradeClient.GetActiveDeals()
+                # for deal in deals:
+                #     self.order_id = deal.get("id")
+                #     self.order_entryprice = deal.get("breakEvenPrice")
+                #     self.order_side = deal.get("side")
+                #     self.orderQuantity = deal.get("openQuantity")
             except Exception as e:
                 self.logger.error(f"Đã xảy ra lỗi: {e}")
 
-        elif action == "SELL":
+        elif action.upper() == "SHORT":
             
             try:
-                self.logger(f"[ENDTRADE] Thực hiện đặt {self.trade_size} hợp đồng SHORT tại giá {self.orderPrice if self.orderPrice is not None else 'MTL'}")
+                self.logger.info(f"[ENTRADE] Thực hiện đặt {self.trade_size} hợp đồng SHORT tại giá {self.orderPrice if self.orderPrice is not None else 'MTL'}")
                 # Thực hiện lệnh bán ở đây
-                result = self.entradeClient.Order(self.symbol, "NS", self.orderPrice, None, self.trade_size, self.orderPriceType, is_demo)
+                # result = self.entradeClient.Order(self.symbol, "NS", self.orderPrice, None, self.trade_size, self.orderPriceType, self.is_demo)
 
-                self.position_side = "SELL"
-                deals = self.entradeClient.GetActiveDeals()
-                # cprint(f"Active deals after BUY: {deals}")
-                for deal in deals:
-                    self.order_id = deal.get("id")
-                    self.order_entryprice = deal.get("breakEvenPrice")
-                    self.order_side = deal.get("side")
-                    self.orderQuantity = deal.get("openQuantity")
+                result = self.entradeClient.Order(symbol=self.symbol, 
+                                                  side="NS", 
+                                                  price=self.orderPrice, 
+                                                  loan = None, 
+                                                  volume=self.trade_size, 
+                                                  order_type=self.orderPriceType, 
+                                                  is_demo= self.is_demo)
+                
+                self.position_side = "SHORT"
+                # deals = self.entradeClient.GetActiveDeals()
+                # for deal in deals:
+                #     self.order_id = deal.get("id")
+                #     self.order_entryprice = deal.get("breakEvenPrice")
+                #     self.order_side = deal.get("side")
+                #     self.orderQuantity = deal.get("openQuantity")
             except Exception as e:
                 self.logger.error(f"Đã xảy ra lỗi: {e}")
 
                 
-        elif action == "CLOSEBUY":
+        elif action.upper() == "CLOSELONG":
             if self.position_side == "BUY":
-                self.logger.info(f"[ENDTRADE] Đóng tất cả các lệnh, lý do = {action}")
+                self.logger.info(f"[ENTRADE] Đóng tất cả các lệnh, lý do = {action}")
                 # Thực hiện lệnh đóng mua ở đây
                 result = self.entradeClient.CloseAllDeals(is_demo)
                 self.position_side = None
@@ -372,9 +392,9 @@ class pyBot:
             else:
                 self.logger.error("No BUY position to close.")
 
-        elif action == "CLOSESELL":
+        elif action.upper() == "CLOSESHORT":
             if self.position_side == "SELL":
-                self.logger.info(f"[ENDTRADE] Đóng tất cả các lệnh, lý do = {action}")
+                self.logger.info(f"[ENTRADE] Đóng tất cả các lệnh, lý do = {action}")
                 # Thực hiện lệnh đóng mua ở đây
                 result = self.entradeClient.CloseAllDeals(is_demo)
                 self.position_side = None
@@ -396,13 +416,13 @@ class pyBot:
 
         # lấy giá hiện tại khi có tín hiệu
         if self.orderPriceType == "MTL":
-            self.orderPrice = self.lastTickPrice + 5
+            self.orderPrice = self.lastTickPrice + self.spread
         else:
             # self.orderPrice = self.marketData[self.timeframe][4]  # Lấy giá đóng cửa mới nhất
             self.orderPrice = self.lastTickPrice
 
 
-        if action == "BUY":
+        if action.upper() == "LONG":
 
             try:
                 self.logger.info(f"[DNSE] Thực hiện đặt {self.trade_size} hợp đồng LONG tại giá {self.orderPrice}")
@@ -416,14 +436,14 @@ class pyBot:
                                                     order_type = self.orderPriceType)
                 
 
-                self.position = "BUY"
+                self.position_side = "LONG"
                 
-                deal = self.dnseClient.GetOrderDetail(result['id'],self.investor_account_id)
-                self.order_id = deal.get("id")
-                self.orderStatus=deal.get('orderStatus')
-                self.order_entryprice = deal.get("breakEvenPrice")
-                self.order_side = deal.get("side")
-                self.orderQuantity = deal.get("openQuantity")
+                # deal = self.dnseClient.GetOrderDetail(result['id'],self.investor_account_id)
+                # self.order_id = deal.get("id")
+                # self.orderStatus=deal.get('orderStatus')
+                # self.order_entryprice = deal.get("breakEvenPrice")
+                # self.order_side = deal.get("side")
+                # self.orderQuantity = deal.get("openQuantity")
 
                 #lưu lệnh mở đầu tiên
                 if self.firstDeal is None:
@@ -433,26 +453,25 @@ class pyBot:
             except Exception as e:
                 self.logger.error(f'Xảy ra lỗi: {e}')
 
-        elif action == "SELL":
+        elif action.upper() == "SHORT":
 
-            self.logger.info(f"[DNSE] Thực hiện đặt {self.trade_size} hợp đồng SHORT tại giá {self.orderPrice}")
-            # Thực hiện lệnh bán ở đây
-            result = self.dnseClient.Order( symbol=self.symbol,
+            try:
+                self.logger.info(f"[DNSE] Thực hiện đặt {self.trade_size} hợp đồng SHORT tại giá {self.orderPrice}")
+                # Thực hiện lệnh bán ở đây
+                result = self.dnseClient.Order( symbol=self.symbol,
                                                 account = self.investor_account_id,
                                                 side = "NS",
                                                 price = self.orderPrice,
                                                 loan = self.loanpackageid,
                                                 volume = self.trade_size,
                                                 order_type = self.orderPriceType)
-
-            try:
-                self.position_side = "SELL"
+                self.position_side = "SHORT"
                 deal = self.dnseClient.GetOrderDetail(result['id'],self.investor_account_id)
-                self.order_id = deal.get("id")
-                self.orderStatus=deal.get('orderStatus')
-                self.order_entryprice = deal.get("breakEvenPrice")
-                self.order_side = deal.get("side")
-                self.orderQuantity = deal.get("openQuantity")
+                # self.order_id = deal.get("id")
+                # self.orderStatus=deal.get('orderStatus')
+                # self.order_entryprice = deal.get("breakEvenPrice")
+                # self.order_side = deal.get("side")
+                # self.orderQuantity = deal.get("openQuantity")
 
                 #lưu lệnh mở đầu tiên
                 if self.firstDeal is None:
@@ -463,7 +482,7 @@ class pyBot:
                 self.logger.error(f'Xảy ra lỗi: {e}')
 
                 
-        elif action == "CLOSEBUY":
+        elif action.upper() == "CLOSELONG":
             # Thực hiện lệnh đóng mua ở đây
                 self.logger.info(f"[DNSE] Đóng tất cả các lệnh, lý do = {action}")
                 result = self.dnseClient.CloseAllDeals()
@@ -473,7 +492,7 @@ class pyBot:
                 self.order_side = None
                 self.orderQuantity = None
 
-        elif action == "CLOSESELL":
+        elif action.upper() == "CLOSESHORT":
             # Thực hiện lệnh đóng mua ở đây
                 self.logger.info(f"[DNSE] Đóng tất cả các lệnh, lý do = {action}")
                 result = self.dnseClient.CloseAllDeals()
@@ -494,3 +513,10 @@ class pyBot:
             return self.dnseClient.GetTotalOpenQuantity()
         else:
             return 0 
+    
+    def cprint(self, message):
+        '''
+        Hàm hỗ trợ in ra console có bao gồm ngày tháng và giờ.
+        '''
+        ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        print(f"[{ts}] - {message}")

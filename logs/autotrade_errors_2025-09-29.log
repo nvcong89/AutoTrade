@@ -1,0 +1,16 @@
+[2025-09-29 00:02:59] [ENTRADE_Client] - ERROR - Order() failed! (Entrade):
+Traceback (most recent call last):
+  File "c:\Users\congnv\Documents\GitHub\AutoTrade\entrade_client.py", line 60, in Order
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\congnv\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://services.entrade.com.vn/papertrade-entrade-api/derivative/orders
+[2025-09-29 00:09:54] [ENTRADE_Client] - ERROR - Order() failed! (Entrade):
+Traceback (most recent call last):
+  File "c:\Users\congnv\Documents\GitHub\AutoTrade\entrade_client.py", line 59, in Order
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "c:\Users\congnv\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://services.entrade.com.vn/papertrade-entrade-api/derivative/orders

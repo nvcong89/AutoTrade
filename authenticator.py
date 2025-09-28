@@ -77,11 +77,12 @@ if __name__ == "__main__":
 
     logger.info(f"loan package id: {GLOBAL.DNSE_CLIENT.loanpackageID}")
 
-    logger.warning(f"Tổng số lượng deal đang mở trong sổ [DNSE]: {len(GLOBAL.DNSE_CLIENT.getActiveDeals())}")
+
+    logger.warning(f"Tổng số lượng deal đang mở trong sổ [DNSE]: {1 if GLOBAL.DNSE_CLIENT.getActiveDeals() is not None else 0}")
     logger.warning(f"Tổng số lượng lệnh đang chờ trong sổ [DNSE]: {len(GLOBAL.DNSE_CLIENT.GetPendingOrders())}")
     logger.warning(f"Tổng số hợp đồng đang mở [DNSE]: {GLOBAL.DNSE_CLIENT.GetTotalOpenQuantity()} HĐ \n")
 
-    logger.warning(f"Tổng số lượng deal đang mở trong sổ [ENTRADE]: {len(GLOBAL.ENTRADE_CLIENT.GetActiveDeals())}")
+    logger.warning(f"Tổng số lượng deal đang mở trong sổ [ENTRADE]: {1 if GLOBAL.ENTRADE_CLIENT.GetActiveDeals()!=0 else 0}")
     logger.warning(f"Tổng số lượng lệnh đang chờ trong sổ [ENTRADE]: {len(GLOBAL.ENTRADE_CLIENT.GetPendingOrders(is_demo=True))}")
     logger.warning(f"Tổng số hợp đồng đang mở [ENTRADE]: {GLOBAL.ENTRADE_CLIENT.GetTotalOpenQuantity()} HĐ \n")
 

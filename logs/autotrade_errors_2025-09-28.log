@@ -36,3 +36,32 @@
 [2025-09-28 21:58:27] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 'Logger' object is not callable
 [2025-09-28 22:05:20] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 'Logger' object is not callable
 [2025-09-28 22:07:44] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 'Logger' object is not callable
+[2025-09-28 22:14:43] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 'Logger' object is not callable
+[2025-09-28 22:17:51] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 'Logger' object is not callable
+[2025-09-28 22:22:11] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 'Logger' object is not callable
+[2025-09-28 22:24:27] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 'Logger' object is not callable
+[2025-09-28 22:34:08] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 'Logger' object is not callable
+[2025-09-28 22:34:09] [SMARTBOT] - ERROR - Đã gặp lỗi Bot.Update() : -1
+[2025-09-28 22:36:46] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 'Logger' object is not callable
+[2025-09-28 22:36:47] [SMARTBOT] - ERROR - Đã gặp lỗi Bot.Update() : -1
+[2025-09-28 22:49:29] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 'Logger' object is not callable
+[2025-09-28 22:49:30] [SMARTBOT] - ERROR - Đã xảy ra lỗi : 'pyBotMACD' object has no attribute 'positions'
+[2025-09-28 22:56:21] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 'Logger' object is not callable
+[2025-09-28 22:56:22] [SMARTBOT] - ERROR - Đã gặp lỗi Bot.Update() : 'fillQuantity'
+[2025-09-28 22:58:33] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 'Logger' object is not callable
+[2025-09-28 23:09:04] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 'Logger' object is not callable
+[2025-09-28 23:10:46] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 'Logger' object is not callable
+[2025-09-28 23:12:17] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 'Logger' object is not callable
+[2025-09-28 23:17:14] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 'Logger' object is not callable
+[2025-09-28 23:19:30] [SMARTBOT] - ERROR - Đã xảy ra lỗi: 'Logger' object is not callable
+[2025-09-28 23:20:22] [SMARTBOT] - ERROR - Đã xảy ra lỗi: 'Logger' object is not callable
+[2025-09-28 23:26:17] [SMARTBOT] - ERROR - Đã xảy ra lỗi: 'Logger' object is not callable
+[2025-09-28 23:30:03] [SMARTBOT] - ERROR - Đã xảy ra lỗi: 'Logger' object is not callable
+[2025-09-28 23:33:29] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: unsupported operand type(s) for +: 'float' and 'NoneType'
+[2025-09-28 23:39:33] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: unsupported operand type(s) for +: 'float' and 'NoneType'
+[2025-09-28 23:40:23] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: unsupported operand type(s) for +: 'float' and 'NoneType'
+[2025-09-28 23:42:53] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: unsupported operand type(s) for +: 'float' and 'NoneType'
+[2025-09-28 23:43:44] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: unsupported operand type(s) for +: 'float' and 'NoneType'
+[2025-09-28 23:44:22] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: unsupported operand type(s) for +: 'float' and 'NoneType'
+[2025-09-28 23:47:49] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: unsupported operand type(s) for +: 'float' and 'NoneType'
+[2025-09-28 23:49:01] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: unsupported operand type(s) for +: 'float' and 'NoneType'

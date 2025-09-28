@@ -297,12 +297,11 @@ class DNSEClient:
 
     def GetTotalOpenQuantity(self, investor_account_id=None) -> int:
         #get active deals
-        activeDeals = self.getActiveDeals(investor_account_id or self.investor_account_id)
-        totalVol = 0
-        for deal in activeDeals:
-            totalVol = totalVol + deal['fillQuantity']
-        #self.logger.info(f"Tổng số hợp đồng đang mở : {totalVol} HĐ")
-        return totalVol
+        activeDeal = self.getActiveDeals(investor_account_id or self.investor_account_id)
+        if activeDeal:
+            return activeDeal['fillQuantity']
+        else:
+            return 0
         
         
 
@@ -327,11 +326,10 @@ class DNSEClient:
     
     def getActiveDeals(self, investor_account_id = None):    #tiểu khoản
         deals = self.GetDeals(investor_account_id)["data"]
-        activeDeals = []
         for deal in deals:
             if deal["orderStatus"].lower() == "filled" or deal["orderStatus"].lower() =="active" or deal['orderStatus'].lower()=='partiallyfilled':
-                activeDeals.append(deal)
-        return activeDeals  #return a list of active object deals
+                return deal
+        return None  
     
     def getActiveDeals_ID(self, investor_account_id = None):
         activedealIDs=[]

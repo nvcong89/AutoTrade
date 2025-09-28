@@ -12,8 +12,8 @@ class EntradeClient:
         self.passwordEntrade=None
         self.token = None
         self.createdtimeToken = None    #lưu thời gian bắt đầu lấy token, lưu dạng năm-tháng-ngày giờ-phút-giây
-        self.investor_id = None
-        self.investor_account_id = None
+        self.investor_id = None or '1000053980'
+        self.investor_account_id = None or '1000053980'
         # https://services-staging.entrade.com.vn/papertrade-entrade-api/derivative/orders
         self.base_url = f"https://services.entrade.com.vn/"
     
@@ -38,8 +38,7 @@ class EntradeClient:
         
         """Đặt lệnh với kiểm tra đầu vào và xử lý lỗi nâng cao"""
         
-        # self._validate_order_params(symbol, side, price, volume)
-        
+      
         _headers = {
             "Authorization": f"Bearer {self.token}"
         }
@@ -59,10 +58,10 @@ class EntradeClient:
             response = post(url, headers=_headers, json=_json)
             response.raise_for_status()
             order_data = response.json()
-            self.logger.info(f"Đặt lệnh {order_type} thành công: {order_data['id']}")
+            self.logger.info(f"Đặt lệnh {order_type} thành công [Entrade]: {order_data['id']}")
             return order_data
         except HTTPError as e:
-            self.logger.info("Order() failed! (Entrade):", e)
+            self.logger.error("Order() failed! (Entrade):", exc_info=True)
             return None
     
     def _validate_order_params(self, symbol: str, side: str, price: float, volume: int):
@@ -234,11 +233,10 @@ class EntradeClient:
 
     def GetActiveDeals(self,investorAccountId: str = None):
         deals = self.GetDeals()["data"]
-        activeDeals = []
         for deal in deals:
-            if deal["status"] == "ACTIVE":
-                activeDeals.append(deal)
-        return activeDeals
+            if deal["status"] == "ACTIVE" and deal['investorAccountId'] == investorAccountId or self.investor_account_id:
+                return deal
+        return 0
 
     def CloseAllDeals(self, is_demo: bool):
         try:
@@ -281,11 +279,8 @@ class EntradeClient:
             
     def GetTotalOpenQuantity(self, investor_account_id = None):
         #get active deals
-        activeDeals = self.GetActiveDeals(investor_account_id or self.investor_account_id)
-        totalVol = 0
-        for deal in activeDeals:
-            totalVol = totalVol + deal['openQuantity']
-        #self.logger.info(f"Tổng số hợp đồng đang mở : {totalVol} HĐ")
+        activeDeal = self.GetActiveDeals(investor_account_id or self.investor_account_id)
+        totalVol = activeDeal['openQuantity']
         return totalVol
     
     def validate_token(self, usernameEntrade = None, passwordEntrade = None):

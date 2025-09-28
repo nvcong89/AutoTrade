@@ -115,7 +115,7 @@ def OnStart(_onstart: bool = False):
     logger.warning(f"Giá trần hôm nay : {bot.ceilingPrice}")
     logger.warning(f"Giá sàn hôm nay : {bot.floorPrice}")
 
-    bot.dnseClient.CancleAllPendingOrders()
+    #bot.dnseClient.CancleAllPendingOrders()
     pass
 
 def OnTick():
@@ -155,7 +155,11 @@ def OnTick():
     #===================================================================
 
     bot.print_dealBot()
-    logger.info(f"Spread : {round(bot.spread,1) if bot.spread is not None else "N/A"}")
+    cprint(f"Spread : {round(bot.spread,1) if bot.spread is not None else "N/A"}")
+    cprint(f"Dư mua : {round(bot.totalBidQuantity,1) if bot.totalBidQuantity is not None else "N/A"}")
+    cprint(f"Dư bán : {round(bot.totalAskQuantity,1) if bot.totalAskQuantity is not None else "N/A"}")
+    cprint(f"NN mua : {round(bot.totalBuy_foreign,1) if bot.totalBuy_foreign is not None else "N/A"}")
+    cprint(f"NN bán : {round(bot.totalSell_foreign,1) if bot.totalSell_foreign is not None else "N/A"}")
 
     pass
 

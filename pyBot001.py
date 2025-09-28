@@ -98,11 +98,11 @@ class pyBotMACD(pyBot):
                         self.logger.info(f"Trading platform used : DNSE")
                         self.execute_trade_DNSE(action)
                     else:
-                        self.logger(f"Trading platform used : ENDTRADE")
+                        self.logger.info(f"Trading platform used : ENTRADE")
                         self.execute_trade_entrade(action)
                 except Exception as e:
                     self.logger.error(f"Lỗi khi đặt lệnh: {e}")
-                    pass
+                    
     
     def check_for_signals(self):
         '''
@@ -162,7 +162,7 @@ class pyBotMACD(pyBot):
             if (self.last_macd > self.last_signal and 
                 self.last_RSI >= self.lowerBound and 
                 self.last_ADX > self.levelADXBuy):
-                action = "BUY"
+                action = "LONG"
                 self.logger.info(f"Tín hiệu {action} |last_macd ={self.last_macd}|last_signal={self.last_signal}|last_RSI={self.last_RSI}|last_ADX={self.last_ADX}")
                 
             # Điều kiện bán
@@ -171,21 +171,21 @@ class pyBotMACD(pyBot):
                         self.last_signal > self.last_macd and
                         self.cross(45, rsi)
                     )):
-                action = "SELL"
+                action = "SHORT"
                 self.logger.info(f"Tín hiệu {action} |last_macd ={self.last_macd}|last_signal={self.last_signal}|last_RSI={self.last_RSI}|last_ADX={self.last_ADX}")
 
             # Điều kiện đóng mua
             elif (self.position_side == "BUY" and 
                     (self.last_macd < self.last_signal or 
                     self.last_RSI > self.upperBound)):
-                action = "CLOSEBUY"
+                action = "CLOSELONG"
                 self.logger.info(f"Tín hiệu {action} |last_macd ={self.last_macd}|last_signal={self.last_signal}|last_RSI={self.last_RSI}|last_ADX={self.last_ADX}")
 
             # Điều kiện đóng bán
             elif (self.position_side == "SELL" and 
                     (self.last_macd > self.last_signal or 
                     self.last_RSI < self.lowerBound)):
-                action = "CLOSESELL"
+                action = "CLOSESHORT"
                 self.logger.info(f"Tín hiệu {action} |last_macd ={self.last_macd}|last_signal={self.last_signal}|last_RSI={self.last_RSI}|last_ADX={self.last_ADX}")
             else:
                 action = None  # Không có tín hiệu
