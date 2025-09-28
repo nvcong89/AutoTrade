@@ -9,7 +9,7 @@ from Utils import*
 
 
 load_dotenv()
-gmailEntrade = getenv("usernameEntrade") # Email/SĐT tài khoản Entrade
+usernameEntrade = getenv("usernameEntrade") # Email/SĐT tài khoản Entrade
 passwordEntrade = getenv("passwordEntrade") # Mật khẩu tài khoản Entrade
 
 gmailDNSE = getenv("gmailDNSE") # Email đăng kí DNSE
@@ -24,9 +24,10 @@ if __name__ == "__main__":
     logger = setup_logger("[Authenticaotor]", logging.INFO)    # khởi tạo logger để in ra file log, console
 
     # Connect to Entrade (Only needed if used to auto trade)
-    GLOBAL.ENTRADE_CLIENT.Authenticate(gmailEntrade, passwordEntrade)
-    GLOBAL.ENTRADE_CLIENT.GetAccountInfo() # Get investor_id
-    GLOBAL.ENTRADE_CLIENT.GetAccountBalance() # Get investor_account_id
+    GLOBAL.ENTRADE_CLIENT.usernameEntrade = usernameEntrade
+    GLOBAL.ENTRADE_CLIENT.passwordEntrade = passwordEntrade
+    GLOBAL.ENTRADE_CLIENT.validate_token()
+
 
     # Connect to DNSE
     GLOBAL.DNSE_CLIENT.gmailDNSE = gmailDNSE
@@ -39,8 +40,8 @@ if __name__ == "__main__":
 
     token = GLOBAL.DNSE_CLIENT.token
 
-    logger.info(f"token [DNSE] : {token}")
-    logger.info(f"Trading-Token [DNSE]: {GLOBAL.DNSE_CLIENT.trading_token}")
+    logger.warning(f"token [DNSE] : {token}")
+    logger.warning(f"Trading-Token [DNSE]: {GLOBAL.DNSE_CLIENT.trading_token}")
 
     investor_id = GLOBAL.DNSE_CLIENT.GetAccountInfo().get("investorId")
 
@@ -61,12 +62,14 @@ if __name__ == "__main__":
 
     logger.info(f"loan package id: {GLOBAL.DNSE_CLIENT.loanpackageID}")
 
-    logger.info(f"Tổng số lượng lệnh trong sổ: {len(GLOBAL.DNSE_CLIENT.GetOrders(investor_account_id).get('orders'))}")
+    logger.warning(f"Tổng số lượng lệnh đang mở trong sổ: {len(GLOBAL.DNSE_CLIENT.getActiveDeals())}")
+    logger.warning(f"Tổng số lượng lệnh đang chờ trong sổ: {len(GLOBAL.DNSE_CLIENT.GetPendingOrders())}")
 
     # print(f"sổ lệnh: {GLOBAL.DNSE_CLIENT.GetOrders(investor_account_id)}")
+    # logger.info(f"sổ lệnh: {GLOBAL.DNSE_CLIENT.GetOrders(investor_account_id)}")
 
     totaVol = GLOBAL.DNSE_CLIENT.GetTotalOpenQuantity()
-    logger.info(f"Tổng số hợp đồng đang mở: {totaVol} HĐ")
+    logger.warning(f"Tổng số hợp đồng đang mở: {totaVol} HĐ")
 
     # print(f"active deals: {GLOBAL.DNSE_CLIENT.getActiveDeals(GLOBAL.DNSE_CLIENT.investor_account_id)}")
 
@@ -80,6 +83,6 @@ if __name__ == "__main__":
         while True:
             pass
     except KeyboardInterrupt:
-        logger.info("Disconnecting...")
+        logger.warning("Disconnecting...")
         MQTT_CLIENT.client.disconnect()
         MQTT_CLIENT.client.loop_stop()

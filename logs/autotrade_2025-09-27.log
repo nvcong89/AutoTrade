@@ -1190,3 +1190,390 @@
 [2025-09-27 22:40:49] SMARTBOT - INFO - Trading platform used : DNSE
 [2025-09-27 22:40:49] SMARTBOT - INFO - [DNSE] Thực hiện đặt 1 hợp đồng LONG tại giá MTL
 [2025-09-27 22:40:51] SMARTBOT - ERROR - Lỗi khi đặt lệnh: 400 Client Error:  for url: https://api.dnse.com.vn/order-service/derivative/orders
+[2025-09-27 23:16:37] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-27 23:16:38] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-27 23:16:38] [MQTT Connector] - INFO - Logger '[MQTT Connector]' initialized with daily rotation
+[2025-09-27 23:16:38] [Authenticaotor] - INFO - Logger '[Authenticaotor]' initialized with daily rotation
+[2025-09-27 23:16:39] [Authenticaotor] - INFO - token [DNSE] : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZGVudGlmaWNhdGlvbkNvZGUiOiIwMDEwODkwMjkyNDUiLCJzdWIiOiIxMDAwOTY0NzY4IiwiYnJva2VySWQiOiIwODY5IiwiYXV0aFNvdXJjZSI6bnVsbCwicm9sZXMiOlsiaW52ZXN0b3IiLCJCUk9LRVIiXSwiaXNzIjoiRE5TRSIsImludmVzdG9ySWQiOiIxMDAwOTY0NzY4IiwiYnJva2VyVHlwZSI6IlNBQ08iLCJmdWxsTmFtZSI6Ik5ndXnhu4VuIFbEg24gQ8O0bmciLCJzZXNzaW9uSWQiOiJkN2FlNjY4Ni0wNjZjLTRjMDEtOTBkNi0xNGJjNzZjNGQwZTkiLCJ1c2VySWQiOiJhODQ3OGY2ZS0yMDY4LTRjODctYjEzNi1kNmFhMzIyYzk4MTYiLCJhdWQiOlsiYXVkaWVuY2UiXSwiY3VzdG9tZXJFbWFpbCI6Im52Y29uZzg5QGxpdmUuY29tIiwiY3VzdG9keUNvZGUiOiIwNjRDNjg0NjQxIiwiY3VzdG9tZXJJZCI6IjAwMDE1MDQxNzUiLCJleHAiOjE3NTkwMDgzMjksImN1c3RvbWVyTW9iaWxlIjoiMDk3OTQwNDY0MSIsImlhdCI6MTc1ODk3OTUyOSwidXNlcm5hbWUiOiIwNjRDNjg0NjQxIiwic3RhdHVzIjoiQUNUSVZFIn0.fC-fSXDxnrs9B4qyMWtBwAAhMJEgwMkEPt-xwHqqj4PCSwQKvexE94RlsyqF3Jd5M2QHHDuOD5w9XpUd0J9O5-aEJEMGGge8bnqJCUB68VheKVzeP1jupmWO96SQ3INhscM8CWCMSBJMHsoZH_0KTXrZG0gOYkRFLwc-g1t_tJU
+[2025-09-27 23:16:39] [Authenticaotor] - INFO - Trading-Token [DNSE]: 80c57a9a-0ebb-4d75-abf0-5c5ad391789d
+[2025-09-27 23:16:41] [Authenticaotor] - INFO - investor_id [Etrade] : 1000048842
+[2025-09-27 23:16:41] [Authenticaotor] - INFO - investor_account_id [Etrade] : 1000049481 
+
+[2025-09-27 23:16:41] [Authenticaotor] - INFO - investor_id [DNSE] : 1000964768
+[2025-09-27 23:16:41] [Authenticaotor] - INFO - investor_account_id [DNSE] : 0001521007
+
+[2025-09-27 23:16:41] [Authenticaotor] - INFO - loan package id: 1306
+[2025-09-27 23:16:42] [Authenticaotor] - INFO - Tổng số lượng lệnh trong sổ: 0
+[2025-09-27 23:16:42] [Authenticaotor] - INFO - Tổng số hợp đồng đang mở: 0 HĐ
+[2025-09-27 23:16:42] [MQTT Connector] - INFO - Connected to MQTT Broker!
+[2025-09-27 23:16:43] [Data Processor] - INFO - Logger '[Data Processor]' initialized with daily rotation
+[2025-09-27 23:16:43] [Data Processor] - INFO - Working TimeFrame: m5
+[2025-09-27 23:16:45] [Data Processor] - INFO - Successfully initialized multi-timeframe data:
+[2025-09-27 23:16:45] [Data Processor] - INFO - m1: 16626 candles
+[2025-09-27 23:16:45] [Data Processor] - INFO - m3: 5588 candles
+[2025-09-27 23:16:45] [Data Processor] - INFO - m5: 3380 candles
+[2025-09-27 23:16:45] [Data Processor] - INFO - m15: 1172 candles
+[2025-09-27 23:16:45] [Data Processor] - INFO - m30: 620 candles
+[2025-09-27 23:16:45] [Data Processor] - INFO - H1: 344 candles
+[2025-09-27 23:16:45] [Data Processor] - INFO - D1: 68 candles
+[2025-09-27 23:16:45] [Data Processor] - INFO - W1: 14 candles
+[2025-09-27 23:16:45] [Logic_Processor] - INFO - Logger '[Logic_Processor]' initialized with daily rotation
+[2025-09-27 23:16:46] SMARTBOT - INFO - Logger 'SMARTBOT' initialized with daily rotation
+[2025-09-27 23:16:46] SMARTBOT - INFO - Khởi tạo bot: MACD_Bot
+[2025-09-27 23:16:48] SMARTBOT - INFO - Độ dài chuỗi dữ liệu nến 'm5': 3380
+[2025-09-27 23:16:49] SMARTBOT - INFO - Tín hiệu SELL |last_macd =0.11676318221429938|last_signal=0.14852408727716107|last_RSI=32.88692732197889|last_ADX=33.814483211183514
+[2025-09-27 23:16:49] SMARTBOT - INFO - Signal detected: BUY
+[2025-09-27 23:16:49] SMARTBOT - INFO - Trading platform used : DNSE
+[2025-09-27 23:16:49] SMARTBOT - INFO - [DNSE] Thực hiện đặt 1 hợp đồng LONG tại giá MTL
+[2025-09-27 23:16:50] SMARTBOT - ERROR - Lỗi khi đặt lệnh: 400 Client Error:  for url: https://api.dnse.com.vn/order-service/derivative/orders
+[2025-09-27 23:16:52] SMARTBOT - INFO - Độ dài chuỗi dữ liệu nến 'm5': 3380
+[2025-09-27 23:16:53] SMARTBOT - INFO - Tín hiệu SELL |last_macd =0.11676318221429938|last_signal=0.14852408727716107|last_RSI=32.88692732197889|last_ADX=33.814483211183514
+[2025-09-27 23:16:53] SMARTBOT - INFO - Signal detected: BUY
+[2025-09-27 23:16:53] SMARTBOT - INFO - Trading platform used : DNSE
+[2025-09-27 23:16:53] SMARTBOT - INFO - [DNSE] Thực hiện đặt 1 hợp đồng LONG tại giá MTL
+[2025-09-27 23:16:54] SMARTBOT - ERROR - Lỗi khi đặt lệnh: 400 Client Error:  for url: https://api.dnse.com.vn/order-service/derivative/orders
+[2025-09-27 23:27:10] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-27 23:27:10] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-27 23:27:10] [MQTT Connector] - INFO - Logger '[MQTT Connector]' initialized with daily rotation
+[2025-09-27 23:27:10] [Authenticaotor] - INFO - Logger '[Authenticaotor]' initialized with daily rotation
+[2025-09-27 23:27:12] [Authenticaotor] - INFO - token [DNSE] : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZGVudGlmaWNhdGlvbkNvZGUiOiIwMDEwODkwMjkyNDUiLCJzdWIiOiIxMDAwOTY0NzY4IiwiYnJva2VySWQiOiIwODY5IiwiYXV0aFNvdXJjZSI6bnVsbCwicm9sZXMiOlsiaW52ZXN0b3IiLCJCUk9LRVIiXSwiaXNzIjoiRE5TRSIsImludmVzdG9ySWQiOiIxMDAwOTY0NzY4IiwiYnJva2VyVHlwZSI6IlNBQ08iLCJmdWxsTmFtZSI6Ik5ndXnhu4VuIFbEg24gQ8O0bmciLCJzZXNzaW9uSWQiOiJkN2FlNjY4Ni0wNjZjLTRjMDEtOTBkNi0xNGJjNzZjNGQwZTkiLCJ1c2VySWQiOiJhODQ3OGY2ZS0yMDY4LTRjODctYjEzNi1kNmFhMzIyYzk4MTYiLCJhdWQiOlsiYXVkaWVuY2UiXSwiY3VzdG9tZXJFbWFpbCI6Im52Y29uZzg5QGxpdmUuY29tIiwiY3VzdG9keUNvZGUiOiIwNjRDNjg0NjQxIiwiY3VzdG9tZXJJZCI6IjAwMDE1MDQxNzUiLCJleHAiOjE3NTkwMDgzMjksImN1c3RvbWVyTW9iaWxlIjoiMDk3OTQwNDY0MSIsImlhdCI6MTc1ODk3OTUyOSwidXNlcm5hbWUiOiIwNjRDNjg0NjQxIiwic3RhdHVzIjoiQUNUSVZFIn0.fC-fSXDxnrs9B4qyMWtBwAAhMJEgwMkEPt-xwHqqj4PCSwQKvexE94RlsyqF3Jd5M2QHHDuOD5w9XpUd0J9O5-aEJEMGGge8bnqJCUB68VheKVzeP1jupmWO96SQ3INhscM8CWCMSBJMHsoZH_0KTXrZG0gOYkRFLwc-g1t_tJU
+[2025-09-27 23:27:12] [Authenticaotor] - INFO - Trading-Token [DNSE]: 80c57a9a-0ebb-4d75-abf0-5c5ad391789d
+[2025-09-27 23:27:14] [Authenticaotor] - INFO - investor_id [Etrade] : 1000048842
+[2025-09-27 23:27:14] [Authenticaotor] - INFO - investor_account_id [Etrade] : 1000049481 
+
+[2025-09-27 23:27:14] [Authenticaotor] - INFO - investor_id [DNSE] : 1000964768
+[2025-09-27 23:27:14] [Authenticaotor] - INFO - investor_account_id [DNSE] : 0001521007
+
+[2025-09-27 23:27:14] [Authenticaotor] - INFO - loan package id: 1306
+[2025-09-27 23:27:14] [Authenticaotor] - INFO - Tổng số lượng lệnh trong sổ: 0
+[2025-09-27 23:27:15] [Authenticaotor] - INFO - Tổng số hợp đồng đang mở: 0 HĐ
+[2025-09-27 23:27:15] [MQTT Connector] - INFO - Connected to MQTT Broker!
+[2025-09-27 23:27:16] [Data Processor] - INFO - Logger '[Data Processor]' initialized with daily rotation
+[2025-09-27 23:27:16] [Data Processor] - INFO - Working TimeFrame: m5
+[2025-09-27 23:27:18] [Data Processor] - INFO - Successfully initialized multi-timeframe data:
+[2025-09-27 23:27:18] [Data Processor] - INFO - m1: 16626 candles
+[2025-09-27 23:27:18] [Data Processor] - INFO - m3: 5588 candles
+[2025-09-27 23:27:18] [Data Processor] - INFO - m5: 3380 candles
+[2025-09-27 23:27:18] [Data Processor] - INFO - m15: 1172 candles
+[2025-09-27 23:27:18] [Data Processor] - INFO - m30: 620 candles
+[2025-09-27 23:27:18] [Data Processor] - INFO - H1: 344 candles
+[2025-09-27 23:27:18] [Data Processor] - INFO - D1: 68 candles
+[2025-09-27 23:27:18] [Data Processor] - INFO - W1: 14 candles
+[2025-09-27 23:27:18] [Logic_Processor] - INFO - Logger '[Logic_Processor]' initialized with daily rotation
+[2025-09-27 23:27:19] SMARTBOT - INFO - Logger 'SMARTBOT' initialized with daily rotation
+[2025-09-27 23:27:19] SMARTBOT - INFO - Khởi tạo bot: MACD_Bot
+[2025-09-27 23:27:19] [Logic_Processor] - INFO - Bot MACD_Bot đã được khởi tạo.
+[2025-09-27 23:27:19] [Logic_Processor] - INFO - Đẩy MarketData vào trong bot...
+[2025-09-27 23:27:19] [Logic_Processor] - INFO - Bot đang chạy...
+[2025-09-27 23:27:20] SMARTBOT - INFO - Độ dài chuỗi dữ liệu nến 'm5': 3380
+[2025-09-27 23:27:21] SMARTBOT - INFO - Tín hiệu SELL |last_macd =0.11676318221429938|last_signal=0.14852408727716107|last_RSI=32.88692732197889|last_ADX=33.814483211183514
+[2025-09-27 23:27:21] SMARTBOT - INFO - Signal detected: BUY
+[2025-09-27 23:27:21] SMARTBOT - INFO - Trading platform used : DNSE
+[2025-09-27 23:27:21] SMARTBOT - INFO - [DNSE] Thực hiện đặt 1 hợp đồng LONG tại giá MTL
+[2025-09-27 23:27:22] SMARTBOT - ERROR - Lỗi khi đặt lệnh: 400 Client Error:  for url: https://api.dnse.com.vn/order-service/derivative/orders
+[2025-09-27 23:27:22] SMARTBOT - INFO - Deal info from bot MACD_Bot:
+[2025-09-27 23:27:22] SMARTBOT - INFO - Order id: None
+[2025-09-27 23:27:22] SMARTBOT - INFO - Entry price: N/A
+[2025-09-27 23:27:23] SMARTBOT - INFO - Position: N/A
+[2025-09-27 23:27:23] SMARTBOT - INFO - Open Quantity: 0
+[2025-09-27 23:27:23] SMARTBOT - INFO - Order Side: N/A
+[2025-09-27 23:27:23] SMARTBOT - INFO - Current Price: 1840.0
+[2025-09-27 23:27:23] SMARTBOT - INFO - Latest matched volume: 7717
+[2025-09-27 23:27:23] SMARTBOT - INFO - Estimated P/L: 0 VND
+[2025-09-27 23:27:23] SMARTBOT - INFO - ------------------------------------------------------------------------------------------------------------------------------------------------------
+[2025-09-27 23:27:24] SMARTBOT - INFO - Độ dài chuỗi dữ liệu nến 'm5': 3380
+[2025-09-27 23:27:25] SMARTBOT - INFO - Tín hiệu SELL |last_macd =0.11676318221429938|last_signal=0.14852408727716107|last_RSI=32.88692732197889|last_ADX=33.814483211183514
+[2025-09-27 23:27:25] SMARTBOT - INFO - Signal detected: BUY
+[2025-09-27 23:27:25] SMARTBOT - INFO - Trading platform used : DNSE
+[2025-09-27 23:27:25] SMARTBOT - INFO - [DNSE] Thực hiện đặt 1 hợp đồng LONG tại giá MTL
+[2025-09-27 23:27:26] SMARTBOT - ERROR - Lỗi khi đặt lệnh: 400 Client Error:  for url: https://api.dnse.com.vn/order-service/derivative/orders
+[2025-09-27 23:32:01] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-27 23:32:01] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-27 23:32:01] [ENTRADE_Client] - INFO - Logger '[ENTRADE_Client]' initialized with daily rotation
+[2025-09-27 23:32:01] [MQTT Connector] - INFO - Logger '[MQTT Connector]' initialized with daily rotation
+[2025-09-27 23:32:01] [Authenticaotor] - INFO - Logger '[Authenticaotor]' initialized with daily rotation
+[2025-09-27 23:32:02] [ENTRADE_Client] - CRITICAL - Đăng nhập thành công! (Entrade)
+[2025-09-27 23:32:03] [Authenticaotor] - INFO - token [DNSE] : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZGVudGlmaWNhdGlvbkNvZGUiOiIwMDEwODkwMjkyNDUiLCJzdWIiOiIxMDAwOTY0NzY4IiwiYnJva2VySWQiOiIwODY5IiwiYXV0aFNvdXJjZSI6bnVsbCwicm9sZXMiOlsiaW52ZXN0b3IiLCJCUk9LRVIiXSwiaXNzIjoiRE5TRSIsImludmVzdG9ySWQiOiIxMDAwOTY0NzY4IiwiYnJva2VyVHlwZSI6IlNBQ08iLCJmdWxsTmFtZSI6Ik5ndXnhu4VuIFbEg24gQ8O0bmciLCJzZXNzaW9uSWQiOiJkN2FlNjY4Ni0wNjZjLTRjMDEtOTBkNi0xNGJjNzZjNGQwZTkiLCJ1c2VySWQiOiJhODQ3OGY2ZS0yMDY4LTRjODctYjEzNi1kNmFhMzIyYzk4MTYiLCJhdWQiOlsiYXVkaWVuY2UiXSwiY3VzdG9tZXJFbWFpbCI6Im52Y29uZzg5QGxpdmUuY29tIiwiY3VzdG9keUNvZGUiOiIwNjRDNjg0NjQxIiwiY3VzdG9tZXJJZCI6IjAwMDE1MDQxNzUiLCJleHAiOjE3NTkwMDgzMjksImN1c3RvbWVyTW9iaWxlIjoiMDk3OTQwNDY0MSIsImlhdCI6MTc1ODk3OTUyOSwidXNlcm5hbWUiOiIwNjRDNjg0NjQxIiwic3RhdHVzIjoiQUNUSVZFIn0.fC-fSXDxnrs9B4qyMWtBwAAhMJEgwMkEPt-xwHqqj4PCSwQKvexE94RlsyqF3Jd5M2QHHDuOD5w9XpUd0J9O5-aEJEMGGge8bnqJCUB68VheKVzeP1jupmWO96SQ3INhscM8CWCMSBJMHsoZH_0KTXrZG0gOYkRFLwc-g1t_tJU
+[2025-09-27 23:32:03] [Authenticaotor] - INFO - Trading-Token [DNSE]: 80c57a9a-0ebb-4d75-abf0-5c5ad391789d
+[2025-09-27 23:32:05] [Authenticaotor] - INFO - investor_id [Etrade] : 1000048842
+[2025-09-27 23:32:05] [Authenticaotor] - INFO - investor_account_id [Etrade] : 1000049481 
+
+[2025-09-27 23:32:05] [Authenticaotor] - INFO - investor_id [DNSE] : 1000964768
+[2025-09-27 23:32:05] [Authenticaotor] - INFO - investor_account_id [DNSE] : 0001521007
+
+[2025-09-27 23:32:05] [Authenticaotor] - INFO - loan package id: 1306
+[2025-09-27 23:32:05] [Authenticaotor] - INFO - Tổng số lượng lệnh trong sổ: 0
+[2025-09-27 23:32:06] [Authenticaotor] - INFO - Tổng số hợp đồng đang mở: 0 HĐ
+[2025-09-27 23:32:06] [MQTT Connector] - INFO - Connected to MQTT Broker!
+[2025-09-27 23:32:06] [Data Processor] - INFO - Logger '[Data Processor]' initialized with daily rotation
+[2025-09-27 23:32:06] [Data Processor] - INFO - Working TimeFrame: m5
+[2025-09-27 23:32:08] [Data Processor] - INFO - Successfully initialized multi-timeframe data:
+[2025-09-27 23:32:08] [Data Processor] - INFO - m1: 16626 candles
+[2025-09-27 23:32:08] [Data Processor] - INFO - m3: 5588 candles
+[2025-09-27 23:32:08] [Data Processor] - INFO - m5: 3380 candles
+[2025-09-27 23:32:08] [Data Processor] - INFO - m15: 1172 candles
+[2025-09-27 23:32:09] [Data Processor] - INFO - m30: 620 candles
+[2025-09-27 23:32:09] [Data Processor] - INFO - H1: 344 candles
+[2025-09-27 23:32:09] [Data Processor] - INFO - D1: 68 candles
+[2025-09-27 23:32:09] [Data Processor] - INFO - W1: 14 candles
+[2025-09-27 23:32:09] [Logic_Processor] - INFO - Logger '[Logic_Processor]' initialized with daily rotation
+[2025-09-27 23:32:09] SMARTBOT - INFO - Logger 'SMARTBOT' initialized with daily rotation
+[2025-09-27 23:32:09] SMARTBOT - INFO - Khởi tạo bot: MACD_Bot
+[2025-09-27 23:32:09] [Logic_Processor] - INFO - Bot MACD_Bot đã được khởi tạo.
+[2025-09-27 23:32:09] [Logic_Processor] - INFO - Đẩy MarketData vào trong bot...
+[2025-09-27 23:32:09] [Logic_Processor] - INFO - Bot đang chạy...
+[2025-09-27 23:32:36] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-27 23:32:36] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-27 23:32:36] [ENTRADE_Client] - INFO - Logger '[ENTRADE_Client]' initialized with daily rotation
+[2025-09-27 23:32:36] [MQTT Connector] - INFO - Logger '[MQTT Connector]' initialized with daily rotation
+[2025-09-27 23:32:36] [Authenticaotor] - INFO - Logger '[Authenticaotor]' initialized with daily rotation
+[2025-09-27 23:32:37] [ENTRADE_Client] - WARNING - Đăng nhập thành công! (Entrade)
+[2025-09-27 23:32:38] [Authenticaotor] - INFO - token [DNSE] : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZGVudGlmaWNhdGlvbkNvZGUiOiIwMDEwODkwMjkyNDUiLCJzdWIiOiIxMDAwOTY0NzY4IiwiYnJva2VySWQiOiIwODY5IiwiYXV0aFNvdXJjZSI6bnVsbCwicm9sZXMiOlsiaW52ZXN0b3IiLCJCUk9LRVIiXSwiaXNzIjoiRE5TRSIsImludmVzdG9ySWQiOiIxMDAwOTY0NzY4IiwiYnJva2VyVHlwZSI6IlNBQ08iLCJmdWxsTmFtZSI6Ik5ndXnhu4VuIFbEg24gQ8O0bmciLCJzZXNzaW9uSWQiOiJkN2FlNjY4Ni0wNjZjLTRjMDEtOTBkNi0xNGJjNzZjNGQwZTkiLCJ1c2VySWQiOiJhODQ3OGY2ZS0yMDY4LTRjODctYjEzNi1kNmFhMzIyYzk4MTYiLCJhdWQiOlsiYXVkaWVuY2UiXSwiY3VzdG9tZXJFbWFpbCI6Im52Y29uZzg5QGxpdmUuY29tIiwiY3VzdG9keUNvZGUiOiIwNjRDNjg0NjQxIiwiY3VzdG9tZXJJZCI6IjAwMDE1MDQxNzUiLCJleHAiOjE3NTkwMDgzMjksImN1c3RvbWVyTW9iaWxlIjoiMDk3OTQwNDY0MSIsImlhdCI6MTc1ODk3OTUyOSwidXNlcm5hbWUiOiIwNjRDNjg0NjQxIiwic3RhdHVzIjoiQUNUSVZFIn0.fC-fSXDxnrs9B4qyMWtBwAAhMJEgwMkEPt-xwHqqj4PCSwQKvexE94RlsyqF3Jd5M2QHHDuOD5w9XpUd0J9O5-aEJEMGGge8bnqJCUB68VheKVzeP1jupmWO96SQ3INhscM8CWCMSBJMHsoZH_0KTXrZG0gOYkRFLwc-g1t_tJU
+[2025-09-27 23:32:38] [Authenticaotor] - INFO - Trading-Token [DNSE]: 80c57a9a-0ebb-4d75-abf0-5c5ad391789d
+[2025-09-27 23:32:40] [Authenticaotor] - INFO - investor_id [Etrade] : 1000048842
+[2025-09-27 23:32:40] [Authenticaotor] - INFO - investor_account_id [Etrade] : 1000049481 
+
+[2025-09-27 23:32:40] [Authenticaotor] - INFO - investor_id [DNSE] : 1000964768
+[2025-09-27 23:32:40] [Authenticaotor] - INFO - investor_account_id [DNSE] : 0001521007
+
+[2025-09-27 23:32:40] [Authenticaotor] - INFO - loan package id: 1306
+[2025-09-27 23:32:40] [Authenticaotor] - INFO - Tổng số lượng lệnh trong sổ: 0
+[2025-09-27 23:32:41] [Authenticaotor] - INFO - Tổng số hợp đồng đang mở: 0 HĐ
+[2025-09-27 23:32:41] [MQTT Connector] - INFO - Connected to MQTT Broker!
+[2025-09-27 23:32:41] [Data Processor] - INFO - Logger '[Data Processor]' initialized with daily rotation
+[2025-09-27 23:32:41] [Data Processor] - INFO - Working TimeFrame: m5
+[2025-09-27 23:32:43] [Data Processor] - INFO - Successfully initialized multi-timeframe data:
+[2025-09-27 23:32:43] [Data Processor] - INFO - m1: 16626 candles
+[2025-09-27 23:32:43] [Data Processor] - INFO - m3: 5588 candles
+[2025-09-27 23:32:43] [Data Processor] - INFO - m5: 3380 candles
+[2025-09-27 23:32:43] [Data Processor] - INFO - m15: 1172 candles
+[2025-09-27 23:32:43] [Data Processor] - INFO - m30: 620 candles
+[2025-09-27 23:32:43] [Data Processor] - INFO - H1: 344 candles
+[2025-09-27 23:32:44] [Data Processor] - INFO - D1: 68 candles
+[2025-09-27 23:32:44] [Data Processor] - INFO - W1: 14 candles
+[2025-09-27 23:32:44] [Logic_Processor] - INFO - Logger '[Logic_Processor]' initialized with daily rotation
+[2025-09-27 23:32:44] SMARTBOT - INFO - Logger 'SMARTBOT' initialized with daily rotation
+[2025-09-27 23:32:44] SMARTBOT - INFO - Khởi tạo bot: MACD_Bot
+[2025-09-27 23:32:44] [Logic_Processor] - INFO - Bot MACD_Bot đã được khởi tạo.
+[2025-09-27 23:32:44] [Logic_Processor] - INFO - Đẩy MarketData vào trong bot...
+[2025-09-27 23:32:44] [Logic_Processor] - INFO - Bot đang chạy...
+[2025-09-27 23:32:46] SMARTBOT - INFO - Độ dài chuỗi dữ liệu nến 'm5': 3380
+[2025-09-27 23:32:47] SMARTBOT - INFO - Tín hiệu SELL |last_macd =0.11676318221429938|last_signal=0.14852408727716107|last_RSI=32.88692732197889|last_ADX=33.814483211183514
+[2025-09-27 23:32:47] SMARTBOT - INFO - Signal detected: BUY
+[2025-09-27 23:32:47] SMARTBOT - INFO - Trading platform used : DNSE
+[2025-09-27 23:32:47] SMARTBOT - INFO - [DNSE] Thực hiện đặt 1 hợp đồng LONG tại giá MTL
+[2025-09-27 23:32:48] SMARTBOT - ERROR - Lỗi khi đặt lệnh: 400 Client Error:  for url: https://api.dnse.com.vn/order-service/derivative/orders
+[2025-09-27 23:32:48] SMARTBOT - INFO - Deal info from bot MACD_Bot:
+[2025-09-27 23:32:49] SMARTBOT - INFO - Order id: None
+[2025-09-27 23:32:49] SMARTBOT - INFO - Entry price: N/A
+[2025-09-27 23:32:49] SMARTBOT - INFO - Position: N/A
+[2025-09-27 23:32:49] SMARTBOT - INFO - Open Quantity: 0
+[2025-09-27 23:32:49] SMARTBOT - INFO - Order Side: N/A
+[2025-09-27 23:32:49] SMARTBOT - INFO - Current Price: 1840.0
+[2025-09-27 23:32:49] SMARTBOT - INFO - Latest matched volume: 7717
+[2025-09-27 23:32:49] SMARTBOT - INFO - Estimated P/L: 0 VND
+[2025-09-27 23:32:49] SMARTBOT - INFO - ------------------------------------------------------------------------------------------------------------------------------------------------------
+[2025-09-27 23:32:50] SMARTBOT - INFO - Độ dài chuỗi dữ liệu nến 'm5': 3380
+[2025-09-27 23:32:51] SMARTBOT - INFO - Tín hiệu SELL |last_macd =0.11676318221429938|last_signal=0.14852408727716107|last_RSI=32.88692732197889|last_ADX=33.814483211183514
+[2025-09-27 23:32:51] SMARTBOT - INFO - Signal detected: BUY
+[2025-09-27 23:32:51] SMARTBOT - INFO - Trading platform used : DNSE
+[2025-09-27 23:32:51] SMARTBOT - INFO - [DNSE] Thực hiện đặt 1 hợp đồng LONG tại giá MTL
+[2025-09-27 23:32:52] SMARTBOT - ERROR - Lỗi khi đặt lệnh: 400 Client Error:  for url: https://api.dnse.com.vn/order-service/derivative/orders
+[2025-09-27 23:33:10] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-27 23:33:10] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-27 23:33:10] [ENTRADE_Client] - INFO - Logger '[ENTRADE_Client]' initialized with daily rotation
+[2025-09-27 23:33:10] [MQTT Connector] - INFO - Logger '[MQTT Connector]' initialized with daily rotation
+[2025-09-27 23:33:10] [Authenticaotor] - INFO - Logger '[Authenticaotor]' initialized with daily rotation
+[2025-09-27 23:33:10] [ENTRADE_Client] - INFO - Đăng nhập thành công! (Entrade)
+[2025-09-27 23:33:12] [Authenticaotor] - INFO - token [DNSE] : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZGVudGlmaWNhdGlvbkNvZGUiOiIwMDEwODkwMjkyNDUiLCJzdWIiOiIxMDAwOTY0NzY4IiwiYnJva2VySWQiOiIwODY5IiwiYXV0aFNvdXJjZSI6bnVsbCwicm9sZXMiOlsiaW52ZXN0b3IiLCJCUk9LRVIiXSwiaXNzIjoiRE5TRSIsImludmVzdG9ySWQiOiIxMDAwOTY0NzY4IiwiYnJva2VyVHlwZSI6IlNBQ08iLCJmdWxsTmFtZSI6Ik5ndXnhu4VuIFbEg24gQ8O0bmciLCJzZXNzaW9uSWQiOiJkN2FlNjY4Ni0wNjZjLTRjMDEtOTBkNi0xNGJjNzZjNGQwZTkiLCJ1c2VySWQiOiJhODQ3OGY2ZS0yMDY4LTRjODctYjEzNi1kNmFhMzIyYzk4MTYiLCJhdWQiOlsiYXVkaWVuY2UiXSwiY3VzdG9tZXJFbWFpbCI6Im52Y29uZzg5QGxpdmUuY29tIiwiY3VzdG9keUNvZGUiOiIwNjRDNjg0NjQxIiwiY3VzdG9tZXJJZCI6IjAwMDE1MDQxNzUiLCJleHAiOjE3NTkwMDgzMjksImN1c3RvbWVyTW9iaWxlIjoiMDk3OTQwNDY0MSIsImlhdCI6MTc1ODk3OTUyOSwidXNlcm5hbWUiOiIwNjRDNjg0NjQxIiwic3RhdHVzIjoiQUNUSVZFIn0.fC-fSXDxnrs9B4qyMWtBwAAhMJEgwMkEPt-xwHqqj4PCSwQKvexE94RlsyqF3Jd5M2QHHDuOD5w9XpUd0J9O5-aEJEMGGge8bnqJCUB68VheKVzeP1jupmWO96SQ3INhscM8CWCMSBJMHsoZH_0KTXrZG0gOYkRFLwc-g1t_tJU
+[2025-09-27 23:33:12] [Authenticaotor] - INFO - Trading-Token [DNSE]: 80c57a9a-0ebb-4d75-abf0-5c5ad391789d
+[2025-09-27 23:33:13] [Authenticaotor] - INFO - investor_id [Etrade] : 1000048842
+[2025-09-27 23:33:13] [Authenticaotor] - INFO - investor_account_id [Etrade] : 1000049481 
+
+[2025-09-27 23:33:13] [Authenticaotor] - INFO - investor_id [DNSE] : 1000964768
+[2025-09-27 23:33:13] [Authenticaotor] - INFO - investor_account_id [DNSE] : 0001521007
+
+[2025-09-27 23:33:13] [Authenticaotor] - INFO - loan package id: 1306
+[2025-09-27 23:33:14] [Authenticaotor] - INFO - Tổng số lượng lệnh trong sổ: 0
+[2025-09-27 23:33:14] [Authenticaotor] - INFO - Tổng số hợp đồng đang mở: 0 HĐ
+[2025-09-27 23:33:15] [MQTT Connector] - INFO - Connected to MQTT Broker!
+[2025-09-27 23:33:15] [Data Processor] - INFO - Logger '[Data Processor]' initialized with daily rotation
+[2025-09-27 23:33:15] [Data Processor] - INFO - Working TimeFrame: m5
+[2025-09-27 23:34:48] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-27 23:34:48] DNSE_Client - INFO - Logger 'DNSE_Client' initialized with daily rotation
+[2025-09-27 23:34:48] [ENTRADE_Client] - INFO - Logger '[ENTRADE_Client]' initialized with daily rotation
+[2025-09-27 23:34:48] [MQTT Connector] - INFO - Logger '[MQTT Connector]' initialized with daily rotation
+[2025-09-27 23:34:48] [Authenticaotor] - INFO - Logger '[Authenticaotor]' initialized with daily rotation
+[2025-09-27 23:34:49] [Authenticaotor] - INFO - token [DNSE] : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZGVudGlmaWNhdGlvbkNvZGUiOiIwMDEwODkwMjkyNDUiLCJzdWIiOiIxMDAwOTY0NzY4IiwiYnJva2VySWQiOiIwODY5IiwiYXV0aFNvdXJjZSI6bnVsbCwicm9sZXMiOlsiaW52ZXN0b3IiLCJCUk9LRVIiXSwiaXNzIjoiRE5TRSIsImludmVzdG9ySWQiOiIxMDAwOTY0NzY4IiwiYnJva2VyVHlwZSI6IlNBQ08iLCJmdWxsTmFtZSI6Ik5ndXnhu4VuIFbEg24gQ8O0bmciLCJzZXNzaW9uSWQiOiJkN2FlNjY4Ni0wNjZjLTRjMDEtOTBkNi0xNGJjNzZjNGQwZTkiLCJ1c2VySWQiOiJhODQ3OGY2ZS0yMDY4LTRjODctYjEzNi1kNmFhMzIyYzk4MTYiLCJhdWQiOlsiYXVkaWVuY2UiXSwiY3VzdG9tZXJFbWFpbCI6Im52Y29uZzg5QGxpdmUuY29tIiwiY3VzdG9keUNvZGUiOiIwNjRDNjg0NjQxIiwiY3VzdG9tZXJJZCI6IjAwMDE1MDQxNzUiLCJleHAiOjE3NTkwMDgzMjksImN1c3RvbWVyTW9iaWxlIjoiMDk3OTQwNDY0MSIsImlhdCI6MTc1ODk3OTUyOSwidXNlcm5hbWUiOiIwNjRDNjg0NjQxIiwic3RhdHVzIjoiQUNUSVZFIn0.fC-fSXDxnrs9B4qyMWtBwAAhMJEgwMkEPt-xwHqqj4PCSwQKvexE94RlsyqF3Jd5M2QHHDuOD5w9XpUd0J9O5-aEJEMGGge8bnqJCUB68VheKVzeP1jupmWO96SQ3INhscM8CWCMSBJMHsoZH_0KTXrZG0gOYkRFLwc-g1t_tJU
+[2025-09-27 23:34:49] [Authenticaotor] - INFO - Trading-Token [DNSE]: 80c57a9a-0ebb-4d75-abf0-5c5ad391789d
+[2025-09-27 23:34:51] [Authenticaotor] - INFO - investor_id [Etrade] : 1000048842
+[2025-09-27 23:34:51] [Authenticaotor] - INFO - investor_account_id [Etrade] : 1000049481 
+
+[2025-09-27 23:34:51] [Authenticaotor] - INFO - investor_id [DNSE] : 1000964768
+[2025-09-27 23:34:51] [Authenticaotor] - INFO - investor_account_id [DNSE] : 0001521007
+
+[2025-09-27 23:34:51] [Authenticaotor] - INFO - loan package id: 1306
+[2025-09-27 23:34:51] [Authenticaotor] - INFO - Tổng số lượng lệnh trong sổ: 0
+[2025-09-27 23:34:52] [Authenticaotor] - INFO - Tổng số hợp đồng đang mở: 0 HĐ
+[2025-09-27 23:34:52] [MQTT Connector] - INFO - Connected to MQTT Broker!
+[2025-09-27 23:34:53] [Data Processor] - INFO - Logger '[Data Processor]' initialized with daily rotation
+[2025-09-27 23:34:53] [Data Processor] - INFO - Working TimeFrame: m5
+[2025-09-27 23:34:54] [Data Processor] - INFO - Successfully initialized multi-timeframe data:
+[2025-09-27 23:34:54] [Data Processor] - INFO - m1: 16626 candles
+[2025-09-27 23:34:55] [Data Processor] - INFO - m3: 5588 candles
+[2025-09-27 23:34:55] [Data Processor] - INFO - m5: 3380 candles
+[2025-09-27 23:34:55] [Data Processor] - INFO - m15: 1172 candles
+[2025-09-27 23:34:55] [Data Processor] - INFO - m30: 620 candles
+[2025-09-27 23:34:55] [Data Processor] - INFO - H1: 344 candles
+[2025-09-27 23:34:55] [Data Processor] - INFO - D1: 68 candles
+[2025-09-27 23:34:55] [Data Processor] - INFO - W1: 14 candles
+[2025-09-27 23:34:55] [Logic_Processor] - INFO - Logger '[Logic_Processor]' initialized with daily rotation
+[2025-09-27 23:34:55] SMARTBOT - INFO - Logger 'SMARTBOT' initialized with daily rotation
+[2025-09-27 23:34:55] SMARTBOT - INFO - Khởi tạo bot: MACD_Bot
+[2025-09-27 23:34:55] [Logic_Processor] - INFO - Bot MACD_Bot đã được khởi tạo.
+[2025-09-27 23:34:55] [Logic_Processor] - INFO - Đẩy MarketData vào trong bot...
+[2025-09-27 23:34:56] [Logic_Processor] - INFO - Bot đang chạy...
+[2025-09-27 23:34:57] SMARTBOT - INFO - Độ dài chuỗi dữ liệu nến 'm5': 3380
+[2025-09-27 23:34:58] SMARTBOT - INFO - Tín hiệu SELL |last_macd =0.11676318221429938|last_signal=0.14852408727716107|last_RSI=32.88692732197889|last_ADX=33.814483211183514
+[2025-09-27 23:34:58] SMARTBOT - INFO - Signal detected: BUY
+[2025-09-27 23:34:58] SMARTBOT - INFO - Trading platform used : DNSE
+[2025-09-27 23:34:58] SMARTBOT - INFO - [DNSE] Thực hiện đặt 1 hợp đồng LONG tại giá MTL
+[2025-09-27 23:34:59] SMARTBOT - ERROR - Lỗi khi đặt lệnh: 400 Client Error:  for url: https://api.dnse.com.vn/order-service/derivative/orders
+[2025-09-27 23:34:59] SMARTBOT - INFO - Deal info from bot MACD_Bot:
+[2025-09-27 23:34:59] SMARTBOT - INFO - Order id: None
+[2025-09-27 23:34:59] SMARTBOT - INFO - Entry price: N/A
+[2025-09-27 23:35:00] SMARTBOT - INFO - Position: N/A
+[2025-09-27 23:35:00] SMARTBOT - INFO - Open Quantity: 0
+[2025-09-27 23:35:00] SMARTBOT - INFO - Order Side: N/A
+[2025-09-27 23:35:00] SMARTBOT - INFO - Current Price: 1840.0
+[2025-09-27 23:35:00] SMARTBOT - INFO - Latest matched volume: 7717
+[2025-09-27 23:35:00] SMARTBOT - INFO - Estimated P/L: 0 VND
+[2025-09-27 23:35:00] SMARTBOT - INFO - ------------------------------------------------------------------------------------------------------------------------------------------------------
+[2025-09-27 23:35:01] SMARTBOT - INFO - Độ dài chuỗi dữ liệu nến 'm5': 3380
+[2025-09-27 23:35:02] SMARTBOT - INFO - Tín hiệu SELL |last_macd =0.11676318221429938|last_signal=0.14852408727716107|last_RSI=32.88692732197889|last_ADX=33.814483211183514
+[2025-09-27 23:35:02] SMARTBOT - INFO - Signal detected: BUY
+[2025-09-27 23:35:02] SMARTBOT - INFO - Trading platform used : DNSE
+[2025-09-27 23:35:02] SMARTBOT - INFO - [DNSE] Thực hiện đặt 1 hợp đồng LONG tại giá MTL
+[2025-09-27 23:35:03] SMARTBOT - ERROR - Lỗi khi đặt lệnh: 400 Client Error:  for url: https://api.dnse.com.vn/order-service/derivative/orders
+[2025-09-27 23:43:47] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-27 23:43:48] [DNSE_Client] - INFO - Logger '[DNSE_Client]' initialized with daily rotation
+[2025-09-27 23:43:48] [ENTRADE_Client] - INFO - Logger '[ENTRADE_Client]' initialized with daily rotation
+[2025-09-27 23:43:48] [MQTT Connector] - INFO - Logger '[MQTT Connector]' initialized with daily rotation
+[2025-09-27 23:43:48] [Authenticaotor] - INFO - Logger '[Authenticaotor]' initialized with daily rotation
+[2025-09-27 23:43:50] [DNSE_Client] - INFO - Đã đọc token từ c:\Users\congnv\Documents\GitHub\AutoTrade\token_dnse.json
+[2025-09-27 23:43:50] [DNSE_Client] - INFO - Đọc tokens từ file token_dnse.json.
+[2025-09-27 23:43:50] [DNSE_Client] - INFO - Đọc xong tokens từ file token_dnse.json.
+[2025-09-27 23:43:50] [DNSE_Client] - INFO - Đăng nhập thành công! [DNSE]
+[2025-09-27 23:43:50] [Authenticaotor] - INFO - token [DNSE] : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZGVudGlmaWNhdGlvbkNvZGUiOiIwMDEwODkwMjkyNDUiLCJzdWIiOiIxMDAwOTY0NzY4IiwiYnJva2VySWQiOiIwODY5IiwiYXV0aFNvdXJjZSI6bnVsbCwicm9sZXMiOlsiaW52ZXN0b3IiLCJCUk9LRVIiXSwiaXNzIjoiRE5TRSIsImludmVzdG9ySWQiOiIxMDAwOTY0NzY4IiwiYnJva2VyVHlwZSI6IlNBQ08iLCJmdWxsTmFtZSI6Ik5ndXnhu4VuIFbEg24gQ8O0bmciLCJzZXNzaW9uSWQiOiJkN2FlNjY4Ni0wNjZjLTRjMDEtOTBkNi0xNGJjNzZjNGQwZTkiLCJ1c2VySWQiOiJhODQ3OGY2ZS0yMDY4LTRjODctYjEzNi1kNmFhMzIyYzk4MTYiLCJhdWQiOlsiYXVkaWVuY2UiXSwiY3VzdG9tZXJFbWFpbCI6Im52Y29uZzg5QGxpdmUuY29tIiwiY3VzdG9keUNvZGUiOiIwNjRDNjg0NjQxIiwiY3VzdG9tZXJJZCI6IjAwMDE1MDQxNzUiLCJleHAiOjE3NTkwMDgzMjksImN1c3RvbWVyTW9iaWxlIjoiMDk3OTQwNDY0MSIsImlhdCI6MTc1ODk3OTUyOSwidXNlcm5hbWUiOiIwNjRDNjg0NjQxIiwic3RhdHVzIjoiQUNUSVZFIn0.fC-fSXDxnrs9B4qyMWtBwAAhMJEgwMkEPt-xwHqqj4PCSwQKvexE94RlsyqF3Jd5M2QHHDuOD5w9XpUd0J9O5-aEJEMGGge8bnqJCUB68VheKVzeP1jupmWO96SQ3INhscM8CWCMSBJMHsoZH_0KTXrZG0gOYkRFLwc-g1t_tJU
+[2025-09-27 23:43:50] [Authenticaotor] - INFO - Trading-Token [DNSE]: 80c57a9a-0ebb-4d75-abf0-5c5ad391789d
+[2025-09-27 23:43:51] [Authenticaotor] - INFO - investor_id [Etrade] : 1000048842
+[2025-09-27 23:43:51] [Authenticaotor] - INFO - investor_account_id [Etrade] : 1000049481 
+
+[2025-09-27 23:43:51] [Authenticaotor] - INFO - investor_id [DNSE] : 1000964768
+[2025-09-27 23:43:51] [Authenticaotor] - INFO - investor_account_id [DNSE] : 0001521007
+
+[2025-09-27 23:43:51] [Authenticaotor] - INFO - loan package id: 1306
+[2025-09-27 23:43:52] [Authenticaotor] - INFO - Tổng số lượng lệnh trong sổ: 0
+[2025-09-27 23:43:53] [Authenticaotor] - INFO - Tổng số hợp đồng đang mở: 0 HĐ
+[2025-09-27 23:43:53] [MQTT Connector] - INFO - Connected to MQTT Broker!
+[2025-09-27 23:43:53] [Data Processor] - INFO - Logger '[Data Processor]' initialized with daily rotation
+[2025-09-27 23:43:53] [Data Processor] - INFO - Working TimeFrame: m5
+[2025-09-27 23:43:55] [Data Processor] - INFO - Successfully initialized multi-timeframe data:
+[2025-09-27 23:43:55] [Data Processor] - INFO - m1: 16626 candles
+[2025-09-27 23:43:55] [Data Processor] - INFO - m3: 5588 candles
+[2025-09-27 23:43:55] [Data Processor] - INFO - m5: 3380 candles
+[2025-09-27 23:43:55] [Data Processor] - INFO - m15: 1172 candles
+[2025-09-27 23:43:55] [Data Processor] - INFO - m30: 620 candles
+[2025-09-27 23:43:55] [Data Processor] - INFO - H1: 344 candles
+[2025-09-27 23:43:55] [Data Processor] - INFO - D1: 68 candles
+[2025-09-27 23:43:55] [Data Processor] - INFO - W1: 14 candles
+[2025-09-27 23:43:56] [Logic_Processor] - INFO - Logger '[Logic_Processor]' initialized with daily rotation
+[2025-09-27 23:43:56] SMARTBOT - INFO - Logger 'SMARTBOT' initialized with daily rotation
+[2025-09-27 23:43:56] SMARTBOT - INFO - Khởi tạo bot: MACD_Bot
+[2025-09-27 23:43:56] [Logic_Processor] - INFO - Bot MACD_Bot đã được khởi tạo.
+[2025-09-27 23:43:56] [Logic_Processor] - INFO - Đẩy MarketData vào trong bot...
+[2025-09-27 23:43:56] [Logic_Processor] - INFO - Bot đang chạy...
+[2025-09-27 23:43:58] SMARTBOT - INFO - Độ dài chuỗi dữ liệu nến 'm5': 3380
+[2025-09-27 23:43:59] SMARTBOT - INFO - Tín hiệu SELL |last_macd =0.11676318221429938|last_signal=0.14852408727716107|last_RSI=32.88692732197889|last_ADX=33.814483211183514
+[2025-09-27 23:43:59] SMARTBOT - INFO - Signal detected: BUY
+[2025-09-27 23:43:59] SMARTBOT - INFO - Trading platform used : DNSE
+[2025-09-27 23:43:59] SMARTBOT - INFO - [DNSE] Thực hiện đặt 1 hợp đồng LONG tại giá MTL
+[2025-09-27 23:44:00] SMARTBOT - ERROR - Lỗi khi đặt lệnh: 400 Client Error:  for url: https://api.dnse.com.vn/order-service/derivative/orders
+[2025-09-27 23:44:00] SMARTBOT - INFO - Deal info from bot MACD_Bot:
+[2025-09-27 23:44:00] SMARTBOT - INFO - Order id: None
+[2025-09-27 23:44:00] SMARTBOT - INFO - Entry price: N/A
+[2025-09-27 23:44:00] SMARTBOT - INFO - Position: N/A
+[2025-09-27 23:44:00] SMARTBOT - INFO - Open Quantity: 0
+[2025-09-27 23:44:00] SMARTBOT - INFO - Order Side: N/A
+[2025-09-27 23:44:00] SMARTBOT - INFO - Current Price: 1840.0
+[2025-09-27 23:44:00] SMARTBOT - INFO - Latest matched volume: 7717
+[2025-09-27 23:44:00] SMARTBOT - INFO - Estimated P/L: 0 VND
+[2025-09-27 23:44:00] SMARTBOT - INFO - ------------------------------------------------------------------------------------------------------------------------------------------------------
+[2025-09-27 23:44:02] SMARTBOT - INFO - Độ dài chuỗi dữ liệu nến 'm5': 3380
+[2025-09-27 23:44:02] SMARTBOT - INFO - Tín hiệu SELL |last_macd =0.11676318221429938|last_signal=0.14852408727716107|last_RSI=32.88692732197889|last_ADX=33.814483211183514
+[2025-09-27 23:44:02] SMARTBOT - INFO - Signal detected: BUY
+[2025-09-27 23:44:03] SMARTBOT - INFO - Trading platform used : DNSE
+[2025-09-27 23:44:03] SMARTBOT - INFO - [DNSE] Thực hiện đặt 1 hợp đồng LONG tại giá MTL
+[2025-09-27 23:44:03] SMARTBOT - ERROR - Lỗi khi đặt lệnh: 400 Client Error:  for url: https://api.dnse.com.vn/order-service/derivative/orders
+[2025-09-27 23:57:36] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-27 23:57:37] [DNSE_Client] - INFO - Logger '[DNSE_Client]' initialized with daily rotation
+[2025-09-27 23:57:37] [ENTRADE_Client] - INFO - Logger '[ENTRADE_Client]' initialized with daily rotation
+[2025-09-27 23:57:37] [MQTT Connector] - INFO - Logger '[MQTT Connector]' initialized with daily rotation
+[2025-09-27 23:57:37] [Authenticaotor] - INFO - Logger '[Authenticaotor]' initialized with daily rotation
+[2025-09-27 23:57:39] [DNSE_Client] - INFO - Đã đọc token từ c:\Users\congnv\Documents\GitHub\AutoTrade\token_dnse.json
+[2025-09-27 23:57:39] [DNSE_Client] - INFO - Đọc tokens từ file token_dnse.json.
+[2025-09-27 23:57:39] [DNSE_Client] - INFO - Đọc xong tokens từ file token_dnse.json.
+[2025-09-27 23:57:39] [DNSE_Client] - INFO - Đăng nhập thành công! [DNSE]
+[2025-09-27 23:57:39] [Authenticaotor] - INFO - token [DNSE] : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZGVudGlmaWNhdGlvbkNvZGUiOiIwMDEwODkwMjkyNDUiLCJzdWIiOiIxMDAwOTY0NzY4IiwiYnJva2VySWQiOiIwODY5IiwiYXV0aFNvdXJjZSI6bnVsbCwicm9sZXMiOlsiaW52ZXN0b3IiLCJCUk9LRVIiXSwiaXNzIjoiRE5TRSIsImludmVzdG9ySWQiOiIxMDAwOTY0NzY4IiwiYnJva2VyVHlwZSI6IlNBQ08iLCJmdWxsTmFtZSI6Ik5ndXnhu4VuIFbEg24gQ8O0bmciLCJzZXNzaW9uSWQiOiJkN2FlNjY4Ni0wNjZjLTRjMDEtOTBkNi0xNGJjNzZjNGQwZTkiLCJ1c2VySWQiOiJhODQ3OGY2ZS0yMDY4LTRjODctYjEzNi1kNmFhMzIyYzk4MTYiLCJhdWQiOlsiYXVkaWVuY2UiXSwiY3VzdG9tZXJFbWFpbCI6Im52Y29uZzg5QGxpdmUuY29tIiwiY3VzdG9keUNvZGUiOiIwNjRDNjg0NjQxIiwiY3VzdG9tZXJJZCI6IjAwMDE1MDQxNzUiLCJleHAiOjE3NTkwMDgzMjksImN1c3RvbWVyTW9iaWxlIjoiMDk3OTQwNDY0MSIsImlhdCI6MTc1ODk3OTUyOSwidXNlcm5hbWUiOiIwNjRDNjg0NjQxIiwic3RhdHVzIjoiQUNUSVZFIn0.fC-fSXDxnrs9B4qyMWtBwAAhMJEgwMkEPt-xwHqqj4PCSwQKvexE94RlsyqF3Jd5M2QHHDuOD5w9XpUd0J9O5-aEJEMGGge8bnqJCUB68VheKVzeP1jupmWO96SQ3INhscM8CWCMSBJMHsoZH_0KTXrZG0gOYkRFLwc-g1t_tJU
+[2025-09-27 23:57:39] [Authenticaotor] - INFO - Trading-Token [DNSE]: 80c57a9a-0ebb-4d75-abf0-5c5ad391789d
+[2025-09-27 23:57:40] [Authenticaotor] - INFO - investor_id [Etrade] : 1000048842
+[2025-09-27 23:57:40] [Authenticaotor] - INFO - investor_account_id [Etrade] : 1000049481 
+
+[2025-09-27 23:57:40] [Authenticaotor] - INFO - investor_id [DNSE] : 1000964768
+[2025-09-27 23:57:40] [Authenticaotor] - INFO - investor_account_id [DNSE] : 0001521007
+
+[2025-09-27 23:57:40] [Authenticaotor] - INFO - loan package id: 1306
+[2025-09-27 23:57:41] [Authenticaotor] - INFO - Tổng số lượng lệnh trong sổ: 0
+[2025-09-27 23:57:42] [Authenticaotor] - INFO - Tổng số hợp đồng đang mở: 0 HĐ
+[2025-09-27 23:57:42] [MQTT Connector] - INFO - Connected to MQTT Broker!
+[2025-09-27 23:57:42] [Data Processor] - INFO - Logger '[Data Processor]' initialized with daily rotation
+[2025-09-27 23:57:42] [Data Processor] - INFO - Working TimeFrame: m5
+[2025-09-27 23:57:44] [Data Processor] - INFO - Successfully initialized multi-timeframe data:
+[2025-09-27 23:57:44] [Data Processor] - INFO - m1: 16626 candles
+[2025-09-27 23:57:44] [Data Processor] - INFO - m3: 5588 candles
+[2025-09-27 23:57:44] [Data Processor] - INFO - m5: 3380 candles
+[2025-09-27 23:57:44] [Data Processor] - INFO - m15: 1172 candles
+[2025-09-27 23:57:44] [Data Processor] - INFO - m30: 620 candles
+[2025-09-27 23:57:44] [Data Processor] - INFO - H1: 344 candles
+[2025-09-27 23:57:44] [Data Processor] - INFO - D1: 68 candles
+[2025-09-27 23:57:44] [Data Processor] - INFO - W1: 14 candles
+[2025-09-27 23:57:45] [Logic_Processor] - INFO - Logger '[Logic_Processor]' initialized with daily rotation
+[2025-09-27 23:57:45] [Logic_Processor] - INFO - Bảng data nến D1
+[2025-09-27 23:57:45] [SMARTBOT] - INFO - Logger '[SMARTBOT]' initialized with daily rotation
+[2025-09-27 23:57:45] [SMARTBOT] - INFO - Khởi tạo bot: MACD_Bot
+[2025-09-27 23:57:45] [Logic_Processor] - INFO - Bot MACD_Bot đã được khởi tạo.
+[2025-09-27 23:57:45] [Logic_Processor] - INFO - Đẩy MarketData vào trong bot...
+[2025-09-27 23:57:45] [Logic_Processor] - INFO - Bot đang chạy...
+[2025-09-27 23:57:47] [SMARTBOT] - INFO - Độ dài chuỗi dữ liệu nến 'm5': 3380
+[2025-09-27 23:57:48] [SMARTBOT] - INFO - Tín hiệu SELL |last_macd =0.11676318221429938|last_signal=0.14852408727716107|last_RSI=32.88692732197889|last_ADX=33.814483211183514
+[2025-09-27 23:57:48] [SMARTBOT] - INFO - Signal detected: BUY
+[2025-09-27 23:57:48] [SMARTBOT] - INFO - Trading platform used : DNSE
+[2025-09-27 23:57:48] [SMARTBOT] - INFO - [DNSE] Thực hiện đặt 1 hợp đồng LONG tại giá MTL
+[2025-09-27 23:57:49] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 400 Client Error:  for url: https://api.dnse.com.vn/order-service/derivative/orders
+[2025-09-27 23:57:49] [SMARTBOT] - WARNING - Bot MACD_Bot has no active deals.
+[2025-09-27 23:57:49] [SMARTBOT] - INFO - Deal info from bot MACD_Bot:
+[2025-09-27 23:57:49] [SMARTBOT] - INFO - Order id: None
+[2025-09-27 23:57:49] [SMARTBOT] - INFO - Entry price: N/A
+[2025-09-27 23:57:49] [SMARTBOT] - INFO - Position: N/A
+[2025-09-27 23:57:49] [SMARTBOT] - INFO - Open Quantity: 0
+[2025-09-27 23:57:49] [SMARTBOT] - INFO - Order Side: N/A
+[2025-09-27 23:57:49] [SMARTBOT] - INFO - Current Price: 1840.0
+[2025-09-27 23:57:49] [SMARTBOT] - INFO - Latest matched volume: 7717
+[2025-09-27 23:57:49] [SMARTBOT] - INFO - Estimated P/L: 0 VND
+[2025-09-27 23:57:49] [SMARTBOT] - INFO - ------------------------------------------------------------------------------------------------------------------------------------------------------
+[2025-09-27 23:57:51] [SMARTBOT] - INFO - Độ dài chuỗi dữ liệu nến 'm5': 3380
+[2025-09-27 23:57:52] [SMARTBOT] - INFO - Tín hiệu SELL |last_macd =0.11676318221429938|last_signal=0.14852408727716107|last_RSI=32.88692732197889|last_ADX=33.814483211183514
+[2025-09-27 23:57:52] [SMARTBOT] - INFO - Signal detected: BUY
+[2025-09-27 23:57:52] [SMARTBOT] - INFO - Trading platform used : DNSE
+[2025-09-27 23:57:52] [SMARTBOT] - INFO - [DNSE] Thực hiện đặt 1 hợp đồng LONG tại giá MTL
+[2025-09-27 23:57:53] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 400 Client Error:  for url: https://api.dnse.com.vn/order-service/derivative/orders

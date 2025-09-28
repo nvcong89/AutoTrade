@@ -5,6 +5,7 @@ import GLOBAL
 from requests import get
 from time import time
 from Utils import*
+from tabulate import tabulate
 
 
 
@@ -64,7 +65,8 @@ def InitializeData():
         raw_data['c'],
         raw_data['v']
     ))
-    
+
+
     # Lưu dữ liệu và resample
     HISTORY[base_tf] = base_data
     for tf in [k for k in TIME_FRAMES if k != base_tf]:
@@ -87,8 +89,11 @@ def InitializeData():
     logger.info("Successfully initialized multi-timeframe data:")
     for tf in TIME_FRAMES:
         logger.info(f"{tf}: {len(HISTORY[tf])} candles")
-    print("-"*80)
-    lp.OnStart() # DO NOT REMOVE
+    print("-"*150)
+    
+    # lp.OnStart() # DO NOT REMOVE
+
+
 
 
 
@@ -103,8 +108,8 @@ def UpdateOHLCVData(new_data):
     volume = int(new_data['volume'])
     last_ts = int(new_data['lastUpdated'])  # Cập nhật last_ts mới nhất
 
-    GLOBAL.TICK_PRICE = price
-    GLOBAL.TICK_VOLUME = volume
+    GLOBAL.LAST_TICK_PRICE = price
+    GLOBAL.LAST_TICK_VOLUME = volume
 
     # Gọi logic xử lý cho OnTick()
     lp.OnTick()
@@ -170,9 +175,9 @@ def UpdateMarketData(new_market_data):
     for dict in new_market_data["bid"]:
         GLOBAL.BID_DEPTH.append(tuple(dict.values()))
 
-    GLOBAL.OFFER_DEPTH.clear()
+    GLOBAL.ASK_DEPTH.clear()
     for dict in new_market_data["offer"]:
-        GLOBAL.OFFER_DEPTH.append(tuple(dict.values()))
+        GLOBAL.ASK_DEPTH.append(tuple(dict.values()))
 
 def UpdateForeignData(new_foreign_data):
     GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])

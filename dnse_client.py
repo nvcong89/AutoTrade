@@ -1,13 +1,13 @@
 from datetime import datetime, timedelta
 import time
 import os
-from requests import get, post, delete
+from requests import HTTPError, get, post, delete
 from time import localtime
-from Utils import cprint
 from logger_config import setup_logger, get_trading_logger, log_trade_action, log_error_with_context
 import json
 from typing import Optional, Dict
 from mail_reader import getOTP
+from data_processor import GetOHLCVData
 
 class DNSEClient:
     def __init__(self):
@@ -22,7 +22,7 @@ class DNSEClient:
         self.base_url = "https://api.dnse.com.vn/"
 
         # Setup logger
-        self.logger = setup_logger("DNSE_Client")
+        self.logger = setup_logger("[DNSE_Client]")
         self.trading_logger = get_trading_logger()
 
     def Authenticate(self, username, password):
@@ -77,7 +77,7 @@ class DNSEClient:
         url = f"{self.base_url}auth-service/api/email-otp"
         response = get(url, headers=_headers)
         response.raise_for_status()
-        print("Gửi email OTP thành công! (DNSE)")
+        self.logger.info("Gửi email OTP thành công! (DNSE)")
     
     def readSmartOTP(self, otp: str = None):
         if otp is None:
@@ -97,7 +97,7 @@ class DNSEClient:
         response = post(url, headers=_headers)
         response.raise_for_status()
         self.trading_token = response.json().get("tradingToken")
-        print("Lấy Trading Token thành công! (DNSE)")
+        self.logger.info("Lấy Trading Token thành công! (DNSE)")
     
     def GetDerivativeLoanPackages(self, account_no=None):
         """Lấy danh sách gói vay phái sinh"""
@@ -117,12 +117,16 @@ class DNSEClient:
 
 
     def Order(self, symbol, account, side, price, loan, volume, order_type):
+        '''
+        Đặt lệnh lên DNSE
+        detail see this link:  https://hdsd.dnse.com.vn/san-pham-dich-vu/lightspeed-api_krx/ii.-trading-api/5.-giao-dich-phai-sinh/5.3.-dat-lenh
+        '''
         url = f"{self.base_url}order-service/v2/orders" # Default to normal stock :3
-        loan_package_id = 1306
+        loan_package_id = self.loanpackageID
 
         if len(symbol) > 3:
             url = f"{self.base_url}order-service/derivative/orders"
-            loan_package_id = 1306
+            loan_package_id = self.loanpackageID
 
         _headers = {
             "content-type": "application/json",
@@ -130,17 +134,17 @@ class DNSEClient:
             "trading-token": self.trading_token
         }
         _json = {
-            "accountNo": account,
-            "loanPackageId": loan_package_id or loan,
-            "orderType": order_type,
-            "price": price,
-            "quantity": volume,
-            "side": side,
-            "symbol": symbol
+            "accountNo": account,   #số tiểu khoản  
+            "loanPackageId": loan_package_id or loan,   #mã gói vay
+            "orderType": order_type,    #Loại lệnh: LO, MTL, ATO
+            "price": price,     # double, giá đặt lệnh
+            "quantity": volume, # int, số hợp đồng
+            "side": side,   #Lệnh mua NB, lệnh bán NS
+            "symbol": symbol    #Mã ví dụ VN30F1M
         }
         response = post(url, headers=_headers, json=_json)
         response.raise_for_status()
-        print("Gửi yêu cầu đặt lệnh thành công! [DNSE]")
+        self.logger.info("Gửi yêu cầu đặt lệnh thành công! [DNSE]")
         return response.json()
 
     def ConditionalOrder(self, symbol, account : int, side, price : float, loan, volume, order_type, condition):
@@ -172,22 +176,23 @@ class DNSEClient:
         }
         response = post(url, headers=_headers, json=_json)
         response.raise_for_status()
-        print("Gửi yêu cầu đặt lệnh điều kiện thành công! (DNSE)")
+        self.logger.info("Gửi yêu cầu đặt lệnh điều kiện thành công! (DNSE)")
         return response.json()
 
     
 
     def GetBars(self, 
-                symbol: str, 
+                symbol: str =None, 
                 timeframe: str = "", 
                 days_lookback: int = 30):
         
         """Lấy marketdata theo timeframe"""
+        # **resolution**: 1, 3, 5, 15, 30, 1H, 1D, 1W (nến 1/3/5/... phút)
 
         start_time = int(time.time()) - 86400*days_lookback # 30 ngày dữ liệu
         
         try:
-            raw_data = GetOHLCVData("derivative", "VN30F1M", start_time, int(time.time()), timeframe)
+            raw_data = GetOHLCVData("derivative",symbol or "VN30F1M", start_time, int(time.time()), timeframe)
             
             # Tạo dữ liệu base với timestamp
             base_data = list(zip(
@@ -202,7 +207,7 @@ class DNSEClient:
             return base_data
         
         except HTTPError as e:
-            print("Lỗi khi get marketdata", e)
+            self.logger.info("Lỗi khi get marketdata", e)
 
     def GetCashAccount(self, account_no=None):
         """Lấy thông tin tài sản tiền mặt"""
@@ -240,7 +245,7 @@ class DNSEClient:
         url = f"{self.base_url}derivative-deal-risk/account-pnl-configs/{account}"
         response = post(url, headers=_headers, json=config)
         response.raise_for_status()
-        print("Cài đặt chốt lời cắt lỗ theo account thành công! (DNSE)")
+        self.logger.info("Cài đặt chốt lời cắt lỗ theo account thành công! (DNSE)")
         return response.json()
     
     def SetDealPnLConfig(self, deal_id, config):
@@ -257,7 +262,7 @@ class DNSEClient:
         url = f"{self.base_url}derivative-deal-risk/pnl-configs/{deal_id}"
         response = post(url, headers=_headers, json=config)
         response.raise_for_status()
-        print("Cài đặt chốt lời cắt lỗ theo deal thành công! (DNSE)")
+        self.logger.info("Cài đặt chốt lời cắt lỗ theo deal thành công! (DNSE)")
         return response.json()
     
     def CloseDeal(self, deal_id):
@@ -274,7 +279,7 @@ class DNSEClient:
         url = f"{self.base_url}derivative-core/deals/{deal_id}/close"
         response = post(url, headers=_headers)
         response.raise_for_status()
-        print("Đóng deal thành công! (DNSE)")
+        self.logger.info("Đóng deal thành công! (DNSE)")
         return response.json()
     
     def CloseAllDeals(self):
@@ -284,23 +289,23 @@ class DNSEClient:
         activedeacl_IDs = self.getActiveDeals_ID(self.investor_account_id)
         for id in activedeacl_IDs:
             self.CloseDeal(id)
-            print(f"Đã đóng deal id: {id}")
+            self.logger.warning(f"Đã đóng deal id: {id}")
 
-    def GetTotalOpenQuantity(self) -> int:
+    def GetTotalOpenQuantity(self, investor_account_id=None) -> int:
         #get active deals
-        activeDeals = self.getActiveDeals(self.investor_account_id)
+        activeDeals = self.getActiveDeals(investor_account_id or self.investor_account_id)
         totalVol = 0
         for deal in activeDeals:
             totalVol = totalVol + deal['fillQuantity']
-        #print(f"Tổng số hợp đồng đang mở : {totalVol} HĐ")
+        #self.logger.info(f"Tổng số hợp đồng đang mở : {totalVol} HĐ")
         return totalVol
         
         
 
     
-    def GetDeals(self, account_no=None):
+    def GetDeals(self, investor_account_id=None):
         """Lấy danh sách deal nắm giữ"""
-        account = account_no or self.account_no
+        account = investor_account_id or self.investor_account_id
         if not account:
             raise ValueError("Account number is required")
             
@@ -316,25 +321,25 @@ class DNSEClient:
         response.raise_for_status()
         return response.json()
     
-    def getActiveDeals(self, account_no = None):
-        deals = self.GetDeals(account_no)["data"]
+    def getActiveDeals(self, investor_account_id = None):    #tiểu khoản
+        deals = self.GetDeals(investor_account_id)["data"]
         activeDeals = []
         for deal in deals:
-            if deal["status"] == "OPEN" or deal["status"] =="ACTIVE" or deal['status']==['Filled']:
+            if deal["orderStatus"].lower() == "filled" or deal["orderStatus"].lower() =="active" or deal['orderStatus'].lower()=='partiallyfilled':
                 activeDeals.append(deal)
         return activeDeals  #return a list of active object deals
     
     def getActiveDeals_ID(self, investor_account_id = None):
         activedealIDs=[]
-        for deal in self.getActiveDeals(investor_account_id):
+        for deal in self.getActiveDeals(investor_account_id or self.investor_account_id):
             activedealIDs.append(deal['id'])
-        return activedealIDs        # a list of active deal id
+        return activedealIDs                    # a list of active deal id
 
     
     def CancelOrder(self, order_id, account_no=None):
         """Hủy lệnh"""
         if not self.trading_token:
-            raise ValueError("Trading token not available. Please ensure tokens are loaded from MongoDB.")
+            raise ValueError("Trading token not available. Please ensure tokens are loaded.")
             
         account = account_no or self.investor_account_id
         if not account:
@@ -377,14 +382,27 @@ class DNSEClient:
         Purpose: Dùng đóng toàn độ các lệnh đang chờ trong sổ lệnh.
         '''
         #lấy toàn bộ pending order id vào list
-        pendingOrders = self.GetOrders(self.investor_account_id).get('orders')    #list of pending deal objects
+        pendingOrders = self.GetPendingOrders(self.investor_account_id)    #list of pending deal objects
         for pendingOrder in pendingOrders:
             try:
                 self.CancelOrder(pendingOrder['id'], self.investor_account_id)
-                print(f"Đã hủy lệnh chờ, id: {pendingOrder['id']}")
-            except:
-                pass
+                self.logger.info(f"Đã hủy lệnh chờ, id: {pendingOrder['id']}")
+            except Exception as e:
+                self.logger.error(f"Đã xảy lỗi: {e}")
     
+
+    def GetPendingOrders(self, investor_account_id=None):
+        """
+        Lấy các lệnh đang chờ khớp lệnh trong sổ lệnh.
+        """
+        deals = self.GetOrders(investor_account_id or self.investor_account_id).get('orders')  #đọc tất cả lệnh trong sổ lệnh
+        pendingOrders =[]
+        for deal in deals:
+            if deal['orderStatus'].lower() == 'pending' or deal['orderStatus'].lower() == 'pendingnew' or deal['orderStatus'].lower() == 'new'  :     
+                pendingOrders.append(deal)
+
+        return pendingOrders        
+
 
     def GetOrderDetail(self, order_id, account_no=None):
         """Lấy chi tiết lệnh"""
@@ -446,7 +464,7 @@ class DNSEClient:
     
     def GetDerivativeLoanPackages(self, account_no=None):
         """Lấy danh sách gói vay phái sinh"""
-        account = account_no or self.account_no or "0001910385"
+        account = account_no or self.investor_account_id
         if not account:
             raise ValueError("Account number is required")
             
@@ -501,9 +519,9 @@ class DNSEClient:
             
             with open(file_path, 'w', encoding='utf-8') as f:
                 json.dump(data, f, indent=2)
-            cprint(f"Đã lưu token vào {file_path}")
+            self.logger.info(f"Đã lưu token vào {file_path}")
         except Exception as e:
-            cprint(f"Lỗi khi lưu token: {e}", "ERROR")
+            self.logger.info(f"Lỗi khi lưu token: {e}", "ERROR")
             pass
 
         
@@ -523,16 +541,16 @@ class DNSEClient:
             if not all(key in data for key in ("token", "trading_token")):
                 raise ValueError("Thiếu trường bắt buộc trong file JSON")
                 
-            cprint(f"Đã đọc token từ {file_path}")
+            self.logger.info(f"Đã đọc token từ {file_path}")
             
             return data
             
         except FileNotFoundError:
-            cprint(f"Không tìm thấy file {file_path}", "ERROR")
+            self.logger.info(f"Không tìm thấy file {file_path}", "ERROR")
         except json.JSONDecodeError:
-            cprint(f"File {file_path} không đúng định dạng JSON", "ERROR")
+            self.logger.info(f"File {file_path} không đúng định dạng JSON", "ERROR")
         except Exception as e:
-            cprint(f"Lỗi khi đọc token: {str(e)}", "ERROR")
+            self.logger.info(f"Lỗi khi đọc token: {str(e)}", "ERROR")
             
         return None
 
@@ -549,28 +567,57 @@ class DNSEClient:
             time_diff = current_time - created_time
 
             if token and trading_token and time_diff < timedelta(hours = 7):
-                cprint(f"Đọc tokens từ file token_dnse.json.")
+                self.logger.info(f"Đọc tokens từ file token_dnse.json.")
                 self.token = tokens.get('token')['token']
                 self.trading_token = tokens.get('trading_token')['trading_token']
-                cprint(f"Đọc xong tokens từ file token_dnse.json.")
-                cprint(f"Đăng nhập thành công! [DNSE]")
+                self.logger.info(f"Đọc xong tokens từ file token_dnse.json.")
+                print(f"Đăng nhập thành công! [DNSE]")
             else:
                 self.Authenticate(self.gmailDNSE, self.passwordDNSE)
                 self.GetOTP() #gửi mã OTP về email
                 self.readSmartOTP(getOTP())
                 self.GetTradingToken(self.OTP)
-                cprint(f"Đang lưu token ra file token_dnse.json...")
+                self.logger.info(f"Đang lưu token ra file token_dnse.json...")
                 self.save_token_json()
-                cprint(f"Đã lưu token ra file token_dnse.json.")
+                self.logger.info(f"Đã lưu token ra file token_dnse.json.")
 
         except Exception as e:
-            cprint(f"[DNSE] Đang đăng nhập...")
+            self.logger.info(f"[DNSE] Đang đăng nhập...")
             self.Authenticate(self.gmailDNSE, self.passwordDNSE)
             self.GetOTP() #gửi mã OTP về email
             self.readSmartOTP(getOTP())
             self.GetTradingToken(self.OTP)
-            cprint(f"Đang lưu token ra file token_dnse.json...")
+            self.logger.info(f"Đang lưu token ra file token_dnse.json...")
             self.save_token_json()
-            cprint(f"Đã lưu token ra file token_dnse.json.")
+            self.logger.info(f"Đã lưu token ra file token_dnse.json.")
             pass
-            
+    
+    def GetCeilingAndFloorPrices_VN30F1M(self):
+        '''
+        Tính toán giá trần sàn của phiên hiện tại
+        Trả về 1 dict ceilingandFloorPrice{}
+        '''
+        #lấy data 1D
+        days_lookback = 30
+        start_time = int(time.time()) - 86400*days_lookback # 30 ngày dữ liệu
+        data = GetOHLCVData("derivative","VN30F1M", start_time, int(time.time()),"1D")  #trả về nến 1D 
+        # cấu trúc data =  {'t':[], 'o':[],'h':[],'l':[],'c':[]}
+        i = 1
+
+        # Lấy ngày hiện tại
+        today = datetime.today().date()
+
+        ceilingandFloorPrice ={
+            'ceilingprice' : None,
+            'floorprice' : None
+        }
+        for i in range(1,29,1):
+            timestamp = data['t'][len(data['t'])-i]
+            date_from_timestamp = datetime.fromtimestamp(timestamp).date()
+            if date_from_timestamp < today:
+                closePrice = data['c'][len(data['t'])-i]
+                ceilingandFloorPrice['ceilingprice'] = round(closePrice*1.069,0)    #+6.9%
+                ceilingandFloorPrice['floorprice'] = round(closePrice*0.931,0)      #-6.9%
+                return ceilingandFloorPrice
+
+

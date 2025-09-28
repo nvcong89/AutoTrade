@@ -17,7 +17,7 @@ ENTRADE_CLIENT = EntradeClient()
 
 # List of 10 highest bid/lowest offer and their quantity
 BID_DEPTH: list[tuple[float, int]] = []
-OFFER_DEPTH: list[tuple[float, int]] = []
+ASK_DEPTH: list[tuple[float, int]] = []
 
 # Dư mua/Dư bán
 TOTAL_BID: int = 0
@@ -28,11 +28,11 @@ TOTAL_FOREIGN_BUY: int = 0
 TOTAL_FOREIGN_SELL: int = 0
 
 #WORKING TIMEFRAME : là timeframe để sau mỗi khi đóng nến sẽ thực thi function OnBarClosed()
-WORKING_TIMEFRAME = 'm5' # m1, m3, m5, m15, m30, H1, H4, D1, W1
+WORKING_TIMEFRAME = 'm1' # m1, m3, m5, m15, m30, H1, H4, D1, W1
 
-#Giá khớp lệnh tức thời - Tick price
-TICK_PRICE: float = 0.0
-TICK_VOLUME: int = 0
+#Giá khớp lệnh tức thời - last Tick price
+LAST_TICK_PRICE: float = 0.0     #last tick price
+LAST_TICK_VOLUME: int = 0        #last tick vol
 
 #Collection of historical candles for each timeframe
 TIME_FRAMES = {

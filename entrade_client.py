@@ -1,21 +1,30 @@
+import datetime
 from requests import HTTPError, get, post, delete
 from time import localtime
 from data_processor import GetOHLCVData
 import time
+from logger_config import get_trading_logger, setup_logger
+import logging
 
 class EntradeClient:
     def __init__(self):
+        self.usernameEntrade = None 
+        self.passwordEntrade=None
         self.token = None
         self.investor_id = None
         self.investor_account_id = None
         # https://services-staging.entrade.com.vn/papertrade-entrade-api/derivative/orders
         self.base_url = f"https://services.entrade.com.vn/"
+    
+        # Setup logger
+        self.logger = setup_logger("[ENTRADE_Client]", logging.INFO)
+        self.trading_logger = get_trading_logger()
 
 
-    def Authenticate(self, username, password):
+    def Authenticate(self, username = None, password = None):
         _json = {
-            "username": username,
-            "password": password
+            "username": username or self.usernameEntrade,
+            "password": password or self.passwordEntrade
         }
 
         url = f"{self.base_url}entrade-api/v2/auth"
@@ -49,10 +58,10 @@ class EntradeClient:
             response = post(url, headers=_headers, json=_json)
             response.raise_for_status()
             order_data = response.json()
-            print(f"Đặt lệnh {order_type} thành công: {order_data['id']}")
+            self.logger.info(f"Đặt lệnh {order_type} thành công: {order_data['id']}")
             return order_data
         except HTTPError as e:
-            print("Order() failed! (Entrade):", e)
+            self.logger.info("Order() failed! (Entrade):", e)
             return None
     
     def _validate_order_params(self, symbol: str, side: str, price: float, volume: int):
@@ -76,10 +85,10 @@ class EntradeClient:
         try:
             response = delete(url, headers=_headers)
             response.raise_for_status()
-            print("Hủy lệnh thành công! (Entrade)")
+            self.logger.info("Hủy lệnh thành công! (Entrade)")
             return response.json()
         except HTTPError as e:
-            print("CancelOrder() failed! (Entrade):", e)
+            self.logger.info("CancelOrder() failed! (Entrade):", e)
 
     def CancelAllOrders(self, is_demo: bool):
         _headers = {
@@ -95,10 +104,10 @@ class EntradeClient:
         try:
             response = delete(url, headers=_headers, params=_params)
             response.raise_for_status()
-            print("Hủy tất cả lệnh thành công! (Entrade)")
+            self.logger.info("Hủy tất cả lệnh thành công! (Entrade)")
             return response.json()
         except HTTPError as e:
-            print("CancelAllOrders() failed! (Entrade):", e)
+            self.logger.info("CancelAllOrders() failed! (Entrade):", e)
 
     def ConditionalOrder(self, symbol, side, price, loan, volume, condition, is_demo: bool):
         _headers = {
@@ -124,10 +133,10 @@ class EntradeClient:
         try:
             response = post(url, headers=_headers, json=_json)
             response.raise_for_status()
-            print("Gửi yêu cầu đặt lệnh điều kiện thành công! (Entrade)")
+            self.logger.info("Gửi yêu cầu đặt lệnh điều kiện thành công! (Entrade)")
             return response.json()
         except HTTPError as e:
-            print("ConditionalOrder() failed! (Entrade):", e)
+            self.logger.info("ConditionalOrder() failed! (Entrade):", e)
 
     def CancelConditionalOrder(self, order_id, is_demo: bool):
         _headers = {
@@ -139,10 +148,10 @@ class EntradeClient:
         try:
             response = delete(url, headers=_headers)
             response.raise_for_status()
-            print("Hủy lệnh thành công! (Entrade)")
+            self.logger.info("Hủy lệnh thành công! (Entrade)")
             return response.json()
         except HTTPError as e:
-            print("CancelConditionalOrder() failed! (Entrade):", e)
+            self.logger.info("CancelConditionalOrder() failed! (Entrade):", e)
 
     def CancelAllConditionalOrder(self, is_demo: bool):
         _headers = {
@@ -158,10 +167,10 @@ class EntradeClient:
         try:
             response = delete(url, headers=_headers, params=_params)
             response.raise_for_status()
-            print("Hủy tất cả lệnh thành công! (Entrade)")
+            self.logger.info("Hủy tất cả lệnh thành công! (Entrade)")
             return response.json()
         except HTTPError as e:
-            print("CancelAllConditionalOrder() failed! (Entrade):", e)
+            self.logger.info("CancelAllConditionalOrder() failed! (Entrade):", e)
 
     def CloseDeal(self, deal_id, is_demo: bool):
         _headers = {
@@ -177,10 +186,10 @@ class EntradeClient:
         try:
             response = post(url, headers=_headers, json=_json)
             response.raise_for_status()
-            print("Hủy lệnh thành công! (Entrade)")
+            self.logger.info("Hủy lệnh thành công! (Entrade)")
             return response.json()
         except HTTPError as e:
-            print("CloseDeal() failed! (Entrade):", e)
+            self.logger.info("CloseDeal() failed! (Entrade):", e)
 
     def GetAccountInfo(self):
         _headers = {
@@ -237,9 +246,9 @@ class EntradeClient:
                 if deal["status"] == "ACTIVE":
                     self.CloseDeal(deal["id"], is_demo)
 
-            print("Đóng tất cả lệnh thành công! (Entrade)")
+            self.logger.info("Đóng tất cả lệnh thành công! (Entrade)")
         except HTTPError as e:
-            print("CloseAllDeals() failed! (Entrade):", e)
+            self.logger.info("CloseAllDeals() failed! (Entrade):", e)
             
             
     def GetBars(self, 
@@ -267,7 +276,58 @@ class EntradeClient:
             return base_data
         
         except HTTPError as e:
-            print("Lỗi khi get marketdata", e)
+            self.logger.info("Lỗi khi get marketdata", e)
             
+    def GetTotalOpenQuantity(self, investor_account_id = None):
+        #get active deals
+        activeDeals = self.GetActiveDeals(investor_account_id or self.investor_account_id)
+        totalVol = 0
+        for deal in activeDeals:
+            totalVol = totalVol + deal['fillQuantity']
+        #self.logger.info(f"Tổng số hợp đồng đang mở : {totalVol} HĐ")
+        return totalVol
+    
+    def validate_token(self, usernameEntrade = None, passwordEntrade = None):
+        '''
+        Loggin, và lấy token cho tài khoản Entrade
+        '''
+        try:
+            self.Authenticate(usernameEntrade or self.usernameEntrade, passwordEntrade or self.passwordEntrade)
+            self.GetAccountInfo() # Get investor_id
+            self.GetAccountBalance() # Get investor_account_id
+            self.usernameEntrade = usernameEntrade if self.usernameEntrade == None else self.usernameEntrade
+            self.passwordEntrade = passwordEntrade if self.passwordEntrade == None else self.passwordEntrade
+
+        except Exception as e:
+            self.logger.error("Đã xảy ra lỗi : {e}")
+    
+    def GetCeilingAndFloorPrices_VN30F1M(self):
+        '''
+        Tính toán giá trần sàn của phiên hiện tại
+        Trả về 1 dict ceilingandFloorPrice{}
+        '''
+        #lấy data 1D
+        days_lookback = 30
+        start_time = int(time.time()) - 86400*days_lookback # 30 ngày dữ liệu
+        data = GetOHLCVData("derivative","VN30F1M", start_time, int(time.time()),"1D")  #trả về nến 1D 
+        # cấu trúc data =  {'t':[], 'o':[],'h':[],'l':[],'c':[]}
+        i = 1
+
+        # Lấy ngày hiện tại
+        today = datetime.today().date()
+
+        ceilingandFloorPrice ={
+            'ceilingprice' : None,
+            'floorprice' : None
+        }
+        for i in range(1,29,1):
+            timestamp = data['t'][len(data['t'])-i]
+            date_from_timestamp = datetime.fromtimestamp(timestamp).date()
+            if date_from_timestamp < today:
+                closePrice = data['c'][len(data['t'])-i]
+                ceilingandFloorPrice['ceilingprice'] = round(closePrice*1.069,0)    #+6.9%
+                ceilingandFloorPrice['floorprice'] = round(closePrice*0.931,0)      #-6.9%
+                return ceilingandFloorPrice
+
 
     

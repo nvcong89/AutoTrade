@@ -1,0 +1,21 @@
+[2025-09-28 00:06:07] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 400 Client Error:  for url: https://api.dnse.com.vn/order-service/derivative/orders
+[2025-09-28 00:06:12] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 400 Client Error:  for url: https://api.dnse.com.vn/order-service/derivative/orders
+[2025-09-28 00:11:10] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 400 Client Error:  for url: https://api.dnse.com.vn/order-service/derivative/orders
+[2025-09-28 00:11:10] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 400 Client Error:  for url: https://api.dnse.com.vn/order-service/derivative/orders
+[2025-09-28 00:11:16] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 400 Client Error:  for url: https://api.dnse.com.vn/order-service/derivative/orders
+[2025-09-28 00:11:16] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 400 Client Error:  for url: https://api.dnse.com.vn/order-service/derivative/orders
+[2025-09-28 00:16:57] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 400 Client Error:  for url: https://api.dnse.com.vn/order-service/derivative/orders
+[2025-09-28 00:17:02] [SMARTBOT] - ERROR - Lỗi khi đặt lệnh: 400 Client Error:  for url: https://api.dnse.com.vn/order-service/derivative/orders
+[2025-09-28 00:21:40] [SMARTBOT] - ERROR - Xảy ra lỗi: 400 Client Error:  for url: https://api.dnse.com.vn/order-service/derivative/orders
+[2025-09-28 00:21:46] [SMARTBOT] - ERROR - Xảy ra lỗi: 400 Client Error:  for url: https://api.dnse.com.vn/order-service/derivative/orders
+[2025-09-28 00:24:20] [SMARTBOT] - ERROR - Xảy ra lỗi: 400 Client Error:  for url: https://api.dnse.com.vn/order-service/derivative/orders
+[2025-09-28 00:24:24] [SMARTBOT] - ERROR - Xảy ra lỗi: 400 Client Error:  for url: https://api.dnse.com.vn/order-service/derivative/orders
+[2025-09-28 00:38:40] [SMARTBOT] - ERROR - Xảy ra lỗi: 400 Client Error:  for url: https://api.dnse.com.vn/order-service/derivative/orders
+[2025-09-28 00:40:07] [SMARTBOT] - ERROR - Xảy ra lỗi: 400 Client Error:  for url: https://api.dnse.com.vn/order-service/derivative/orders
+[2025-09-28 00:43:14] [SMARTBOT] - ERROR - Xảy ra lỗi: 400 Client Error:  for url: https://api.dnse.com.vn/order-service/derivative/orders
+[2025-09-28 01:09:25] [SMARTBOT] - ERROR - Xảy ra lỗi: 401 Client Error: Unauthorized for url: https://services.entrade.com.vn/papertrade-entrade-api/derivative/deals?_start=0&_end=100
+[2025-09-28 01:12:21] [SMARTBOT] - ERROR - Xảy ra lỗi: 'NoneType' object has no attribute 'deal'
+[2025-09-28 13:59:24] [SMARTBOT] - ERROR - Xảy ra lỗi: 'pyBotMACD' object has no attribute 'accountNo'
+[2025-09-28 14:23:42] [SMARTBOT] - ERROR - Xảy ra lỗi: 'pyBotMACD' object has no attribute 'accountNo'
+[2025-09-28 14:45:58] [SMARTBOT] - ERROR - Đã gặp lỗi Bot.Update : 'orderStatis'
+[2025-09-28 14:46:03] [SMARTBOT] - ERROR - Đã gặp lỗi Bot.Update : 'orderStatis'

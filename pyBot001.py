@@ -34,8 +34,8 @@ class pyBotMACD(pyBot):
         self.author = author
         self.timeframe = timeframe
 
-        self.tradingPlatform ="DNSE"     # "DNSE" hoặc "ENTRADE"
-        self.accountNo = None   # Mã tiểu khoản dùng để trade bằng bot
+        
+        
         self.maxOpenTrades = 1  # set max open trades allowed
 
         #khai báo các biến riêng cho bot MACD
@@ -70,6 +70,9 @@ class pyBotMACD(pyBot):
             #     cprint("Outside trading hours. Bot is inactive.")
             #     return
             
+
+
+
             #kiểm tra xem số hđ đang mở đang active (mở) đã vượt quá số lượng cho phép chưa ?
             if self.getTotalOpenQuanity_DNSE() >= self.maxOpenTrades:
                 self.logger.info(f"Số lượng hợp đồng đang mở đã đạt số lượng tối đa [{self.maxOpenTrades} HĐ] cho phép.")
@@ -81,8 +84,6 @@ class pyBotMACD(pyBot):
             
             #cập nhật unrealised net profit
             self.Calculate_UnrealisedNetProfit()
-
-
 
             #kiểm tra tín hiệu mua/bán
             action = self.check_for_signals()
@@ -174,14 +175,14 @@ class pyBotMACD(pyBot):
                 self.logger.info(f"Tín hiệu {action} |last_macd ={self.last_macd}|last_signal={self.last_signal}|last_RSI={self.last_RSI}|last_ADX={self.last_ADX}")
 
             # Điều kiện đóng mua
-            elif (self.position == "BUY" and 
+            elif (self.position_side == "BUY" and 
                     (self.last_macd < self.last_signal or 
                     self.last_RSI > self.upperBound)):
                 action = "CLOSEBUY"
                 self.logger.info(f"Tín hiệu {action} |last_macd ={self.last_macd}|last_signal={self.last_signal}|last_RSI={self.last_RSI}|last_ADX={self.last_ADX}")
 
             # Điều kiện đóng bán
-            elif (self.position == "SELL" and 
+            elif (self.position_side == "SELL" and 
                     (self.last_macd > self.last_signal or 
                     self.last_RSI < self.lowerBound)):
                 action = "CLOSESELL"
@@ -193,189 +194,15 @@ class pyBotMACD(pyBot):
             self.logger.error(f"Error in signal calculation: {e}")
             return None
         
-    
-    def execute_trade_entrade(self, action, is_demo = True):
-        '''
-        Thực hiện lệnh mua/bán dựa trên tín hiệu từ check_for_signals
-        action = "BUY" hoặc "SELL", CLOSEBUY, CLOSESELL
-        '''
-        # kiểm tra số deal đang mở đã vượt quá max open trades allowed chưa?
 
-        # lấy giá hiện tại khi có tín hiệu
-        if self.orderPriceType == "MTL":
-            self.orderPrice = None
-        else:
-            self.orderPrice = self.marketData[self.timeframe][4]  # Lấy giá đóng cửa mới nhất
-
-        if action == "BUY":
-
-            self.logger.info(f"[ENDTRADE] Thực hiện đặt {self.trade_size} hợp đồng LONG tại giá {self.orderPrice if self.orderPrice is not None else 'MTL'}")
-            # Thực hiện lệnh mua ở đây
-            result = GLOBAL.ENTRADE_CLIENT.Order(GLOBAL.VN30F1M, "NB", self.orderPrice, None, self.trade_size, self.orderPriceType, is_demo)
-            
-            try:
-                self.position = "BUY"
-                deals = GLOBAL.ENTRADE_CLIENT.GetActiveDeals()
-                # self.logger.info(f"Active deals after BUY: {deals}")
-                for deal in deals:
-                    self.order_id = deal.get("id")
-                    self.order_entryprice = deal.get("breakEvenPrice")
-                    self.order_side = deal.get("side")
-                    self.orderQuantity = deal.get("openQuantity")
-            except:
-                pass
-
-        elif action == "SELL":
-            
-            self.logger(f"[ENDTRADE] Thực hiện đặt {self.trade_size} hợp đồng SHORT tại giá {self.orderPrice if self.orderPrice is not None else 'MTL'}")
-            # Thực hiện lệnh bán ở đây
-            result = GLOBAL.ENTRADE_CLIENT.Order(GLOBAL.VN30F1M, "NS", self.orderPrice, None, self.trade_size, self.orderPriceType, is_demo)
-
-            try:
-                self.position = "SELL"
-                deals = GLOBAL.ENTRADE_CLIENT.GetActiveDeals()
-                # cprint(f"Active deals after BUY: {deals}")
-                for deal in deals:
-                    self.order_id = deal.get("id")
-                    self.order_entryprice = deal.get("breakEvenPrice")
-                    self.order_side = deal.get("side")
-                    self.orderQuantity = deal.get("openQuantity")
-            except:
-                pass
-
-                
-        elif action == "CLOSEBUY":
-            if self.position == "BUY":
-                self.logger.info(f"[ENDTRADE] Đóng tất cả các lệnh, lý do = {action}")
-                # Thực hiện lệnh đóng mua ở đây
-                result = GLOBAL.ENTRADE_CLIENT.CloseAllDeals(is_demo)
-                self.position = None
-                self.order_entryprice = None
-                self.order_id = None
-                self.order_side = None
-                self.orderQuantity = None
-            else:
-                self.logger.error("No BUY position to close.")
-
-        elif action == "CLOSESELL":
-            if self.position == "SELL":
-                self.logger.info(f"[ENDTRADE] Đóng tất cả các lệnh, lý do = {action}")
-                # Thực hiện lệnh đóng mua ở đây
-                result = GLOBAL.ENTRADE_CLIENT.CloseAllDeals(is_demo)
-                self.position = None
-                self.order_entryprice = None
-                self.order_id = None
-                self.order_side = None
-                self.orderQuantity = None
-            else:
-                self.logger.info("No SELL position to close.")
-        else:
-            self.logger.info("No valid action to execute.")
-    
-    def execute_trade_DNSE(self, action):
-        '''
-        Thực hiện lệnh mua/bán dựa trên tín hiệu từ check_for_signals
-        action = "BUY" hoặc "SELL", CLOSEBUY, CLOSESELL
-        '''
-        # kiểm tra số deal đang mở đã vượt quá max open trades allowed chưa?
-
-        # lấy giá hiện tại khi có tín hiệu
-        if self.orderPriceType == "MTL":
-            self.orderPrice = None
-        else:
-            self.orderPrice = self.marketData[self.timeframe][4]  # Lấy giá đóng cửa mới nhất
-
-
-        if action == "BUY":
-                
-            self.logger.info(f"[DNSE] Thực hiện đặt {self.trade_size} hợp đồng LONG tại giá {self.orderPrice if self.orderPrice is not None else 'MTL'}")
-            # Thực hiện lệnh mua ở đây
-            result = GLOBAL.DNSE_CLIENT.Order( symbol=self.symbol,
-                                                account = self.accountNo,
-                                                side = "NB",
-                                                price = self.orderPrice,
-                                                loan = self.loanpackageid,
-                                                volume = self.trade_size,
-                                                order_type = self.orderPriceType)
-            
-            try:
-                self.position = "BUY"
-                deals = GLOBAL.ENTRADE_CLIENT.GetActiveDeals()
-                # cprint(f"Active deals after BUY: {deals}")
-                for deal in deals:
-                    self.order_id = deal.get("id")
-                    self.order_entryprice = deal.get("breakEvenPrice")
-                    self.order_side = deal.get("side")
-                    self.orderQuantity = deal.get("openQuantity")
-            except:
-                pass
-
-        elif action == "SELL":
-
-            self.logger.info(f"[DNSE] Thực hiện đặt {self.trade_size} hợp đồng SHORT tại giá {self.orderPrice if self.orderPrice is not None else 'MTL'}")
-            cprint(f"[DNSE] Thực hiện đặt {self.trade_size} hợp đồng SHORT tại giá {self.orderPrice}")
-            # Thực hiện lệnh bán ở đây
-            result = GLOBAL.DNSE_CLIENT.Order( symbol=self.symbol,
-                                                account = self.accountNo,
-                                                side = "NS",
-                                                price = self.orderPrice,
-                                                loan = self.loanpackageid,
-                                                volume = self.trade_size,
-                                                order_type = self.orderPriceType)
-
-            try:
-                self.position = "SELL"
-                deals = GLOBAL.ENTRADE_CLIENT.GetActiveDeals()
-                # cprint(f"Active deals after BUY: {deals}")
-                for deal in deals:
-                    self.order_id = deal.get("id")
-                    self.order_entryprice = deal.get("breakEvenPrice")
-                    self.order_side = deal.get("side")
-                    self.orderQuantity = deal.get("openQuantity")
-            except:
-                pass
-
-                
-        elif action == "CLOSEBUY":
-            # Thực hiện lệnh đóng mua ở đây
-                self.logger.info(f"[DNSE] Đóng tất cả các lệnh, lý do = {action}")
-                cprint(f"[DNSE] Đóng tất cả các lệnh, lý do = {action}")
-                result = GLOBAL.DNSE_CLIENT.CloseAllDeals()
-                self.position = None
-                self.order_entryprice = None
-                self.order_id = None
-                self.order_side = None
-                self.orderQuantity = None
-
-        elif action == "CLOSESELL":
-            # Thực hiện lệnh đóng mua ở đây
-                self.logger.info(f"[DNSE] Đóng tất cả các lệnh, lý do = {action}")
-                cprint(f"[DNSE] Đóng tất cả các lệnh, lý do = {action}")
-                result = GLOBAL.DNSE_CLIENT.CloseAllDeals()
-                self.position = None
-                self.order_entryprice = None
-                self.order_id = None
-                self.order_side = None
-                self.orderQuantity = None
-        else:
-            self.logger.info("No valid action to execute.")
-    
-    def getTotalOpenQuanity_DNSE(self) -> int:
-        '''
-        Mục đích lấy tổng số hợp động đang mở.
-        '''
-        if self.dnseClient is not None:
-            return self.dnseClient.GetTotalOpenQuantity()
-        else:
-            return 0
 
 
 
 # if __name__ == "__main__":
-    # df = generate_market_data()
-    # bot = pyBotMACD()
-    # bot.timeframe = "m1"
-    # bot.marketData = df
-    # bot.trade_size =1
-    # bot.run()
-    # bot.cprint_dealBot()
+#     df = generate_market_data()
+#     bot = pyBotMACD()
+#     bot.timeframe = "m1"
+#     bot.marketData = df
+#     bot.trade_size =1
+#     bot.run()
+#     bot.print_dealBot()
