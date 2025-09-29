@@ -1,12 +1,13 @@
 import imaplib
 import email
 from email.header import decode_header
+from os import getenv
 import re
 import time
 
 # Thông tin đăng nhập Yandex Mail
-username = "nguyenvan.cong@yandex.com"
-password = "owuerfekwddtevjf"
+usernameYandex = getenv("usernameYandex") # Email/SĐT tài khoản Yandex
+apppasswordYandex = getenv("apppasswordYandex") # Mật khẩu tài khoản Entrade
 
 # Kết nối tới máy chủ IMAP của Yandex
 def authenticate_yandex():
@@ -17,7 +18,7 @@ def authenticate_yandex():
 
     try:
         # Đăng nhập bằng tên người dùng và mật khẩu ứng dụng
-        mail.login(username, password)
+        mail.login(usernameYandex, apppasswordYandex)
         return mail
     except imaplib.IMAP4.error as e:
         print("Đăng nhập imap thất bại:", e)

@@ -83,7 +83,7 @@ def setup_logger(name="AutoTrade-CONG NGUYEN", log_level=logging.INFO):
         filename=log_file,
         when='midnight',
         interval=1,
-        backupCount=30,  # Giữ lại 30 ngày
+        backupCount=6,  # Giữ lại 6 ngày
         encoding='utf-8'
     )
     file_handler.setLevel(log_level)

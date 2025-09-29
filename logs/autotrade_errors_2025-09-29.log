@@ -571,3 +571,5 @@ Traceback (most recent call last):
     raise HTTPError(http_error_msg, response=self)
 requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://services.entrade.com.vn/papertrade-entrade-api/derivative/orders
 [2025-09-29 14:15:57] [SMARTBOT] - ERROR - Đã gặp lỗi Bot.Update() : 'fillQuantity'
+[2025-09-29 17:36:32] [SMARTBOT] - ERROR - Đã gặp lỗi Bot.Update() : 'fillQuantity'
+[2025-09-29 17:38:46] [SMARTBOT] - ERROR - Đã gặp lỗi Bot.Update() : 'orderStatus'

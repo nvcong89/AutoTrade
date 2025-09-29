@@ -172,13 +172,15 @@ class pyBot:
 
                 #lấy thông tin deal đang mở
                 self.dealOpening = self.dnseClient.getActiveDeals(self.investor_account_id)
+                
+
 
                 if self.dealOpening is not None:
                     self.order_id = self.dealOpening['id']
                     self.order_entryprice = self.dealOpening['breakEvenPrice']
                     self.order_side = self.dealOpening['side']
-                    self.orderQuantity = self.dealOpening['fillQuantity']
-                    self.orderStatus = self.dealOpening['orderStatus']
+                    self.orderQuantity = self.dealOpening['openQuantity']
+                    self.orderStatus = self.dealOpening['status']
                     self.breakevenPrice = self.dealOpening['breakEvenPrice']
 
                     if self.dealOpening['side']=='NB':
@@ -541,3 +543,44 @@ class pyBot:
         '''
         ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         print(f"[{ts}] - {message}")
+
+    def trailingStop(self):
+        """
+        Cập nhật giá dừng lỗ theo cơ chế trailing stop
+        """
+        if not self.isTrailingStop or self.position_side is None:
+            return
+        
+        if self.triggerDistance_trailingstop is None or self.trailingDistance_trailingstop is None:
+            self.logger.warning("Thiếu tham số trailing stop (trigger/trailing distance)")
+            return
+        
+        current_price = self.lastTickPrice
+        entry_price = self.order_entryprice
+        
+        if current_price is None or entry_price is None:
+            return
+        
+        try:
+            if self.position_side == "LONG":
+                # Tính khoảng cách từ giá hiện tại so với giá vào lệnh
+                profit = current_price - entry_price
+                if profit >= self.triggerDistance_trailingstop:
+                    new_stoploss = current_price - self.trailingDistance_trailingstop
+                    # Chỉ cập nhật nếu stoploss mới cao hơn stoploss hiện tại
+                    if new_stoploss > (self.stoplossPrice or -float('inf')):
+                        self.stoplossPrice = new_stoploss
+                        self.logger.info(f"[TRAILING STOP] Cập nhật stoploss LONG mới: {new_stoploss:.1f}")
+            
+            elif self.position_side == "SHORT":
+                # Tính khoảng cách từ giá hiện tại so với giá vào lệnh
+                profit = entry_price - current_price
+                if profit >= self.triggerDistance_trailingstop:
+                    new_stoploss = current_price + self.trailingDistance_trailingstop
+                    # Chỉ cập nhật nếu stoploss mới thấp hơn stoploss hiện tại
+                    if new_stoploss < (self.stoplossPrice or float('inf')):
+                        self.stoplossPrice = new_stoploss
+                        self.logger.info(f"[TRAILING STOP] Cập nhật stoploss SHORT mới: {new_stoploss:.1f}")
+        
+        except Exception as e:
+            self.logger.error(f"Lỗi trailingStop: {str(e)}")

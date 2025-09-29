@@ -11,7 +11,7 @@ import numpy as np
 from Utils import*
 from logger_config import setup_logger
 import logging
-from pyBot001 import pyBotMACD
+from pyBotMACD import pyBotMACD
 
 
 _createdtimeToken = None #DO NOT REMOVE

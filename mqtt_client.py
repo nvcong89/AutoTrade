@@ -1,3 +1,4 @@
+import GLOBAL
 import data_processor as dp
 from GLOBAL import ReadConfig
 import ssl
@@ -27,13 +28,21 @@ def on_connect(client, userdata, flags, rc, properties):
     if rc == 0 and client.is_connected():
         logger.info("Connected to MQTT Broker!")
         # Modify topics as needed
-        client.subscribe(config["ohlc_data_topic"], qos=1)
+
+        # client.subscribe(config["ohlc_data_topic"], qos=1)
+
+        client.subscribe(f"{config["tick_data_topic"]}{GLOBAL.VN30F1M}", qos=1)  
+
+        # if config["get_ohlc_data_topic"]:
+        #     client.subscribe(config["ohlc_data_topic"], qos=1)
 
         if config["get_market_data"]:
-            client.subscribe(config["market_data_topic"], qos=1)
+            client.subscribe(f"{config["market_data_topic"]}{GLOBAL.VN30F1M}", qos=1)
         
         if config["get_foreign_data"]:
-            client.subscribe(config["foreign_data_topic"], qos=1)
+            client.subscribe(f"{config["foreign_data_topic"]}{GLOBAL.VN30F1M}", qos=1)
+
+        
 
         dp.InitializeData() # DO NOT REMOVE
     else:
@@ -46,12 +55,15 @@ def on_message(client, userdata, msg):
         payload = json.JSONDecoder().decode(msg.payload.decode())
 
         # DO NOT REMOVE
-        if msg.topic == config["ohlc_data_topic"]:
+        if msg.topic == config["tick_data_topic"]:
             dp.UpdateOHLCVData(payload)
+        # if msg.topic == config["ohlc_data_topic"]:
+        #     dp.UpdateOHLCVData(payload)
         if msg.topic == config["market_data_topic"]:
             dp.UpdateMarketData(payload)
         if msg.topic == config["foreign_data_topic"]:
             dp.UpdateForeignData(payload)
+            
     except Exception as e:
         print_color(f"[mqtt_client] - ERROR - on_message đã xảy ra lỗi : {e}","red")
         pass
