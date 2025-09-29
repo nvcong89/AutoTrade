@@ -74,14 +74,26 @@ class pyBotMACD(pyBot):
 
 
             #kiểm tra xem số hđ đang mở đang active (mở) đã vượt quá số lượng cho phép chưa ?
-            if self.getTotalOpenQuanity_DNSE() >= self.maxOpenTrades:
-                self.logger.info(f"Số lượng hợp đồng đang mở đã đạt số lượng tối đa [{self.maxOpenTrades} HĐ] cho phép.")
-                # cprint(f"Số lượng hợp đồng đang mở đã đạt số lượng tối đa [{self.maxOpenTrades} HĐ] cho phép.")
-                return
-
-            #cập nhật các biến động như tổng số hđ hiện tại vào trong bot, trước khi tính netprofit
-            self.orderQuantity = self.getTotalOpenQuanity_DNSE()
+            if self.tradingPlatform.upper() =="DNSE":
+                currentOrderNo = max(self.getTotalOpenQuanity_DNSE(),len(self.dnseClient.GetPendingOrders()))
+                if currentOrderNo >= self.maxOpenTrades:
+                    self.logger.info(f"Số lượng hợp đồng đang mở đã đạt số lượng tối đa [{self.maxOpenTrades} HĐ] cho phép [DNSE].")
+                    # cprint(f"Số lượng hợp đồng đang mở đã đạt số lượng tối đa [{self.maxOpenTrades} HĐ] cho phép.")
+                    return
+                #cập nhật các biến động như tổng số hđ hiện tại vào trong bot, trước khi tính netprofit
+                self.orderQuantity = self.getTotalOpenQuanity_DNSE()
+            else :
+                currentOrderNo = max(self.getTotalOpenQuanity_Entrade(),len(self.entradeClient.GetPendingOrders()))
+                if currentOrderNo >= self.maxOpenTrades:
+                    print(f"số hđ tối đa cho phép entrade: {self.maxOpenTrades}")
+                    print(f"số hđ đang mở entrade: {self.getTotalOpenQuanity_Entrade()}")
+                    self.logger.info(f"Số lượng hợp đồng đang mở đã đạt số lượng tối đa [{self.maxOpenTrades} HĐ] cho phép [Entrade].")
+                    # cprint(f"Số lượng hợp đồng đang mở đã đạt số lượng tối đa [{self.maxOpenTrades} HĐ] cho phép.")
+                    return
+                #cập nhật các biến động như tổng số hđ hiện tại vào trong bot, trước khi tính netprofit
+                self.orderQuantity = self.getTotalOpenQuanity_Entrade()
             
+
             #cập nhật unrealised net profit
             self.Calculate_UnrealisedNetProfit()
 

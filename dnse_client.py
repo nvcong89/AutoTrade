@@ -299,7 +299,7 @@ class DNSEClient:
         #get active deals
         activeDeal = self.getActiveDeals(investor_account_id or self.investor_account_id)
         if activeDeal:
-            return activeDeal['fillQuantity']
+            return activeDeal['openQuantity']
         else:
             return 0
         
@@ -327,7 +327,7 @@ class DNSEClient:
     def getActiveDeals(self, investor_account_id = None):    #tiểu khoản
         deals = self.GetDeals(investor_account_id)["data"]
         for deal in deals:
-            if deal["orderStatus"].lower() == "filled" or deal["orderStatus"].lower() =="active" or deal['orderStatus'].lower()=='partiallyfilled':
+            if deal["status"].lower() == "open" or deal["status"].lower() == "filled" or deal["status"].lower() =="active" or deal['status'].lower()=='partiallyfilled':
                 return deal
         return None  
     

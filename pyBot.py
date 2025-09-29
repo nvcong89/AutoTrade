@@ -235,8 +235,16 @@ class pyBot:
             contractFactor = 100000.0  # Hệ số hợp đồng 100,000 VNĐ/hđ
             tickprice = GLOBAL.LAST_TICK_PRICE
             tickVol = GLOBAL.LAST_TICK_VOLUME
+
+            totalOpeningDeal = 0
+            if self.tradingPlatform.upper() =="DNSE":
+                totalOpeningDeal = self.dnseClient.GetTotalOpenQuantity()
+            else:
+                totalOpeningDeal = self.entradeClient.GetTotalOpenQuantity()
+
             print(150*"-")
             (f"DEAL INFORMATION [{self.name}]")
+            self.cprint(f"Số HĐ đang mở: {totalOpeningDeal}")
             self.cprint(f"Order id: {self.order_id}")
             self.cprint(f"Order Status: {self.orderStatus}")
             self.cprint(f"Break even price: {round(self.breakevenPrice,1) if self.breakevenPrice is not None else "N/A"}")
@@ -334,7 +342,10 @@ class pyBot:
         if self.orderPriceType == "MTL":
             self.orderPrice = None
         else:
-            self.orderPrice = self.lastTickPrice + (self.spread if self.spread is not None else 0)  # Lấy giá đóng cửa mới nhất
+            if self.spread is not None: 
+                self.orderPrice = self.lastTickPrice + (self.spread if action.uppper()=="LONG" else -1*self.spread)  # Lấy giá đóng cửa mới nhất
+            else:
+                self.orderPrice = self.lastTickPrice + 2
 
         if action.upper() == "LONG":
 
@@ -416,10 +427,10 @@ class pyBot:
 
         # lấy giá hiện tại khi có tín hiệu
         if self.orderPriceType == "MTL":
-            self.orderPrice = self.lastTickPrice + self.spread
+            self.orderPrice = self.lastTickPrice + 5*self.spread
         else:
             # self.orderPrice = self.marketData[self.timeframe][4]  # Lấy giá đóng cửa mới nhất
-            self.orderPrice = self.lastTickPrice
+            self.orderPrice = (self.lastTickPrice + self.spread) if action.upper() == "LONG" else (self.lastTickPrice - self.spread)
 
 
         if action.upper() == "LONG":
@@ -507,10 +518,20 @@ class pyBot:
     def getTotalOpenQuanity_DNSE(self) -> int:
 
         '''
-        Mục đích lấy tổng số hợp động đang mở.
+        Mục đích lấy tổng số hợp động đang mở DNSE.
         '''
         if self.dnseClient is not None:
             return self.dnseClient.GetTotalOpenQuantity()
+        else:
+            return 0 
+    
+    def getTotalOpenQuanity_Entrade(self) -> int:
+
+        '''
+        Mục đích lấy tổng số hợp động đang mở ở Entrade.
+        '''
+        if self.dnseClient is not None:
+            return self.entradeClient.GetTotalOpenQuantity()
         else:
             return 0 
     

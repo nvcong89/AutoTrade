@@ -570,3 +570,4 @@ Traceback (most recent call last):
   File "C:\Users\210608\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\models.py", line 1026, in raise_for_status
     raise HTTPError(http_error_msg, response=self)
 requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://services.entrade.com.vn/papertrade-entrade-api/derivative/orders
+[2025-09-29 14:15:57] [SMARTBOT] - ERROR - Đã gặp lỗi Bot.Update() : 'fillQuantity'

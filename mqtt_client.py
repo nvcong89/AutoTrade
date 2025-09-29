@@ -48,9 +48,9 @@ def on_message(client, userdata, msg):
         # DO NOT REMOVE
         if msg.topic == config["ohlc_data_topic"]:
             dp.UpdateOHLCVData(payload)
-        elif msg.topic == config["market_data_topic"]:
+        if msg.topic == config["market_data_topic"]:
             dp.UpdateMarketData(payload)
-        elif msg.topic == config["foreign_data_topic"]:
+        if msg.topic == config["foreign_data_topic"]:
             dp.UpdateForeignData(payload)
     except Exception as e:
         print_color(f"[mqtt_client] - ERROR - on_message đã xảy ra lỗi : {e}","red")
