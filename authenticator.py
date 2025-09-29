@@ -77,7 +77,7 @@ if __name__ == "__main__":
 
     logger.info(f"loan package id: {GLOBAL.DNSE_CLIENT.loanpackageID}")
 
-    print(GLOBAL.DNSE_CLIENT.GetDeals())
+    # print(GLOBAL.DNSE_CLIENT.GetDeals())
 
     logger.warning(f"Tổng số lượng deal đang mở trong sổ [DNSE]: {1 if GLOBAL.DNSE_CLIENT.getActiveDeals() is not None else 0}")
     logger.warning(f"Tổng số lượng lệnh đang chờ trong sổ [DNSE]: {len(GLOBAL.DNSE_CLIENT.GetPendingOrders())}")
