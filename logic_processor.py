@@ -116,6 +116,11 @@ def OnStart(_onstart: bool = False):
     logger.warning(f"Giá sàn hôm nay : {bot.floorPrice}")
 
     #bot.dnseClient.CancleAllPendingOrders()
+    # bot.entradeClient.CancelAllOrders(is_demo=True)
+
+    
+    # print(bot.entradeClient.GetDeals(0,100,True))
+
     pass
 
 def OnTick():
@@ -170,6 +175,7 @@ def OnBarClosed():
     bot.dnseClient.is_validated_token() #kiểm tra token hiện tại đã hết hạn chưa để get lại.    #DO NOT REMOVE
 
     bot.marketData=GLOBAL.MARKETDATA   #đẩy mảketdata vào bot
+
     bot.run()
 
     return

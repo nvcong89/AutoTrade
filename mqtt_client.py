@@ -6,6 +6,7 @@ import paho.mqtt.client as mqtt
 from random import randint
 import logging
 from logger_config import setup_logger
+from Utils import*
 
 
 # Khởi tạo logger
@@ -40,15 +41,21 @@ def on_connect(client, userdata, flags, rc, properties):
 
 # Message callback (MUST call dp.UpdateData() inside)
 def on_message(client, userdata, msg):
-    payload = json.JSONDecoder().decode(msg.payload.decode())
 
-    # DO NOT REMOVE
-    if msg.topic == config["ohlc_data_topic"]:
-        dp.UpdateOHLCVData(payload)
-    elif msg.topic == config["market_data_topic"]:
-        dp.UpdateMarketData(payload)
-    elif msg.topic == config["foreign_data_topic"]:
-        dp.UpdateForeignData(payload)
+    try:
+        payload = json.JSONDecoder().decode(msg.payload.decode())
+
+        # DO NOT REMOVE
+        if msg.topic == config["ohlc_data_topic"]:
+            dp.UpdateOHLCVData(payload)
+        elif msg.topic == config["market_data_topic"]:
+            dp.UpdateMarketData(payload)
+        elif msg.topic == config["foreign_data_topic"]:
+            dp.UpdateForeignData(payload)
+    except Exception as e:
+        print_color(f"[mqtt_client] - ERROR - on_message đã xảy ra lỗi : {e}","red")
+        pass
+
 
 class MQTTClient:
     def __init__(self, investor_id, token):

@@ -47,7 +47,7 @@ def InitializeData():
     global HISTORY, current_bars, last_ts, logger
     logger = setup_logger("[Data Processor]", logging.INFO)
 
-    logger.info(f"Working TimeFrame: {GLOBAL.WORKING_TIMEFRAME}")
+    # logger.info(f"Working TimeFrame: {GLOBAL.WORKING_TIMEFRAME}")
 
     base_tf = 'm1'
     last_ts = int(time())
@@ -168,16 +168,21 @@ def UpdateOHLCVData(new_data):
 
 
 def UpdateMarketData(new_market_data):
-    GLOBAL.TOTAL_BID = int(new_market_data["totalBidQtty"])
-    GLOBAL.TOTAL_OFFER = int(new_market_data["totalOfferQtty"])
+    try:
+        if new_market_data:
+            GLOBAL.TOTAL_BID = int(new_market_data["totalBidQtty"])
+            GLOBAL.TOTAL_OFFER = int(new_market_data["totalOfferQtty"])
 
-    GLOBAL.BID_DEPTH.clear()
-    for dict in new_market_data["bid"]:
-        GLOBAL.BID_DEPTH.append(tuple(dict.values()))
+        GLOBAL.BID_DEPTH.clear()
+        for dict in new_market_data["bid"]:
+            GLOBAL.BID_DEPTH.append(tuple(dict.values()))
 
-    GLOBAL.ASK_DEPTH.clear()
-    for dict in new_market_data["offer"]:
-        GLOBAL.ASK_DEPTH.append(tuple(dict.values()))
+        GLOBAL.ASK_DEPTH.clear()
+        for dict in new_market_data["offer"]:
+            GLOBAL.ASK_DEPTH.append(tuple(dict.values()))
+    except Exception as e:
+        logger.error(f" UpdateMarketData Đã xảy ra lỗi: {e}")
+        pass
 
 def UpdateForeignData(new_foreign_data):
     GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])

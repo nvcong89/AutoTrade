@@ -116,3 +116,1527 @@ requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://se
 [2025-09-29 00:09:54] [Logic_Processor] - INFO - Bot đang chạy...
 [2025-09-29 00:09:54] [Logic_Processor] - WARNING - Giá trần hôm nay : 1967.0
 [2025-09-29 00:09:54] [Logic_Processor] - WARNING - Giá sàn hôm nay : 1713.0
+[2025-09-29 07:30:49] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-29 07:30:50] [DNSE_Client] - INFO - Logger '[DNSE_Client]' initialized with daily rotation
+[2025-09-29 07:30:50] [ENTRADE_Client] - INFO - Logger '[ENTRADE_Client]' initialized with daily rotation
+[2025-09-29 07:30:50] [MQTT Connector] - INFO - Logger '[MQTT Connector]' initialized with daily rotation
+[2025-09-29 07:30:50] [Authenticaotor] - INFO - Logger '[Authenticaotor]' initialized with daily rotation
+[2025-09-29 07:30:52] [DNSE_Client] - INFO - Đã đọc token từ C:\Users\210608\Documents\GitHub\AutoTrade\token_dnse.json
+[2025-09-29 07:30:53] [DNSE_Client] - INFO - Gửi email OTP thành công! (DNSE)
+[2025-09-29 07:31:02] [DNSE_Client] - INFO - Lấy Trading Token thành công! (DNSE)
+[2025-09-29 07:31:02] [DNSE_Client] - INFO - Đang lưu token ra file token_dnse.json...
+[2025-09-29 07:31:02] [DNSE_Client] - INFO - Đã lưu token vào C:\Users\210608\Documents\GitHub\AutoTrade\token_dnse.json
+[2025-09-29 07:31:02] [DNSE_Client] - INFO - Đã lưu token ra file token_dnse.json.
+[2025-09-29 07:31:02] [Authenticaotor] - WARNING - token [DNSE] : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZGVudGlmaWNhdGlvbkNvZGUiOiIwMDEwODkwMjkyNDUiLCJzdWIiOiIxMDAwOTY0NzY4IiwiYnJva2VySWQiOiIwODY5IiwiYXV0aFNvdXJjZSI6bnVsbCwicm9sZXMiOlsiaW52ZXN0b3IiLCJCUk9LRVIiXSwiaXNzIjoiRE5TRSIsImludmVzdG9ySWQiOiIxMDAwOTY0NzY4IiwiYnJva2VyVHlwZSI6IlNBQ08iLCJmdWxsTmFtZSI6Ik5ndXnhu4VuIFbEg24gQ8O0bmciLCJzZXNzaW9uSWQiOiJkNzhjMmFmYy1jNjJhLTRjMWYtYTA5MC04M2I5ZTJiZjM1ZDgiLCJ1c2VySWQiOiJhODQ3OGY2ZS0yMDY4LTRjODctYjEzNi1kNmFhMzIyYzk4MTYiLCJhdWQiOlsiYXVkaWVuY2UiXSwiY3VzdG9tZXJFbWFpbCI6Im52Y29uZzg5QGxpdmUuY29tIiwiY3VzdG9keUNvZGUiOiIwNjRDNjg0NjQxIiwiY3VzdG9tZXJJZCI6IjAwMDE1MDQxNzUiLCJleHAiOjE3NTkxMzQ2NTQsImN1c3RvbWVyTW9iaWxlIjoiMDk3OTQwNDY0MSIsImlhdCI6MTc1OTEwNTg1NCwidXNlcm5hbWUiOiIwNjRDNjg0NjQxIiwic3RhdHVzIjoiQUNUSVZFIn0.o8I-bop5FIPdoiF_fTUrNMVj2i5kuteaaxr-uEqFQuPdod-TRBwPLvWpsehqyqcQ4stMsCPqM7l1M0K9oZ6zcruXaj595OWH6VPO-z8enC9CMLvquqfUX7CcrTBaQvps-ojynchEyVXoIVKs6PbSLa0nO8w4cwaTSIeeCI0QpU0
+[2025-09-29 07:31:02] [Authenticaotor] - WARNING - Trading-Token [DNSE]: c3539ab0-1cb9-4692-b5d6-690fb3a87750
+[2025-09-29 07:31:03] [Authenticaotor] - INFO - investor_id [Etrade] : 1000048842
+[2025-09-29 07:31:03] [Authenticaotor] - INFO - investor_account_id [Etrade] : 1000049481 
+
+[2025-09-29 07:31:03] [Authenticaotor] - INFO - investor_id [DNSE] : 1000964768
+[2025-09-29 07:31:03] [Authenticaotor] - INFO - investor_account_id [DNSE] : 0001521007
+
+[2025-09-29 07:31:03] [Authenticaotor] - INFO - loan package id: 1306
+[2025-09-29 07:31:04] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [DNSE]: 0
+[2025-09-29 07:31:04] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [DNSE]: 0
+[2025-09-29 07:31:04] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [DNSE]: 0 HĐ 
+
+[2025-09-29 07:31:04] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [ENTRADE]: 1
+[2025-09-29 07:31:05] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [ENTRADE]: 0
+[2025-09-29 07:31:05] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [ENTRADE]: 7 HĐ 
+
+[2025-09-29 07:31:06] [MQTT Connector] - INFO - Connected to MQTT Broker!
+[2025-09-29 07:31:06] [Data Processor] - INFO - Logger '[Data Processor]' initialized with daily rotation
+[2025-09-29 07:31:06] [Data Processor] - INFO - Working TimeFrame: m1
+[2025-09-29 07:31:08] [Data Processor] - INFO - Successfully initialized multi-timeframe data:
+[2025-09-29 07:31:08] [Data Processor] - INFO - m1: 16385 candles
+[2025-09-29 07:31:08] [Data Processor] - INFO - m3: 5507 candles
+[2025-09-29 07:31:08] [Data Processor] - INFO - m5: 3331 candles
+[2025-09-29 07:31:08] [Data Processor] - INFO - m15: 1155 candles
+[2025-09-29 07:31:08] [Data Processor] - INFO - m30: 611 candles
+[2025-09-29 07:31:08] [Data Processor] - INFO - H1: 339 candles
+[2025-09-29 07:31:08] [Data Processor] - INFO - D1: 67 candles
+[2025-09-29 07:31:08] [Data Processor] - INFO - W1: 14 candles
+[2025-09-29 07:31:08] [Logic_Processor] - INFO - Logger '[Logic_Processor]' initialized with daily rotation
+[2025-09-29 07:31:09] [SMARTBOT] - INFO - Logger '[SMARTBOT]' initialized with daily rotation
+[2025-09-29 07:31:09] [SMARTBOT] - INFO - Khởi tạo bot: MACD_Bot
+[2025-09-29 07:31:11] [Logic_Processor] - INFO - Bot [MACD_Bot] đã được khởi tạo.
+[2025-09-29 07:31:11] [Logic_Processor] - INFO - Working TimeFrame : m5
+[2025-09-29 07:31:11] [Logic_Processor] - INFO - Đẩy MarketData lần đầu tiên vào trong bot...
+[2025-09-29 07:31:12] [SMARTBOT] - INFO - Độ dài chuỗi dữ liệu nến 'm5': 3331
+[2025-09-29 07:31:13] [SMARTBOT] - INFO - Tín hiệu SHORT |last_macd =0.11676318221429938|last_signal=0.14852408727716107|last_RSI=32.88692732197889|last_ADX=33.814483211183514
+[2025-09-29 07:31:13] [SMARTBOT] - INFO - Signal detected: SHORT
+[2025-09-29 07:31:13] [SMARTBOT] - INFO - Trading platform used : ENTRADE
+[2025-09-29 07:31:13] [SMARTBOT] - INFO - [ENTRADE] Thực hiện đặt 1 hợp đồng SHORT tại giá 1840.0
+[2025-09-29 07:31:14] [ENTRADE_Client] - ERROR - Order() failed! (Entrade):
+Traceback (most recent call last):
+  File "C:\Users\210608\Documents\GitHub\AutoTrade\entrade_client.py", line 59, in Order
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\210608\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://services.entrade.com.vn/papertrade-entrade-api/derivative/orders
+[2025-09-29 07:31:14] [Logic_Processor] - INFO - Bot đang chạy...
+[2025-09-29 07:31:14] [Logic_Processor] - WARNING - Giá trần hôm nay : 1967.0
+[2025-09-29 07:31:14] [Logic_Processor] - WARNING - Giá sàn hôm nay : 1713.0
+[2025-09-29 07:36:31] [Authenticaotor] - WARNING - Disconnecting...
+[2025-09-29 07:36:33] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-29 07:36:34] [DNSE_Client] - INFO - Logger '[DNSE_Client]' initialized with daily rotation
+[2025-09-29 07:36:34] [ENTRADE_Client] - INFO - Logger '[ENTRADE_Client]' initialized with daily rotation
+[2025-09-29 07:36:34] [MQTT Connector] - INFO - Logger '[MQTT Connector]' initialized with daily rotation
+[2025-09-29 07:36:34] [Authenticaotor] - INFO - Logger '[Authenticaotor]' initialized with daily rotation
+[2025-09-29 07:36:35] [DNSE_Client] - INFO - Đã đọc token từ C:\Users\210608\Documents\GitHub\AutoTrade\token_dnse.json
+[2025-09-29 07:36:35] [DNSE_Client] - INFO - Đọc tokens từ file token_dnse.json.
+[2025-09-29 07:36:35] [DNSE_Client] - INFO - Đọc xong tokens từ file token_dnse.json.
+[2025-09-29 07:36:35] [Authenticaotor] - WARNING - token [DNSE] : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZGVudGlmaWNhdGlvbkNvZGUiOiIwMDEwODkwMjkyNDUiLCJzdWIiOiIxMDAwOTY0NzY4IiwiYnJva2VySWQiOiIwODY5IiwiYXV0aFNvdXJjZSI6bnVsbCwicm9sZXMiOlsiaW52ZXN0b3IiLCJCUk9LRVIiXSwiaXNzIjoiRE5TRSIsImludmVzdG9ySWQiOiIxMDAwOTY0NzY4IiwiYnJva2VyVHlwZSI6IlNBQ08iLCJmdWxsTmFtZSI6Ik5ndXnhu4VuIFbEg24gQ8O0bmciLCJzZXNzaW9uSWQiOiJkNzhjMmFmYy1jNjJhLTRjMWYtYTA5MC04M2I5ZTJiZjM1ZDgiLCJ1c2VySWQiOiJhODQ3OGY2ZS0yMDY4LTRjODctYjEzNi1kNmFhMzIyYzk4MTYiLCJhdWQiOlsiYXVkaWVuY2UiXSwiY3VzdG9tZXJFbWFpbCI6Im52Y29uZzg5QGxpdmUuY29tIiwiY3VzdG9keUNvZGUiOiIwNjRDNjg0NjQxIiwiY3VzdG9tZXJJZCI6IjAwMDE1MDQxNzUiLCJleHAiOjE3NTkxMzQ2NTQsImN1c3RvbWVyTW9iaWxlIjoiMDk3OTQwNDY0MSIsImlhdCI6MTc1OTEwNTg1NCwidXNlcm5hbWUiOiIwNjRDNjg0NjQxIiwic3RhdHVzIjoiQUNUSVZFIn0.o8I-bop5FIPdoiF_fTUrNMVj2i5kuteaaxr-uEqFQuPdod-TRBwPLvWpsehqyqcQ4stMsCPqM7l1M0K9oZ6zcruXaj595OWH6VPO-z8enC9CMLvquqfUX7CcrTBaQvps-ojynchEyVXoIVKs6PbSLa0nO8w4cwaTSIeeCI0QpU0
+[2025-09-29 07:36:35] [Authenticaotor] - WARNING - Trading-Token [DNSE]: c3539ab0-1cb9-4692-b5d6-690fb3a87750
+[2025-09-29 07:36:36] [Authenticaotor] - INFO - investor_id [Etrade] : 1000048842
+[2025-09-29 07:36:36] [Authenticaotor] - INFO - investor_account_id [Etrade] : 1000049481 
+
+[2025-09-29 07:36:36] [Authenticaotor] - INFO - investor_id [DNSE] : 1000964768
+[2025-09-29 07:36:36] [Authenticaotor] - INFO - investor_account_id [DNSE] : 0001521007
+
+[2025-09-29 07:36:36] [Authenticaotor] - INFO - loan package id: 1306
+[2025-09-29 07:36:37] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [DNSE]: 0
+[2025-09-29 07:36:37] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [DNSE]: 0
+[2025-09-29 07:36:37] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [DNSE]: 0 HĐ 
+
+[2025-09-29 07:36:38] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [ENTRADE]: 1
+[2025-09-29 07:36:38] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [ENTRADE]: 0
+[2025-09-29 07:36:38] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [ENTRADE]: 7 HĐ 
+
+[2025-09-29 07:36:39] [MQTT Connector] - INFO - Connected to MQTT Broker!
+[2025-09-29 07:36:39] [Data Processor] - INFO - Logger '[Data Processor]' initialized with daily rotation
+[2025-09-29 07:36:41] [Data Processor] - INFO - Successfully initialized multi-timeframe data:
+[2025-09-29 07:36:41] [Data Processor] - INFO - m1: 16385 candles
+[2025-09-29 07:36:41] [Data Processor] - INFO - m3: 5507 candles
+[2025-09-29 07:36:41] [Data Processor] - INFO - m5: 3331 candles
+[2025-09-29 07:36:41] [Data Processor] - INFO - m15: 1155 candles
+[2025-09-29 07:36:41] [Data Processor] - INFO - m30: 611 candles
+[2025-09-29 07:36:41] [Data Processor] - INFO - H1: 339 candles
+[2025-09-29 07:36:41] [Data Processor] - INFO - D1: 67 candles
+[2025-09-29 07:36:41] [Data Processor] - INFO - W1: 14 candles
+[2025-09-29 07:36:41] [Logic_Processor] - INFO - Logger '[Logic_Processor]' initialized with daily rotation
+[2025-09-29 07:36:42] [SMARTBOT] - INFO - Logger '[SMARTBOT]' initialized with daily rotation
+[2025-09-29 07:36:42] [SMARTBOT] - INFO - Khởi tạo bot: MACD_Bot
+[2025-09-29 07:36:44] [Logic_Processor] - INFO - Bot [MACD_Bot] đã được khởi tạo.
+[2025-09-29 07:37:33] [Authenticaotor] - WARNING - Disconnecting...
+[2025-09-29 07:37:35] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-29 07:37:35] [DNSE_Client] - INFO - Logger '[DNSE_Client]' initialized with daily rotation
+[2025-09-29 07:37:35] [ENTRADE_Client] - INFO - Logger '[ENTRADE_Client]' initialized with daily rotation
+[2025-09-29 07:37:35] [MQTT Connector] - INFO - Logger '[MQTT Connector]' initialized with daily rotation
+[2025-09-29 07:37:35] [Authenticaotor] - INFO - Logger '[Authenticaotor]' initialized with daily rotation
+[2025-09-29 07:37:36] [DNSE_Client] - INFO - Đã đọc token từ C:\Users\210608\Documents\GitHub\AutoTrade\token_dnse.json
+[2025-09-29 07:37:36] [DNSE_Client] - INFO - Đọc tokens từ file token_dnse.json.
+[2025-09-29 07:37:36] [DNSE_Client] - INFO - Đọc xong tokens từ file token_dnse.json.
+[2025-09-29 07:37:36] [Authenticaotor] - WARNING - token [DNSE] : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZGVudGlmaWNhdGlvbkNvZGUiOiIwMDEwODkwMjkyNDUiLCJzdWIiOiIxMDAwOTY0NzY4IiwiYnJva2VySWQiOiIwODY5IiwiYXV0aFNvdXJjZSI6bnVsbCwicm9sZXMiOlsiaW52ZXN0b3IiLCJCUk9LRVIiXSwiaXNzIjoiRE5TRSIsImludmVzdG9ySWQiOiIxMDAwOTY0NzY4IiwiYnJva2VyVHlwZSI6IlNBQ08iLCJmdWxsTmFtZSI6Ik5ndXnhu4VuIFbEg24gQ8O0bmciLCJzZXNzaW9uSWQiOiJkNzhjMmFmYy1jNjJhLTRjMWYtYTA5MC04M2I5ZTJiZjM1ZDgiLCJ1c2VySWQiOiJhODQ3OGY2ZS0yMDY4LTRjODctYjEzNi1kNmFhMzIyYzk4MTYiLCJhdWQiOlsiYXVkaWVuY2UiXSwiY3VzdG9tZXJFbWFpbCI6Im52Y29uZzg5QGxpdmUuY29tIiwiY3VzdG9keUNvZGUiOiIwNjRDNjg0NjQxIiwiY3VzdG9tZXJJZCI6IjAwMDE1MDQxNzUiLCJleHAiOjE3NTkxMzQ2NTQsImN1c3RvbWVyTW9iaWxlIjoiMDk3OTQwNDY0MSIsImlhdCI6MTc1OTEwNTg1NCwidXNlcm5hbWUiOiIwNjRDNjg0NjQxIiwic3RhdHVzIjoiQUNUSVZFIn0.o8I-bop5FIPdoiF_fTUrNMVj2i5kuteaaxr-uEqFQuPdod-TRBwPLvWpsehqyqcQ4stMsCPqM7l1M0K9oZ6zcruXaj595OWH6VPO-z8enC9CMLvquqfUX7CcrTBaQvps-ojynchEyVXoIVKs6PbSLa0nO8w4cwaTSIeeCI0QpU0
+[2025-09-29 07:37:36] [Authenticaotor] - WARNING - Trading-Token [DNSE]: c3539ab0-1cb9-4692-b5d6-690fb3a87750
+[2025-09-29 07:37:37] [Authenticaotor] - INFO - investor_id [Etrade] : 1000048842
+[2025-09-29 07:37:37] [Authenticaotor] - INFO - investor_account_id [Etrade] : 1000049481 
+
+[2025-09-29 07:37:37] [Authenticaotor] - INFO - investor_id [DNSE] : 1000964768
+[2025-09-29 07:37:37] [Authenticaotor] - INFO - investor_account_id [DNSE] : 0001521007
+
+[2025-09-29 07:37:37] [Authenticaotor] - INFO - loan package id: 1306
+[2025-09-29 07:37:38] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [DNSE]: 0
+[2025-09-29 07:37:38] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [DNSE]: 0
+[2025-09-29 07:37:38] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [DNSE]: 0 HĐ 
+
+[2025-09-29 07:37:38] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [ENTRADE]: 1
+[2025-09-29 07:37:39] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [ENTRADE]: 0
+[2025-09-29 07:37:39] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [ENTRADE]: 7 HĐ 
+
+[2025-09-29 07:37:39] [MQTT Connector] - INFO - Connected to MQTT Broker!
+[2025-09-29 07:37:40] [Data Processor] - INFO - Logger '[Data Processor]' initialized with daily rotation
+[2025-09-29 07:37:41] [Data Processor] - INFO - Successfully initialized multi-timeframe data:
+[2025-09-29 07:37:41] [Data Processor] - INFO - m1: 16385 candles
+[2025-09-29 07:37:41] [Data Processor] - INFO - m3: 5507 candles
+[2025-09-29 07:37:41] [Data Processor] - INFO - m5: 3331 candles
+[2025-09-29 07:37:41] [Data Processor] - INFO - m15: 1155 candles
+[2025-09-29 07:37:41] [Data Processor] - INFO - m30: 611 candles
+[2025-09-29 07:37:41] [Data Processor] - INFO - H1: 339 candles
+[2025-09-29 07:37:41] [Data Processor] - INFO - D1: 67 candles
+[2025-09-29 07:37:41] [Data Processor] - INFO - W1: 14 candles
+[2025-09-29 07:37:42] [Logic_Processor] - INFO - Logger '[Logic_Processor]' initialized with daily rotation
+[2025-09-29 07:37:42] [SMARTBOT] - INFO - Logger '[SMARTBOT]' initialized with daily rotation
+[2025-09-29 07:37:42] [SMARTBOT] - INFO - Khởi tạo bot: MACD_Bot
+[2025-09-29 07:37:44] [Logic_Processor] - INFO - Bot [MACD_Bot] đã được khởi tạo.
+[2025-09-29 07:37:44] [Logic_Processor] - INFO - Working TimeFrame : m5
+[2025-09-29 07:37:44] [Logic_Processor] - INFO - Đẩy MarketData lần đầu tiên vào trong bot...
+[2025-09-29 07:37:46] [SMARTBOT] - INFO - Độ dài chuỗi dữ liệu nến 'm5': 3331
+[2025-09-29 07:37:47] [SMARTBOT] - INFO - Tín hiệu SHORT |last_macd =0.11676318221429938|last_signal=0.14852408727716107|last_RSI=32.88692732197889|last_ADX=33.814483211183514
+[2025-09-29 07:37:47] [SMARTBOT] - INFO - Signal detected: SHORT
+[2025-09-29 07:37:47] [SMARTBOT] - INFO - Trading platform used : ENTRADE
+[2025-09-29 07:37:47] [SMARTBOT] - INFO - [ENTRADE] Thực hiện đặt 1 hợp đồng SHORT tại giá 1840.0
+[2025-09-29 07:37:47] [ENTRADE_Client] - ERROR - Order() failed! (Entrade):
+Traceback (most recent call last):
+  File "C:\Users\210608\Documents\GitHub\AutoTrade\entrade_client.py", line 59, in Order
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\210608\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://services.entrade.com.vn/papertrade-entrade-api/derivative/orders
+[2025-09-29 07:37:48] [Logic_Processor] - INFO - Bot đang chạy...
+[2025-09-29 07:37:48] [Logic_Processor] - WARNING - Giá trần hôm nay : 1967.0
+[2025-09-29 07:37:48] [Logic_Processor] - WARNING - Giá sàn hôm nay : 1713.0
+[2025-09-29 07:45:56] [Authenticaotor] - WARNING - Disconnecting...
+[2025-09-29 07:46:01] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-29 07:46:01] [DNSE_Client] - INFO - Logger '[DNSE_Client]' initialized with daily rotation
+[2025-09-29 07:46:01] [ENTRADE_Client] - INFO - Logger '[ENTRADE_Client]' initialized with daily rotation
+[2025-09-29 07:46:01] [MQTT Connector] - INFO - Logger '[MQTT Connector]' initialized with daily rotation
+[2025-09-29 07:46:01] [Authenticaotor] - INFO - Logger '[Authenticaotor]' initialized with daily rotation
+[2025-09-29 07:46:03] [DNSE_Client] - INFO - Đã đọc token từ C:\Users\210608\Documents\GitHub\AutoTrade\token_dnse.json
+[2025-09-29 07:46:03] [DNSE_Client] - INFO - Đọc tokens từ file token_dnse.json.
+[2025-09-29 07:46:03] [DNSE_Client] - INFO - Đọc xong tokens từ file token_dnse.json.
+[2025-09-29 07:46:03] [Authenticaotor] - WARNING - token [DNSE] : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZGVudGlmaWNhdGlvbkNvZGUiOiIwMDEwODkwMjkyNDUiLCJzdWIiOiIxMDAwOTY0NzY4IiwiYnJva2VySWQiOiIwODY5IiwiYXV0aFNvdXJjZSI6bnVsbCwicm9sZXMiOlsiaW52ZXN0b3IiLCJCUk9LRVIiXSwiaXNzIjoiRE5TRSIsImludmVzdG9ySWQiOiIxMDAwOTY0NzY4IiwiYnJva2VyVHlwZSI6IlNBQ08iLCJmdWxsTmFtZSI6Ik5ndXnhu4VuIFbEg24gQ8O0bmciLCJzZXNzaW9uSWQiOiJkNzhjMmFmYy1jNjJhLTRjMWYtYTA5MC04M2I5ZTJiZjM1ZDgiLCJ1c2VySWQiOiJhODQ3OGY2ZS0yMDY4LTRjODctYjEzNi1kNmFhMzIyYzk4MTYiLCJhdWQiOlsiYXVkaWVuY2UiXSwiY3VzdG9tZXJFbWFpbCI6Im52Y29uZzg5QGxpdmUuY29tIiwiY3VzdG9keUNvZGUiOiIwNjRDNjg0NjQxIiwiY3VzdG9tZXJJZCI6IjAwMDE1MDQxNzUiLCJleHAiOjE3NTkxMzQ2NTQsImN1c3RvbWVyTW9iaWxlIjoiMDk3OTQwNDY0MSIsImlhdCI6MTc1OTEwNTg1NCwidXNlcm5hbWUiOiIwNjRDNjg0NjQxIiwic3RhdHVzIjoiQUNUSVZFIn0.o8I-bop5FIPdoiF_fTUrNMVj2i5kuteaaxr-uEqFQuPdod-TRBwPLvWpsehqyqcQ4stMsCPqM7l1M0K9oZ6zcruXaj595OWH6VPO-z8enC9CMLvquqfUX7CcrTBaQvps-ojynchEyVXoIVKs6PbSLa0nO8w4cwaTSIeeCI0QpU0
+[2025-09-29 07:46:03] [Authenticaotor] - WARNING - Trading-Token [DNSE]: c3539ab0-1cb9-4692-b5d6-690fb3a87750
+[2025-09-29 07:46:04] [Authenticaotor] - INFO - investor_id [Etrade] : 1000048842
+[2025-09-29 07:46:04] [Authenticaotor] - INFO - investor_account_id [Etrade] : 1000049481 
+
+[2025-09-29 07:46:04] [Authenticaotor] - INFO - investor_id [DNSE] : 1000964768
+[2025-09-29 07:46:04] [Authenticaotor] - INFO - investor_account_id [DNSE] : 0001521007
+
+[2025-09-29 07:46:04] [Authenticaotor] - INFO - loan package id: 1306
+[2025-09-29 07:46:04] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [DNSE]: 0
+[2025-09-29 07:46:05] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [DNSE]: 0
+[2025-09-29 07:46:05] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [DNSE]: 0 HĐ 
+
+[2025-09-29 07:46:05] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [ENTRADE]: 1
+[2025-09-29 07:46:06] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [ENTRADE]: 0
+[2025-09-29 07:46:06] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [ENTRADE]: 7 HĐ 
+
+[2025-09-29 07:46:06] [MQTT Connector] - INFO - Connected to MQTT Broker!
+[2025-09-29 07:46:07] [Data Processor] - INFO - Logger '[Data Processor]' initialized with daily rotation
+[2025-09-29 07:46:08] [Data Processor] - INFO - Successfully initialized multi-timeframe data:
+[2025-09-29 07:46:08] [Data Processor] - INFO - m1: 16385 candles
+[2025-09-29 07:46:08] [Data Processor] - INFO - m3: 5507 candles
+[2025-09-29 07:46:08] [Data Processor] - INFO - m5: 3331 candles
+[2025-09-29 07:46:08] [Data Processor] - INFO - m15: 1155 candles
+[2025-09-29 07:46:08] [Data Processor] - INFO - m30: 611 candles
+[2025-09-29 07:46:08] [Data Processor] - INFO - H1: 339 candles
+[2025-09-29 07:46:08] [Data Processor] - INFO - D1: 67 candles
+[2025-09-29 07:46:09] [Data Processor] - INFO - W1: 14 candles
+[2025-09-29 07:46:09] [Logic_Processor] - INFO - Logger '[Logic_Processor]' initialized with daily rotation
+[2025-09-29 07:46:09] [SMARTBOT] - INFO - Logger '[SMARTBOT]' initialized with daily rotation
+[2025-09-29 07:46:09] [SMARTBOT] - INFO - Khởi tạo bot: MACD_Bot
+[2025-09-29 07:46:12] [Logic_Processor] - INFO - Bot [MACD_Bot] đã được khởi tạo.
+[2025-09-29 07:46:12] [Logic_Processor] - INFO - Working TimeFrame : m5
+[2025-09-29 07:46:12] [Logic_Processor] - INFO - Đẩy MarketData lần đầu tiên vào trong bot...
+[2025-09-29 07:46:13] [SMARTBOT] - INFO - Độ dài chuỗi dữ liệu nến 'm5': 3331
+[2025-09-29 07:46:14] [SMARTBOT] - INFO - Tín hiệu SHORT |last_macd =0.11676318221429938|last_signal=0.14852408727716107|last_RSI=32.88692732197889|last_ADX=33.814483211183514
+[2025-09-29 07:46:14] [SMARTBOT] - INFO - Signal detected: SHORT
+[2025-09-29 07:46:14] [SMARTBOT] - INFO - Trading platform used : ENTRADE
+[2025-09-29 07:46:14] [SMARTBOT] - INFO - [ENTRADE] Thực hiện đặt 1 hợp đồng SHORT tại giá 1840.0
+[2025-09-29 07:46:14] [SMARTBOT] - ERROR - Đã xảy ra lỗi: module 'datetime' has no attribute 'strptime'
+[2025-09-29 07:46:14] [Logic_Processor] - INFO - Bot đang chạy...
+[2025-09-29 07:46:14] [Logic_Processor] - WARNING - Giá trần hôm nay : 1967.0
+[2025-09-29 07:46:14] [Logic_Processor] - WARNING - Giá sàn hôm nay : 1713.0
+[2025-09-29 07:47:10] [Authenticaotor] - WARNING - Disconnecting...
+[2025-09-29 07:47:12] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-29 07:47:12] [DNSE_Client] - INFO - Logger '[DNSE_Client]' initialized with daily rotation
+[2025-09-29 07:47:12] [ENTRADE_Client] - INFO - Logger '[ENTRADE_Client]' initialized with daily rotation
+[2025-09-29 07:47:13] [MQTT Connector] - INFO - Logger '[MQTT Connector]' initialized with daily rotation
+[2025-09-29 07:47:13] [Authenticaotor] - INFO - Logger '[Authenticaotor]' initialized with daily rotation
+[2025-09-29 07:47:14] [DNSE_Client] - INFO - Đã đọc token từ C:\Users\210608\Documents\GitHub\AutoTrade\token_dnse.json
+[2025-09-29 07:47:14] [DNSE_Client] - INFO - Đọc tokens từ file token_dnse.json.
+[2025-09-29 07:47:14] [DNSE_Client] - INFO - Đọc xong tokens từ file token_dnse.json.
+[2025-09-29 07:47:14] [Authenticaotor] - WARNING - token [DNSE] : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZGVudGlmaWNhdGlvbkNvZGUiOiIwMDEwODkwMjkyNDUiLCJzdWIiOiIxMDAwOTY0NzY4IiwiYnJva2VySWQiOiIwODY5IiwiYXV0aFNvdXJjZSI6bnVsbCwicm9sZXMiOlsiaW52ZXN0b3IiLCJCUk9LRVIiXSwiaXNzIjoiRE5TRSIsImludmVzdG9ySWQiOiIxMDAwOTY0NzY4IiwiYnJva2VyVHlwZSI6IlNBQ08iLCJmdWxsTmFtZSI6Ik5ndXnhu4VuIFbEg24gQ8O0bmciLCJzZXNzaW9uSWQiOiJkNzhjMmFmYy1jNjJhLTRjMWYtYTA5MC04M2I5ZTJiZjM1ZDgiLCJ1c2VySWQiOiJhODQ3OGY2ZS0yMDY4LTRjODctYjEzNi1kNmFhMzIyYzk4MTYiLCJhdWQiOlsiYXVkaWVuY2UiXSwiY3VzdG9tZXJFbWFpbCI6Im52Y29uZzg5QGxpdmUuY29tIiwiY3VzdG9keUNvZGUiOiIwNjRDNjg0NjQxIiwiY3VzdG9tZXJJZCI6IjAwMDE1MDQxNzUiLCJleHAiOjE3NTkxMzQ2NTQsImN1c3RvbWVyTW9iaWxlIjoiMDk3OTQwNDY0MSIsImlhdCI6MTc1OTEwNTg1NCwidXNlcm5hbWUiOiIwNjRDNjg0NjQxIiwic3RhdHVzIjoiQUNUSVZFIn0.o8I-bop5FIPdoiF_fTUrNMVj2i5kuteaaxr-uEqFQuPdod-TRBwPLvWpsehqyqcQ4stMsCPqM7l1M0K9oZ6zcruXaj595OWH6VPO-z8enC9CMLvquqfUX7CcrTBaQvps-ojynchEyVXoIVKs6PbSLa0nO8w4cwaTSIeeCI0QpU0
+[2025-09-29 07:47:14] [Authenticaotor] - WARNING - Trading-Token [DNSE]: c3539ab0-1cb9-4692-b5d6-690fb3a87750
+[2025-09-29 07:47:14] [Authenticaotor] - INFO - investor_id [Etrade] : 1000048842
+[2025-09-29 07:47:14] [Authenticaotor] - INFO - investor_account_id [Etrade] : 1000049481 
+
+[2025-09-29 07:47:14] [Authenticaotor] - INFO - investor_id [DNSE] : 1000964768
+[2025-09-29 07:47:14] [Authenticaotor] - INFO - investor_account_id [DNSE] : 0001521007
+
+[2025-09-29 07:47:14] [Authenticaotor] - INFO - loan package id: 1306
+[2025-09-29 07:47:15] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [DNSE]: 0
+[2025-09-29 07:47:15] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [DNSE]: 0
+[2025-09-29 07:47:15] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [DNSE]: 0 HĐ 
+
+[2025-09-29 07:47:16] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [ENTRADE]: 1
+[2025-09-29 07:47:16] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [ENTRADE]: 0
+[2025-09-29 07:47:16] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [ENTRADE]: 7 HĐ 
+
+[2025-09-29 07:47:16] [MQTT Connector] - INFO - Connected to MQTT Broker!
+[2025-09-29 07:47:17] [Data Processor] - INFO - Logger '[Data Processor]' initialized with daily rotation
+[2025-09-29 07:47:18] [Data Processor] - INFO - Successfully initialized multi-timeframe data:
+[2025-09-29 07:47:18] [Data Processor] - INFO - m1: 16385 candles
+[2025-09-29 07:47:18] [Data Processor] - INFO - m3: 5507 candles
+[2025-09-29 07:47:18] [Data Processor] - INFO - m5: 3331 candles
+[2025-09-29 07:47:18] [Data Processor] - INFO - m15: 1155 candles
+[2025-09-29 07:47:18] [Data Processor] - INFO - m30: 611 candles
+[2025-09-29 07:47:19] [Data Processor] - INFO - H1: 339 candles
+[2025-09-29 07:47:19] [Data Processor] - INFO - D1: 67 candles
+[2025-09-29 07:47:19] [Data Processor] - INFO - W1: 14 candles
+[2025-09-29 07:47:19] [Logic_Processor] - INFO - Logger '[Logic_Processor]' initialized with daily rotation
+[2025-09-29 07:47:19] [SMARTBOT] - INFO - Logger '[SMARTBOT]' initialized with daily rotation
+[2025-09-29 07:47:19] [SMARTBOT] - INFO - Khởi tạo bot: MACD_Bot
+[2025-09-29 07:47:22] [Logic_Processor] - INFO - Bot [MACD_Bot] đã được khởi tạo.
+[2025-09-29 07:47:22] [Logic_Processor] - INFO - Working TimeFrame : m5
+[2025-09-29 07:47:22] [Logic_Processor] - INFO - Đẩy MarketData lần đầu tiên vào trong bot...
+[2025-09-29 07:47:23] [SMARTBOT] - INFO - Độ dài chuỗi dữ liệu nến 'm5': 3331
+[2025-09-29 07:47:24] [SMARTBOT] - INFO - Tín hiệu SHORT |last_macd =0.11676318221429938|last_signal=0.14852408727716107|last_RSI=32.88692732197889|last_ADX=33.814483211183514
+[2025-09-29 07:47:24] [SMARTBOT] - INFO - Signal detected: SHORT
+[2025-09-29 07:47:24] [SMARTBOT] - INFO - Trading platform used : ENTRADE
+[2025-09-29 07:47:24] [SMARTBOT] - INFO - [ENTRADE] Thực hiện đặt 1 hợp đồng SHORT tại giá 1840.0
+[2025-09-29 07:47:25] [ENTRADE_Client] - ERROR - Order() failed! (Entrade):
+Traceback (most recent call last):
+  File "C:\Users\210608\Documents\GitHub\AutoTrade\entrade_client.py", line 71, in Order
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\210608\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://services.entrade.com.vn/papertrade-entrade-api/derivative/orders
+[2025-09-29 07:47:25] [Logic_Processor] - INFO - Bot đang chạy...
+[2025-09-29 07:47:25] [Logic_Processor] - WARNING - Giá trần hôm nay : 1967.0
+[2025-09-29 07:47:25] [Logic_Processor] - WARNING - Giá sàn hôm nay : 1713.0
+[2025-09-29 07:49:44] [Authenticaotor] - WARNING - Disconnecting...
+[2025-09-29 07:49:48] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-29 07:49:48] [DNSE_Client] - INFO - Logger '[DNSE_Client]' initialized with daily rotation
+[2025-09-29 07:49:48] [ENTRADE_Client] - INFO - Logger '[ENTRADE_Client]' initialized with daily rotation
+[2025-09-29 07:49:48] [MQTT Connector] - INFO - Logger '[MQTT Connector]' initialized with daily rotation
+[2025-09-29 07:49:48] [Authenticaotor] - INFO - Logger '[Authenticaotor]' initialized with daily rotation
+[2025-09-29 07:49:49] [DNSE_Client] - INFO - Đã đọc token từ C:\Users\210608\Documents\GitHub\AutoTrade\token_dnse.json
+[2025-09-29 07:49:49] [DNSE_Client] - INFO - Đọc tokens từ file token_dnse.json.
+[2025-09-29 07:49:49] [DNSE_Client] - INFO - Đọc xong tokens từ file token_dnse.json.
+[2025-09-29 07:49:49] [Authenticaotor] - WARNING - token [DNSE] : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZGVudGlmaWNhdGlvbkNvZGUiOiIwMDEwODkwMjkyNDUiLCJzdWIiOiIxMDAwOTY0NzY4IiwiYnJva2VySWQiOiIwODY5IiwiYXV0aFNvdXJjZSI6bnVsbCwicm9sZXMiOlsiaW52ZXN0b3IiLCJCUk9LRVIiXSwiaXNzIjoiRE5TRSIsImludmVzdG9ySWQiOiIxMDAwOTY0NzY4IiwiYnJva2VyVHlwZSI6IlNBQ08iLCJmdWxsTmFtZSI6Ik5ndXnhu4VuIFbEg24gQ8O0bmciLCJzZXNzaW9uSWQiOiJkNzhjMmFmYy1jNjJhLTRjMWYtYTA5MC04M2I5ZTJiZjM1ZDgiLCJ1c2VySWQiOiJhODQ3OGY2ZS0yMDY4LTRjODctYjEzNi1kNmFhMzIyYzk4MTYiLCJhdWQiOlsiYXVkaWVuY2UiXSwiY3VzdG9tZXJFbWFpbCI6Im52Y29uZzg5QGxpdmUuY29tIiwiY3VzdG9keUNvZGUiOiIwNjRDNjg0NjQxIiwiY3VzdG9tZXJJZCI6IjAwMDE1MDQxNzUiLCJleHAiOjE3NTkxMzQ2NTQsImN1c3RvbWVyTW9iaWxlIjoiMDk3OTQwNDY0MSIsImlhdCI6MTc1OTEwNTg1NCwidXNlcm5hbWUiOiIwNjRDNjg0NjQxIiwic3RhdHVzIjoiQUNUSVZFIn0.o8I-bop5FIPdoiF_fTUrNMVj2i5kuteaaxr-uEqFQuPdod-TRBwPLvWpsehqyqcQ4stMsCPqM7l1M0K9oZ6zcruXaj595OWH6VPO-z8enC9CMLvquqfUX7CcrTBaQvps-ojynchEyVXoIVKs6PbSLa0nO8w4cwaTSIeeCI0QpU0
+[2025-09-29 07:49:49] [Authenticaotor] - WARNING - Trading-Token [DNSE]: c3539ab0-1cb9-4692-b5d6-690fb3a87750
+[2025-09-29 07:49:50] [Authenticaotor] - INFO - investor_id [Etrade] : 1000048842
+[2025-09-29 07:49:50] [Authenticaotor] - INFO - investor_account_id [Etrade] : 1000049481 
+
+[2025-09-29 07:49:50] [Authenticaotor] - INFO - investor_id [DNSE] : 1000964768
+[2025-09-29 07:49:50] [Authenticaotor] - INFO - investor_account_id [DNSE] : 0001521007
+
+[2025-09-29 07:49:50] [Authenticaotor] - INFO - loan package id: 1306
+[2025-09-29 07:49:51] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [DNSE]: 0
+[2025-09-29 07:49:51] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [DNSE]: 0
+[2025-09-29 07:49:51] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [DNSE]: 0 HĐ 
+
+[2025-09-29 07:49:51] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [ENTRADE]: 1
+[2025-09-29 07:49:52] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [ENTRADE]: 0
+[2025-09-29 07:49:52] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [ENTRADE]: 7 HĐ 
+
+[2025-09-29 07:49:52] [MQTT Connector] - INFO - Connected to MQTT Broker!
+[2025-09-29 07:49:53] [Data Processor] - INFO - Logger '[Data Processor]' initialized with daily rotation
+[2025-09-29 07:49:54] [Data Processor] - INFO - Successfully initialized multi-timeframe data:
+[2025-09-29 07:49:54] [Data Processor] - INFO - m1: 16385 candles
+[2025-09-29 07:49:54] [Data Processor] - INFO - m3: 5507 candles
+[2025-09-29 07:49:54] [Data Processor] - INFO - m5: 3331 candles
+[2025-09-29 07:49:54] [Data Processor] - INFO - m15: 1155 candles
+[2025-09-29 07:49:54] [Data Processor] - INFO - m30: 611 candles
+[2025-09-29 07:49:54] [Data Processor] - INFO - H1: 339 candles
+[2025-09-29 07:49:54] [Data Processor] - INFO - D1: 67 candles
+[2025-09-29 07:49:54] [Data Processor] - INFO - W1: 14 candles
+[2025-09-29 07:49:55] [Logic_Processor] - INFO - Logger '[Logic_Processor]' initialized with daily rotation
+[2025-09-29 07:49:55] [SMARTBOT] - INFO - Logger '[SMARTBOT]' initialized with daily rotation
+[2025-09-29 07:49:55] [SMARTBOT] - INFO - Khởi tạo bot: MACD_Bot
+[2025-09-29 07:49:57] [Logic_Processor] - INFO - Bot [MACD_Bot] đã được khởi tạo.
+[2025-09-29 07:49:57] [Logic_Processor] - INFO - Working TimeFrame : m5
+[2025-09-29 07:49:57] [Logic_Processor] - INFO - Đẩy MarketData lần đầu tiên vào trong bot...
+[2025-09-29 07:49:59] [SMARTBOT] - INFO - Độ dài chuỗi dữ liệu nến 'm5': 3331
+[2025-09-29 07:50:00] [SMARTBOT] - INFO - Tín hiệu SHORT |last_macd =0.11676318221429938|last_signal=0.14852408727716107|last_RSI=32.88692732197889|last_ADX=33.814483211183514
+[2025-09-29 07:50:00] [SMARTBOT] - INFO - Signal detected: SHORT
+[2025-09-29 07:50:00] [SMARTBOT] - INFO - Trading platform used : ENTRADE
+[2025-09-29 07:50:00] [SMARTBOT] - INFO - [ENTRADE] Thực hiện đặt 1 hợp đồng SHORT tại giá 1840.0
+[2025-09-29 07:50:00] [ENTRADE_Client] - WARNING - Chỉ được đặt lệnh từ 08:05 đến 15:00.
+[2025-09-29 07:50:00] [Logic_Processor] - INFO - Bot đang chạy...
+[2025-09-29 07:50:00] [Logic_Processor] - WARNING - Giá trần hôm nay : 1967.0
+[2025-09-29 07:50:00] [Logic_Processor] - WARNING - Giá sàn hôm nay : 1713.0
+[2025-09-29 08:07:39] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-29 08:07:39] [DNSE_Client] - INFO - Logger '[DNSE_Client]' initialized with daily rotation
+[2025-09-29 08:07:39] [ENTRADE_Client] - INFO - Logger '[ENTRADE_Client]' initialized with daily rotation
+[2025-09-29 08:07:39] [MQTT Connector] - INFO - Logger '[MQTT Connector]' initialized with daily rotation
+[2025-09-29 08:07:39] [Authenticaotor] - INFO - Logger '[Authenticaotor]' initialized with daily rotation
+[2025-09-29 08:07:40] [DNSE_Client] - INFO - Đã đọc token từ c:\Users\210608\Documents\GitHub\AutoTrade\token_dnse.json
+[2025-09-29 08:07:40] [DNSE_Client] - INFO - Đọc tokens từ file token_dnse.json.
+[2025-09-29 08:07:40] [DNSE_Client] - INFO - Đọc xong tokens từ file token_dnse.json.
+[2025-09-29 08:07:40] [Authenticaotor] - WARNING - token [DNSE] : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZGVudGlmaWNhdGlvbkNvZGUiOiIwMDEwODkwMjkyNDUiLCJzdWIiOiIxMDAwOTY0NzY4IiwiYnJva2VySWQiOiIwODY5IiwiYXV0aFNvdXJjZSI6bnVsbCwicm9sZXMiOlsiaW52ZXN0b3IiLCJCUk9LRVIiXSwiaXNzIjoiRE5TRSIsImludmVzdG9ySWQiOiIxMDAwOTY0NzY4IiwiYnJva2VyVHlwZSI6IlNBQ08iLCJmdWxsTmFtZSI6Ik5ndXnhu4VuIFbEg24gQ8O0bmciLCJzZXNzaW9uSWQiOiJkNzhjMmFmYy1jNjJhLTRjMWYtYTA5MC04M2I5ZTJiZjM1ZDgiLCJ1c2VySWQiOiJhODQ3OGY2ZS0yMDY4LTRjODctYjEzNi1kNmFhMzIyYzk4MTYiLCJhdWQiOlsiYXVkaWVuY2UiXSwiY3VzdG9tZXJFbWFpbCI6Im52Y29uZzg5QGxpdmUuY29tIiwiY3VzdG9keUNvZGUiOiIwNjRDNjg0NjQxIiwiY3VzdG9tZXJJZCI6IjAwMDE1MDQxNzUiLCJleHAiOjE3NTkxMzQ2NTQsImN1c3RvbWVyTW9iaWxlIjoiMDk3OTQwNDY0MSIsImlhdCI6MTc1OTEwNTg1NCwidXNlcm5hbWUiOiIwNjRDNjg0NjQxIiwic3RhdHVzIjoiQUNUSVZFIn0.o8I-bop5FIPdoiF_fTUrNMVj2i5kuteaaxr-uEqFQuPdod-TRBwPLvWpsehqyqcQ4stMsCPqM7l1M0K9oZ6zcruXaj595OWH6VPO-z8enC9CMLvquqfUX7CcrTBaQvps-ojynchEyVXoIVKs6PbSLa0nO8w4cwaTSIeeCI0QpU0
+[2025-09-29 08:07:40] [Authenticaotor] - WARNING - Trading-Token [DNSE]: c3539ab0-1cb9-4692-b5d6-690fb3a87750
+[2025-09-29 08:07:41] [Authenticaotor] - INFO - investor_id [Etrade] : 1000048842
+[2025-09-29 08:07:41] [Authenticaotor] - INFO - investor_account_id [Etrade] : 1000049481 
+
+[2025-09-29 08:07:41] [Authenticaotor] - INFO - investor_id [DNSE] : 1000964768
+[2025-09-29 08:07:41] [Authenticaotor] - INFO - investor_account_id [DNSE] : 0001521007
+
+[2025-09-29 08:07:41] [Authenticaotor] - INFO - loan package id: 1306
+[2025-09-29 08:07:42] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [DNSE]: 0
+[2025-09-29 08:07:42] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [DNSE]: 0
+[2025-09-29 08:07:42] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [DNSE]: 0 HĐ 
+
+[2025-09-29 08:07:42] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [ENTRADE]: 1
+[2025-09-29 08:07:43] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [ENTRADE]: 0
+[2025-09-29 08:07:43] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [ENTRADE]: 7 HĐ 
+
+[2025-09-29 08:07:43] [MQTT Connector] - INFO - Connected to MQTT Broker!
+[2025-09-29 08:07:44] [Data Processor] - INFO - Logger '[Data Processor]' initialized with daily rotation
+[2025-09-29 08:07:45] [Data Processor] - INFO - Successfully initialized multi-timeframe data:
+[2025-09-29 08:07:45] [Data Processor] - INFO - m1: 16385 candles
+[2025-09-29 08:07:45] [Data Processor] - INFO - m3: 5507 candles
+[2025-09-29 08:07:45] [Data Processor] - INFO - m5: 3331 candles
+[2025-09-29 08:07:45] [Data Processor] - INFO - m15: 1155 candles
+[2025-09-29 08:07:45] [Data Processor] - INFO - m30: 611 candles
+[2025-09-29 08:07:45] [Data Processor] - INFO - H1: 339 candles
+[2025-09-29 08:07:45] [Data Processor] - INFO - D1: 67 candles
+[2025-09-29 08:07:45] [Data Processor] - INFO - W1: 14 candles
+[2025-09-29 08:07:46] [Logic_Processor] - INFO - Logger '[Logic_Processor]' initialized with daily rotation
+[2025-09-29 08:07:46] [SMARTBOT] - INFO - Logger '[SMARTBOT]' initialized with daily rotation
+[2025-09-29 08:07:46] [SMARTBOT] - INFO - Khởi tạo bot: MACD_Bot
+[2025-09-29 08:07:49] [Logic_Processor] - INFO - Bot [MACD_Bot] đã được khởi tạo.
+[2025-09-29 08:07:49] [Logic_Processor] - INFO - Working TimeFrame : m5
+[2025-09-29 08:07:49] [Logic_Processor] - INFO - Đẩy MarketData lần đầu tiên vào trong bot...
+[2025-09-29 08:07:50] [SMARTBOT] - INFO - Độ dài chuỗi dữ liệu nến 'm5': 3331
+[2025-09-29 08:07:51] [SMARTBOT] - INFO - Tín hiệu SHORT |last_macd =0.11676318221429938|last_signal=0.14852408727716107|last_RSI=32.88692732197889|last_ADX=33.814483211183514
+[2025-09-29 08:07:51] [SMARTBOT] - INFO - Signal detected: SHORT
+[2025-09-29 08:07:51] [SMARTBOT] - INFO - Trading platform used : ENTRADE
+[2025-09-29 08:07:51] [SMARTBOT] - INFO - [ENTRADE] Thực hiện đặt 1 hợp đồng SHORT tại giá 1840.0
+[2025-09-29 08:07:52] [ENTRADE_Client] - INFO - Đặt lệnh LO thành công [Entrade]: 6283632
+[2025-09-29 08:07:52] [Logic_Processor] - INFO - Bot đang chạy...
+[2025-09-29 08:07:52] [Logic_Processor] - WARNING - Giá trần hôm nay : 1967.0
+[2025-09-29 08:07:52] [Logic_Processor] - WARNING - Giá sàn hôm nay : 1713.0
+[2025-09-29 08:11:10] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-29 08:11:11] [DNSE_Client] - INFO - Logger '[DNSE_Client]' initialized with daily rotation
+[2025-09-29 08:11:11] [ENTRADE_Client] - INFO - Logger '[ENTRADE_Client]' initialized with daily rotation
+[2025-09-29 08:11:11] [MQTT Connector] - INFO - Logger '[MQTT Connector]' initialized with daily rotation
+[2025-09-29 08:11:11] [Authenticaotor] - INFO - Logger '[Authenticaotor]' initialized with daily rotation
+[2025-09-29 08:11:12] [DNSE_Client] - INFO - Đã đọc token từ c:\Users\210608\Documents\GitHub\AutoTrade\token_dnse.json
+[2025-09-29 08:11:12] [DNSE_Client] - INFO - Đọc tokens từ file token_dnse.json.
+[2025-09-29 08:11:12] [DNSE_Client] - INFO - Đọc xong tokens từ file token_dnse.json.
+[2025-09-29 08:11:12] [Authenticaotor] - WARNING - token [DNSE] : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZGVudGlmaWNhdGlvbkNvZGUiOiIwMDEwODkwMjkyNDUiLCJzdWIiOiIxMDAwOTY0NzY4IiwiYnJva2VySWQiOiIwODY5IiwiYXV0aFNvdXJjZSI6bnVsbCwicm9sZXMiOlsiaW52ZXN0b3IiLCJCUk9LRVIiXSwiaXNzIjoiRE5TRSIsImludmVzdG9ySWQiOiIxMDAwOTY0NzY4IiwiYnJva2VyVHlwZSI6IlNBQ08iLCJmdWxsTmFtZSI6Ik5ndXnhu4VuIFbEg24gQ8O0bmciLCJzZXNzaW9uSWQiOiJkNzhjMmFmYy1jNjJhLTRjMWYtYTA5MC04M2I5ZTJiZjM1ZDgiLCJ1c2VySWQiOiJhODQ3OGY2ZS0yMDY4LTRjODctYjEzNi1kNmFhMzIyYzk4MTYiLCJhdWQiOlsiYXVkaWVuY2UiXSwiY3VzdG9tZXJFbWFpbCI6Im52Y29uZzg5QGxpdmUuY29tIiwiY3VzdG9keUNvZGUiOiIwNjRDNjg0NjQxIiwiY3VzdG9tZXJJZCI6IjAwMDE1MDQxNzUiLCJleHAiOjE3NTkxMzQ2NTQsImN1c3RvbWVyTW9iaWxlIjoiMDk3OTQwNDY0MSIsImlhdCI6MTc1OTEwNTg1NCwidXNlcm5hbWUiOiIwNjRDNjg0NjQxIiwic3RhdHVzIjoiQUNUSVZFIn0.o8I-bop5FIPdoiF_fTUrNMVj2i5kuteaaxr-uEqFQuPdod-TRBwPLvWpsehqyqcQ4stMsCPqM7l1M0K9oZ6zcruXaj595OWH6VPO-z8enC9CMLvquqfUX7CcrTBaQvps-ojynchEyVXoIVKs6PbSLa0nO8w4cwaTSIeeCI0QpU0
+[2025-09-29 08:11:12] [Authenticaotor] - WARNING - Trading-Token [DNSE]: c3539ab0-1cb9-4692-b5d6-690fb3a87750
+[2025-09-29 08:11:13] [Authenticaotor] - INFO - investor_id [Etrade] : 1000048842
+[2025-09-29 08:11:13] [Authenticaotor] - INFO - investor_account_id [Etrade] : 1000049481 
+
+[2025-09-29 08:11:13] [Authenticaotor] - INFO - investor_id [DNSE] : 1000964768
+[2025-09-29 08:11:13] [Authenticaotor] - INFO - investor_account_id [DNSE] : 0001521007
+
+[2025-09-29 08:11:13] [Authenticaotor] - INFO - loan package id: 1306
+[2025-09-29 08:11:14] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [DNSE]: 0
+[2025-09-29 08:11:14] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [DNSE]: 0
+[2025-09-29 08:11:14] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [DNSE]: 0 HĐ 
+
+[2025-09-29 08:11:15] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [ENTRADE]: 1
+[2025-09-29 08:11:15] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [ENTRADE]: 0
+[2025-09-29 08:11:15] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [ENTRADE]: 7 HĐ 
+
+[2025-09-29 08:11:16] [MQTT Connector] - INFO - Connected to MQTT Broker!
+[2025-09-29 08:11:16] [Data Processor] - INFO - Logger '[Data Processor]' initialized with daily rotation
+[2025-09-29 08:11:18] [Data Processor] - INFO - Successfully initialized multi-timeframe data:
+[2025-09-29 08:11:18] [Data Processor] - INFO - m1: 16385 candles
+[2025-09-29 08:11:18] [Data Processor] - INFO - m3: 5507 candles
+[2025-09-29 08:11:18] [Data Processor] - INFO - m5: 3331 candles
+[2025-09-29 08:11:18] [Data Processor] - INFO - m15: 1155 candles
+[2025-09-29 08:11:18] [Data Processor] - INFO - m30: 611 candles
+[2025-09-29 08:11:18] [Data Processor] - INFO - H1: 339 candles
+[2025-09-29 08:11:18] [Data Processor] - INFO - D1: 67 candles
+[2025-09-29 08:11:18] [Data Processor] - INFO - W1: 14 candles
+[2025-09-29 08:11:18] [Logic_Processor] - INFO - Logger '[Logic_Processor]' initialized with daily rotation
+[2025-09-29 08:11:19] [SMARTBOT] - INFO - Logger '[SMARTBOT]' initialized with daily rotation
+[2025-09-29 08:11:19] [SMARTBOT] - INFO - Khởi tạo bot: MACD_Bot
+[2025-09-29 08:11:21] [Logic_Processor] - INFO - Bot [MACD_Bot] đã được khởi tạo.
+[2025-09-29 08:11:21] [Logic_Processor] - INFO - Working TimeFrame : m5
+[2025-09-29 08:11:21] [Logic_Processor] - INFO - Đẩy MarketData lần đầu tiên vào trong bot...
+[2025-09-29 08:11:22] [SMARTBOT] - INFO - Độ dài chuỗi dữ liệu nến 'm5': 3331
+[2025-09-29 08:11:24] [SMARTBOT] - INFO - Tín hiệu SHORT |last_macd =0.11676318221429938|last_signal=0.14852408727716107|last_RSI=32.88692732197889|last_ADX=33.814483211183514
+[2025-09-29 08:11:24] [SMARTBOT] - INFO - Signal detected: SHORT
+[2025-09-29 08:11:24] [SMARTBOT] - INFO - Trading platform used : ENTRADE
+[2025-09-29 08:11:24] [SMARTBOT] - INFO - [ENTRADE] Thực hiện đặt 1 hợp đồng SHORT tại giá 1840.0
+[2025-09-29 08:11:24] [ENTRADE_Client] - INFO - Đặt lệnh LO thành công [Entrade]: 6283633
+[2025-09-29 08:11:25] [Logic_Processor] - INFO - Bot đang chạy...
+[2025-09-29 08:11:25] [Logic_Processor] - WARNING - Giá trần hôm nay : 1967.0
+[2025-09-29 08:11:25] [Logic_Processor] - WARNING - Giá sàn hôm nay : 1713.0
+[2025-09-29 08:11:37] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-29 08:11:37] [DNSE_Client] - INFO - Logger '[DNSE_Client]' initialized with daily rotation
+[2025-09-29 08:11:37] [ENTRADE_Client] - INFO - Logger '[ENTRADE_Client]' initialized with daily rotation
+[2025-09-29 08:11:37] [MQTT Connector] - INFO - Logger '[MQTT Connector]' initialized with daily rotation
+[2025-09-29 08:11:37] [Authenticaotor] - INFO - Logger '[Authenticaotor]' initialized with daily rotation
+[2025-09-29 08:11:38] [DNSE_Client] - INFO - Đã đọc token từ c:\Users\210608\Documents\GitHub\AutoTrade\token_dnse.json
+[2025-09-29 08:11:38] [DNSE_Client] - INFO - Đọc tokens từ file token_dnse.json.
+[2025-09-29 08:11:38] [DNSE_Client] - INFO - Đọc xong tokens từ file token_dnse.json.
+[2025-09-29 08:11:38] [Authenticaotor] - WARNING - token [DNSE] : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZGVudGlmaWNhdGlvbkNvZGUiOiIwMDEwODkwMjkyNDUiLCJzdWIiOiIxMDAwOTY0NzY4IiwiYnJva2VySWQiOiIwODY5IiwiYXV0aFNvdXJjZSI6bnVsbCwicm9sZXMiOlsiaW52ZXN0b3IiLCJCUk9LRVIiXSwiaXNzIjoiRE5TRSIsImludmVzdG9ySWQiOiIxMDAwOTY0NzY4IiwiYnJva2VyVHlwZSI6IlNBQ08iLCJmdWxsTmFtZSI6Ik5ndXnhu4VuIFbEg24gQ8O0bmciLCJzZXNzaW9uSWQiOiJkNzhjMmFmYy1jNjJhLTRjMWYtYTA5MC04M2I5ZTJiZjM1ZDgiLCJ1c2VySWQiOiJhODQ3OGY2ZS0yMDY4LTRjODctYjEzNi1kNmFhMzIyYzk4MTYiLCJhdWQiOlsiYXVkaWVuY2UiXSwiY3VzdG9tZXJFbWFpbCI6Im52Y29uZzg5QGxpdmUuY29tIiwiY3VzdG9keUNvZGUiOiIwNjRDNjg0NjQxIiwiY3VzdG9tZXJJZCI6IjAwMDE1MDQxNzUiLCJleHAiOjE3NTkxMzQ2NTQsImN1c3RvbWVyTW9iaWxlIjoiMDk3OTQwNDY0MSIsImlhdCI6MTc1OTEwNTg1NCwidXNlcm5hbWUiOiIwNjRDNjg0NjQxIiwic3RhdHVzIjoiQUNUSVZFIn0.o8I-bop5FIPdoiF_fTUrNMVj2i5kuteaaxr-uEqFQuPdod-TRBwPLvWpsehqyqcQ4stMsCPqM7l1M0K9oZ6zcruXaj595OWH6VPO-z8enC9CMLvquqfUX7CcrTBaQvps-ojynchEyVXoIVKs6PbSLa0nO8w4cwaTSIeeCI0QpU0
+[2025-09-29 08:11:38] [Authenticaotor] - WARNING - Trading-Token [DNSE]: c3539ab0-1cb9-4692-b5d6-690fb3a87750
+[2025-09-29 08:11:39] [Authenticaotor] - INFO - investor_id [Etrade] : 1000048842
+[2025-09-29 08:11:39] [Authenticaotor] - INFO - investor_account_id [Etrade] : 1000049481 
+
+[2025-09-29 08:11:39] [Authenticaotor] - INFO - investor_id [DNSE] : 1000964768
+[2025-09-29 08:11:39] [Authenticaotor] - INFO - investor_account_id [DNSE] : 0001521007
+
+[2025-09-29 08:11:39] [Authenticaotor] - INFO - loan package id: 1306
+[2025-09-29 08:11:40] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [DNSE]: 0
+[2025-09-29 08:11:40] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [DNSE]: 0
+[2025-09-29 08:11:40] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [DNSE]: 0 HĐ 
+
+[2025-09-29 08:11:40] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [ENTRADE]: 1
+[2025-09-29 08:11:41] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [ENTRADE]: 0
+[2025-09-29 08:11:41] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [ENTRADE]: 7 HĐ 
+
+[2025-09-29 08:11:41] [MQTT Connector] - INFO - Connected to MQTT Broker!
+[2025-09-29 08:11:42] [Data Processor] - INFO - Logger '[Data Processor]' initialized with daily rotation
+[2025-09-29 08:11:43] [Data Processor] - INFO - Successfully initialized multi-timeframe data:
+[2025-09-29 08:11:43] [Data Processor] - INFO - m1: 16385 candles
+[2025-09-29 08:11:43] [Data Processor] - INFO - m3: 5507 candles
+[2025-09-29 08:11:43] [Data Processor] - INFO - m5: 3331 candles
+[2025-09-29 08:11:44] [Data Processor] - INFO - m15: 1155 candles
+[2025-09-29 08:11:44] [Data Processor] - INFO - m30: 611 candles
+[2025-09-29 08:11:44] [Data Processor] - INFO - H1: 339 candles
+[2025-09-29 08:11:44] [Data Processor] - INFO - D1: 67 candles
+[2025-09-29 08:11:44] [Data Processor] - INFO - W1: 14 candles
+[2025-09-29 08:11:44] [Logic_Processor] - INFO - Logger '[Logic_Processor]' initialized with daily rotation
+[2025-09-29 08:11:44] [SMARTBOT] - INFO - Logger '[SMARTBOT]' initialized with daily rotation
+[2025-09-29 08:11:44] [SMARTBOT] - INFO - Khởi tạo bot: MACD_Bot
+[2025-09-29 08:11:47] [Logic_Processor] - INFO - Bot [MACD_Bot] đã được khởi tạo.
+[2025-09-29 08:11:47] [Logic_Processor] - INFO - Working TimeFrame : m5
+[2025-09-29 08:11:47] [Logic_Processor] - INFO - Đẩy MarketData lần đầu tiên vào trong bot...
+[2025-09-29 08:11:48] [SMARTBOT] - INFO - Độ dài chuỗi dữ liệu nến 'm5': 3331
+[2025-09-29 08:11:50] [SMARTBOT] - INFO - Tín hiệu SHORT |last_macd =0.11676318221429938|last_signal=0.14852408727716107|last_RSI=32.88692732197889|last_ADX=33.814483211183514
+[2025-09-29 08:11:50] [SMARTBOT] - INFO - Signal detected: SHORT
+[2025-09-29 08:11:50] [SMARTBOT] - INFO - Trading platform used : ENTRADE
+[2025-09-29 08:11:50] [SMARTBOT] - INFO - [ENTRADE] Thực hiện đặt 1 hợp đồng SHORT tại giá 1840.0
+[2025-09-29 08:11:50] [ENTRADE_Client] - INFO - Đặt lệnh LO thành công [Entrade]: 6283634
+[2025-09-29 08:11:50] [Logic_Processor] - INFO - Bot đang chạy...
+[2025-09-29 08:11:50] [Logic_Processor] - WARNING - Giá trần hôm nay : 1967.0
+[2025-09-29 08:11:50] [Logic_Processor] - WARNING - Giá sàn hôm nay : 1713.0
+[2025-09-29 08:13:21] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-29 08:13:21] [DNSE_Client] - INFO - Logger '[DNSE_Client]' initialized with daily rotation
+[2025-09-29 08:13:21] [ENTRADE_Client] - INFO - Logger '[ENTRADE_Client]' initialized with daily rotation
+[2025-09-29 08:13:21] [MQTT Connector] - INFO - Logger '[MQTT Connector]' initialized with daily rotation
+[2025-09-29 08:13:21] [Authenticaotor] - INFO - Logger '[Authenticaotor]' initialized with daily rotation
+[2025-09-29 08:13:22] [DNSE_Client] - INFO - Đã đọc token từ c:\Users\210608\Documents\GitHub\AutoTrade\token_dnse.json
+[2025-09-29 08:13:22] [DNSE_Client] - INFO - Đọc tokens từ file token_dnse.json.
+[2025-09-29 08:13:22] [DNSE_Client] - INFO - Đọc xong tokens từ file token_dnse.json.
+[2025-09-29 08:13:22] [Authenticaotor] - WARNING - token [DNSE] : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZGVudGlmaWNhdGlvbkNvZGUiOiIwMDEwODkwMjkyNDUiLCJzdWIiOiIxMDAwOTY0NzY4IiwiYnJva2VySWQiOiIwODY5IiwiYXV0aFNvdXJjZSI6bnVsbCwicm9sZXMiOlsiaW52ZXN0b3IiLCJCUk9LRVIiXSwiaXNzIjoiRE5TRSIsImludmVzdG9ySWQiOiIxMDAwOTY0NzY4IiwiYnJva2VyVHlwZSI6IlNBQ08iLCJmdWxsTmFtZSI6Ik5ndXnhu4VuIFbEg24gQ8O0bmciLCJzZXNzaW9uSWQiOiJkNzhjMmFmYy1jNjJhLTRjMWYtYTA5MC04M2I5ZTJiZjM1ZDgiLCJ1c2VySWQiOiJhODQ3OGY2ZS0yMDY4LTRjODctYjEzNi1kNmFhMzIyYzk4MTYiLCJhdWQiOlsiYXVkaWVuY2UiXSwiY3VzdG9tZXJFbWFpbCI6Im52Y29uZzg5QGxpdmUuY29tIiwiY3VzdG9keUNvZGUiOiIwNjRDNjg0NjQxIiwiY3VzdG9tZXJJZCI6IjAwMDE1MDQxNzUiLCJleHAiOjE3NTkxMzQ2NTQsImN1c3RvbWVyTW9iaWxlIjoiMDk3OTQwNDY0MSIsImlhdCI6MTc1OTEwNTg1NCwidXNlcm5hbWUiOiIwNjRDNjg0NjQxIiwic3RhdHVzIjoiQUNUSVZFIn0.o8I-bop5FIPdoiF_fTUrNMVj2i5kuteaaxr-uEqFQuPdod-TRBwPLvWpsehqyqcQ4stMsCPqM7l1M0K9oZ6zcruXaj595OWH6VPO-z8enC9CMLvquqfUX7CcrTBaQvps-ojynchEyVXoIVKs6PbSLa0nO8w4cwaTSIeeCI0QpU0
+[2025-09-29 08:13:22] [Authenticaotor] - WARNING - Trading-Token [DNSE]: c3539ab0-1cb9-4692-b5d6-690fb3a87750
+[2025-09-29 08:13:23] [Authenticaotor] - INFO - investor_id [Etrade] : 1000048842
+[2025-09-29 08:13:23] [Authenticaotor] - INFO - investor_account_id [Etrade] : 1000049481 
+
+[2025-09-29 08:13:23] [Authenticaotor] - INFO - investor_id [DNSE] : 1000964768
+[2025-09-29 08:13:23] [Authenticaotor] - INFO - investor_account_id [DNSE] : 0001521007
+
+[2025-09-29 08:13:23] [Authenticaotor] - INFO - loan package id: 1306
+[2025-09-29 08:13:23] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [DNSE]: 0
+[2025-09-29 08:13:23] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [DNSE]: 0
+[2025-09-29 08:13:24] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [DNSE]: 0 HĐ 
+
+[2025-09-29 08:13:24] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [ENTRADE]: 1
+[2025-09-29 08:13:24] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [ENTRADE]: 0
+[2025-09-29 08:13:25] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [ENTRADE]: 7 HĐ 
+
+[2025-09-29 08:13:25] [MQTT Connector] - INFO - Connected to MQTT Broker!
+[2025-09-29 08:13:25] [Data Processor] - INFO - Logger '[Data Processor]' initialized with daily rotation
+[2025-09-29 08:13:27] [Data Processor] - INFO - Successfully initialized multi-timeframe data:
+[2025-09-29 08:13:27] [Data Processor] - INFO - m1: 16385 candles
+[2025-09-29 08:13:27] [Data Processor] - INFO - m3: 5507 candles
+[2025-09-29 08:13:27] [Data Processor] - INFO - m5: 3331 candles
+[2025-09-29 08:13:27] [Data Processor] - INFO - m15: 1155 candles
+[2025-09-29 08:13:27] [Data Processor] - INFO - m30: 611 candles
+[2025-09-29 08:13:27] [Data Processor] - INFO - H1: 339 candles
+[2025-09-29 08:13:27] [Data Processor] - INFO - D1: 67 candles
+[2025-09-29 08:13:27] [Data Processor] - INFO - W1: 14 candles
+[2025-09-29 08:13:28] [Logic_Processor] - INFO - Logger '[Logic_Processor]' initialized with daily rotation
+[2025-09-29 08:13:28] [SMARTBOT] - INFO - Logger '[SMARTBOT]' initialized with daily rotation
+[2025-09-29 08:13:28] [SMARTBOT] - INFO - Khởi tạo bot: MACD_Bot
+[2025-09-29 08:13:30] [Logic_Processor] - INFO - Bot [MACD_Bot] đã được khởi tạo.
+[2025-09-29 08:13:30] [Logic_Processor] - INFO - Working TimeFrame : m5
+[2025-09-29 08:13:30] [Logic_Processor] - INFO - Đẩy MarketData lần đầu tiên vào trong bot...
+[2025-09-29 08:13:32] [SMARTBOT] - INFO - Độ dài chuỗi dữ liệu nến 'm5': 3331
+[2025-09-29 08:13:33] [SMARTBOT] - INFO - Tín hiệu SHORT |last_macd =0.11676318221429938|last_signal=0.14852408727716107|last_RSI=32.88692732197889|last_ADX=33.814483211183514
+[2025-09-29 08:13:33] [SMARTBOT] - INFO - Signal detected: SHORT
+[2025-09-29 08:13:33] [SMARTBOT] - INFO - Trading platform used : ENTRADE
+[2025-09-29 08:13:33] [SMARTBOT] - INFO - [ENTRADE] Thực hiện đặt 1 hợp đồng SHORT tại giá 1840.0
+[2025-09-29 08:13:33] [ENTRADE_Client] - INFO - Đặt lệnh LO thành công [Entrade]: 6283635
+[2025-09-29 08:13:33] [Logic_Processor] - INFO - Bot đang chạy...
+[2025-09-29 08:13:34] [Logic_Processor] - WARNING - Giá trần hôm nay : 1967.0
+[2025-09-29 08:13:34] [Logic_Processor] - WARNING - Giá sàn hôm nay : 1713.0
+[2025-09-29 08:38:06] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-29 08:38:07] [DNSE_Client] - INFO - Logger '[DNSE_Client]' initialized with daily rotation
+[2025-09-29 08:38:07] [ENTRADE_Client] - INFO - Logger '[ENTRADE_Client]' initialized with daily rotation
+[2025-09-29 08:38:07] [MQTT Connector] - INFO - Logger '[MQTT Connector]' initialized with daily rotation
+[2025-09-29 08:38:07] [Authenticaotor] - INFO - Logger '[Authenticaotor]' initialized with daily rotation
+[2025-09-29 08:38:08] [DNSE_Client] - INFO - Đã đọc token từ c:\Users\210608\Documents\GitHub\AutoTrade\token_dnse.json
+[2025-09-29 08:38:08] [DNSE_Client] - INFO - Đọc tokens từ file token_dnse.json.
+[2025-09-29 08:38:08] [DNSE_Client] - INFO - Đọc xong tokens từ file token_dnse.json.
+[2025-09-29 08:38:08] [Authenticaotor] - WARNING - token [DNSE] : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZGVudGlmaWNhdGlvbkNvZGUiOiIwMDEwODkwMjkyNDUiLCJzdWIiOiIxMDAwOTY0NzY4IiwiYnJva2VySWQiOiIwODY5IiwiYXV0aFNvdXJjZSI6bnVsbCwicm9sZXMiOlsiaW52ZXN0b3IiLCJCUk9LRVIiXSwiaXNzIjoiRE5TRSIsImludmVzdG9ySWQiOiIxMDAwOTY0NzY4IiwiYnJva2VyVHlwZSI6IlNBQ08iLCJmdWxsTmFtZSI6Ik5ndXnhu4VuIFbEg24gQ8O0bmciLCJzZXNzaW9uSWQiOiJkNzhjMmFmYy1jNjJhLTRjMWYtYTA5MC04M2I5ZTJiZjM1ZDgiLCJ1c2VySWQiOiJhODQ3OGY2ZS0yMDY4LTRjODctYjEzNi1kNmFhMzIyYzk4MTYiLCJhdWQiOlsiYXVkaWVuY2UiXSwiY3VzdG9tZXJFbWFpbCI6Im52Y29uZzg5QGxpdmUuY29tIiwiY3VzdG9keUNvZGUiOiIwNjRDNjg0NjQxIiwiY3VzdG9tZXJJZCI6IjAwMDE1MDQxNzUiLCJleHAiOjE3NTkxMzQ2NTQsImN1c3RvbWVyTW9iaWxlIjoiMDk3OTQwNDY0MSIsImlhdCI6MTc1OTEwNTg1NCwidXNlcm5hbWUiOiIwNjRDNjg0NjQxIiwic3RhdHVzIjoiQUNUSVZFIn0.o8I-bop5FIPdoiF_fTUrNMVj2i5kuteaaxr-uEqFQuPdod-TRBwPLvWpsehqyqcQ4stMsCPqM7l1M0K9oZ6zcruXaj595OWH6VPO-z8enC9CMLvquqfUX7CcrTBaQvps-ojynchEyVXoIVKs6PbSLa0nO8w4cwaTSIeeCI0QpU0
+[2025-09-29 08:38:08] [Authenticaotor] - WARNING - Trading-Token [DNSE]: c3539ab0-1cb9-4692-b5d6-690fb3a87750
+[2025-09-29 08:38:09] [Authenticaotor] - INFO - investor_id [Etrade] : 1000048842
+[2025-09-29 08:38:09] [Authenticaotor] - INFO - investor_account_id [Etrade] : 1000049481 
+
+[2025-09-29 08:38:09] [Authenticaotor] - INFO - investor_id [DNSE] : 1000964768
+[2025-09-29 08:38:09] [Authenticaotor] - INFO - investor_account_id [DNSE] : 0001521007
+
+[2025-09-29 08:38:09] [Authenticaotor] - INFO - loan package id: 1306
+[2025-09-29 08:38:10] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [DNSE]: 0
+[2025-09-29 08:38:10] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [DNSE]: 0
+[2025-09-29 08:38:10] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [DNSE]: 0 HĐ 
+
+[2025-09-29 08:38:11] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [ENTRADE]: 1
+[2025-09-29 08:38:11] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [ENTRADE]: 0
+[2025-09-29 08:38:11] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [ENTRADE]: 7 HĐ 
+
+[2025-09-29 08:38:12] [MQTT Connector] - INFO - Connected to MQTT Broker!
+[2025-09-29 08:38:12] [Data Processor] - INFO - Logger '[Data Processor]' initialized with daily rotation
+[2025-09-29 08:38:14] [Data Processor] - INFO - Successfully initialized multi-timeframe data:
+[2025-09-29 08:38:14] [Data Processor] - INFO - m1: 16385 candles
+[2025-09-29 08:38:14] [Data Processor] - INFO - m3: 5507 candles
+[2025-09-29 08:38:14] [Data Processor] - INFO - m5: 3331 candles
+[2025-09-29 08:38:14] [Data Processor] - INFO - m15: 1155 candles
+[2025-09-29 08:38:14] [Data Processor] - INFO - m30: 611 candles
+[2025-09-29 08:38:14] [Data Processor] - INFO - H1: 339 candles
+[2025-09-29 08:38:14] [Data Processor] - INFO - D1: 67 candles
+[2025-09-29 08:38:14] [Data Processor] - INFO - W1: 14 candles
+[2025-09-29 08:38:15] [Logic_Processor] - INFO - Logger '[Logic_Processor]' initialized with daily rotation
+[2025-09-29 08:38:15] [SMARTBOT] - INFO - Logger '[SMARTBOT]' initialized with daily rotation
+[2025-09-29 08:38:15] [SMARTBOT] - INFO - Khởi tạo bot: MACD_Bot
+[2025-09-29 08:38:18] [Logic_Processor] - INFO - Bot [MACD_Bot] đã được khởi tạo.
+[2025-09-29 08:38:18] [Logic_Processor] - INFO - Working TimeFrame : m5
+[2025-09-29 08:38:18] [Logic_Processor] - INFO - Đẩy MarketData lần đầu tiên vào trong bot...
+[2025-09-29 08:38:19] [SMARTBOT] - INFO - Độ dài chuỗi dữ liệu nến 'm5': 3331
+[2025-09-29 08:38:20] [SMARTBOT] - INFO - Tín hiệu SHORT |last_macd =0.11676318221429938|last_signal=0.14852408727716107|last_RSI=32.88692732197889|last_ADX=33.814483211183514
+[2025-09-29 08:38:20] [SMARTBOT] - INFO - Signal detected: SHORT
+[2025-09-29 08:38:20] [SMARTBOT] - INFO - Trading platform used : ENTRADE
+[2025-09-29 08:38:20] [SMARTBOT] - INFO - [ENTRADE] Thực hiện đặt 1 hợp đồng SHORT tại giá 1840.0
+[2025-09-29 08:38:21] [ENTRADE_Client] - INFO - Đặt lệnh LO thành công [Entrade]: 6283638
+[2025-09-29 08:38:21] [Logic_Processor] - INFO - Bot đang chạy...
+[2025-09-29 08:38:21] [Logic_Processor] - WARNING - Giá trần hôm nay : 1967.0
+[2025-09-29 08:38:21] [Logic_Processor] - WARNING - Giá sàn hôm nay : 1713.0
+[2025-09-29 08:38:22] [ENTRADE_Client] - INFO - Hủy tất cả lệnh thành công! (Entrade)
+[2025-09-29 08:39:46] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-29 08:39:47] [DNSE_Client] - INFO - Logger '[DNSE_Client]' initialized with daily rotation
+[2025-09-29 08:39:47] [ENTRADE_Client] - INFO - Logger '[ENTRADE_Client]' initialized with daily rotation
+[2025-09-29 08:39:47] [MQTT Connector] - INFO - Logger '[MQTT Connector]' initialized with daily rotation
+[2025-09-29 08:39:47] [Authenticaotor] - INFO - Logger '[Authenticaotor]' initialized with daily rotation
+[2025-09-29 08:39:48] [DNSE_Client] - INFO - Đã đọc token từ c:\Users\210608\Documents\GitHub\AutoTrade\token_dnse.json
+[2025-09-29 08:39:48] [DNSE_Client] - INFO - Đọc tokens từ file token_dnse.json.
+[2025-09-29 08:39:48] [DNSE_Client] - INFO - Đọc xong tokens từ file token_dnse.json.
+[2025-09-29 08:39:48] [Authenticaotor] - WARNING - token [DNSE] : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZGVudGlmaWNhdGlvbkNvZGUiOiIwMDEwODkwMjkyNDUiLCJzdWIiOiIxMDAwOTY0NzY4IiwiYnJva2VySWQiOiIwODY5IiwiYXV0aFNvdXJjZSI6bnVsbCwicm9sZXMiOlsiaW52ZXN0b3IiLCJCUk9LRVIiXSwiaXNzIjoiRE5TRSIsImludmVzdG9ySWQiOiIxMDAwOTY0NzY4IiwiYnJva2VyVHlwZSI6IlNBQ08iLCJmdWxsTmFtZSI6Ik5ndXnhu4VuIFbEg24gQ8O0bmciLCJzZXNzaW9uSWQiOiJkNzhjMmFmYy1jNjJhLTRjMWYtYTA5MC04M2I5ZTJiZjM1ZDgiLCJ1c2VySWQiOiJhODQ3OGY2ZS0yMDY4LTRjODctYjEzNi1kNmFhMzIyYzk4MTYiLCJhdWQiOlsiYXVkaWVuY2UiXSwiY3VzdG9tZXJFbWFpbCI6Im52Y29uZzg5QGxpdmUuY29tIiwiY3VzdG9keUNvZGUiOiIwNjRDNjg0NjQxIiwiY3VzdG9tZXJJZCI6IjAwMDE1MDQxNzUiLCJleHAiOjE3NTkxMzQ2NTQsImN1c3RvbWVyTW9iaWxlIjoiMDk3OTQwNDY0MSIsImlhdCI6MTc1OTEwNTg1NCwidXNlcm5hbWUiOiIwNjRDNjg0NjQxIiwic3RhdHVzIjoiQUNUSVZFIn0.o8I-bop5FIPdoiF_fTUrNMVj2i5kuteaaxr-uEqFQuPdod-TRBwPLvWpsehqyqcQ4stMsCPqM7l1M0K9oZ6zcruXaj595OWH6VPO-z8enC9CMLvquqfUX7CcrTBaQvps-ojynchEyVXoIVKs6PbSLa0nO8w4cwaTSIeeCI0QpU0
+[2025-09-29 08:39:48] [Authenticaotor] - WARNING - Trading-Token [DNSE]: c3539ab0-1cb9-4692-b5d6-690fb3a87750
+[2025-09-29 08:39:49] [Authenticaotor] - INFO - investor_id [Etrade] : 1000048842
+[2025-09-29 08:39:49] [Authenticaotor] - INFO - investor_account_id [Etrade] : 1000049481 
+
+[2025-09-29 08:39:49] [Authenticaotor] - INFO - investor_id [DNSE] : 1000964768
+[2025-09-29 08:39:49] [Authenticaotor] - INFO - investor_account_id [DNSE] : 0001521007
+
+[2025-09-29 08:39:49] [Authenticaotor] - INFO - loan package id: 1306
+[2025-09-29 08:39:49] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [DNSE]: 0
+[2025-09-29 08:39:50] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [DNSE]: 0
+[2025-09-29 08:39:50] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [DNSE]: 0 HĐ 
+
+[2025-09-29 08:39:50] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [ENTRADE]: 1
+[2025-09-29 08:39:50] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [ENTRADE]: 0
+[2025-09-29 08:39:51] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [ENTRADE]: 7 HĐ 
+
+[2025-09-29 08:39:51] [MQTT Connector] - INFO - Connected to MQTT Broker!
+[2025-09-29 08:39:51] [Data Processor] - INFO - Logger '[Data Processor]' initialized with daily rotation
+[2025-09-29 08:39:53] [Data Processor] - INFO - Successfully initialized multi-timeframe data:
+[2025-09-29 08:39:53] [Data Processor] - INFO - m1: 16385 candles
+[2025-09-29 08:39:53] [Data Processor] - INFO - m3: 5507 candles
+[2025-09-29 08:39:53] [Data Processor] - INFO - m5: 3331 candles
+[2025-09-29 08:39:53] [Data Processor] - INFO - m15: 1155 candles
+[2025-09-29 08:39:53] [Data Processor] - INFO - m30: 611 candles
+[2025-09-29 08:39:53] [Data Processor] - INFO - H1: 339 candles
+[2025-09-29 08:39:53] [Data Processor] - INFO - D1: 67 candles
+[2025-09-29 08:39:53] [Data Processor] - INFO - W1: 14 candles
+[2025-09-29 08:39:54] [Logic_Processor] - INFO - Logger '[Logic_Processor]' initialized with daily rotation
+[2025-09-29 08:39:54] [SMARTBOT] - INFO - Logger '[SMARTBOT]' initialized with daily rotation
+[2025-09-29 08:39:54] [SMARTBOT] - INFO - Khởi tạo bot: MACD_Bot
+[2025-09-29 08:39:57] [Logic_Processor] - INFO - Bot [MACD_Bot] đã được khởi tạo.
+[2025-09-29 08:39:57] [Logic_Processor] - INFO - Working TimeFrame : m5
+[2025-09-29 08:39:57] [Logic_Processor] - INFO - Đẩy MarketData lần đầu tiên vào trong bot...
+[2025-09-29 08:39:58] [SMARTBOT] - INFO - Độ dài chuỗi dữ liệu nến 'm5': 3331
+[2025-09-29 08:39:59] [SMARTBOT] - INFO - Tín hiệu SHORT |last_macd =0.11676318221429938|last_signal=0.14852408727716107|last_RSI=32.88692732197889|last_ADX=33.814483211183514
+[2025-09-29 08:39:59] [SMARTBOT] - INFO - Signal detected: SHORT
+[2025-09-29 08:39:59] [SMARTBOT] - INFO - Trading platform used : ENTRADE
+[2025-09-29 08:39:59] [SMARTBOT] - INFO - [ENTRADE] Thực hiện đặt 1 hợp đồng SHORT tại giá 1840.0
+[2025-09-29 08:40:00] [ENTRADE_Client] - INFO - Đặt lệnh LO thành công [Entrade]: 6283639
+[2025-09-29 08:40:00] [Logic_Processor] - INFO - Bot đang chạy...
+[2025-09-29 08:40:00] [Logic_Processor] - WARNING - Giá trần hôm nay : 1967.0
+[2025-09-29 08:40:00] [Logic_Processor] - WARNING - Giá sàn hôm nay : 1713.0
+[2025-09-29 08:40:52] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-29 08:40:53] [DNSE_Client] - INFO - Logger '[DNSE_Client]' initialized with daily rotation
+[2025-09-29 08:40:53] [ENTRADE_Client] - INFO - Logger '[ENTRADE_Client]' initialized with daily rotation
+[2025-09-29 08:40:53] [MQTT Connector] - INFO - Logger '[MQTT Connector]' initialized with daily rotation
+[2025-09-29 08:40:53] [Authenticaotor] - INFO - Logger '[Authenticaotor]' initialized with daily rotation
+[2025-09-29 08:40:54] [DNSE_Client] - INFO - Đã đọc token từ c:\Users\210608\Documents\GitHub\AutoTrade\token_dnse.json
+[2025-09-29 08:40:54] [DNSE_Client] - INFO - Đọc tokens từ file token_dnse.json.
+[2025-09-29 08:40:54] [DNSE_Client] - INFO - Đọc xong tokens từ file token_dnse.json.
+[2025-09-29 08:40:54] [Authenticaotor] - WARNING - token [DNSE] : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZGVudGlmaWNhdGlvbkNvZGUiOiIwMDEwODkwMjkyNDUiLCJzdWIiOiIxMDAwOTY0NzY4IiwiYnJva2VySWQiOiIwODY5IiwiYXV0aFNvdXJjZSI6bnVsbCwicm9sZXMiOlsiaW52ZXN0b3IiLCJCUk9LRVIiXSwiaXNzIjoiRE5TRSIsImludmVzdG9ySWQiOiIxMDAwOTY0NzY4IiwiYnJva2VyVHlwZSI6IlNBQ08iLCJmdWxsTmFtZSI6Ik5ndXnhu4VuIFbEg24gQ8O0bmciLCJzZXNzaW9uSWQiOiJkNzhjMmFmYy1jNjJhLTRjMWYtYTA5MC04M2I5ZTJiZjM1ZDgiLCJ1c2VySWQiOiJhODQ3OGY2ZS0yMDY4LTRjODctYjEzNi1kNmFhMzIyYzk4MTYiLCJhdWQiOlsiYXVkaWVuY2UiXSwiY3VzdG9tZXJFbWFpbCI6Im52Y29uZzg5QGxpdmUuY29tIiwiY3VzdG9keUNvZGUiOiIwNjRDNjg0NjQxIiwiY3VzdG9tZXJJZCI6IjAwMDE1MDQxNzUiLCJleHAiOjE3NTkxMzQ2NTQsImN1c3RvbWVyTW9iaWxlIjoiMDk3OTQwNDY0MSIsImlhdCI6MTc1OTEwNTg1NCwidXNlcm5hbWUiOiIwNjRDNjg0NjQxIiwic3RhdHVzIjoiQUNUSVZFIn0.o8I-bop5FIPdoiF_fTUrNMVj2i5kuteaaxr-uEqFQuPdod-TRBwPLvWpsehqyqcQ4stMsCPqM7l1M0K9oZ6zcruXaj595OWH6VPO-z8enC9CMLvquqfUX7CcrTBaQvps-ojynchEyVXoIVKs6PbSLa0nO8w4cwaTSIeeCI0QpU0
+[2025-09-29 08:40:54] [Authenticaotor] - WARNING - Trading-Token [DNSE]: c3539ab0-1cb9-4692-b5d6-690fb3a87750
+[2025-09-29 08:40:55] [Authenticaotor] - INFO - investor_id [Etrade] : 1000048842
+[2025-09-29 08:40:55] [Authenticaotor] - INFO - investor_account_id [Etrade] : 1000049481 
+
+[2025-09-29 08:40:55] [Authenticaotor] - INFO - investor_id [DNSE] : 1000964768
+[2025-09-29 08:40:55] [Authenticaotor] - INFO - investor_account_id [DNSE] : 0001521007
+
+[2025-09-29 08:40:55] [Authenticaotor] - INFO - loan package id: 1306
+[2025-09-29 08:40:55] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [DNSE]: 0
+[2025-09-29 08:40:55] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [DNSE]: 0
+[2025-09-29 08:40:56] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [DNSE]: 0 HĐ 
+
+[2025-09-29 08:40:56] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [ENTRADE]: 1
+[2025-09-29 08:40:56] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [ENTRADE]: 0
+[2025-09-29 08:40:57] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [ENTRADE]: 7 HĐ 
+
+[2025-09-29 08:40:57] [MQTT Connector] - INFO - Connected to MQTT Broker!
+[2025-09-29 08:40:57] [Data Processor] - INFO - Logger '[Data Processor]' initialized with daily rotation
+[2025-09-29 08:40:59] [Data Processor] - INFO - Successfully initialized multi-timeframe data:
+[2025-09-29 08:40:59] [Data Processor] - INFO - m1: 16385 candles
+[2025-09-29 08:40:59] [Data Processor] - INFO - m3: 5507 candles
+[2025-09-29 08:40:59] [Data Processor] - INFO - m5: 3331 candles
+[2025-09-29 08:40:59] [Data Processor] - INFO - m15: 1155 candles
+[2025-09-29 08:40:59] [Data Processor] - INFO - m30: 611 candles
+[2025-09-29 08:40:59] [Data Processor] - INFO - H1: 339 candles
+[2025-09-29 08:40:59] [Data Processor] - INFO - D1: 67 candles
+[2025-09-29 08:40:59] [Data Processor] - INFO - W1: 14 candles
+[2025-09-29 08:41:00] [Logic_Processor] - INFO - Logger '[Logic_Processor]' initialized with daily rotation
+[2025-09-29 08:41:00] [SMARTBOT] - INFO - Logger '[SMARTBOT]' initialized with daily rotation
+[2025-09-29 08:41:00] [SMARTBOT] - INFO - Khởi tạo bot: MACD_Bot
+[2025-09-29 08:41:03] [Logic_Processor] - INFO - Bot [MACD_Bot] đã được khởi tạo.
+[2025-09-29 08:41:03] [Logic_Processor] - INFO - Working TimeFrame : m5
+[2025-09-29 08:41:03] [Logic_Processor] - INFO - Đẩy MarketData lần đầu tiên vào trong bot...
+[2025-09-29 08:41:04] [SMARTBOT] - INFO - Độ dài chuỗi dữ liệu nến 'm5': 3331
+[2025-09-29 08:41:05] [SMARTBOT] - INFO - Tín hiệu SHORT |last_macd =0.11676318221429938|last_signal=0.14852408727716107|last_RSI=32.88692732197889|last_ADX=33.814483211183514
+[2025-09-29 08:41:05] [SMARTBOT] - INFO - Signal detected: SHORT
+[2025-09-29 08:41:05] [SMARTBOT] - INFO - Trading platform used : ENTRADE
+[2025-09-29 08:41:05] [SMARTBOT] - INFO - [ENTRADE] Thực hiện đặt 1 hợp đồng SHORT tại giá 1840.0
+[2025-09-29 08:41:06] [ENTRADE_Client] - INFO - Đặt lệnh LO thành công [Entrade]: 6283640
+[2025-09-29 08:41:06] [Logic_Processor] - INFO - Bot đang chạy...
+[2025-09-29 08:41:06] [Logic_Processor] - WARNING - Giá trần hôm nay : 1967.0
+[2025-09-29 08:41:06] [Logic_Processor] - WARNING - Giá sàn hôm nay : 1713.0
+[2025-09-29 08:43:49] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-29 08:43:50] [DNSE_Client] - INFO - Logger '[DNSE_Client]' initialized with daily rotation
+[2025-09-29 08:43:50] [ENTRADE_Client] - INFO - Logger '[ENTRADE_Client]' initialized with daily rotation
+[2025-09-29 08:43:50] [MQTT Connector] - INFO - Logger '[MQTT Connector]' initialized with daily rotation
+[2025-09-29 08:43:50] [Authenticaotor] - INFO - Logger '[Authenticaotor]' initialized with daily rotation
+[2025-09-29 08:43:51] [DNSE_Client] - INFO - Đã đọc token từ c:\Users\210608\Documents\GitHub\AutoTrade\token_dnse.json
+[2025-09-29 08:43:51] [DNSE_Client] - INFO - Đọc tokens từ file token_dnse.json.
+[2025-09-29 08:43:51] [DNSE_Client] - INFO - Đọc xong tokens từ file token_dnse.json.
+[2025-09-29 08:43:51] [Authenticaotor] - WARNING - token [DNSE] : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZGVudGlmaWNhdGlvbkNvZGUiOiIwMDEwODkwMjkyNDUiLCJzdWIiOiIxMDAwOTY0NzY4IiwiYnJva2VySWQiOiIwODY5IiwiYXV0aFNvdXJjZSI6bnVsbCwicm9sZXMiOlsiaW52ZXN0b3IiLCJCUk9LRVIiXSwiaXNzIjoiRE5TRSIsImludmVzdG9ySWQiOiIxMDAwOTY0NzY4IiwiYnJva2VyVHlwZSI6IlNBQ08iLCJmdWxsTmFtZSI6Ik5ndXnhu4VuIFbEg24gQ8O0bmciLCJzZXNzaW9uSWQiOiJkNzhjMmFmYy1jNjJhLTRjMWYtYTA5MC04M2I5ZTJiZjM1ZDgiLCJ1c2VySWQiOiJhODQ3OGY2ZS0yMDY4LTRjODctYjEzNi1kNmFhMzIyYzk4MTYiLCJhdWQiOlsiYXVkaWVuY2UiXSwiY3VzdG9tZXJFbWFpbCI6Im52Y29uZzg5QGxpdmUuY29tIiwiY3VzdG9keUNvZGUiOiIwNjRDNjg0NjQxIiwiY3VzdG9tZXJJZCI6IjAwMDE1MDQxNzUiLCJleHAiOjE3NTkxMzQ2NTQsImN1c3RvbWVyTW9iaWxlIjoiMDk3OTQwNDY0MSIsImlhdCI6MTc1OTEwNTg1NCwidXNlcm5hbWUiOiIwNjRDNjg0NjQxIiwic3RhdHVzIjoiQUNUSVZFIn0.o8I-bop5FIPdoiF_fTUrNMVj2i5kuteaaxr-uEqFQuPdod-TRBwPLvWpsehqyqcQ4stMsCPqM7l1M0K9oZ6zcruXaj595OWH6VPO-z8enC9CMLvquqfUX7CcrTBaQvps-ojynchEyVXoIVKs6PbSLa0nO8w4cwaTSIeeCI0QpU0
+[2025-09-29 08:43:51] [Authenticaotor] - WARNING - Trading-Token [DNSE]: c3539ab0-1cb9-4692-b5d6-690fb3a87750
+[2025-09-29 08:43:52] [Authenticaotor] - INFO - investor_id [Etrade] : 1000048842
+[2025-09-29 08:43:52] [Authenticaotor] - INFO - investor_account_id [Etrade] : 1000049481 
+
+[2025-09-29 08:43:52] [Authenticaotor] - INFO - investor_id [DNSE] : 1000964768
+[2025-09-29 08:43:52] [Authenticaotor] - INFO - investor_account_id [DNSE] : 0001521007
+
+[2025-09-29 08:43:52] [Authenticaotor] - INFO - loan package id: 1306
+[2025-09-29 08:43:53] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [DNSE]: 0
+[2025-09-29 08:43:53] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [DNSE]: 0
+[2025-09-29 08:43:53] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [DNSE]: 0 HĐ 
+
+[2025-09-29 08:43:54] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [ENTRADE]: 1
+[2025-09-29 08:43:54] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [ENTRADE]: 0
+[2025-09-29 08:43:54] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [ENTRADE]: 7 HĐ 
+
+[2025-09-29 08:43:55] [MQTT Connector] - INFO - Connected to MQTT Broker!
+[2025-09-29 08:43:55] [Data Processor] - INFO - Logger '[Data Processor]' initialized with daily rotation
+[2025-09-29 08:43:57] [Data Processor] - INFO - Successfully initialized multi-timeframe data:
+[2025-09-29 08:43:57] [Data Processor] - INFO - m1: 16385 candles
+[2025-09-29 08:43:57] [Data Processor] - INFO - m3: 5507 candles
+[2025-09-29 08:43:57] [Data Processor] - INFO - m5: 3331 candles
+[2025-09-29 08:43:57] [Data Processor] - INFO - m15: 1155 candles
+[2025-09-29 08:43:57] [Data Processor] - INFO - m30: 611 candles
+[2025-09-29 08:43:57] [Data Processor] - INFO - H1: 339 candles
+[2025-09-29 08:43:57] [Data Processor] - INFO - D1: 67 candles
+[2025-09-29 08:43:57] [Data Processor] - INFO - W1: 14 candles
+[2025-09-29 08:43:58] [Logic_Processor] - INFO - Logger '[Logic_Processor]' initialized with daily rotation
+[2025-09-29 08:43:58] [SMARTBOT] - INFO - Logger '[SMARTBOT]' initialized with daily rotation
+[2025-09-29 08:43:58] [SMARTBOT] - INFO - Khởi tạo bot: MACD_Bot
+[2025-09-29 08:44:00] [Logic_Processor] - INFO - Bot [MACD_Bot] đã được khởi tạo.
+[2025-09-29 08:44:00] [Logic_Processor] - INFO - Working TimeFrame : m5
+[2025-09-29 08:44:00] [Logic_Processor] - INFO - Đẩy MarketData lần đầu tiên vào trong bot...
+[2025-09-29 08:44:02] [SMARTBOT] - INFO - Độ dài chuỗi dữ liệu nến 'm5': 3331
+[2025-09-29 08:44:03] [SMARTBOT] - INFO - Tín hiệu SHORT |last_macd =0.11676318221429938|last_signal=0.14852408727716107|last_RSI=32.88692732197889|last_ADX=33.814483211183514
+[2025-09-29 08:44:03] [SMARTBOT] - INFO - Signal detected: SHORT
+[2025-09-29 08:44:03] [SMARTBOT] - INFO - Trading platform used : ENTRADE
+[2025-09-29 08:44:03] [SMARTBOT] - INFO - [ENTRADE] Thực hiện đặt 1 hợp đồng SHORT tại giá 1840.0
+[2025-09-29 08:44:03] [ENTRADE_Client] - INFO - Đặt lệnh LO thành công [Entrade]: 6283641
+[2025-09-29 08:44:04] [Logic_Processor] - INFO - Bot đang chạy...
+[2025-09-29 08:44:04] [Logic_Processor] - WARNING - Giá trần hôm nay : 1967.0
+[2025-09-29 08:44:04] [Logic_Processor] - WARNING - Giá sàn hôm nay : 1713.0
+[2025-09-29 08:44:06] [Data Processor] - ERROR -  UpdateMarketData Đã xảy ra lỗi: 'totalBidQtty'
+[2025-09-29 08:46:12] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-29 08:46:12] [DNSE_Client] - INFO - Logger '[DNSE_Client]' initialized with daily rotation
+[2025-09-29 08:46:12] [ENTRADE_Client] - INFO - Logger '[ENTRADE_Client]' initialized with daily rotation
+[2025-09-29 08:46:13] [MQTT Connector] - INFO - Logger '[MQTT Connector]' initialized with daily rotation
+[2025-09-29 08:46:13] [Authenticaotor] - INFO - Logger '[Authenticaotor]' initialized with daily rotation
+[2025-09-29 08:46:14] [DNSE_Client] - INFO - Đã đọc token từ c:\Users\210608\Documents\GitHub\AutoTrade\token_dnse.json
+[2025-09-29 08:46:14] [DNSE_Client] - INFO - Đọc tokens từ file token_dnse.json.
+[2025-09-29 08:46:14] [DNSE_Client] - INFO - Đọc xong tokens từ file token_dnse.json.
+[2025-09-29 08:46:14] [Authenticaotor] - WARNING - token [DNSE] : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZGVudGlmaWNhdGlvbkNvZGUiOiIwMDEwODkwMjkyNDUiLCJzdWIiOiIxMDAwOTY0NzY4IiwiYnJva2VySWQiOiIwODY5IiwiYXV0aFNvdXJjZSI6bnVsbCwicm9sZXMiOlsiaW52ZXN0b3IiLCJCUk9LRVIiXSwiaXNzIjoiRE5TRSIsImludmVzdG9ySWQiOiIxMDAwOTY0NzY4IiwiYnJva2VyVHlwZSI6IlNBQ08iLCJmdWxsTmFtZSI6Ik5ndXnhu4VuIFbEg24gQ8O0bmciLCJzZXNzaW9uSWQiOiJkNzhjMmFmYy1jNjJhLTRjMWYtYTA5MC04M2I5ZTJiZjM1ZDgiLCJ1c2VySWQiOiJhODQ3OGY2ZS0yMDY4LTRjODctYjEzNi1kNmFhMzIyYzk4MTYiLCJhdWQiOlsiYXVkaWVuY2UiXSwiY3VzdG9tZXJFbWFpbCI6Im52Y29uZzg5QGxpdmUuY29tIiwiY3VzdG9keUNvZGUiOiIwNjRDNjg0NjQxIiwiY3VzdG9tZXJJZCI6IjAwMDE1MDQxNzUiLCJleHAiOjE3NTkxMzQ2NTQsImN1c3RvbWVyTW9iaWxlIjoiMDk3OTQwNDY0MSIsImlhdCI6MTc1OTEwNTg1NCwidXNlcm5hbWUiOiIwNjRDNjg0NjQxIiwic3RhdHVzIjoiQUNUSVZFIn0.o8I-bop5FIPdoiF_fTUrNMVj2i5kuteaaxr-uEqFQuPdod-TRBwPLvWpsehqyqcQ4stMsCPqM7l1M0K9oZ6zcruXaj595OWH6VPO-z8enC9CMLvquqfUX7CcrTBaQvps-ojynchEyVXoIVKs6PbSLa0nO8w4cwaTSIeeCI0QpU0
+[2025-09-29 08:46:14] [Authenticaotor] - WARNING - Trading-Token [DNSE]: c3539ab0-1cb9-4692-b5d6-690fb3a87750
+[2025-09-29 08:46:15] [Authenticaotor] - INFO - investor_id [Etrade] : 1000048842
+[2025-09-29 08:46:15] [Authenticaotor] - INFO - investor_account_id [Etrade] : 1000049481 
+
+[2025-09-29 08:46:15] [Authenticaotor] - INFO - investor_id [DNSE] : 1000964768
+[2025-09-29 08:46:15] [Authenticaotor] - INFO - investor_account_id [DNSE] : 0001521007
+
+[2025-09-29 08:46:15] [Authenticaotor] - INFO - loan package id: 1306
+[2025-09-29 08:46:15] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [DNSE]: 0
+[2025-09-29 08:46:16] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [DNSE]: 0
+[2025-09-29 08:46:16] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [DNSE]: 0 HĐ 
+
+[2025-09-29 08:46:16] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [ENTRADE]: 1
+[2025-09-29 08:46:17] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [ENTRADE]: 0
+[2025-09-29 08:46:17] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [ENTRADE]: 7 HĐ 
+
+[2025-09-29 08:46:17] [MQTT Connector] - INFO - Connected to MQTT Broker!
+[2025-09-29 08:46:18] [Data Processor] - INFO - Logger '[Data Processor]' initialized with daily rotation
+[2025-09-29 08:46:19] [Data Processor] - INFO - Successfully initialized multi-timeframe data:
+[2025-09-29 08:46:19] [Data Processor] - INFO - m1: 16385 candles
+[2025-09-29 08:46:19] [Data Processor] - INFO - m3: 5507 candles
+[2025-09-29 08:46:19] [Data Processor] - INFO - m5: 3331 candles
+[2025-09-29 08:46:19] [Data Processor] - INFO - m15: 1155 candles
+[2025-09-29 08:46:19] [Data Processor] - INFO - m30: 611 candles
+[2025-09-29 08:46:19] [Data Processor] - INFO - H1: 339 candles
+[2025-09-29 08:46:19] [Data Processor] - INFO - D1: 67 candles
+[2025-09-29 08:46:19] [Data Processor] - INFO - W1: 14 candles
+[2025-09-29 08:46:20] [Logic_Processor] - INFO - Logger '[Logic_Processor]' initialized with daily rotation
+[2025-09-29 08:46:20] [SMARTBOT] - INFO - Logger '[SMARTBOT]' initialized with daily rotation
+[2025-09-29 08:46:20] [SMARTBOT] - INFO - Khởi tạo bot: MACD_Bot
+[2025-09-29 08:46:23] [Logic_Processor] - INFO - Bot [MACD_Bot] đã được khởi tạo.
+[2025-09-29 08:46:23] [Logic_Processor] - INFO - Working TimeFrame : m5
+[2025-09-29 08:46:23] [Logic_Processor] - INFO - Đẩy MarketData lần đầu tiên vào trong bot...
+[2025-09-29 08:46:24] [SMARTBOT] - INFO - Độ dài chuỗi dữ liệu nến 'm5': 3331
+[2025-09-29 08:46:25] [SMARTBOT] - INFO - Tín hiệu SHORT |last_macd =0.11676318221429938|last_signal=0.14852408727716107|last_RSI=32.88692732197889|last_ADX=33.814483211183514
+[2025-09-29 08:46:25] [SMARTBOT] - INFO - Signal detected: SHORT
+[2025-09-29 08:46:25] [SMARTBOT] - INFO - Trading platform used : ENTRADE
+[2025-09-29 08:46:25] [SMARTBOT] - INFO - [ENTRADE] Thực hiện đặt 1 hợp đồng SHORT tại giá 1840.0
+[2025-09-29 08:46:26] [ENTRADE_Client] - INFO - Đặt lệnh LO thành công [Entrade]: 6283642
+[2025-09-29 08:46:26] [Logic_Processor] - INFO - Bot đang chạy...
+[2025-09-29 08:46:26] [Logic_Processor] - WARNING - Giá trần hôm nay : 1967.0
+[2025-09-29 08:46:26] [Logic_Processor] - WARNING - Giá sàn hôm nay : 1713.0
+[2025-09-29 08:46:28] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:28] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:28] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:28] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:28] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:30] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:31] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:31] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:31] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:33] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:37] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:40] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:40] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:42] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:43] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:44] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:44] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:45] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:47:42] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-29 08:47:43] [DNSE_Client] - INFO - Logger '[DNSE_Client]' initialized with daily rotation
+[2025-09-29 08:47:43] [ENTRADE_Client] - INFO - Logger '[ENTRADE_Client]' initialized with daily rotation
+[2025-09-29 08:47:43] [MQTT Connector] - INFO - Logger '[MQTT Connector]' initialized with daily rotation
+[2025-09-29 08:47:43] [Authenticaotor] - INFO - Logger '[Authenticaotor]' initialized with daily rotation
+[2025-09-29 08:47:44] [DNSE_Client] - INFO - Đã đọc token từ c:\Users\210608\Documents\GitHub\AutoTrade\token_dnse.json
+[2025-09-29 08:47:44] [DNSE_Client] - INFO - Đọc tokens từ file token_dnse.json.
+[2025-09-29 08:47:44] [DNSE_Client] - INFO - Đọc xong tokens từ file token_dnse.json.
+[2025-09-29 08:47:44] [Authenticaotor] - WARNING - token [DNSE] : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZGVudGlmaWNhdGlvbkNvZGUiOiIwMDEwODkwMjkyNDUiLCJzdWIiOiIxMDAwOTY0NzY4IiwiYnJva2VySWQiOiIwODY5IiwiYXV0aFNvdXJjZSI6bnVsbCwicm9sZXMiOlsiaW52ZXN0b3IiLCJCUk9LRVIiXSwiaXNzIjoiRE5TRSIsImludmVzdG9ySWQiOiIxMDAwOTY0NzY4IiwiYnJva2VyVHlwZSI6IlNBQ08iLCJmdWxsTmFtZSI6Ik5ndXnhu4VuIFbEg24gQ8O0bmciLCJzZXNzaW9uSWQiOiJkNzhjMmFmYy1jNjJhLTRjMWYtYTA5MC04M2I5ZTJiZjM1ZDgiLCJ1c2VySWQiOiJhODQ3OGY2ZS0yMDY4LTRjODctYjEzNi1kNmFhMzIyYzk4MTYiLCJhdWQiOlsiYXVkaWVuY2UiXSwiY3VzdG9tZXJFbWFpbCI6Im52Y29uZzg5QGxpdmUuY29tIiwiY3VzdG9keUNvZGUiOiIwNjRDNjg0NjQxIiwiY3VzdG9tZXJJZCI6IjAwMDE1MDQxNzUiLCJleHAiOjE3NTkxMzQ2NTQsImN1c3RvbWVyTW9iaWxlIjoiMDk3OTQwNDY0MSIsImlhdCI6MTc1OTEwNTg1NCwidXNlcm5hbWUiOiIwNjRDNjg0NjQxIiwic3RhdHVzIjoiQUNUSVZFIn0.o8I-bop5FIPdoiF_fTUrNMVj2i5kuteaaxr-uEqFQuPdod-TRBwPLvWpsehqyqcQ4stMsCPqM7l1M0K9oZ6zcruXaj595OWH6VPO-z8enC9CMLvquqfUX7CcrTBaQvps-ojynchEyVXoIVKs6PbSLa0nO8w4cwaTSIeeCI0QpU0
+[2025-09-29 08:47:44] [Authenticaotor] - WARNING - Trading-Token [DNSE]: c3539ab0-1cb9-4692-b5d6-690fb3a87750
+[2025-09-29 08:47:45] [Authenticaotor] - INFO - investor_id [Etrade] : 1000048842
+[2025-09-29 08:47:45] [Authenticaotor] - INFO - investor_account_id [Etrade] : 1000049481 
+
+[2025-09-29 08:47:45] [Authenticaotor] - INFO - investor_id [DNSE] : 1000964768
+[2025-09-29 08:47:45] [Authenticaotor] - INFO - investor_account_id [DNSE] : 0001521007
+
+[2025-09-29 08:47:45] [Authenticaotor] - INFO - loan package id: 1306
+[2025-09-29 08:47:45] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [DNSE]: 0
+[2025-09-29 08:47:45] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [DNSE]: 0
+[2025-09-29 08:47:46] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [DNSE]: 0 HĐ 
+
+[2025-09-29 08:47:46] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [ENTRADE]: 1
+[2025-09-29 08:47:46] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [ENTRADE]: 0
+[2025-09-29 08:47:46] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [ENTRADE]: 7 HĐ 
+
+[2025-09-29 08:47:47] [MQTT Connector] - INFO - Connected to MQTT Broker!
+[2025-09-29 08:47:47] [Data Processor] - INFO - Logger '[Data Processor]' initialized with daily rotation
+[2025-09-29 08:47:49] [Data Processor] - INFO - Successfully initialized multi-timeframe data:
+[2025-09-29 08:47:49] [Data Processor] - INFO - m1: 16385 candles
+[2025-09-29 08:47:49] [Data Processor] - INFO - m3: 5507 candles
+[2025-09-29 08:47:49] [Data Processor] - INFO - m5: 3331 candles
+[2025-09-29 08:47:49] [Data Processor] - INFO - m15: 1155 candles
+[2025-09-29 08:47:49] [Data Processor] - INFO - m30: 611 candles
+[2025-09-29 08:47:49] [Data Processor] - INFO - H1: 339 candles
+[2025-09-29 08:47:49] [Data Processor] - INFO - D1: 67 candles
+[2025-09-29 08:47:49] [Data Processor] - INFO - W1: 14 candles
+[2025-09-29 08:47:49] [Logic_Processor] - INFO - Logger '[Logic_Processor]' initialized with daily rotation
+[2025-09-29 08:47:50] [SMARTBOT] - INFO - Logger '[SMARTBOT]' initialized with daily rotation
+[2025-09-29 08:47:50] [SMARTBOT] - INFO - Khởi tạo bot: MACD_Bot
+[2025-09-29 08:47:52] [Logic_Processor] - INFO - Bot [MACD_Bot] đã được khởi tạo.
+[2025-09-29 08:47:52] [Logic_Processor] - INFO - Working TimeFrame : m5
+[2025-09-29 08:47:52] [Logic_Processor] - INFO - Đẩy MarketData lần đầu tiên vào trong bot...
+[2025-09-29 08:47:53] [SMARTBOT] - INFO - Độ dài chuỗi dữ liệu nến 'm5': 3331
+[2025-09-29 08:47:54] [SMARTBOT] - INFO - Tín hiệu SHORT |last_macd =0.11676318221429938|last_signal=0.14852408727716107|last_RSI=32.88692732197889|last_ADX=33.814483211183514
+[2025-09-29 08:47:54] [SMARTBOT] - INFO - Signal detected: SHORT
+[2025-09-29 08:47:54] [SMARTBOT] - INFO - Trading platform used : ENTRADE
+[2025-09-29 08:47:54] [SMARTBOT] - INFO - [ENTRADE] Thực hiện đặt 1 hợp đồng SHORT tại giá 1840.0
+[2025-09-29 08:47:55] [ENTRADE_Client] - INFO - Đặt lệnh LO thành công [Entrade]: 6283643
+[2025-09-29 08:47:55] [Logic_Processor] - INFO - Bot đang chạy...
+[2025-09-29 08:47:55] [Logic_Processor] - WARNING - Giá trần hôm nay : 1967.0
+[2025-09-29 08:47:55] [Logic_Processor] - WARNING - Giá sàn hôm nay : 1713.0
+[2025-09-29 08:47:57] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:47:57] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:47:57] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:47:58] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:47:59] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:01] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:02] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:02] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:03] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:04] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:05] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:06] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:08] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:10] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:10] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:11] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:11] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:11] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:12] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:13] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:18] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:18] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:25] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:28] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:28] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:29] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:29] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:29] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:30] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:31] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:33] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:33] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:34] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:53] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-29 08:48:53] [DNSE_Client] - INFO - Logger '[DNSE_Client]' initialized with daily rotation
+[2025-09-29 08:48:53] [ENTRADE_Client] - INFO - Logger '[ENTRADE_Client]' initialized with daily rotation
+[2025-09-29 08:48:53] [MQTT Connector] - INFO - Logger '[MQTT Connector]' initialized with daily rotation
+[2025-09-29 08:48:53] [Authenticaotor] - INFO - Logger '[Authenticaotor]' initialized with daily rotation
+[2025-09-29 08:48:54] [DNSE_Client] - INFO - Đã đọc token từ c:\Users\210608\Documents\GitHub\AutoTrade\token_dnse.json
+[2025-09-29 08:48:54] [DNSE_Client] - INFO - Đọc tokens từ file token_dnse.json.
+[2025-09-29 08:48:54] [DNSE_Client] - INFO - Đọc xong tokens từ file token_dnse.json.
+[2025-09-29 08:48:54] [Authenticaotor] - WARNING - token [DNSE] : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZGVudGlmaWNhdGlvbkNvZGUiOiIwMDEwODkwMjkyNDUiLCJzdWIiOiIxMDAwOTY0NzY4IiwiYnJva2VySWQiOiIwODY5IiwiYXV0aFNvdXJjZSI6bnVsbCwicm9sZXMiOlsiaW52ZXN0b3IiLCJCUk9LRVIiXSwiaXNzIjoiRE5TRSIsImludmVzdG9ySWQiOiIxMDAwOTY0NzY4IiwiYnJva2VyVHlwZSI6IlNBQ08iLCJmdWxsTmFtZSI6Ik5ndXnhu4VuIFbEg24gQ8O0bmciLCJzZXNzaW9uSWQiOiJkNzhjMmFmYy1jNjJhLTRjMWYtYTA5MC04M2I5ZTJiZjM1ZDgiLCJ1c2VySWQiOiJhODQ3OGY2ZS0yMDY4LTRjODctYjEzNi1kNmFhMzIyYzk4MTYiLCJhdWQiOlsiYXVkaWVuY2UiXSwiY3VzdG9tZXJFbWFpbCI6Im52Y29uZzg5QGxpdmUuY29tIiwiY3VzdG9keUNvZGUiOiIwNjRDNjg0NjQxIiwiY3VzdG9tZXJJZCI6IjAwMDE1MDQxNzUiLCJleHAiOjE3NTkxMzQ2NTQsImN1c3RvbWVyTW9iaWxlIjoiMDk3OTQwNDY0MSIsImlhdCI6MTc1OTEwNTg1NCwidXNlcm5hbWUiOiIwNjRDNjg0NjQxIiwic3RhdHVzIjoiQUNUSVZFIn0.o8I-bop5FIPdoiF_fTUrNMVj2i5kuteaaxr-uEqFQuPdod-TRBwPLvWpsehqyqcQ4stMsCPqM7l1M0K9oZ6zcruXaj595OWH6VPO-z8enC9CMLvquqfUX7CcrTBaQvps-ojynchEyVXoIVKs6PbSLa0nO8w4cwaTSIeeCI0QpU0
+[2025-09-29 08:48:54] [Authenticaotor] - WARNING - Trading-Token [DNSE]: c3539ab0-1cb9-4692-b5d6-690fb3a87750
+[2025-09-29 08:48:55] [Authenticaotor] - INFO - investor_id [Etrade] : 1000048842
+[2025-09-29 08:48:55] [Authenticaotor] - INFO - investor_account_id [Etrade] : 1000049481 
+
+[2025-09-29 08:48:55] [Authenticaotor] - INFO - investor_id [DNSE] : 1000964768
+[2025-09-29 08:48:55] [Authenticaotor] - INFO - investor_account_id [DNSE] : 0001521007
+
+[2025-09-29 08:48:55] [Authenticaotor] - INFO - loan package id: 1306
+[2025-09-29 08:48:56] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [DNSE]: 0
+[2025-09-29 08:48:56] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [DNSE]: 0
+[2025-09-29 08:48:56] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [DNSE]: 0 HĐ 
+
+[2025-09-29 08:48:57] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [ENTRADE]: 1
+[2025-09-29 08:48:57] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [ENTRADE]: 0
+[2025-09-29 08:48:57] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [ENTRADE]: 7 HĐ 
+
+[2025-09-29 08:48:58] [MQTT Connector] - INFO - Connected to MQTT Broker!
+[2025-09-29 08:48:58] [Data Processor] - INFO - Logger '[Data Processor]' initialized with daily rotation
+[2025-09-29 08:49:00] [Data Processor] - INFO - Successfully initialized multi-timeframe data:
+[2025-09-29 08:49:00] [Data Processor] - INFO - m1: 16385 candles
+[2025-09-29 08:49:00] [Data Processor] - INFO - m3: 5507 candles
+[2025-09-29 08:49:00] [Data Processor] - INFO - m5: 3331 candles
+[2025-09-29 08:49:00] [Data Processor] - INFO - m15: 1155 candles
+[2025-09-29 08:49:00] [Data Processor] - INFO - m30: 611 candles
+[2025-09-29 08:49:00] [Data Processor] - INFO - H1: 339 candles
+[2025-09-29 08:49:00] [Data Processor] - INFO - D1: 67 candles
+[2025-09-29 08:49:00] [Data Processor] - INFO - W1: 14 candles
+[2025-09-29 08:49:01] [Logic_Processor] - INFO - Logger '[Logic_Processor]' initialized with daily rotation
+[2025-09-29 08:49:01] [SMARTBOT] - INFO - Logger '[SMARTBOT]' initialized with daily rotation
+[2025-09-29 08:49:01] [SMARTBOT] - INFO - Khởi tạo bot: MACD_Bot
+[2025-09-29 08:49:04] [Logic_Processor] - INFO - Bot [MACD_Bot] đã được khởi tạo.
+[2025-09-29 08:49:04] [Logic_Processor] - INFO - Working TimeFrame : m5
+[2025-09-29 08:49:04] [Logic_Processor] - INFO - Đẩy MarketData lần đầu tiên vào trong bot...
+[2025-09-29 08:49:05] [SMARTBOT] - INFO - Độ dài chuỗi dữ liệu nến 'm5': 3331
+[2025-09-29 08:49:06] [SMARTBOT] - INFO - Tín hiệu SHORT |last_macd =0.11676318221429938|last_signal=0.14852408727716107|last_RSI=32.88692732197889|last_ADX=33.814483211183514
+[2025-09-29 08:49:06] [SMARTBOT] - INFO - Signal detected: SHORT
+[2025-09-29 08:49:06] [SMARTBOT] - INFO - Trading platform used : ENTRADE
+[2025-09-29 08:49:06] [SMARTBOT] - INFO - [ENTRADE] Thực hiện đặt 1 hợp đồng SHORT tại giá 1840.0
+[2025-09-29 08:49:07] [ENTRADE_Client] - INFO - Đặt lệnh LO thành công [Entrade]: 6283645
+[2025-09-29 08:49:07] [Logic_Processor] - INFO - Bot đang chạy...
+[2025-09-29 08:49:07] [Logic_Processor] - WARNING - Giá trần hôm nay : 1967.0
+[2025-09-29 08:49:07] [Logic_Processor] - WARNING - Giá sàn hôm nay : 1713.0
+[2025-09-29 08:49:09] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:09] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:09] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:09] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:10] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:10] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:10] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:10] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:10] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:11] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:11] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:11] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:12] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:12] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:14] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:14] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:15] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:16] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:17] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:18] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:21] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:22] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:25] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:50:09] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-29 08:50:09] [DNSE_Client] - INFO - Logger '[DNSE_Client]' initialized with daily rotation
+[2025-09-29 08:50:09] [ENTRADE_Client] - INFO - Logger '[ENTRADE_Client]' initialized with daily rotation
+[2025-09-29 08:50:10] [MQTT Connector] - INFO - Logger '[MQTT Connector]' initialized with daily rotation
+[2025-09-29 08:50:10] [Authenticaotor] - INFO - Logger '[Authenticaotor]' initialized with daily rotation
+[2025-09-29 08:50:10] [DNSE_Client] - INFO - Đã đọc token từ c:\Users\210608\Documents\GitHub\AutoTrade\token_dnse.json
+[2025-09-29 08:50:10] [DNSE_Client] - INFO - Đọc tokens từ file token_dnse.json.
+[2025-09-29 08:50:10] [DNSE_Client] - INFO - Đọc xong tokens từ file token_dnse.json.
+[2025-09-29 08:50:10] [Authenticaotor] - WARNING - token [DNSE] : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZGVudGlmaWNhdGlvbkNvZGUiOiIwMDEwODkwMjkyNDUiLCJzdWIiOiIxMDAwOTY0NzY4IiwiYnJva2VySWQiOiIwODY5IiwiYXV0aFNvdXJjZSI6bnVsbCwicm9sZXMiOlsiaW52ZXN0b3IiLCJCUk9LRVIiXSwiaXNzIjoiRE5TRSIsImludmVzdG9ySWQiOiIxMDAwOTY0NzY4IiwiYnJva2VyVHlwZSI6IlNBQ08iLCJmdWxsTmFtZSI6Ik5ndXnhu4VuIFbEg24gQ8O0bmciLCJzZXNzaW9uSWQiOiJkNzhjMmFmYy1jNjJhLTRjMWYtYTA5MC04M2I5ZTJiZjM1ZDgiLCJ1c2VySWQiOiJhODQ3OGY2ZS0yMDY4LTRjODctYjEzNi1kNmFhMzIyYzk4MTYiLCJhdWQiOlsiYXVkaWVuY2UiXSwiY3VzdG9tZXJFbWFpbCI6Im52Y29uZzg5QGxpdmUuY29tIiwiY3VzdG9keUNvZGUiOiIwNjRDNjg0NjQxIiwiY3VzdG9tZXJJZCI6IjAwMDE1MDQxNzUiLCJleHAiOjE3NTkxMzQ2NTQsImN1c3RvbWVyTW9iaWxlIjoiMDk3OTQwNDY0MSIsImlhdCI6MTc1OTEwNTg1NCwidXNlcm5hbWUiOiIwNjRDNjg0NjQxIiwic3RhdHVzIjoiQUNUSVZFIn0.o8I-bop5FIPdoiF_fTUrNMVj2i5kuteaaxr-uEqFQuPdod-TRBwPLvWpsehqyqcQ4stMsCPqM7l1M0K9oZ6zcruXaj595OWH6VPO-z8enC9CMLvquqfUX7CcrTBaQvps-ojynchEyVXoIVKs6PbSLa0nO8w4cwaTSIeeCI0QpU0
+[2025-09-29 08:50:10] [Authenticaotor] - WARNING - Trading-Token [DNSE]: c3539ab0-1cb9-4692-b5d6-690fb3a87750
+[2025-09-29 08:50:11] [Authenticaotor] - INFO - investor_id [Etrade] : 1000048842
+[2025-09-29 08:50:11] [Authenticaotor] - INFO - investor_account_id [Etrade] : 1000049481 
+
+[2025-09-29 08:50:11] [Authenticaotor] - INFO - investor_id [DNSE] : 1000964768
+[2025-09-29 08:50:11] [Authenticaotor] - INFO - investor_account_id [DNSE] : 0001521007
+
+[2025-09-29 08:50:11] [Authenticaotor] - INFO - loan package id: 1306
+[2025-09-29 08:50:12] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [DNSE]: 0
+[2025-09-29 08:50:12] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [DNSE]: 0
+[2025-09-29 08:50:12] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [DNSE]: 0 HĐ 
+
+[2025-09-29 08:50:13] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [ENTRADE]: 1
+[2025-09-29 08:50:13] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [ENTRADE]: 0
+[2025-09-29 08:50:13] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [ENTRADE]: 7 HĐ 
+
+[2025-09-29 08:50:14] [MQTT Connector] - INFO - Connected to MQTT Broker!
+[2025-09-29 08:50:14] [Data Processor] - INFO - Logger '[Data Processor]' initialized with daily rotation
+[2025-09-29 08:50:15] [Data Processor] - INFO - Successfully initialized multi-timeframe data:
+[2025-09-29 08:50:15] [Data Processor] - INFO - m1: 16385 candles
+[2025-09-29 08:50:15] [Data Processor] - INFO - m3: 5507 candles
+[2025-09-29 08:50:16] [Data Processor] - INFO - m5: 3331 candles
+[2025-09-29 08:50:16] [Data Processor] - INFO - m15: 1155 candles
+[2025-09-29 08:50:16] [Data Processor] - INFO - m30: 611 candles
+[2025-09-29 08:50:16] [Data Processor] - INFO - H1: 339 candles
+[2025-09-29 08:50:16] [Data Processor] - INFO - D1: 67 candles
+[2025-09-29 08:50:16] [Data Processor] - INFO - W1: 14 candles
+[2025-09-29 08:50:16] [Logic_Processor] - INFO - Logger '[Logic_Processor]' initialized with daily rotation
+[2025-09-29 08:50:16] [SMARTBOT] - INFO - Logger '[SMARTBOT]' initialized with daily rotation
+[2025-09-29 08:50:17] [SMARTBOT] - INFO - Khởi tạo bot: MACD_Bot
+[2025-09-29 08:50:19] [Logic_Processor] - INFO - Bot [MACD_Bot] đã được khởi tạo.
+[2025-09-29 08:50:19] [Logic_Processor] - INFO - Working TimeFrame : m5
+[2025-09-29 08:50:19] [Logic_Processor] - INFO - Đẩy MarketData lần đầu tiên vào trong bot...
+[2025-09-29 08:50:20] [SMARTBOT] - INFO - Độ dài chuỗi dữ liệu nến 'm5': 3331
+[2025-09-29 08:50:21] [SMARTBOT] - INFO - Tín hiệu SHORT |last_macd =0.11676318221429938|last_signal=0.14852408727716107|last_RSI=32.88692732197889|last_ADX=33.814483211183514
+[2025-09-29 08:50:21] [SMARTBOT] - INFO - Signal detected: SHORT
+[2025-09-29 08:50:22] [SMARTBOT] - INFO - Trading platform used : ENTRADE
+[2025-09-29 08:50:22] [SMARTBOT] - INFO - [ENTRADE] Thực hiện đặt 1 hợp đồng SHORT tại giá 1840.0
+[2025-09-29 08:50:22] [ENTRADE_Client] - INFO - Đặt lệnh LO thành công [Entrade]: 6283647
+[2025-09-29 08:50:22] [Logic_Processor] - INFO - Bot đang chạy...
+[2025-09-29 08:50:22] [Logic_Processor] - WARNING - Giá trần hôm nay : 1967.0
+[2025-09-29 08:50:22] [Logic_Processor] - WARNING - Giá sàn hôm nay : 1713.0
+[2025-09-29 08:52:03] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-29 08:52:04] [DNSE_Client] - INFO - Logger '[DNSE_Client]' initialized with daily rotation
+[2025-09-29 08:52:04] [ENTRADE_Client] - INFO - Logger '[ENTRADE_Client]' initialized with daily rotation
+[2025-09-29 08:52:04] [MQTT Connector] - INFO - Logger '[MQTT Connector]' initialized with daily rotation
+[2025-09-29 08:52:04] [Authenticaotor] - INFO - Logger '[Authenticaotor]' initialized with daily rotation
+[2025-09-29 08:52:05] [DNSE_Client] - INFO - Đã đọc token từ c:\Users\210608\Documents\GitHub\AutoTrade\token_dnse.json
+[2025-09-29 08:52:05] [DNSE_Client] - INFO - Đọc tokens từ file token_dnse.json.
+[2025-09-29 08:52:05] [DNSE_Client] - INFO - Đọc xong tokens từ file token_dnse.json.
+[2025-09-29 08:52:05] [Authenticaotor] - WARNING - token [DNSE] : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZGVudGlmaWNhdGlvbkNvZGUiOiIwMDEwODkwMjkyNDUiLCJzdWIiOiIxMDAwOTY0NzY4IiwiYnJva2VySWQiOiIwODY5IiwiYXV0aFNvdXJjZSI6bnVsbCwicm9sZXMiOlsiaW52ZXN0b3IiLCJCUk9LRVIiXSwiaXNzIjoiRE5TRSIsImludmVzdG9ySWQiOiIxMDAwOTY0NzY4IiwiYnJva2VyVHlwZSI6IlNBQ08iLCJmdWxsTmFtZSI6Ik5ndXnhu4VuIFbEg24gQ8O0bmciLCJzZXNzaW9uSWQiOiJkNzhjMmFmYy1jNjJhLTRjMWYtYTA5MC04M2I5ZTJiZjM1ZDgiLCJ1c2VySWQiOiJhODQ3OGY2ZS0yMDY4LTRjODctYjEzNi1kNmFhMzIyYzk4MTYiLCJhdWQiOlsiYXVkaWVuY2UiXSwiY3VzdG9tZXJFbWFpbCI6Im52Y29uZzg5QGxpdmUuY29tIiwiY3VzdG9keUNvZGUiOiIwNjRDNjg0NjQxIiwiY3VzdG9tZXJJZCI6IjAwMDE1MDQxNzUiLCJleHAiOjE3NTkxMzQ2NTQsImN1c3RvbWVyTW9iaWxlIjoiMDk3OTQwNDY0MSIsImlhdCI6MTc1OTEwNTg1NCwidXNlcm5hbWUiOiIwNjRDNjg0NjQxIiwic3RhdHVzIjoiQUNUSVZFIn0.o8I-bop5FIPdoiF_fTUrNMVj2i5kuteaaxr-uEqFQuPdod-TRBwPLvWpsehqyqcQ4stMsCPqM7l1M0K9oZ6zcruXaj595OWH6VPO-z8enC9CMLvquqfUX7CcrTBaQvps-ojynchEyVXoIVKs6PbSLa0nO8w4cwaTSIeeCI0QpU0
+[2025-09-29 08:52:05] [Authenticaotor] - WARNING - Trading-Token [DNSE]: c3539ab0-1cb9-4692-b5d6-690fb3a87750
+[2025-09-29 08:52:06] [Authenticaotor] - INFO - investor_id [Etrade] : 1000048842
+[2025-09-29 08:52:06] [Authenticaotor] - INFO - investor_account_id [Etrade] : 1000049481 
+
+[2025-09-29 08:52:06] [Authenticaotor] - INFO - investor_id [DNSE] : 1000964768
+[2025-09-29 08:52:06] [Authenticaotor] - INFO - investor_account_id [DNSE] : 0001521007
+
+[2025-09-29 08:52:06] [Authenticaotor] - INFO - loan package id: 1306
+[2025-09-29 08:52:07] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [DNSE]: 0
+[2025-09-29 08:52:07] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [DNSE]: 0
+[2025-09-29 08:52:07] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [DNSE]: 0 HĐ 
+
+[2025-09-29 08:52:08] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [ENTRADE]: 1
+[2025-09-29 08:52:08] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [ENTRADE]: 0
+[2025-09-29 08:52:08] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [ENTRADE]: 7 HĐ 
+
+[2025-09-29 08:52:09] [MQTT Connector] - INFO - Connected to MQTT Broker!
+[2025-09-29 08:52:09] [Data Processor] - INFO - Logger '[Data Processor]' initialized with daily rotation
+[2025-09-29 08:52:11] [Data Processor] - INFO - Successfully initialized multi-timeframe data:
+[2025-09-29 08:52:11] [Data Processor] - INFO - m1: 16385 candles
+[2025-09-29 08:52:11] [Data Processor] - INFO - m3: 5507 candles
+[2025-09-29 08:52:11] [Data Processor] - INFO - m5: 3331 candles
+[2025-09-29 08:52:11] [Data Processor] - INFO - m15: 1155 candles
+[2025-09-29 08:52:11] [Data Processor] - INFO - m30: 611 candles
+[2025-09-29 08:52:11] [Data Processor] - INFO - H1: 339 candles
+[2025-09-29 08:52:11] [Data Processor] - INFO - D1: 67 candles
+[2025-09-29 08:52:11] [Data Processor] - INFO - W1: 14 candles
+[2025-09-29 08:52:11] [Logic_Processor] - INFO - Logger '[Logic_Processor]' initialized with daily rotation
+[2025-09-29 08:52:12] [SMARTBOT] - INFO - Logger '[SMARTBOT]' initialized with daily rotation
+[2025-09-29 08:52:12] [SMARTBOT] - INFO - Khởi tạo bot: MACD_Bot
+[2025-09-29 08:52:14] [Logic_Processor] - INFO - Bot [MACD_Bot] đã được khởi tạo.
+[2025-09-29 08:52:14] [Logic_Processor] - INFO - Working TimeFrame : m5
+[2025-09-29 08:52:14] [Logic_Processor] - INFO - Đẩy MarketData lần đầu tiên vào trong bot...
+[2025-09-29 08:52:16] [SMARTBOT] - INFO - Độ dài chuỗi dữ liệu nến 'm5': 3331
+[2025-09-29 08:52:17] [SMARTBOT] - INFO - Tín hiệu SHORT |last_macd =0.11676318221429938|last_signal=0.14852408727716107|last_RSI=32.88692732197889|last_ADX=33.814483211183514
+[2025-09-29 08:52:17] [SMARTBOT] - INFO - Signal detected: SHORT
+[2025-09-29 08:52:17] [SMARTBOT] - INFO - Trading platform used : ENTRADE
+[2025-09-29 08:52:17] [SMARTBOT] - INFO - [ENTRADE] Thực hiện đặt 1 hợp đồng SHORT tại giá 1840.0
+[2025-09-29 08:52:18] [ENTRADE_Client] - ERROR - Order() failed! (Entrade):
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\entrade_client.py", line 72, in Order
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\210608\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://services.entrade.com.vn/papertrade-entrade-api/derivative/orders
+[2025-09-29 08:52:18] [Logic_Processor] - INFO - Bot đang chạy...
+[2025-09-29 08:52:18] [Logic_Processor] - WARNING - Giá trần hôm nay : 1967.0
+[2025-09-29 08:52:18] [Logic_Processor] - WARNING - Giá sàn hôm nay : 1713.0
+[2025-09-29 08:56:18] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-29 08:56:18] [DNSE_Client] - INFO - Logger '[DNSE_Client]' initialized with daily rotation
+[2025-09-29 08:56:18] [ENTRADE_Client] - INFO - Logger '[ENTRADE_Client]' initialized with daily rotation
+[2025-09-29 08:56:18] [MQTT Connector] - INFO - Logger '[MQTT Connector]' initialized with daily rotation
+[2025-09-29 08:56:18] [Authenticaotor] - INFO - Logger '[Authenticaotor]' initialized with daily rotation

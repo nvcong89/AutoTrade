@@ -14,3 +14,559 @@ Traceback (most recent call last):
   File "c:\Users\congnv\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\models.py", line 1026, in raise_for_status
     raise HTTPError(http_error_msg, response=self)
 requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://services.entrade.com.vn/papertrade-entrade-api/derivative/orders
+[2025-09-29 07:31:14] [ENTRADE_Client] - ERROR - Order() failed! (Entrade):
+Traceback (most recent call last):
+  File "C:\Users\210608\Documents\GitHub\AutoTrade\entrade_client.py", line 59, in Order
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\210608\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://services.entrade.com.vn/papertrade-entrade-api/derivative/orders
+[2025-09-29 07:37:48] [ENTRADE_Client] - ERROR - Order() failed! (Entrade):
+Traceback (most recent call last):
+  File "C:\Users\210608\Documents\GitHub\AutoTrade\entrade_client.py", line 59, in Order
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\210608\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://services.entrade.com.vn/papertrade-entrade-api/derivative/orders
+[2025-09-29 07:46:14] [SMARTBOT] - ERROR - Đã xảy ra lỗi: module 'datetime' has no attribute 'strptime'
+[2025-09-29 07:47:25] [ENTRADE_Client] - ERROR - Order() failed! (Entrade):
+Traceback (most recent call last):
+  File "C:\Users\210608\Documents\GitHub\AutoTrade\entrade_client.py", line 71, in Order
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\210608\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://services.entrade.com.vn/papertrade-entrade-api/derivative/orders
+[2025-09-29 08:44:06] [Data Processor] - ERROR -  UpdateMarketData Đã xảy ra lỗi: 'totalBidQtty'
+[2025-09-29 08:46:28] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:28] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:28] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:28] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:28] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:30] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:31] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:31] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:31] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:33] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:37] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:40] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:40] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:42] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:43] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:44] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:44] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:46:45] [MQTT Connector] - ERROR -  on_message đã xảy ra lỗi : 'buyForeignQuantity'
+[2025-09-29 08:47:57] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:47:57] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:47:57] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:47:58] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:47:59] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:01] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:02] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:02] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:03] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:04] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:05] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:06] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:08] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:10] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:10] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:11] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:11] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:11] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:12] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:13] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:18] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:18] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:25] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:28] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:28] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:29] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:29] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:29] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:30] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:31] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:33] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:33] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:48:34] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:09] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:09] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:09] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:10] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:10] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:10] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:10] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:10] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:11] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:11] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:11] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:11] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:12] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:12] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:14] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:14] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:15] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:16] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:17] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:18] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:21] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:22] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:49:25] [MQTT Connector] - ERROR - on_message đã xảy ra lỗi : 'buyForeignQuantity'
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\mqtt_client.py", line 53, in on_message
+    dp.UpdateForeignData(payload)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\data_processor.py", line 188, in UpdateForeignData
+    GLOBAL.TOTAL_FOREIGN_BUY = int(new_foreign_data["buyForeignQuantity"])
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'buyForeignQuantity'
+[2025-09-29 08:52:18] [ENTRADE_Client] - ERROR - Order() failed! (Entrade):
+Traceback (most recent call last):
+  File "c:\Users\210608\Documents\GitHub\AutoTrade\entrade_client.py", line 72, in Order
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\210608\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://services.entrade.com.vn/papertrade-entrade-api/derivative/orders

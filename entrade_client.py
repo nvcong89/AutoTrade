@@ -1,8 +1,7 @@
-import datetime
+from datetime import datetime, time
 from requests import HTTPError, get, post, delete
 from time import localtime
 from data_processor import GetOHLCVData
-import time
 from logger_config import get_trading_logger, setup_logger
 import logging
 
@@ -38,7 +37,21 @@ class EntradeClient:
         
         """Đặt lệnh với kiểm tra đầu vào và xử lý lỗi nâng cao"""
         
-      
+        #Kiểm tra lệnh được đặt trong thời gian cho phép hay không? 8h05 -> 15h
+        
+        # Chuyển đổi thời gian bắt đầu và kết thúc sang đối tượng datetime.time
+        thoi_gian_bat_dau = datetime.strptime("08:05", "%H:%M").time()
+        thoi_gian_ket_thuc = datetime.strptime("15:00", "%H:%M").time()        
+        thoi_gian_hien_tai = datetime.now().time()  # Lấy thời gian hiện tại
+        
+       
+        # Kiểm tra xem thời gian hiện tại có nằm trong khoảng cho phép hay không
+        if not (thoi_gian_bat_dau <= thoi_gian_hien_tai <= thoi_gian_ket_thuc):
+            self.logger.warning("Chỉ được đặt lệnh từ 08:05 đến 15:00.")
+            return
+
+
+
         _headers = {
             "Authorization": f"Bearer {self.token}"
         }

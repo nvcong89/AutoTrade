@@ -28,7 +28,7 @@ TOTAL_FOREIGN_BUY: int = 0
 TOTAL_FOREIGN_SELL: int = 0
 
 #WORKING TIMEFRAME : là timeframe để sau mỗi khi đóng nến sẽ thực thi function OnBarClosed()
-WORKING_TIMEFRAME = 'm1' # m1, m3, m5, m15, m30, H1, H4, D1, W1
+WORKING_TIMEFRAME = 'm5' # m1, m3, m5, m15, m30, H1, H4, D1, W1
 
 #Giá khớp lệnh tức thời - last Tick price
 LAST_TICK_PRICE: float = 0.0     #last tick price

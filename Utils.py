@@ -4,6 +4,36 @@ import numpy as np
 import pandas as pd
 
 
+
+def print_color(text, color="default"):
+    '''
+    Dùng để in text ra console với màu sắc, ko dùng thư viện bên ngoài
+    
+    Example:
+    print_color("Thông báo thành công!", "green")
+    print_color("Cảnh báo!", "yellow")
+    print_color("Lỗi nghiêm trọng!", "red")
+    print_color("Thông tin hệ thống", "blue")
+
+    '''
+    colors = {
+        "default": "\033[0m",
+        "red": "\033[91m",
+        "green": "\033[92m",
+        "yellow": "\033[93m",
+        "blue": "\033[94m",
+        "magenta": "\033[95m",
+        "cyan": "\033[96m",
+        "white": "\033[97m",
+        "gray": "\033[90m",
+    }
+    
+    color_code = colors.get(color.lower(), colors["default"])
+    reset_code = colors["default"]
+    print(f"{color_code}{text}{reset_code}")
+
+
+
 def cprint(message):
     '''
     Hàm hỗ trợ in ra console có bao gồm ngày tháng và giờ.
@@ -317,24 +347,30 @@ def generate_market_data(base_price: float = 1200.0,
 
 if __name__ == "__main__":
 
-    cprint(f"Mã hợp đồng VN30F1M KRX tháng hiện tại: {get_vn30f1m_krx()}")
-    # demoMarketData()
+    # cprint(f"Mã hợp đồng VN30F1M KRX tháng hiện tại: {get_vn30f1m_krx()}")
+    # # demoMarketData()
 
-    MARKETDATA = generate_market_data()
-    cprint(MARKETDATA['m1'][:10])
-    data = MARKETDATA['m1'][:10]
-    # Trích xuất close prices và timestamps
-    close_prices = [candle['close'] for candle in data]
-    timestamps = [candle['time'] for candle in data]
+    # MARKETDATA = generate_market_data()
+    # cprint(MARKETDATA['m1'][:10])
+    # data = MARKETDATA['m1'][:10]
+    # # Trích xuất close prices và timestamps
+    # close_prices = [candle['close'] for candle in data]
+    # timestamps = [candle['time'] for candle in data]
 
-    # Tạo pandas Series với index thời gian
-    close_series = pd.Series(
-        data=close_prices,
-        index=pd.to_datetime(timestamps),
-        name='Close Price',
-        dtype='float64'
-    )
-    cprint(close_series)
+    # # Tạo pandas Series với index thời gian
+    # close_series = pd.Series(
+    #     data=close_prices,
+    #     index=pd.to_datetime(timestamps),
+    #     name='Close Price',
+    #     dtype='float64'
+    # )
+    # cprint(close_series)
     # print(f"\nDữ liệu mẫu VN30F1M (m1) - 5 nến đầu:")
     # for row in MARKETDATA['m1'][:10]:
     #     print(row)
+
+    
+    print_color("Thông báo thành công!", "green")
+    print_color("Cảnh báo!", "yellow")
+    print_color("Lỗi nghiêm trọng!", "red")
+    print_color("Thông tin hệ thống", "blue")
