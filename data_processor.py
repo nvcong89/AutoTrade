@@ -113,7 +113,7 @@ def UpdateOHLCVData(new_data):
     GLOBAL.LAST_TICK_PRICE = price
     GLOBAL.LAST_TICK_VOLUME = volume
 
-    print_color(f"[Data_processor] Last_tick_Price : {price}","yellow")
+    # print_color(f"[Data_processor] Last_tick_Price : {price}","yellow")
 
     # Gọi logic xử lý cho OnTick()
     lp.OnTick()
@@ -182,14 +182,14 @@ def UpdateMarketData(new_market_data):
         for dict in new_market_data["bid"]:
             GLOBAL.BID_DEPTH.append(tuple(dict.values()))
         
-        print_color(f"[Data_processor] Las_bid_Price : {GLOBAL.BID_DEPTH[0][0]}","yellow")
+        # print_color(f"[Data_processor] Las_bid_Price : {GLOBAL.BID_DEPTH[0][0]}","yellow")
 
         GLOBAL.ASK_DEPTH.clear()
         for dict in new_market_data["offer"]:
             GLOBAL.ASK_DEPTH.append(tuple(dict.values()))
 
-        print_color(f"[Data_processor] Last_ask_Price : {GLOBAL.ASK_DEPTH[0][0]}","yellow")
-        print_color(f"[Data_processor] Spread : {GLOBAL.ASK_DEPTH[0][0]-GLOBAL.BID_DEPTH[0][0]}")
+        # print_color(f"[Data_processor] Last_ask_Price : {GLOBAL.ASK_DEPTH[0][0]}","yellow")
+        # print_color(f"[Data_processor] Spread : {GLOBAL.ASK_DEPTH[0][0]-GLOBAL.BID_DEPTH[0][0]}")
 
     except Exception as e:
         logger.error(f"[Data_processor] UpdateMarketData Đã xảy ra lỗi: {e}")
