@@ -1,13 +1,13 @@
-from datetime import datetime
-import json
-import pandas as pd
-from agents.macd_agent import macd_agent
-from agents.rsi_ta import rsi_agent_ta
-from agent import Agent
-from Indicators import MomentumIndicators, TrendIndicators
+# from datetime import datetime
+# import json
+# import pandas as pd
+# from agents.macd_agent import macd_agent
+# from agents.rsi_ta import rsi_agent_ta
+# from agent import Agent
+# from Indicators import MomentumIndicators, TrendIndicators
 import GLOBAL
 from tabulate import tabulate
-import numpy as np
+# import numpy as np
 from Utils import*
 from logger_config import setup_logger
 import logging
@@ -40,6 +40,7 @@ def OnStart(_onstart: bool = False):
 
     logger = setup_logger("[Logic_Processor]", logging.INFO)
 
+    
     #=====================================================================
     #DO NOT REMOVE
     #=====================================================================
@@ -112,6 +113,7 @@ def OnStart(_onstart: bool = False):
     logger.info(f"Bot đang chạy...")
 
     #in ra giá trần sàn ngày hôm nay
+    logger.warning(f"Mã phái sinh : {GLOBAL.VN30F1M}")
     logger.warning(f"Giá trần hôm nay : {bot.ceilingPrice}")
     logger.warning(f"Giá sàn hôm nay : {bot.floorPrice}")
 

@@ -31,16 +31,16 @@ def on_connect(client, userdata, flags, rc, properties):
 
         # client.subscribe(config["ohlc_data_topic"], qos=1)
 
-        client.subscribe(f"{config["tick_data_topic"]}{GLOBAL.VN30F1M}", qos=1)  
+        client.subscribe(f"{config["tick_data_topic"]}{GLOBAL.VN30F1M}", qos=0)  
 
         # if config["get_ohlc_data_topic"]:
         #     client.subscribe(config["ohlc_data_topic"], qos=1)
 
         if config["get_market_data"]:
-            client.subscribe(f"{config["market_data_topic"]}{GLOBAL.VN30F1M}", qos=1)
+            client.subscribe(f"{config["market_data_topic"]}{GLOBAL.VN30F1M}", qos=0)
         
         if config["get_foreign_data"]:
-            client.subscribe(f"{config["foreign_data_topic"]}{GLOBAL.VN30F1M}", qos=1)
+            client.subscribe(f"{config["foreign_data_topic"]}{GLOBAL.VN30F1M}", qos=0)
 
         
 

@@ -14,7 +14,7 @@ passwordEntrade = getenv("passwordEntrade") # Mật khẩu tài khoản Entrade
 
 emailDNSE = getenv("emailDNSE") # Email đăng kí DNSE
 passwordDNSE = getenv("passwordDNSE") # Mật khẩu tài khoản DNSE
-appPasswordDNSE = getenv("appPasswordDNSE") # App Password cho email đăng kí DNSE
+
 
 
 

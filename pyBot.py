@@ -338,6 +338,27 @@ class pyBot:
         Thực hiện lệnh mua/bán dựa trên tín hiệu từ check_for_signals
         action = "LONG" hoặc "SHORT", CLOSELONG, CLOSESHORT
         '''
+
+        #Kiểm tra đóng lệnh trước:
+        if action.upper() == "CLOSELONG" or action.upper() == "CLOSESHORT":
+
+            try:
+                self.logger.info(f"[ENTRADE] Đóng tất cả các lệnh, lý do = {action}")
+                # Thực hiện lệnh đóng mua ở đây
+                result = self.entradeClient.CloseAllDeals(is_demo)
+                self.position_side = None
+                self.order_entryprice = None
+                self.order_id = None
+                self.order_side = None
+                self.orderQuantity = None
+            
+                return
+            except Exception as e:
+                self.logger.critical(f" [ENTRADE] Đã xảy ra lỗi khi đóng lệnh : {e}")
+                pass
+        
+
+
         # kiểm tra số deal đang mở đã vượt quá max open trades allowed chưa?
 
         # lấy giá hiện tại khi có tín hiệu
@@ -391,40 +412,39 @@ class pyBot:
             except Exception as e:
                 self.logger.error(f"Đã xảy ra lỗi: {e}")
 
-                
-        elif action.upper() == "CLOSELONG":
-            if self.position_side == "BUY":
-                self.logger.info(f"[ENTRADE] Đóng tất cả các lệnh, lý do = {action}")
-                # Thực hiện lệnh đóng mua ở đây
-                result = self.entradeClient.CloseAllDeals(is_demo)
-                self.position_side = None
-                self.order_entryprice = None
-                self.order_id = None
-                self.order_side = None
-                self.orderQuantity = None
-            else:
-                self.logger.error("No BUY position to close.")
-
-        elif action.upper() == "CLOSESHORT":
-            if self.position_side == "SELL":
-                self.logger.info(f"[ENTRADE] Đóng tất cả các lệnh, lý do = {action}")
-                # Thực hiện lệnh đóng mua ở đây
-                result = self.entradeClient.CloseAllDeals(is_demo)
-                self.position_side = None
-                self.order_entryprice = None
-                self.order_id = None
-                self.order_side = None
-                self.orderQuantity = None
-            else:
-                self.logger.info("No SELL position to close.")
+            
         else:
             self.logger.info("No valid action to execute.")
     
     def execute_trade_DNSE(self, action):
         '''
         Thực hiện lệnh mua/bán dựa trên tín hiệu từ check_for_signals
-        action = "BUY" hoặc "SELL", CLOSEBUY, CLOSESELL
+        action = "LONG" hoặc "SHORT", CLOSELONG, CLOSESHORT
         '''
+
+        #Đầu tiên kiểm tra đóng lệnh trước:
+        if action.upper() == "CLOSELONG":
+            # Thực hiện lệnh đóng mua ở đây
+                self.logger.info(f"[DNSE] Đóng tất cả các lệnh, lý do = {action}")
+                result = self.dnseClient.CloseAllDeals()
+                self.position_side = None
+                self.order_entryprice = None
+                self.order_id = None
+                self.order_side = None
+                self.orderQuantity = None
+                return
+
+        if action.upper() == "CLOSESHORT":
+            # Thực hiện lệnh đóng mua ở đây
+                self.logger.info(f"[DNSE] Đóng tất cả các lệnh, lý do = {action}")
+                result = self.dnseClient.CloseAllDeals()
+                self.position_side = None
+                self.order_entryprice = None
+                self.order_id = None
+                self.order_side = None
+                self.orderQuantity = None
+                return
+
         # kiểm tra số deal đang mở đã vượt quá max open trades allowed chưa?
 
         # lấy giá hiện tại khi có tín hiệu
@@ -493,27 +513,7 @@ class pyBot:
 
             except:
                 self.logger.error(f'Xảy ra lỗi: {e}')
-
                 
-        elif action.upper() == "CLOSELONG":
-            # Thực hiện lệnh đóng mua ở đây
-                self.logger.info(f"[DNSE] Đóng tất cả các lệnh, lý do = {action}")
-                result = self.dnseClient.CloseAllDeals()
-                self.position_side = None
-                self.order_entryprice = None
-                self.order_id = None
-                self.order_side = None
-                self.orderQuantity = None
-
-        elif action.upper() == "CLOSESHORT":
-            # Thực hiện lệnh đóng mua ở đây
-                self.logger.info(f"[DNSE] Đóng tất cả các lệnh, lý do = {action}")
-                result = self.dnseClient.CloseAllDeals()
-                self.position_side = None
-                self.order_entryprice = None
-                self.order_id = None
-                self.order_side = None
-                self.orderQuantity = None
         else:
             self.logger.info("No valid action to execute.")
     
