@@ -1,0 +1,39 @@
+[2025-09-30 08:44:31] AutoTrade-CONG NGUYEN - INFO - Logger 'AutoTrade-CONG NGUYEN' initialized with daily rotation
+[2025-09-30 08:44:31] [DNSE_Client] - INFO - Logger '[DNSE_Client]' initialized with daily rotation
+[2025-09-30 08:44:31] [ENTRADE_Client] - INFO - Logger '[ENTRADE_Client]' initialized with daily rotation
+[2025-09-30 08:44:32] [MQTT Connector] - INFO - Logger '[MQTT Connector]' initialized with daily rotation
+[2025-09-30 08:44:32] [Authenticaotor] - INFO - Logger '[Authenticaotor]' initialized with daily rotation
+[2025-09-30 08:44:33] [DNSE_Client] - INFO - Đã đọc token từ c:\Users\210608\Documents\GitHub\AutoTrade\token_dnse.json
+[2025-09-30 08:44:34] [DNSE_Client] - INFO - Gửi email OTP thành công! (DNSE)
+[2025-09-30 08:44:43] [DNSE_Client] - INFO - Lấy Trading Token thành công! (DNSE)
+[2025-09-30 08:44:43] [DNSE_Client] - INFO - Đang lưu token ra file token_dnse.json...
+[2025-09-30 08:44:43] [DNSE_Client] - INFO - Đã lưu token vào c:\Users\210608\Documents\GitHub\AutoTrade\token_dnse.json
+[2025-09-30 08:44:43] [DNSE_Client] - INFO - Đã lưu token ra file token_dnse.json.
+[2025-09-30 08:44:43] [Authenticaotor] - WARNING - token [DNSE] : eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpZGVudGlmaWNhdGlvbkNvZGUiOiIwMDEwODkwMjkyNDUiLCJzdWIiOiIxMDAwOTY0NzY4IiwiYnJva2VySWQiOiIwODY5IiwiYXV0aFNvdXJjZSI6bnVsbCwicm9sZXMiOlsiaW52ZXN0b3IiLCJCUk9LRVIiXSwiaXNzIjoiRE5TRSIsImludmVzdG9ySWQiOiIxMDAwOTY0NzY4IiwiYnJva2VyVHlwZSI6IlNBQ08iLCJmdWxsTmFtZSI6Ik5ndXnhu4VuIFbEg24gQ8O0bmciLCJzZXNzaW9uSWQiOiI0Yjg2ODJhYi03NTUyLTQ0YWYtOThlNC00ZThlMjliMzhiODIiLCJ1c2VySWQiOiJhODQ3OGY2ZS0yMDY4LTRjODctYjEzNi1kNmFhMzIyYzk4MTYiLCJhdWQiOlsiYXVkaWVuY2UiXSwiY3VzdG9tZXJFbWFpbCI6Im52Y29uZzg5QGxpdmUuY29tIiwiY3VzdG9keUNvZGUiOiIwNjRDNjg0NjQxIiwiY3VzdG9tZXJJZCI6IjAwMDE1MDQxNzUiLCJleHAiOjE3NTkyMjU0NzQsImN1c3RvbWVyTW9iaWxlIjoiMDk3OTQwNDY0MSIsImlhdCI6MTc1OTE5NjY3NCwidXNlcm5hbWUiOiIwNjRDNjg0NjQxIiwic3RhdHVzIjoiQUNUSVZFIn0.mWIdpl5TghWUtU91t98M98h3UuvZAH-6MTu3ydwvNAwaAgcb1zrJZVjorx5Y89jx9akmCa_dKy3-66xb59A9GGvbn5a1hHSwDJdST0egQ4LQ2TtlVnrI9zE5xobkYGg0-2bx0VBX2Pg-ycFVf1TvSyv_mLesw52l8vaICLeYucA
+[2025-09-30 08:44:43] [Authenticaotor] - WARNING - Trading-Token [DNSE]: fc0e7506-c7a8-41f4-a97f-f119e76a665a
+[2025-09-30 08:44:44] [Authenticaotor] - INFO - investor_id [Etrade] : 1000048842
+[2025-09-30 08:44:44] [Authenticaotor] - INFO - investor_account_id [Etrade] : 1000049481 
+
+[2025-09-30 08:44:44] [Authenticaotor] - INFO - investor_id [DNSE] : 1000964768
+[2025-09-30 08:44:44] [Authenticaotor] - INFO - investor_account_id [DNSE] : 0001521007
+
+[2025-09-30 08:44:44] [Authenticaotor] - INFO - loan package id: 1306
+[2025-09-30 08:44:44] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [DNSE]: 1
+[2025-09-30 08:44:44] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [DNSE]: 0
+[2025-09-30 08:44:45] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [DNSE]: 1 HĐ 
+
+[2025-09-30 08:44:45] [Authenticaotor] - WARNING - Tổng số lượng deal đang mở trong sổ [ENTRADE]: 1
+[2025-09-30 08:44:45] [Authenticaotor] - WARNING - Tổng số lượng lệnh đang chờ trong sổ [ENTRADE]: 0
+[2025-09-30 08:44:46] [Authenticaotor] - WARNING - Tổng số hợp đồng đang mở [ENTRADE]: 1 HĐ 
+
+[2025-09-30 08:44:46] [MQTT Connector] - INFO - Connected to MQTT Broker!
+[2025-09-30 08:44:46] [Data Processor] - INFO - Logger '[Data Processor]' initialized with daily rotation
+[2025-09-30 08:44:48] [Data Processor] - INFO - Successfully initialized multi-timeframe data:
+[2025-09-30 08:44:48] [Data Processor] - INFO - m1: 16626 candles
+[2025-09-30 08:44:48] [Data Processor] - INFO - m3: 5588 candles
+[2025-09-30 08:44:48] [Data Processor] - INFO - m5: 3380 candles
+[2025-09-30 08:44:48] [Data Processor] - INFO - m15: 1172 candles
+[2025-09-30 08:44:48] [Data Processor] - INFO - m30: 620 candles
+[2025-09-30 08:44:48] [Data Processor] - INFO - H1: 344 candles
+[2025-09-30 08:44:48] [Data Processor] - INFO - D1: 68 candles
+[2025-09-30 08:44:48] [Data Processor] - INFO - W1: 14 candles

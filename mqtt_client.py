@@ -55,13 +55,13 @@ def on_message(client, userdata, msg):
         payload = json.JSONDecoder().decode(msg.payload.decode())
 
         # DO NOT REMOVE
-        if msg.topic == config["tick_data_topic"]:
+        if msg.topic == f"{config["tick_data_topic"]}{GLOBAL.VN30F1M}":
             dp.UpdateOHLCVData(payload)
         # if msg.topic == config["ohlc_data_topic"]:
         #     dp.UpdateOHLCVData(payload)
-        if msg.topic == config["market_data_topic"]:
+        if msg.topic == f"{config["market_data_topic"]}{GLOBAL.VN30F1M}":
             dp.UpdateMarketData(payload)
-        if msg.topic == config["foreign_data_topic"]:
+        if msg.topic == f"{config["foreign_data_topic"]}{GLOBAL.VN30F1M}":
             dp.UpdateForeignData(payload)
             
     except Exception as e:
