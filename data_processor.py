@@ -1,7 +1,7 @@
-import GLOBAL
 import logging
 from logger_config import setup_logger
 import logic_processor as lp
+import GLOBAL
 from requests import get
 from time import time
 from Utils import*
@@ -10,20 +10,6 @@ from tabulate import tabulate
 
 
 def GetOHLCVData(type: str, symbol: str, from_time: int, to_time: int, resolution: str = '15') -> dict[str, list[float]]:
-    '''
-    **type**: "derivative", "stock" hoặc "index"\n
-    **symbol**: mã cổ phiếu/phái sinh/thị trường tương ứng với 'type'\n
-    **from_time/to_time**: thời điểm bắt đầu/kết thúc lấy dữ liệu (Unix epoch time)\n
-    **resolution**: 1, 3, 5, 15, 30, 1H, 1D, 1W (nến 1/3/5/... phút)
-    '''
-
-    url = f"https://api.dnse.com.vn/chart-api/v2/ohlcs/{type}?from={from_time}&to={to_time}&symbol={symbol}&resolution={resolution}"
-
-    response = get(url)
-    response.raise_for_status()
-    return response.json()
-
-def GetTick(type: str, symbol: str, from_time: int, to_time: int, resolution: str = '15') -> dict[str, list[float]]:
     '''
     **type**: "derivative", "stock" hoặc "index"\n
     **symbol**: mã cổ phiếu/phái sinh/thị trường tương ứng với 'type'\n
@@ -67,7 +53,7 @@ def InitializeData():
     last_ts = int(time())
     start_time = int(time()) - 86400*100  # 100 ngày dữ liệu
     
-    # Lấy dữ liệu gốc 1 phút "VN30F1M"
+    # Lấy dữ liệu gốc 1 phút
     raw_data = GetOHLCVData("derivative", "VN30F1M", start_time, int(last_ts), '1')
 
     # Tạo dữ liệu base với timestamp
@@ -108,13 +94,16 @@ def InitializeData():
     # lp.OnStart() # DO NOT REMOVE
 
 
+
+
+
 # ========== HÀM UPDATE THEO THỜI GIAN THỰC ==========
-def UpdateOHLCVData(new_data):      #Hàm này sẽ được gọi theo từng tick
-    global HISTORY, current_bars
+def UpdateOHLCVData(new_data):
+    global HISTORY, current_bars, last_ts
 
     # print(f"Current_bars: {current_bars}")
     # print(f"New tick data: {new_data}")
-    print(f"tick time: {new_data['sendingTime']}")
+    # print(f"tick time: {new_data['sendingTime']}")
     dt = datetime.fromisoformat(new_data['sendingTime'].replace("Z", "+00:00"))  #đổi sang dạng timestamp
     timestamp = int(dt.timestamp()) #đổi sang dạng timestamp
     new_ts = timestamp
@@ -124,7 +113,7 @@ def UpdateOHLCVData(new_data):      #Hàm này sẽ được gọi theo từng t
     GLOBAL.LAST_TICK_PRICE = price
     GLOBAL.LAST_TICK_VOLUME = volume
 
-    # print_color(f"[Data_processor] Last_tick_Price : {price}","yellow")
+    print_color(f"[Data_processor] Last_tick_Price : {price}","yellow")
 
     # Gọi logic xử lý cho OnTick()
     lp.OnTick()
@@ -193,14 +182,14 @@ def UpdateMarketData(new_market_data):
         for dict in new_market_data["bid"]:
             GLOBAL.BID_DEPTH.append(tuple(dict.values()))
         
-        # print_color(f"[Data_processor] Las_bid_Price : {GLOBAL.BID_DEPTH[0][0]}","yellow")
+        print_color(f"[Data_processor] Las_bid_Price : {GLOBAL.BID_DEPTH[0][0]}","yellow")
 
         GLOBAL.ASK_DEPTH.clear()
         for dict in new_market_data["offer"]:
             GLOBAL.ASK_DEPTH.append(tuple(dict.values()))
 
-        # print_color(f"[Data_processor] Last_ask_Price : {GLOBAL.ASK_DEPTH[0][0]}","yellow")
-        # print_color(f"[Data_processor] Spread : {GLOBAL.ASK_DEPTH[0][0]-GLOBAL.BID_DEPTH[0][0]}")
+        print_color(f"[Data_processor] Last_ask_Price : {GLOBAL.ASK_DEPTH[0][0]}","yellow")
+        print_color(f"[Data_processor] Spread : {GLOBAL.ASK_DEPTH[0][0]-GLOBAL.BID_DEPTH[0][0]}")
 
     except Exception as e:
         logger.error(f"[Data_processor] UpdateMarketData Đã xảy ra lỗi: {e}")
