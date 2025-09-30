@@ -86,7 +86,7 @@ class DNSEClient:
             smartOTP = input(f"Nhập mã SmartOTP:")
             self.OTP = smartOTP
         else:
-            self.OTP = otp
+            self.OTP = str(otp)
         
         return self.OTP
 

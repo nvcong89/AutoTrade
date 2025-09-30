@@ -32,6 +32,7 @@ if __name__ == "__main__":
     # Connect to DNSE
     GLOBAL.DNSE_CLIENT.emailDNSE = emailDNSE
     GLOBAL.DNSE_CLIENT.passwordDNSE = passwordDNSE
+    # GLOBAL.DNSE_CLIENT.Authenticate()
     GLOBAL.DNSE_CLIENT.validate_token()
 
 
@@ -44,7 +45,7 @@ if __name__ == "__main__":
     logger.warning(f"Trading-Token [DNSE]: {GLOBAL.DNSE_CLIENT.trading_token}")
 
     investor_id = GLOBAL.DNSE_CLIENT.GetAccountInfo()["investorId"]
-    # try:
+    # try:      d
     #     investor_id = GLOBAL.DNSE_CLIENT.GetAccountInfo()["investorId"]
     #     pass
     # except Exception as e:

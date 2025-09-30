@@ -27,7 +27,7 @@ def authenticate_yandex():
 def get_otp_from_yandex(mail):
     try:
         
-        time.sleep(5)   # tạm dừng 5s đợi thư OTP về mail
+        time.sleep(30)   # tạm dừng 5s đợi thư OTP về mail
 
         # Chọn hộp thư cần kiểm tra (INBOX)
         mail.select('Inbox')
