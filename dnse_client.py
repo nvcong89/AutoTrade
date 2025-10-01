@@ -426,7 +426,7 @@ class DNSEClient:
     
     def GetOrders(self, account_no=None):
         """Lấy danh sách lệnh"""
-        account = account_no or self.account_no or "0001910385"
+        account = account_no or self.investor_account_id
         if not account:
             raise ValueError("Account number is required")
             
@@ -563,6 +563,22 @@ class DNSEClient:
 
     def validate_token(self):
         try:
+
+            #check file token_dnse.json có tồn tại chưa?
+            fileName ='token_dnse.json'
+            current_dir = os.path.dirname(os.path.abspath(__file__))
+            file_path = os.path.join(current_dir, fileName)
+
+            if not os.path.exists(file_path):
+                self.Authenticate(self.emailDNSE, self.passwordDNSE)
+                self.GetOTP() #gửi mã OTP về email
+                self.readSmartOTP(getOTP())
+                self.GetTradingToken(self.OTP)
+                self.logger.info(f"Đang lưu token ra file token_dnse.json...")
+                self.save_token_json()
+                self.logger.info(f"Đã lưu token ra file token_dnse.json.")
+                return
+            
             tokens = self.read_token_json()
             token =tokens.get('token')['token']
             trading_token = tokens.get('trading_token')['trading_token']
@@ -598,7 +614,7 @@ class DNSEClient:
             self.logger.info(f"Đang lưu token ra file token_dnse.json...")
             self.save_token_json()
             self.logger.info(f"Đã lưu token ra file token_dnse.json.")
-            pass
+            
     
     def GetCeilingAndFloorPrices_VN30F1M(self):
         '''
