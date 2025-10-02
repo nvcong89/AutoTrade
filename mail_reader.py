@@ -25,54 +25,72 @@ def authenticate_yandex():
         return None
 
 def get_otp_from_yandex(mail):
-    try:
+    """
+        Đọc OTP từ email, thử lại nhiều lần nếu chưa có thư.
         
-        time.sleep(30)   # tạm dừng 5s đợi thư OTP về mail
+        Args:
+            mail: đối tượng kết nối IMAP.
+            max_attempts: số lần thử tối đa.
+            delay_seconds: thời gian chờ giữa các lần thử.
+        
+        Returns:
+            otp (str) nếu tìm thấy, hoặc None nếu không có.
+    """
+    max_attempts = 6    #thử 6 lần đọc
+    delay_seconds =  30 #đợi 20s mỗi lần
 
-        # Chọn hộp thư cần kiểm tra (INBOX)
-        mail.select('Inbox')
-        
-        # Tìm email chưa đọc từ địa chỉ cụ thể (ví dụ từ noreply@otp.com) và có từ khóa trong tiêu đề
-        # status, messages = mail.search(None, '(UNSEEN FROM "noreply@mail.dnse.com.vn" SUBJECT "Email OTP")')
-        status, messages = mail.search(None, '(UNSEEN FROM "noreply@mail.dnse.com.vn" SUBJECT "Email OTP")')
-        # Nếu tìm thấy email, xử lý
-        if status == "OK":
-            msg_ids = messages[0].split()
-            latest_msg_id = msg_ids[-1]
-            status, msg_data = mail.fetch(latest_msg_id, "(RFC822)")
+    for attempt in range(max_attempts):
+        try:
+
+            print(f"Đọc email OTP lần {attempt + 1}...")   
+
+            # Chọn hộp thư cần kiểm tra (INBOX)
+            mail.select('Inbox')
             
+            # Tìm email chưa đọc từ địa chỉ cụ thể (ví dụ từ noreply@otp.com) và có từ khóa trong tiêu đề
+            # status, messages = mail.search(None, '(UNSEEN FROM "noreply@mail.dnse.com.vn" SUBJECT "Email OTP")')
+            status, messages = mail.search(None, '(UNSEEN FROM "noreply@mail.dnse.com.vn" SUBJECT "Email OTP")')
+            # Nếu tìm thấy email, xử lý
             if status == "OK":
-                for response_part in msg_data:
-                    if isinstance(response_part, tuple):
-                        msg = email.message_from_bytes(response_part[1])
-                            
-                        # Trích xuất nội dung email
-                        if msg.is_multipart():
-                            for part in msg.walk():
-                                content_type = part.get_content_type()
-                                content_disposition = str(part.get("Content-Disposition"))
-                                if "attachment" not in content_disposition:
-                                    # Trích xuất text/plain
-                                    if content_type == "text/plain":
-                                        body = part.get_payload(decode=True).decode('utf-8', errors='ignore')
-                                        # Tìm OTP trong nội dung email
-                                        otp = extract_otp_from_body(body)
-                                        if otp:
-                                            print(f"OTP: {otp}")
-                                            return otp
-                        else:
-                            # Nếu email không phải multipart
-                            body = msg.get_payload(decode=True).decode('utf-8', errors='ignore')
-                            otp = extract_otp_from_body(body)
-                            if otp:
-                                print(f"OTP: {otp}")
-                                return otp
-            mail.store(latest_msg_id, '+FLAGS', '\\Seen')
-        else:
-            print("Không tìm thấy email OTP.")
-        return None
-    except:
-        return None
+                msg_ids = messages[0].split()
+                latest_msg_id = msg_ids[-1]
+                status, msg_data = mail.fetch(latest_msg_id, "(RFC822)")
+                
+                if status == "OK":
+                    for response_part in msg_data:
+                        if isinstance(response_part, tuple):
+                            msg = email.message_from_bytes(response_part[1])
+                                
+                            # Trích xuất nội dung email
+                            if msg.is_multipart():
+                                for part in msg.walk():
+                                    content_type = part.get_content_type()
+                                    content_disposition = str(part.get("Content-Disposition"))
+                                    if "attachment" not in content_disposition:
+                                        # Trích xuất text/plain
+                                        if content_type == "text/plain":
+                                            body = part.get_payload(decode=True).decode('utf-8', errors='ignore')
+                                            # Tìm OTP trong nội dung email
+                                            otp = extract_otp_from_body(body)
+                                            if otp:
+                                                print(f"OTP: {otp}")
+                                                return otp
+                            else:
+                                # Nếu email không phải multipart
+                                body = msg.get_payload(decode=True).decode('utf-8', errors='ignore')
+                                otp = extract_otp_from_body(body)
+                                if otp:
+                                    print(f"OTP: {otp}")
+                                    return otp
+                mail.store(latest_msg_id, '+FLAGS', '\\Seen')
+            else:
+                print("Chưa có email OTP mới.")
+        except:
+            print(f"Lỗi khi đọc email: {e}")
+        time.sleep(delay_seconds)
+        
+    print("Không tìm thấy OTP sau nhiều lần thử.")
+    return None
 
 # Hàm để trích xuất OTP từ nội dung email
 def extract_otp_from_body(body):
