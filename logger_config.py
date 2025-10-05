@@ -19,37 +19,39 @@ class VietnamTimeFormatter(logging.Formatter):
             s = ct.strftime('%Y-%m-%d %H:%M:%S')
         return s
 
-def setup_logger(name="AutoTrade-CONG NGUYEN", log_level=logging.INFO):
+def setup_logger(
+    name="AutoTrade-CONG NGUYEN",
+    log_level=logging.INFO,
+    output="console",  # "both" | "console" | "file"
+):
     """
     Setup logger với daily rotation và multiple handlers
-    
-    Args:
-        name: Tên logger
-        log_level: Mức độ logging (DEBUG, INFO, WARNING, ERROR, CRITICAL)
-    
-    Returns:
-        logger: Configured logger instance
+    output:
+      - "both": ghi file + in console (mặc định)
+      - "console": chỉ in console
+      - "file": chỉ ghi file
     """
-    
-    # Tạo logs directory nếu chưa có
+    # Validate output
+    assert output in {"both", "console", "file"}, "output must be 'both' | 'console' | 'file'"
+
     logs_dir = Path("logs")
     logs_dir.mkdir(exist_ok=True)
-    
-    # Tạo logger
+
     logger = logging.getLogger(name)
     logger.setLevel(log_level)
-    
-    # Tránh duplicate handlers
+
+    # Xóa handlers cũ nếu muốn reconfigure (tránh bị kẹt config cũ)
     if logger.handlers:
-        return logger
-    
-    # Format cho log messages (sử dụng Vietnam timezone)
+        for h in list(logger.handlers):
+            logger.removeHandler(h)
+            h.close()
+
+    # Base formatters
     formatter = VietnamTimeFormatter(
         '[%(asctime)s] %(name)s - %(levelname)s - %(message)s',
         datefmt='%Y-%m-%d %H:%M:%S'
     )
-    
-    # 🎨 Formatter có màu cho console
+
     color_formatter = ColoredFormatter(
         fmt='%(log_color)s[%(asctime)s] %(name)s - %(levelname)s - %(message)s',
         datefmt='%Y-%m-%d %H:%M:%S',
@@ -62,78 +64,82 @@ def setup_logger(name="AutoTrade-CONG NGUYEN", log_level=logging.INFO):
         }
     )
 
-    # Console Handler với màu sắc
-    console_handler = logging.StreamHandler()
-    console_handler.setLevel(logging.INFO)
-    console_handler.setFormatter(color_formatter)
-    logger.addHandler(console_handler)
-
-
-    # Console Handler
-    # console_handler = logging.StreamHandler()
-    # console_handler.setLevel(logging.INFO)
-    # console_handler.setFormatter(formatter)
-    # logger.addHandler(console_handler)
-    
-    # File Handler với daily rotation (sử dụng Vietnam timezone)
+    # Handlers theo output
     today = get_vietnam_now().strftime("%Y-%m-%d")
-    log_file = logs_dir / f"autotrade_{today}.log"
-    
-    file_handler = logging.handlers.TimedRotatingFileHandler(
-        filename=log_file,
-        when='midnight',
-        interval=1,
-        backupCount=6,  # Giữ lại 6 ngày
-        encoding='utf-8'
-    )
-    file_handler.setLevel(log_level)
-    file_handler.setFormatter(formatter)
-    logger.addHandler(file_handler)
-    
-    # Error Handler riêng cho errors
-    error_log_file = logs_dir / f"autotrade_errors_{today}.log"
-    error_handler = logging.handlers.TimedRotatingFileHandler(
-        filename=error_log_file,
-        when='midnight',
-        interval=1,
-        backupCount=30,
-        encoding='utf-8'
-    )
-    error_handler.setLevel(logging.ERROR)
-    error_handler.setFormatter(formatter)
-    logger.addHandler(error_handler)
-    
-    # Trading Handler riêng cho trading activities
-    trading_log_file = logs_dir / f"trading_{today}.log"
-    trading_handler = logging.handlers.TimedRotatingFileHandler(
-        filename=trading_log_file,
-        when='midnight',
-        interval=1,
-        backupCount=90,  # Giữ lại 90 ngày cho trading logs
-        encoding='utf-8'
-    )
-    trading_handler.setLevel(logging.INFO)
+    handlers = []
+
+    if output in {"both", "console"}:
+        console_handler = logging.StreamHandler()
+        console_handler.setLevel(logging.INFO)
+        console_handler.setFormatter(color_formatter)
+        handlers.append(console_handler)
+
+    if output in {"both", "file"}:
+        # File Handler chung
+        log_file = logs_dir / f"autotrade_{today}.log"
+        file_handler = logging.handlers.TimedRotatingFileHandler(
+            filename=log_file, when='midnight', interval=1, backupCount=6, encoding='utf-8'
+        )
+        file_handler.setLevel(log_level)
+        file_handler.setFormatter(formatter)
+        handlers.append(file_handler)
+
+        # Error Handler
+        error_log_file = logs_dir / f"autotrade_errors_{today}.log"
+        error_handler = logging.handlers.TimedRotatingFileHandler(
+            filename=error_log_file, when='midnight', interval=1, backupCount=30, encoding='utf-8'
+        )
+        error_handler.setLevel(logging.ERROR)
+        error_handler.setFormatter(formatter)
+        handlers.append(error_handler)
+
+    for h in handlers:
+        logger.addHandler(h)
+
+    # Trading logger cấu hình theo cùng output
+    trading_logger_name = f"{name}.trading"
+    trading_logger = logging.getLogger(trading_logger_name)
+    trading_logger.setLevel(logging.INFO)
+
+    # Clear cũ
+    if trading_logger.handlers:
+        for h in list(trading_logger.handlers):
+            trading_logger.removeHandler(h)
+            h.close()
+
     trading_formatter = VietnamTimeFormatter(
         '[%(asctime)s] %(levelname)s - %(message)s',
         datefmt='%Y-%m-%d %H:%M:%S'
     )
-    trading_handler.setFormatter(trading_formatter)
-    
-    # Tạo trading logger riêng
-    trading_logger = logging.getLogger(f"{name}.trading")
-    trading_logger.setLevel(logging.INFO)
-    if not trading_logger.handlers:
-        trading_logger.addHandler(trading_handler)
-        # Tránh log duplicate lên parent logger
-        trading_logger.propagate = False
-    
-    logger.info(f"Logger '{name}' initialized with daily rotation")
-    
+
+    trading_handlers = []
+    if output in {"both", "console"}:
+        tr_console = logging.StreamHandler()
+        tr_console.setLevel(logging.INFO)
+        # Có thể dùng formatter thường (không màu) cho trading, hoặc tái dùng color
+        tr_console.setFormatter(color_formatter)
+        trading_handlers.append(tr_console)
+
+    if output in {"both", "file"}:
+        trading_log_file = logs_dir / f"trading_{today}.log"
+        trading_handler = logging.handlers.TimedRotatingFileHandler(
+            filename=trading_log_file, when='midnight', interval=1, backupCount=90, encoding='utf-8'
+        )
+        trading_handler.setLevel(logging.INFO)
+        trading_handler.setFormatter(trading_formatter)
+        trading_handlers.append(trading_handler)
+
+    for h in trading_handlers:
+        trading_logger.addHandler(h)
+    trading_logger.propagate = False
+
+    logger.info(f"Logger '{name}' initialized with output='{output}'")
     return logger
 
-def get_trading_logger(name="AutoTrade"):
-    """Lấy trading logger để log các hoạt động giao dịch"""
+
+def get_trading_logger(name="AutoTrade-CONG NGUYEN"):
     return logging.getLogger(f"{name}.trading")
+
 
 def log_trade_action(action, symbol, side=None, price=None, quantity=None, **kwargs):
     """
